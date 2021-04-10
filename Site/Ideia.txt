@@ -1,0 +1,10 @@
+<script>
+	var a = odcument.querySelector('a[href="{link}"]');
+	if(a){ a.setAttribute('href', 'facebook.com/VesteBem')}
+	var b = document.querySelector('a[href="{link}"]');
+
+https://youtu.be/aKpSfqPis5g
+
+</script>
+
+https://www.w3schools.com/howto/howto_css_social_media_buttons.asp
