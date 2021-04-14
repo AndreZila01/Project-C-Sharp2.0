@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace VesteBem
 {
-	public partial class teste : System.Web.UI.Page
+	public partial class FrmHome : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{

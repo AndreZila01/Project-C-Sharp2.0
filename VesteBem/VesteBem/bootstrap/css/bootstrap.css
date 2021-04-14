@@ -43,12 +43,17 @@ template {
   display: none;
 }
 a {
-  background-color: transparent;
+    background-color: transparent;
+    text-decoration: none;
+    color: red;
 }
-a:active,
-a:hover {
-  outline: 0;
-}
+    a:active,
+    a:hover {
+        outline: 0;
+        background-color: transparent;
+        text-decoration: none;
+        color: red;
+    }
 abbr[title] {
   border-bottom: 1px dotted;
 }

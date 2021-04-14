@@ -11,7 +11,7 @@ namespace VesteBem
 {
 
 
-	public partial class MasterPageHome
+	public partial class MasterPage
 	{
 
 		/// <summary>

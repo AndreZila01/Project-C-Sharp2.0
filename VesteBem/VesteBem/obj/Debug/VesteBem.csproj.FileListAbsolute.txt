@@ -50,11 +50,10 @@ C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\rosl
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\vbc.rsp
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\VBCSCompiler.exe
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csprojAssemblyReference.cache
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CoreCompileInputs.cache
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CopyComplete
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.dll
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.pdb
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.Properties.Resources.resources
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.GenerateResource.cache
+C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csprojAssemblyReference.cache

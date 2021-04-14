@@ -1,0 +1,135 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="VesteBem.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+	<title>Bootstrap Example</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="~/css/navbar.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
+	<style>
+		*, *:before, *:after {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		}
+
+		nav {
+			border: 5px solid red;
+			overflow: hidden; /* clearfloats*/
+		}
+
+		div#a {
+			border: 3px solid lime
+		}
+
+		div#b {
+			border: 3px solid blue
+		}
+
+		div {
+			float: left;
+			width: 50%
+		}
+
+		nav ul {
+			width: 100%;
+		}
+
+			nav ul li {
+				float: left;
+				margin-right: 10px;
+			}
+
+		widhtcem {
+			width: 100%;
+		}
+
+		.rows {
+			display: flex;
+			flex-wrap: wrap;
+		}
+a {
+    text-decoration: none;
+    padding: 5px 10px;
+    }
+    
+    /*Links não visitados*/
+    a:link {
+    color: black;
+    }
+    /*Links vistados*/
+    a:visited {
+    color: black;
+    }
+    /*Links hover*/
+    a:hover {
+    color: black;
+    background: #b9c941;
+    }
+    /*Links active*/
+    a:active {
+    color: black;
+    }
+		li {
+			/* Use flex boxes to align li items */
+			/*display: flex;*/
+			justify-content: space-around;
+			/* Remove default padding from major browsers */
+			padding: 0;
+			/* Hide the default decorations for li items */
+			list-style: none;
+			width: 15%;
+		}
+		ul{
+			text-align:right;
+			margin-right:0px;
+			width:100%;
+		} 
+
+	</style>
+</head>
+<body>
+	<form id="form1" runat="server" style="width: 100%;">
+
+		<nav class="navbar navbar-inverse" style="width: 100%">
+			<div class="container-fluid" style="width: 100%">
+				<span class="navbar-header">
+					<button style="margin-right: 0px" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</span>
+				<div style="width: 100%; background-color: green" class="" id="myNavbar">
+					<div id="a" style="width: 30%">Div 1</div>
+					<div class="rows" id="b" style="width:70%">
+						<ul>
+							<li><a href="#">ajuda</a></li>
+							<li><a href="#">iniciar sessão</a>
+							</li>
+						</ul>
+					</div>
+					<div id="a" style="width: 100%; height: 50%;">
+						<a href="Home.aspx">
+							<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="50px" />
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</nav>
+
+		<div>
+			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+			</asp:ContentPlaceHolder>
+
+		</div>
+	</form>
+</body>
+</html>

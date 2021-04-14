@@ -10,7 +10,7 @@
 
 namespace VesteBem
 {
-	public partial class teste
+	public partial class FrmHome
 	{
 	}
 }

@@ -120,23 +120,30 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="css\navbar.css" />
     <Content Include="css\normalize.css" />
+    <Content Include="FrmHome.aspx" />
     <Content Include="obj\Debug\VesteBem.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\VesteBem.dll" />
     <Content Include="obj\Debug\VesteBem.pdb" />
-    <Content Include="MasterPageHome.Master" />
+    <Content Include="MasterPage.Master" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
-    <Content Include="Home.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MasterPageHome.Master.cs">
-      <DependentUpon>MasterPageHome.Master</DependentUpon>
+    <Compile Include="FrmHome.aspx.cs">
+      <DependentUpon>FrmHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterPageHome.Master.designer.cs">
-      <DependentUpon>MasterPageHome.Master</DependentUpon>
+    <Compile Include="FrmHome.aspx.designer.cs">
+      <DependentUpon>FrmHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,13 +151,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
