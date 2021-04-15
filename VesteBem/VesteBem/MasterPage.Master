@@ -4,115 +4,109 @@
 
 <html>
 <head runat="server">
+	<asp:ContentPlaceHolder ID="head" runat="server">
+	</asp:ContentPlaceHolder>
 	<title>Bootstrap Example</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="~/css/navbar.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	<asp:ContentPlaceHolder ID="head" runat="server">
-	</asp:ContentPlaceHolder>
-	<style>
-		*, *:before, *:after {
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-		}
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+  float:right;
+}
 
-		nav {
-			border: 5px solid red;
-			overflow: hidden; /* clearfloats*/
-		}
+.fa:hover {
+    opacity: 0.7;
+}
 
-		div#a {
-			border: 3px solid lime
-		}
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
 
-		div#b {
-			border: 3px solid blue
-		}
-
-		div {
-			float: left;
-			width: 50%
-		}
-
-		nav ul {
-			width: 100%;
-		}
-
-			nav ul li {
-				float: left;
-				margin-right: 10px;
-			}
-
-		widhtcem {
-			width: 100%;
-		}
-
-		.rows {
-			display: flex;
-			flex-wrap: wrap;
-		}
-a {
-    text-decoration: none;
-    padding: 5px 10px;
-    }
-    
-    /*Links não visitados*/
-    a:link {
-    color: black;
-    }
-    /*Links vistados*/
-    a:visited {
-    color: black;
-    }
-    /*Links hover*/
-    a:hover {
-    color: black;
-    background: #b9c941;
-    }
-    /*Links active*/
-    a:active {
-    color: black;
-    }
-		li {
-			/* Use flex boxes to align li items */
-			/*display: flex;*/
-			justify-content: space-around;
-			/* Remove default padding from major browsers */
-			padding: 0;
-			/* Hide the default decorations for li items */
-			list-style: none;
-			width: 15%;
-		}
-		ul{
-			text-align:right;
-			margin-right:0px;
-			width:100%;
-		} 
-
-	</style>
+.fa-instagram {
+  background: #125688;
+  color: white;
+}</style>
 </head>
 <body>
 	<form id="form1" runat="server" style="width: 100%;">
 
-		<nav class="navbar navbar-inverse" style="width: 100%">
+		<nav class="navbar" style="width: 100%; background-color: darkgray">
 			<div class="container-fluid" style="width: 100%">
-				<span class="navbar-header">
-					<button style="margin-right: 0px" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</span>
-				<div style="width: 100%; background-color: green" class="" id="myNavbar">
+				<table cellpadding="6" width="100%" height="100%">
+					<tr>
+						<th rowspan="2" style="width: 20%"><a href="Home.aspx">
+							<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="50px" />
+						</a>
+						</th>
+						<th>
+							<<a href="#" class="fa fa-facebook"></a>
+							<a href="#" class="fa fa-instagram"></a>
+						</th>
+					</tr>
+					<tr>
+						<th style="width: 80%">
+							a href="#">ajuda</a>
+							<a href="#">Iniciar Sessão</a>
+						</th>
+					</tr>
+				</table>
+			</div>
+		</nav>
+
+
+		<%--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="" href="#"><asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="50px" /></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Page 1-1</a></li>
+            <li><a href="#">Page 1-2</a></li>
+            <li><a href="#">Page 1-3</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>--%>
+
+		<%--<div style="width: 100%; background-color: green" class="" id="myNavbar">
 					<div id="a" style="width: 30%">Div 1</div>
-					<div class="rows" id="b" style="width:70%">
+					<div class="rows right" id="b" style="width:70%">
 						<ul>
-							<li><a href="#">ajuda</a></li>
-							<li><a href="#">iniciar sessão</a>
-							</li>
+							<li><a href="#">Homem</a></li>
+							<li><a href="#">Mulher</a></li>
+							<li><asp:TextBox runat="server"></asp:TextBox></li>
+							<li><a href="#">Carrinho</a></li>
+							<li><a href="#">Iniciar Sessão</a></li>
 						</ul>
 					</div>
 					<div id="a" style="width: 100%; height: 50%;">
@@ -121,10 +115,35 @@ a {
 						</a>
 					</div>
 
-				</div>
-			</div>
-		</nav>
+				</div>--%>
 
+		<%--<div style="width: 100%; background-color: green" class="" id="myNavbar">
+				<div class="tables" style="width: 100%">
+					<div class="rows" style="width=70%">
+						<div class="cells rowspans2">Cell 4</div>
+						<div class="cells rowspans2">Cell 3</div>
+					</div>
+					<div class="rows" style="width=30%">
+						<div class="cells colspans2">
+							<a href="Home.aspx">
+								<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="50px" />
+							</a>
+						</div>
+					</div>
+					</div>
+				</div>--%>
+
+		<%--<nav class="navbar" style="width: 100%">
+			<div class="container-fluid" style="width: 100%">
+				<span class="navbar-header">
+					<button style="margin-right: 0px" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</span>
+			</div>
+		</nav>--%>
 		<div>
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 			</asp:ContentPlaceHolder>
