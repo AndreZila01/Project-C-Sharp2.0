@@ -10,61 +10,93 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="~/css/navbar.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-	.fa {
-  padding: 10px;
-  font-size: 30px;
-  width: 50px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-  float:right;
-}
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-.fa:hover {
-    opacity: 0.7;
-}
-
-.fa-facebook {
-  background: #3B5998;
-  color: white;
-}
-
-.fa-instagram {
-  background: #125688;
-  color: white;
-}</style>
+	<style>
+		.fa {
+			padding: 10px;
+			font-size: 30px;
+			width: 50px;
+			text-align: center;
+			text-decoration: none;
+			margin: 5px 2px;
+			border-radius: 50%;
+			margin-left: 7px;
+			float: right;
+		}
+		.fa-facebook, .fa-facebook:hover {
+			background: #3B5998;
+			color: white;
+		}
+		.fa-instagram, .fa-instagram:hover {
+			background: #125688;
+			color: white;
+		}
+		#navbar {
+			background-color: #333;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			display: block;
+			transition: top 0.3s;
+		}
+	</style>
 </head>
 <body>
 	<form id="form1" runat="server" style="width: 100%;">
 
-		<nav class="navbar" style="width: 100%; background-color: darkgray">
-			<div class="container-fluid" style="width: 100%">
-				<table cellpadding="6" width="100%" height="100%">
-					<tr>
-						<th rowspan="2" style="width: 20%"><a href="Home.aspx">
-							<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="50px" />
-						</a>
-						</th>
-						<th>
-							<<a href="#" class="fa fa-facebook"></a>
-							<a href="#" class="fa fa-instagram"></a>
-						</th>
-					</tr>
-					<tr>
-						<th style="width: 80%">
-							a href="#">ajuda</a>
-							<a href="#">Iniciar Sessão</a>
-						</th>
-					</tr>
-				</table>
+		<nav id="navbar" style="width: 100%; background-color: darkgray">
+			<div class="" style="width: 100%; margin-top: 0px;">
+				<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
+					<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
+				</div>
+				<div class="col-xs-7 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
+					<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
+						Veste Bem
+					</p>
+					<i style="font-family: 'Times New Roman', serif; font-size: 15px; color: #292929">O simples é o futuro da nossa empresa!</i>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: left; padding: 10px 10px 10px 10px">
+					<a href="#" class="fa fa-facebook"></a>
+					<a href="#" class="fa fa-instagram"></a>
+				</div>
+
+			</div>
+			<div style="background-color: blue; padding: 5px; padding: 15px 15px 15px 15px; text-align: center">
+				<ul style="" class="nav navbar-nav navbar-right">
+					<li>Homem</li>
+					<li>Mulher</li>
+					<li>
+						<asp:TextBox runat="server"></asp:TextBox></li>
+				</ul>
 			</div>
 		</nav>
 
+
+		<%--<table cellpadding="6" width="100%" height="100%">
+					<tr>
+						<th style="width: 10%; margin-left:0px; background-color:yellow"><a href="Home.aspx">
+							<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
+						</a>
+						</th>
+						<th style="text-align: center;height:100%">
+							<div style="padding:10px; float:right; margin-top:0px; margin-left:5px;height:100%; background-color:green">
+								<a href="#" class="fa fa-facebook"></a>
+								<a href="#" class="fa fa-instagram"></a>
+							</div><div style="padding: 10px;height:100%; background-color:aqua">
+								Veste Bem
+							<br />
+								O simples é o futuro da nossa empresa!
+							</div>
+							
+						</th>
+					</tr>
+				</table>--%>
 
 		<%--<nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -147,8 +179,29 @@
 		<div>
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 			</asp:ContentPlaceHolder>
-
+			<br />
+			<br />
+			<br />
 		</div>
+		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
+			<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
+			<p>Scroll down this frame to see the effect!</p>
+			<p>Scroll up to show the navbar.</p>
+			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		<script>
+			var prevScrollpos = window.pageYOffset;
+			window.onscroll = function () {
+				var currentScrollPos = window.pageYOffset;
+				if (prevScrollpos > currentScrollPos) {
+					document.getElementById("navbar").style.top = "0";
+				} else {
+					document.getElementById("navbar").style.top = "-80px";
+				}
+				prevScrollpos = currentScrollPos;
+			}
+		</script>
 	</form>
 </body>
 </html>
