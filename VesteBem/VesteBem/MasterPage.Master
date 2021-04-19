@@ -34,19 +34,22 @@
 			background: #3B5998;
 			color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
 		}
-		.fa-facebook:focus {     
-    background: #3B5998;
-			color: aliceblue;   /*mudar aqui quando for para por o site em light mode*/
-}
+
+			.fa-facebook:focus {
+				background: #3B5998;
+				color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
+			}
 
 		.fa-instagram, .fa-instagram:hover {
 			background: #125688;
 			color: aliceblue;
 		}
-	        .fa-instagram:focus {
-	            background: #125688;
-	            color: aliceblue;
-	        }
+
+			.fa-instagram:focus {
+				background: #125688;
+				color: aliceblue;
+			}
+
 		#navbar {
 			background-color: #333;
 			position: fixed;
@@ -55,47 +58,89 @@
 			display: block;
 			transition: top 0.3s;
 		}
+
+		.nav__wrapper {
+			display: flex
+		}
+
+		}
+
+		@media(max-width:599px) {
+			.nav__wrapper {
+				position: absolute;
+				top: 100%;
+				right: 0;
+				left: 0;
+				z-index: -1;
+				background-color: #d9f0f7;
+				visibility: hidden;
+				opacity: 0;
+				transform: translateY(-100%);
+				transition: transform .3s ease-out,opacity .3s ease-out
+			}
+
+				.nav__wrapper.active {
+					visibility: visible;
+					opacity: 1;
+					transform: translateY(0)
+				}
+		}
+
+		.nav__item a {
+			display: block;
+			padding: 1.5rem 1rem
+		}
+
+		.nav__toggle {
+			display: none
+		}
+
+		@media(max-width:599px) {
+			.nav__toggle {
+				display: block;
+				position: absolute;
+				right: 1rem;
+				top: 1rem
+			}
+		}
 	</style>
 </head>
 <body>
 	<form id="form1" runat="server" style="width: 100%;">
 
-		<nav id="navbar" style="width: 100%; background-color: darkgray">
-			<div class="" style="width: 100%; margin-top: 0px;">
-				<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
-					<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
-				</div>
-				<div class="col-xs-7 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
-					<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
-						Veste Bem
-					</p>
-					<i style="font-family: 'Times New Roman', serif; font-size: 15px; color: #292929">O simples é o futuro da nossa empresa!</i>
-				</div>
-				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
-					<a href="#" class="fa fa-facebook"></a>
-					<a href="https://www.instagram.com/vestebem1212/" target="_blank"  class="fa fa-instagram"></a>
-				</div>
+		<header id="navbar">
+			<div style="width: 100%; background-color: darkgray">
+				<div class="" style="width: 100%; margin-top: 0px;">
+					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
+						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
+					</div>
+					<div class="col-xs-7 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
+						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
+							Veste Bem
+						</p>
+						<i style="font-family: 'Times New Roman', serif; font-size: 15px; color: #292929">O simples é o futuro da nossa empresa!</i>
+					</div>
+					<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
+						<a href="#" class="fa fa-facebook"></a>
+						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
+					</div>
 
+				</div>
 			</div>
-			<div style="background-color: blue; padding: 5px; padding: 15px 15px 15px 15px; text-align: center">
-				<div style="float: right; width: 110%; background-color: yellow" class="row">
-					<ul style="color: black;">
-						<li>Homem</li>
-						<li>Mulher</li>
-						<li>
-							<asp:TextBox runat="server"></asp:TextBox></li>
+			<div>
+				<nav style="background-color: yellow">
+					<ul class="nav__wrapper">
+						<li class="nav__item" style="margin-right:150px">ddsdsds
+						</li>
+						<li class="nav__item">dsdsds</li>
 					</ul>
-				</div>
+				</nav>
 			</div>
-		</nav>
-
+		</header>
 
 		<div>
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 			</asp:ContentPlaceHolder>
-			<br />
-			<br />
-			<br />
 		</div>
 		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
 			<br />
@@ -114,7 +159,7 @@
 				if (prevScrollpos > currentScrollPos) {
 					document.getElementById("navbar").style.top = "0";
 				} else {
-					document.getElementById("navbar").style.top = "-80px";
+					document.getElementById("navbar").style.top = "-160px";
 				}
 				prevScrollpos = currentScrollPos;
 			}
