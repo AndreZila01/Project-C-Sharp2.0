@@ -114,37 +114,43 @@
 					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
 						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
 					</div>
-					<div class="col-xs-7 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
+					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
 						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
 							Veste Bem
 						</p>
-						<i style="font-family: 'Times New Roman', serif; font-size: 15px; color: #292929">O simples é o futuro da nossa empresa!</i>
+						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: #292929">O simples é o futuro da nossa empresa!</i>
 					</div>
-					<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
+				<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
 						<a href="#" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 					</div>
 
+
 				</div>
 			</div>
 			<div>
-				<nav style="background-color: yellow">
-					<ul class="nav__wrapper">
-						<li class="nav__item" style="margin-right: 150px"><a href="FrmLogin.aspx">Homem</a>
-						</li>
-						<li class="nav__item" style="margin-right: 150px"><a href="#">Mulher</a></li>
-						<li class="nav__item" style="margin-right: 150px">
-							<asp:TextBox runat="server"></asp:TextBox></li>
+			
+                <ul class="nav navbar-nav">
+							<li><a href="#">Cadastros</a></li>
+						<li><a href="#">sdadas</a></li>
+						
 					</ul>
-				</nav>
 			</div>
 		</header>
-		<br />
-		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 120px;">
-			<div>
-				<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-				</asp:ContentPlaceHolder>
-			</div>
+
+		<div>
+			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+			</asp:ContentPlaceHolder>
+		</div>
+		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
+			<br />
+			<br />
+			<br />
+			<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
+			<p>Scroll down this frame to see the effect!</p>
+			<p>Scroll up to show the navbar.</p>
+			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 		<script>
 			var prevScrollpos = window.pageYOffset;
