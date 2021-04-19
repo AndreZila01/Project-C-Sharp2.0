@@ -130,9 +130,11 @@
 			<div>
 				<nav style="background-color: yellow">
 					<ul class="nav__wrapper">
-						<li class="nav__item" style="margin-right:150px">ddsdsds
+						<li class="nav__item" style="margin-right: 150px"><a href="#">Homem</a>
 						</li>
-						<li class="nav__item">dsdsds</li>
+						<li class="nav__item"  style="margin-right: 150px"><a href="#">Mulher</a></li>
+						<li class="nav__item"  style="margin-right: 150px">
+							<asp:TextBox runat="server"></asp:TextBox></li>
 					</ul>
 				</nav>
 			</div>
