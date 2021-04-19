@@ -32,14 +32,21 @@
 
 		.fa-facebook, .fa-facebook:hover {
 			background: #3B5998;
-			color: white;
+			color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
 		}
+		.fa-facebook:focus {     
+    background: #3B5998;
+			color: aliceblue;   /*mudar aqui quando for para por o site em light mode*/
+}
 
 		.fa-instagram, .fa-instagram:hover {
 			background: #125688;
-			color: white;
+			color: aliceblue;
 		}
-
+	        .fa-instagram:focus {
+	            background: #125688;
+	            color: aliceblue;
+	        }
 		#navbar {
 			background-color: #333;
 			position: fixed;
@@ -64,9 +71,9 @@
 					</p>
 					<i style="font-family: 'Times New Roman', serif; font-size: 15px; color: #292929">O simples é o futuro da nossa empresa!</i>
 				</div>
-				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: left; padding: 10px 10px 10px 10px">
+				<div class="col-xs-3 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
 					<a href="#" class="fa fa-facebook"></a>
-					<a href="#" class="fa fa-instagram"></a>
+					<a href="https://www.instagram.com/vestebem1212/" target="_blank"  class="fa fa-instagram"></a>
 				</div>
 
 			</div>
@@ -91,6 +98,9 @@
 			<br />
 		</div>
 		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
+			<br />
+			<br />
+			<br />
 			<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
 			<p>Scroll down this frame to see the effect!</p>
 			<p>Scroll up to show the navbar.</p>
