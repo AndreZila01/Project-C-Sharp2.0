@@ -1,0 +1,76 @@
+.fa {
+			padding: 10px;
+			font-size: 30px;
+			width: 50px;
+			text-align: center;
+			text-decoration: none;
+			margin: 5px 2px;
+			border-radius: 50%;
+			margin-left: 7px;
+			float: right;
+		}
+
+		.fa-facebook, .fa-facebook:hover {
+			background: #3B5998;
+			color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
+		}
+
+			.fa-facebook:focus {
+				background: #3B5998;
+				color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
+			}
+
+		.fa-instagram, .fa-instagram:hover {
+			background: #125688;
+			color: aliceblue;
+		}
+
+			.fa-instagram:focus {
+				background: #125688;
+				color: aliceblue;
+			}
+
+		.links:hover {
+			padding: 8px 16px;
+			float: left;
+			width: auto;
+			border: none;
+			display: block;
+			outline: 0;
+			text-decoration: none;
+			background-color: #ffffff;
+		}
+
+		.links {
+			padding: 8px 16px;
+			float: left;
+			width: auto;
+			border: none;
+			display: block;
+			outline: 0;
+			text-decoration: none;
+			background-color: #fffaf0;
+			color: black;
+		}
+
+		a.imjusttext {
+			color: #000000;
+			text-decoration: none;
+		}
+
+			a.imjusttext:hover {
+				text-decoration: none;
+			}
+
+
+			.fa-user:before{content:"\f007"}
+
+			.fa-user, .fa-user:hover {
+			background: #176cab;
+			color: aliceblue;
+		}
+
+			.fa-user:focus {
+				background: #176cab;
+				color: aliceblue;
+			}

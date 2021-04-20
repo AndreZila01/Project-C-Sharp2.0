@@ -12,115 +12,34 @@
 	<link rel="stylesheet" href="~/css/navbar.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/css/css.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<style>
-		.fa {
-			padding: 10px;
-			font-size: 30px;
-			width: 50px;
-			text-align: center;
-			text-decoration: none;
-			margin: 5px 2px;
-			border-radius: 50%;
-			margin-left: 7px;
-			float: right;
-		}
-
-		.fa-facebook, .fa-facebook:hover {
-			background: #3B5998;
-			color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
-		}
-
-			.fa-facebook:focus {
-				background: #3B5998;
-				color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
-			}
-
-		.fa-instagram, .fa-instagram:hover {
-			background: #125688;
-			color: aliceblue;
-		}
-
-			.fa-instagram:focus {
-				background: #125688;
-				color: aliceblue;
-			}
-
-		#navbar {
-			background-color: #333;
-			position: fixed;
-			top: 0;
-			width: 100%;
-			display: block;
-			transition: top 0.3s;
-		}
-
-		.nav__wrapper {
-			display: flex
-		}
-
-		}
-
-		@media(max-width:599px) {
-			.nav__wrapper {
-				position: absolute;
-				top: 100%;
-				right: 0;
-				left: 0;
-				z-index: -1;
-				background-color: #d9f0f7;
-				visibility: hidden;
-				opacity: 0;
-				transform: translateY(-100%);
-				transition: transform .3s ease-out,opacity .3s ease-out
-			}
-
-				.nav__wrapper.active {
-					visibility: visible;
-					opacity: 1;
-					transform: translateY(0)
-				}
-		}
-
-		.nav__item a {
-			display: block;
-			padding: 1.5rem 1rem
-		}
-
-		.nav__toggle {
-			display: none
-		}
-
-		@media(max-width:599px) {
-			.nav__toggle {
-				display: block;
-				position: absolute;
-				right: 1rem;
-				top: 1rem
-			}
-		}
+		
 	</style>
 </head>
 <body>
 	<form id="form1" runat="server" style="width: 100%;">
 
 		<header id="navbar">
-			<div style="width: 100%; background-color: darkgray">
+			<div style="width: 100%; background-color: #fffaf0">
 				<div class="" style="width: 100%; margin-top: 0px;">
-					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
-						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
+					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: #fff3dc; float: left; padding: 10px 10px 10px 10px">
+						<a href="FrmHome.aspx""><asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" /></a>
 					</div>
-					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
+					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: #fff3dc; float: left; padding-bottom: 7px; text-align: center">
 						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
 							Veste Bem
 						</p>
-						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: #292929">O simples é o futuro da nossa empresa!</i>
+						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: black">O simples é o futuro da nossa empresa!</i>
 					</div>
-				<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
+					<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: #fff3dc; float: right; padding: 10px 10px 10px 10px">
+						
+						<a href="Teste.aspx" class="fa fa-user"></a>
 						<a href="#" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 					</div>
@@ -128,29 +47,28 @@
 
 				</div>
 			</div>
-			<div>
-			
-                <ul class="nav navbar-nav">
-							<li><a href="#">Cadastros</a></li>
-						<li><a href="#">sdadas</a></li>
-						
-					</ul>
+			<div style="background-color:#fffaf0;width: 100%; float: left; margin-bottom: 10px;">
+
+				<nav class="nav" >
+					<div style="float:left">
+						<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
+						<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
+					</div>
+					<div style="float:right; margin-right:20px">
+						<div id="search">         
+						<asp:TextBox CssClass="textbox" ID="txtSearchMaster" runat="server" Visible="false"></asp:TextBox>
+					 <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="~/Resources/magnifier.png" width="20px" OnClick="btnSearch_Click" />
+				 </div>
+					
+						</div>
+				</nav>
+
 			</div>
 		</header>
 
 		<div>
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 			</asp:ContentPlaceHolder>
-		</div>
-		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
-			<br />
-			<br />
-			<br />
-			<p><b>This example demonstrates how to hide a navbar when the user starts to scroll the page.</b></p>
-			<p>Scroll down this frame to see the effect!</p>
-			<p>Scroll up to show the navbar.</p>
-			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<p>Lorem ipsum dolor dummy text sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 		</div>
 		<script>
 			var prevScrollpos = window.pageYOffset;
