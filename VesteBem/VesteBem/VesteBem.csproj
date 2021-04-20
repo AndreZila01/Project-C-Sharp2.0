@@ -111,6 +111,8 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\VesteBem.dll" />
     <Content Include="bin\VesteBem.pdb" />
+    <Content Include="bin\WindowsFormsApp1.exe" />
+    <Content Include="bin\WindowsFormsApp1.pdb" />
     <Content Include="bootstrap\css\bootstrap-theme.css" />
     <Content Include="bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -119,6 +121,7 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\npm.js" />
+    <Content Include="css\Css.css" />
     <Content Include="css\navbar.css" />
     <Content Include="css\normalize.css" />
     <Content Include="FrmCHomem.aspx" />
@@ -129,20 +132,26 @@
     <Content Include="obj\Debug\VesteBem.dll" />
     <Content Include="obj\Debug\VesteBem.pdb" />
     <Content Include="MasterPage.Master" />
+    <Content Include="bin\WindowsFormsApp1.exe.config" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
+    <Content Include="Resources\magnifier.png" />
+    <Content Include="Resources\user.png" />
+    <Content Include="Teste.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FrmCHomem.aspx.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrmCHomem.aspx.designer.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmCMulher.aspx.cs">
       <DependentUpon>FrmCMulher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FrmCMulher.aspx.designer.cs">
       <DependentUpon>FrmCMulher.aspx</DependentUpon>
@@ -174,6 +183,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Teste.aspx.cs">
+      <DependentUpon>Teste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Teste.aspx.designer.cs">
+      <DependentUpon>Teste.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
