@@ -50,58 +50,26 @@
 				color: aliceblue;
 			}
 
-		#navbar {
-			background-color: #333;
-			position: fixed;
-			top: 0;
-			width: 100%;
+		.links:hover{
+			padding: 8px 16px;
+			float: left;
+			width: auto;
+			border: none;
 			display: block;
-			transition: top 0.3s;
+			outline: 0;
+			text-decoration: none;
+			background-color:#ffffff;
 		}
-
-		.nav__wrapper {
-			display: flex
-		}
-
-		}
-
-		@media(max-width:599px) {
-			.nav__wrapper {
-				position: absolute;
-				top: 100%;
-				right: 0;
-				left: 0;
-				z-index: -1;
-				background-color: #d9f0f7;
-				visibility: hidden;
-				opacity: 0;
-				transform: translateY(-100%);
-				transition: transform .3s ease-out,opacity .3s ease-out
-			}
-
-				.nav__wrapper.active {
-					visibility: visible;
-					opacity: 1;
-					transform: translateY(0)
-				}
-		}
-
-		.nav__item a {
+		.links{
+			padding: 8px 16px;
+			float: left;
+			width: auto;
+			border: none;
 			display: block;
-			padding: 1.5rem 1rem
-		}
-
-		.nav__toggle {
-			display: none
-		}
-
-		@media(max-width:599px) {
-			.nav__toggle {
-				display: block;
-				position: absolute;
-				right: 1rem;
-				top: 1rem
-			}
+			outline: 0;
+			text-decoration: none;
+			background-color:#fffaf0;
+			color:black;
 		}
 	</style>
 </head>
@@ -109,18 +77,18 @@
 	<form id="form1" runat="server" style="width: 100%;">
 
 		<header id="navbar">
-			<div style="width: 100%; background-color: darkgray">
+			<div style="width: 100%; background-color: #fffaf0">
 				<div class="" style="width: 100%; margin-top: 0px;">
-					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: red; float: left; padding: 10px 10px 10px 10px">
+					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: #fff3dc; float: left; padding: 10px 10px 10px 10px">
 						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
 					</div>
-					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: green; float: left; padding-bottom: 7px; text-align: center">
+					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: #fff3dc; float: left; padding-bottom: 7px; text-align: center">
 						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
 							Veste Bem
 						</p>
-						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: #292929">O simples é o futuro da nossa empresa!</i>
+						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: #fff3dc">O simples é o futuro da nossa empresa!</i>
 					</div>
-				<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: cornflowerblue; float: right; padding: 10px 10px 10px 10px">
+					<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: #fff3dc; float: right; padding: 10px 10px 10px 10px">
 						<a href="#" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 					</div>
@@ -128,13 +96,19 @@
 
 				</div>
 			</div>
-			<div>
-			
-                <ul class="nav navbar-nav">
-							<li><a href="#">Cadastros</a></li>
-						<li><a href="#">sdadas</a></li>
-						
-					</ul>
+			<div style="background-color:#fffaf0;width: 100%; float: left; margin-bottom: 10px;">
+
+				<nav class="nav" >
+					<div style="float:left">
+					<a class="nav-link links" href="#">Homem</a>
+					<a class="nav-link links" href="#">Mulher</a>
+						</div>
+					<div style="float:right">
+					<a class="nav-link links" href="#"><asp:Image runat="server" ImageUrl="~/Resources/magnifier.png" Width="15px"/></a>
+					<a class="nav-link links" href="#">Login</a>
+						</div>
+				</nav>
+
 			</div>
 		</header>
 
@@ -142,7 +116,7 @@
 			<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
 			</asp:ContentPlaceHolder>
 		</div>
-		<div style="padding: 15px 15px 2500px; font-size: 30px; margin-top: 30px;">
+		<div style="padding: 15px 15px 2500px; font-size: 30px;">
 			<br />
 			<br />
 			<br />

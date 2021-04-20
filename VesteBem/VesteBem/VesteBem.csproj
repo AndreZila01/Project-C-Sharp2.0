@@ -130,6 +130,7 @@
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
+    <Content Include="Resources\magnifier.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
