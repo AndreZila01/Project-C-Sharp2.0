@@ -54,9 +54,12 @@ C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debu
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CopyComplete
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.dll
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.pdb
+<<<<<<< Updated upstream
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.Properties.Resources.resources
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.GenerateResource.cache
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csprojAssemblyReference.cache
+=======
+>>>>>>> Stashed changes
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\VesteBem.dll.config
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\VesteBem.dll
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\VesteBem.pdb
@@ -112,6 +115,7 @@ C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\rosl
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csprojAssemblyReference.cache
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.Properties.Resources.resources
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.GenerateResource.cache
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CoreCompileInputs.cache
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CopyComplete
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.dll

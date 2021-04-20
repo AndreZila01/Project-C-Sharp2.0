@@ -86,7 +86,7 @@
 						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
 							Veste Bem
 						</p>
-						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: #fff3dc">O simples é o futuro da nossa empresa!</i>
+						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: black">O simples é o futuro da nossa empresa!</i>
 					</div>
 					<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: #fff3dc; float: right; padding: 10px 10px 10px 10px">
 						<a href="#" class="fa fa-facebook"></a>
@@ -101,11 +101,14 @@
 				<nav class="nav" >
 					<div style="float:left">
 					<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
-					<a class="nav-link links" href="#">Mulher</a>
+					<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
 						</div>
 					<div style="float:right">
-					<a class="nav-link links" href="#"><asp:Image runat="server" ImageUrl="~/Resources/magnifier.png" Width="15px"/></a>
-					<a class="nav-link links" href="#">Login</a>
+						<div id="search">         
+				 <asp:TextBox ID="txtSearchMaster" runat="server"></asp:TextBox>
+				 <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="~/Resources/magnifier.png" width="20px" OnClick="btnSearch_Click" />
+				 </div>
+					
 						</div>
 				</nav>
 
