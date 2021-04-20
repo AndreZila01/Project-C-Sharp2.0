@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,19 @@ namespace VesteBem
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
+		}
+
+		protected void lblLink_Click(object sender, EventArgs e)
+		{
+
+			LinkButton linkButton = new LinkButton();
+			switch (linkButton.Text)
+			{
+				case "":
+					break;
+				default:
+					break;
+			}
 		}
 	}
 }
