@@ -121,6 +121,7 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="css\navbar.css" />
     <Content Include="css\normalize.css" />
+    <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmHome.aspx" />
     <Content Include="FrmLogin.aspx" />
     <Content Include="obj\Debug\VesteBem.csproj.FileListAbsolute.txt" />
@@ -134,6 +135,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCHomem.aspx.cs">
+      <DependentUpon>FrmCHomem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCHomem.aspx.designer.cs">
+      <DependentUpon>FrmCHomem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FrmHome.aspx.cs">
       <DependentUpon>FrmHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
