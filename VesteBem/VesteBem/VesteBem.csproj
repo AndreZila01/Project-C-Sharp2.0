@@ -122,6 +122,7 @@
     <Content Include="css\navbar.css" />
     <Content Include="css\normalize.css" />
     <Content Include="FrmCHomem.aspx" />
+    <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
     <Content Include="FrmLogin.aspx" />
     <Content Include="obj\Debug\VesteBem.csproj.FileListAbsolute.txt" />
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="FrmCHomem.aspx.designer.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCMulher.aspx.cs">
+      <DependentUpon>FrmCMulher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FrmCMulher.aspx.designer.cs">
+      <DependentUpon>FrmCMulher.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmHome.aspx.cs">
       <DependentUpon>FrmHome.aspx</DependentUpon>
