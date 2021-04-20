@@ -11,15 +11,15 @@
 					<asp:Label runat="server" Text="Homem > "></asp:Label></div>
 				<p> </p>
 				<div style="margin: -5px 10px 0px 10px; background-color: ghostwhite; font-size: 20px;">
-					<asp:Label runat="server" Text="Calças"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Pijama"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Sapatos"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Camisola Interior"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Camisa"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Camisola Exterior"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Roupa Interior"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Casacos"></asp:Label><br /><p />
-					<asp:Label runat="server" Text="Acessórios"></asp:Label><br /><p />
+					<asp:LinkButton runat="server" Text="Calças" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Sapatos" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Camisola Interior"  OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Camisa" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Casacos" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
+					<asp:LinkButton runat="server" Text="Acessórios" OnClick="lblLink_Click"></asp:LinkButton><br /><p />
 				</div>
 
 				</div>

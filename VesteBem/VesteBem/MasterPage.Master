@@ -12,67 +12,14 @@
 	<link rel="stylesheet" href="~/css/navbar.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/css/css.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/normalize.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<style>
-		.fa {
-			padding: 10px;
-			font-size: 30px;
-			width: 50px;
-			text-align: center;
-			text-decoration: none;
-			margin: 5px 2px;
-			border-radius: 50%;
-			margin-left: 7px;
-			float: right;
-		}
-
-		.fa-facebook, .fa-facebook:hover {
-			background: #3B5998;
-			color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
-		}
-
-			.fa-facebook:focus {
-				background: #3B5998;
-				color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
-			}
-
-		.fa-instagram, .fa-instagram:hover {
-			background: #125688;
-			color: aliceblue;
-		}
-
-			.fa-instagram:focus {
-				background: #125688;
-				color: aliceblue;
-			}
-
-		.links:hover{
-			padding: 8px 16px;
-			float: left;
-			width: auto;
-			border: none;
-			display: block;
-			outline: 0;
-			text-decoration: none;
-			background-color:#ffffff;
-		}
-		.links{
-			padding: 8px 16px;
-			float: left;
-			width: auto;
-			border: none;
-			display: block;
-			outline: 0;
-			text-decoration: none;
-			background-color:#fffaf0;
-			color:black;
-		}
-		a.imjusttext{ color: #000000; text-decoration: none; }
-a.imjusttext:hover { text-decoration: none; }
+		
 	</style>
 </head>
 <body>
@@ -82,7 +29,7 @@ a.imjusttext:hover { text-decoration: none; }
 			<div style="width: 100%; background-color: #fffaf0">
 				<div class="" style="width: 100%; margin-top: 0px;">
 					<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="background-color: #fff3dc; float: left; padding: 10px 10px 10px 10px">
-						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
+						<a href="FrmHome.aspx""><asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" /></a>
 					</div>
 					<div class="col-xs-6 col-sm-7 col-md-9 col-lg-9" style="background-color: #fff3dc; float: left; padding-bottom: 7px; text-align: center">
 						<p style="font-family: 'Times New Roman', serif; font-size: 30px; color: #292929">
@@ -91,6 +38,8 @@ a.imjusttext:hover { text-decoration: none; }
 						<i style="font-family: 'Times New Roman', serif; font-size: 13px; color: black">O simples é o futuro da nossa empresa!</i>
 					</div>
 					<div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" style="background-color: #fff3dc; float: right; padding: 10px 10px 10px 10px">
+						
+						<a href="Teste.aspx" class="fa fa-user"></a>
 						<a href="#" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 					</div>
@@ -102,13 +51,13 @@ a.imjusttext:hover { text-decoration: none; }
 
 				<nav class="nav" >
 					<div style="float:left">
-					<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
-					<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
-						</div>
-					<div style="float:right">
+						<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
+						<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
+					</div>
+					<div style="float:right; margin-right:20px">
 						<div id="search">         
-				 <asp:TextBox ID="txtSearchMaster" runat="server"></asp:TextBox>
-				 <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="~/Resources/magnifier.png" width="20px" OnClick="btnSearch_Click" />
+						<asp:TextBox CssClass="textbox" ID="txtSearchMaster" runat="server" Visible="false"></asp:TextBox>
+					 <asp:ImageButton ID="btnSearch" runat="server" ImageUrl="~/Resources/magnifier.png" width="20px" OnClick="btnSearch_Click" />
 				 </div>
 					
 						</div>

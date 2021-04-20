@@ -13,13 +13,17 @@ namespace VesteBem
 
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{
-			var searchText = Server.UrlEncode(txtSearchMaster.Text); // URL encode in case of special characters
-			Response.Redirect("~/MasterPage.aspx?srch=" + searchText);
+			txtSearchMaster.Visible = true;
+			if (txtSearchMaster.Text != "")
+			{
+				var searchText = Server.UrlEncode(txtSearchMaster.Text); // URL encode in case of special characters
+				Response.Redirect("~/MasterPage.aspx?srch=" + searchText);
+			}
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			txtSearchMaster.Visible = false;
 		}
 	}
 }
