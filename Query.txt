@@ -71,3 +71,9 @@ Id_Cliente int foreign key references tbl_Cliente(idCliente),
 Id_Produtos int foreign key references tbl_Produtos(IdProduto),
 QuantCar int not null,
 );
+
+Insert into tbl_login(Usern,Passw,Funcionario)
+values('Admin', 'Admin', 1)
+
+Insert into tbl_login(Usern,Passw,Funcionario)
+values('Marco', '123', 0)
