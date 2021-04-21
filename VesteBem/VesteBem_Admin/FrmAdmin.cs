@@ -20,6 +20,19 @@ namespace VesteBem_Admin
 			Password = pass;
 		}
 
+		private void button_Click(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+
+			switch (btn.Text)
+			{
+				case "Adicionar Produtos":
+					FrmAddProdutos frm = new FrmAddProdutos();
+					frm.Show();
+				break;
+			}
+		}
+
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
 
