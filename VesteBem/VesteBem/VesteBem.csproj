@@ -111,8 +111,6 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\VesteBem.dll" />
     <Content Include="bin\VesteBem.pdb" />
-    <Content Include="bin\WindowsFormsApp1.exe" />
-    <Content Include="bin\WindowsFormsApp1.pdb" />
     <Content Include="bootstrap\css\bootstrap-theme.css" />
     <Content Include="bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -132,7 +130,6 @@
     <Content Include="obj\Debug\VesteBem.dll" />
     <Content Include="obj\Debug\VesteBem.pdb" />
     <Content Include="MasterPage.Master" />
-    <Content Include="bin\WindowsFormsApp1.exe.config" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
