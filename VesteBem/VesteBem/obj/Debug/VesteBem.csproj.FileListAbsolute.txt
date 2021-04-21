@@ -238,3 +238,5 @@ C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debu
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.csproj.CopyComplete
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.dll
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.pdb
+C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.dll
+C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.xml

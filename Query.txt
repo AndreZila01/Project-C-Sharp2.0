@@ -71,3 +71,27 @@ Id_Cliente int foreign key references tbl_Cliente(idCliente),
 Id_Produtos int foreign key references tbl_Produtos(IdProduto),
 QuantCar int not null,
 );
+
+Insert into tbl_Produtos(Nome,Valor,NomedaEmpresa,CategoriaClasse,CategoriaSubClasse,Sexo, Icon) values(
+'Casaco de Ganga Homem', '20.00', 'Nike', 'Casacos', 'Casacos de Ganga', 'M', 'd');
+
+UPDATE tbl_Produtos set Icon=('C:\Users\andre\Desktop\transferir(1).jpg')
+where Icon like 0x64
+
+Insert into tbl_Produtos(Nome,Valor,NomedaEmpresa,CategoriaClasse,CategoriaSubClasse,Sexo, Icon) values(
+'Casaco de Homem', '25.00', 'Adidas', 'Casacos', 'Casacos de Botões', 'M', 'd');
+
+UPDATE tbl_Produtos set Icon=('C:\Users\andre\Desktop\transferir.jpg')
+where Icon like 0x64
+
+Insert into tbl_Produtos(Nome,Valor,NomedaEmpresa,CategoriaClasse,CategoriaSubClasse,Sexo, Icon) values(
+'Casaco de Senhora', '15.00', 'Primark', 'Casacos', 'Casacos de Inverno', 'F', 'd');
+
+UPDATE tbl_Produtos set Icon=('C:\Users\andre\Desktop\Roupa1.jpg')
+where Icon like 0x64
+
+Insert into tbl_login(Usern,Passw,Funcionario)
+values('Admin', 'Admin', 1)
+
+Insert into tbl_login(Usern,Passw,Funcionario)
+values('Marco', '123', 0)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,69 +11,37 @@ using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using VesteBem.Classes;
 
 namespace VesteBem
 {
 	public partial class Teste : System.Web.UI.Page
 	{
-		Socket socket;
-		byte[] buffer;
-		int offset, size, timeout;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string response = "teste";
-			// Get Host IP Address that is used to establish a connection  
-			// In this case, we get one IP address of localhost that is IP : 127.0.0.1  
-			// If a host has multiple addresses, you will get a list of addresses  
-			IPHostEntry host = Dns.GetHostEntry("localhost");
-			IPAddress ipAddress = host.AddressList[0];
-			IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
-
-
+			string Paths = Path.Combine(Path.GetTempPath());
+			Logins login = new Logins();
+			List<Logins> ListLogin = new List<Logins>();
 			try
-			{
-
-				// Create a Socket that will use Tcp protocol      
-				Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-				// A Socket must be associated with an endpoint using the Bind method  
-				listener.Bind(localEndPoint);
-				// Specify how many requests a Socket can listen before it gives Server busy response.  
-				// We will listen 10 requests at a time  
-				listener.Listen(10);
-
-				Console.WriteLine("Waiting for a connection...");
-				Socket handler = listener.Accept();
-
-				// Incoming data from the client.    
-				string data = null;
-				byte[] bytes = null;
-
-				while (true)
+			{ 
+				if (File.Exists($"{Paths + @"\Login.json"}"))
 				{
-					bytes = new byte[1024];
-					int bytesRec = handler.Receive(bytes);
-					data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-					if (data.IndexOf("<EOF>") > -1)
-					{
-						break;
-					}
+					File.Delete($"{Paths + @"\Login.json"}");
 				}
+				login.UserName = "Admin";
+				login.Password = "Admin";
 
-				Console.WriteLine("Text received : {0}", data);
+				ListLogin.Clear();
+				ListLogin.Add(login);
 
-				byte[] msg = Encoding.ASCII.GetBytes(data);
-				handler.Send(msg);
-				handler.Shutdown(SocketShutdown.Both);
-				handler.Close();
+				string json = JsonConvert.SerializeObject(ListLogin);
+				File.WriteAllText(Paths + "\\Login.json", json);
 			}
-			catch (Exception ex)
+			catch (Exception Ex)
 			{
-				Console.WriteLine(ex.ToString());
+				Console.WriteLine(Ex.ToString());
 			}
-
-			Console.WriteLine("\n Press any key to continue...");
-			Console.ReadKey();
 		}
 
 
