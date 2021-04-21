@@ -45,6 +45,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -111,19 +114,17 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe" />
     <Content Include="bin\VesteBem.dll" />
     <Content Include="bin\VesteBem.pdb" />
-    <Content Include="bin\WindowsFormsApp1.exe" />
-    <Content Include="bin\WindowsFormsApp1.pdb" />
     <Content Include="bootstrap\css\bootstrap-theme.css" />
     <Content Include="bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
+    <Content Include="bootstrap\css\Css.css" />
+    <Content Include="bootstrap\css\navbar.css" />
+    <Content Include="bootstrap\css\normalize.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\npm.js" />
-    <Content Include="css\Css.css" />
-    <Content Include="css\navbar.css" />
-    <Content Include="css\normalize.css" />
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
@@ -132,7 +133,6 @@
     <Content Include="obj\Debug\VesteBem.dll" />
     <Content Include="obj\Debug\VesteBem.pdb" />
     <Content Include="MasterPage.Master" />
-    <Content Include="bin\WindowsFormsApp1.exe.config" />
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
@@ -142,6 +142,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\LoginAndRegist.cs" />
     <Compile Include="FrmCHomem.aspx.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
