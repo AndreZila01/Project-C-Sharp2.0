@@ -8,24 +8,24 @@ using System.Web.UI.WebControls;
 
 namespace VesteBem
 {
-	public partial class FrmCHomem : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class FrmCHomem : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-		}
+        }
 
-		protected void lblLink_Click(object sender, EventArgs e)
-		{
+        protected void lblLink_Click(object sender, EventArgs e)
+        {
 
-			LinkButton linkButton = new LinkButton();
-			switch (linkButton.Text)
-			{
-				case "":
-					break;
-				default:
-					break;
-			}
-		}
-	}
+            LinkButton linkButton = new LinkButton();
+            switch (linkButton.Text)
+            {
+                case "":
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 }
