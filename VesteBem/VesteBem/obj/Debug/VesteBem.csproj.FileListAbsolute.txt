@@ -240,3 +240,10 @@ C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debu
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\obj\Debug\VesteBem.pdb
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.dll
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.xml
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Newtonsoft.Json.xml
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\System.Buffers.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\System.Memory.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
