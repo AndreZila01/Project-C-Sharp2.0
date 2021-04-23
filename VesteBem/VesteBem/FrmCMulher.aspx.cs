@@ -13,5 +13,17 @@ namespace VesteBem
         {
 
         }
+        protected void lblLink_Click(object sender, EventArgs e)
+        {
+
+            LinkButton linkButton = new LinkButton();
+            switch (linkButton.Text)
+            {
+                case "":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

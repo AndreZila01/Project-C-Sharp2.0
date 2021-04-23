@@ -133,6 +133,7 @@
     <None Include="Resources\Logo.png" />
     <None Include="Resources\LogoComprido.png" />
     <None Include="Resources\LogoV.png" />
+    <Content Include="Resources\avatar.png" />
     <Content Include="Resources\magnifier.png" />
     <Content Include="Resources\user.png" />
     <Content Include="Teste.aspx" />
