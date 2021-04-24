@@ -40,7 +40,7 @@
 				<div style="background-color: aqua;">
 					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E4E2; margin-bottom: 10px; display: inline-block;">
 						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
-							<asp:Label ID="Label3" runat="server" Text="Nome ou Nº Paciente:"></asp:Label>
+							<asp:Label ID="Label3" runat="server"></asp:Label>
 					</div>
 					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E4E2; margin-bottom: 10px; display: inline-block;">Div two</div>
 					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E5E2; margin-bottom: 10px; display: inline-block;">Div two</div>
