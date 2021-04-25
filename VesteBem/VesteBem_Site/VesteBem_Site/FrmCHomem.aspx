@@ -37,15 +37,14 @@
 		<div class="col-xs-8 col-sm-9 col-md-9 col-lg-9" style="background-color: green;">
 			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
 			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10" style="margin-top: 15px; padding-bottom: 2500px; padding-left: 0px; padding-right: 0px; background-color: aliceblue; font-size: 30px;">
-				<div style="background-color: aqua;">
-					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E4E2; margin-bottom: 10px; display: inline-block;">
-						<asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" />
-							<asp:Label ID="Label3" runat="server"></asp:Label>
+				<div style="background-color: aqua; margin-left: 5%; width: 89%">
+					<div style="position: relative;">
+						<img class="MarginImg" src="../Resources/Logo.png" style="width: 150px; margin: 10px 0px 10px 20px;" />
 					</div>
-					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E4E2; margin-bottom: 10px; display: inline-block;">Div two</div>
-					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E5E2; margin-bottom: 10px; display: inline-block;">Div two</div>
-					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #E5E7E2; margin-bottom: 10px; display: inline-block;">Div two</div>
-					<div style="margin-left: 7px; padding: 40px 25px 40px 25px; background-color: #e5e4e3; margin-bottom: 10px; display: inline-block;">Div two</div>
+					<img class="MarginImg" src="../Resources/Logo.png" style="width: 150px; margin: 10px 0px 10px 20px;" />
+					<img class="MarginImg" src="../Resources/Logo.png" style="width: 150px; margin: 10px 0px 10px 20px;" />
+					<img class="MarginImg" src="../Resources/Logo.png" style="width: 150px; margin: 10px 0px 10px 20px;" />
+
 				</div>
 			</div>
 			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
@@ -54,7 +53,7 @@
 			<br />
 		</div>
 	</div>
-
+	>
 	<%--<div style="background-color: red; width: 100%;">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
             <div style="padding: 15px 15px 2500px; font-size: 30px;">

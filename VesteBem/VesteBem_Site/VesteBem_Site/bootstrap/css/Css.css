@@ -81,7 +81,6 @@ a.imjusttext {
 #textboxid {
 	margin-top: 5px;
 	font-size: 14pt;
-<<<<<<< HEAD
 	margin-right: 4px;
 	height: 25px;
 }
@@ -107,10 +106,7 @@ a.imjusttext {
 	padding-right: 15px;
 	padding-left: 15px;
 }
-=======
-	
-	height: 10px;
-}
+
 input[type=text], input[type=password] {
 	width: 100%;
 	padding: 12px 20px;
@@ -238,4 +234,16 @@ span.psw {
 	.cancelbtn {
 		width: 100%;
 	}
+}
+
+.labelCategoria {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 18px;
+}
+
+MarginImg{
+	margin:35px 35px 35px 35px;
 }
