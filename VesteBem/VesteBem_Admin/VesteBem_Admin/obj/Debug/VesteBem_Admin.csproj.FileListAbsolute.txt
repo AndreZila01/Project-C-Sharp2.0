@@ -58,3 +58,18 @@ C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\Ve
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.CopyComplete
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.exe
 C:\Users\andre\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.pdb
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAddProdutos.resources
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAdmin.resources
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmLogin.resources
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.Properties.Resources.resources
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.GenerateResource.cache
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.CoreCompileInputs.cache
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.exe
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.pdb
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.exe.config
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.exe
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.pdb
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Altyra Solutions\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.CopyComplete

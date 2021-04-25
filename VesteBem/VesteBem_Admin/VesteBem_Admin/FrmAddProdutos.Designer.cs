@@ -28,13 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.textBox5 = new System.Windows.Forms.TextBox();
-			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.textBox7 = new System.Windows.Forms.TextBox();
+			this.TxtNome = new System.Windows.Forms.TextBox();
+			this.TxtValor = new System.Windows.Forms.TextBox();
+			this.TxtEmpresa = new System.Windows.Forms.TextBox();
+			this.TxtCat = new System.Windows.Forms.TextBox();
+			this.TxtSubCat = new System.Windows.Forms.TextBox();
+			this.TxtSexo = new System.Windows.Forms.TextBox();
+			this.TxtIcon = new System.Windows.Forms.TextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -51,66 +51,69 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// TxtNome
 			// 
-			this.textBox1.Location = new System.Drawing.Point(109, 47);
-			this.textBox1.MaxLength = 100;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(100, 20);
-			this.textBox1.TabIndex = 0;
-			this.textBox1.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
+			this.TxtNome.Location = new System.Drawing.Point(109, 47);
+			this.TxtNome.MaxLength = 100;
+			this.TxtNome.Name = "TxtNome";
+			this.TxtNome.Size = new System.Drawing.Size(100, 20);
+			this.TxtNome.TabIndex = 0;
+			this.TxtNome.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
 			// 
-			// textBox2
+			// TxtValor
 			// 
-			this.textBox2.Location = new System.Drawing.Point(109, 83);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(100, 20);
-			this.textBox2.TabIndex = 1;
+			this.TxtValor.Location = new System.Drawing.Point(109, 83);
+			this.TxtValor.Name = "TxtValor";
+			this.TxtValor.Size = new System.Drawing.Size(100, 20);
+			this.TxtValor.TabIndex = 1;
+			this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
 			// 
-			// textBox3
+			// TxtEmpresa
 			// 
-			this.textBox3.Location = new System.Drawing.Point(109, 122);
-			this.textBox3.MaxLength = 100;
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(100, 20);
-			this.textBox3.TabIndex = 2;
+			this.TxtEmpresa.Location = new System.Drawing.Point(109, 122);
+			this.TxtEmpresa.MaxLength = 100;
+			this.TxtEmpresa.Name = "TxtEmpresa";
+			this.TxtEmpresa.Size = new System.Drawing.Size(100, 20);
+			this.TxtEmpresa.TabIndex = 2;
 			// 
-			// textBox4
+			// TxtCat
 			// 
-			this.textBox4.Location = new System.Drawing.Point(109, 163);
-			this.textBox4.MaxLength = 100;
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size(100, 20);
-			this.textBox4.TabIndex = 3;
+			this.TxtCat.Location = new System.Drawing.Point(109, 163);
+			this.TxtCat.MaxLength = 100;
+			this.TxtCat.Name = "TxtCat";
+			this.TxtCat.Size = new System.Drawing.Size(100, 20);
+			this.TxtCat.TabIndex = 3;
 			// 
-			// textBox5
+			// TxtSubCat
 			// 
-			this.textBox5.Location = new System.Drawing.Point(109, 201);
-			this.textBox5.MaxLength = 100;
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size(100, 20);
-			this.textBox5.TabIndex = 4;
+			this.TxtSubCat.Location = new System.Drawing.Point(109, 201);
+			this.TxtSubCat.MaxLength = 100;
+			this.TxtSubCat.Name = "TxtSubCat";
+			this.TxtSubCat.Size = new System.Drawing.Size(100, 20);
+			this.TxtSubCat.TabIndex = 4;
 			// 
-			// textBox6
+			// TxtSexo
 			// 
-			this.textBox6.Location = new System.Drawing.Point(109, 239);
-			this.textBox6.MaxLength = 1;
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size(100, 20);
-			this.textBox6.TabIndex = 5;
+			this.TxtSexo.Location = new System.Drawing.Point(109, 239);
+			this.TxtSexo.MaxLength = 1;
+			this.TxtSexo.Name = "TxtSexo";
+			this.TxtSexo.Size = new System.Drawing.Size(100, 20);
+			this.TxtSexo.TabIndex = 5;
 			// 
-			// textBox7
+			// TxtIcon
 			// 
-			this.textBox7.Location = new System.Drawing.Point(109, 275);
-			this.textBox7.Name = "textBox7";
-			this.textBox7.Size = new System.Drawing.Size(100, 20);
-			this.textBox7.TabIndex = 6;
+			this.TxtIcon.Location = new System.Drawing.Point(109, 275);
+			this.TxtIcon.Name = "TxtIcon";
+			this.TxtIcon.ReadOnly = true;
+			this.TxtIcon.Size = new System.Drawing.Size(100, 20);
+			this.TxtIcon.TabIndex = 6;
 			// 
 			// pictureBox1
 			// 
+			this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.pictureBox1.Location = new System.Drawing.Point(265, 47);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(238, 170);
+			this.pictureBox1.Size = new System.Drawing.Size(288, 323);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 			this.pictureBox1.TabIndex = 7;
 			this.pictureBox1.TabStop = false;
@@ -183,9 +186,9 @@
 			this.label8.AutoSize = true;
 			this.label8.Location = new System.Drawing.Point(272, 31);
 			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(35, 13);
+			this.label8.Size = new System.Drawing.Size(39, 13);
 			this.label8.TabIndex = 15;
-			this.label8.Text = "label8";
+			this.label8.Text = "Image:";
 			// 
 			// label9
 			// 
@@ -215,6 +218,7 @@
 			this.button1.TabIndex = 18;
 			this.button1.Text = "Registar Produtos";
 			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// FrmAddProdutos
 			// 
@@ -233,13 +237,13 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
-			this.Controls.Add(this.textBox7);
-			this.Controls.Add(this.textBox6);
-			this.Controls.Add(this.textBox5);
-			this.Controls.Add(this.textBox4);
-			this.Controls.Add(this.textBox3);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.TxtIcon);
+			this.Controls.Add(this.TxtSexo);
+			this.Controls.Add(this.TxtSubCat);
+			this.Controls.Add(this.TxtCat);
+			this.Controls.Add(this.TxtEmpresa);
+			this.Controls.Add(this.TxtValor);
+			this.Controls.Add(this.TxtNome);
 			this.Name = "FrmAddProdutos";
 			this.Text = "FrmAddProdutos";
 			this.Load += new System.EventHandler(this.FrmAddProdutos_Load);
@@ -252,13 +256,13 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.TextBox textBox4;
-		private System.Windows.Forms.TextBox textBox5;
-		private System.Windows.Forms.TextBox textBox6;
-		private System.Windows.Forms.TextBox textBox7;
+		private System.Windows.Forms.TextBox TxtNome;
+		private System.Windows.Forms.TextBox TxtValor;
+		private System.Windows.Forms.TextBox TxtEmpresa;
+		private System.Windows.Forms.TextBox TxtCat;
+		private System.Windows.Forms.TextBox TxtSubCat;
+		private System.Windows.Forms.TextBox TxtSexo;
+		private System.Windows.Forms.TextBox TxtIcon;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
