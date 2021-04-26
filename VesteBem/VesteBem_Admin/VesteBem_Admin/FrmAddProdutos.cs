@@ -61,7 +61,7 @@ namespace VesteBem_Admin
 				produtos.valor = double.Parse(TxtValor.Text);
 				produtos.CategoriaClass = TxtCat.Text;
 				produtos.CategoriaSubClass = TxtSubCat.Text;
-				var ds=produtos.Icon!=null?produtos.Icon= TxtIcon.Text:produtos.Icon="d";
+				var ds=TxtIcon.Text!=null?produtos.Icon= TxtIcon.Text:produtos.Icon="NULL";
 				//var ts=pE_PauseaPlay.Tag.ToString()=="0"? Processo="pause": Processo="start";
 				CreateProdutos.InsertProdutos(produtos);
 			}

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\CreateProdutos.cs" />
     <Compile Include="Class\Login.cs" />
     <Compile Include="Class\Produtos.cs" />
@@ -64,6 +65,12 @@
     <Compile Include="FrmAdmin.Designer.cs">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCliEFun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCliEFun.Designer.cs">
+      <DependentUpon>FrmCliEFun.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCliEFun.resx">
+      <DependentUpon>FrmCliEFun.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

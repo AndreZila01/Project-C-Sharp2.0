@@ -17,10 +17,14 @@ namespace VesteBem_Admin.Class
             liga.Open();
 
 			command.Connection = liga;
-			liga.Open();
 
-			command.CommandText = "Insert into dbo.tbl_Produtos([Nome],[Valor],[NomedaEmpresa],[CategoriaClasse],[CategoriaSubClasse],[Sexo],[Icon]) values('"+produtos.Nome+", '"+produtos.valor+"', '"+produtos.NomedaEmpresa+"', '"+produtos.CategoriaClass+"', '"+produtos.CategoriaSubClass+"', '"+produtos.Sexo+"', @Icon) ";
-
+			string ds;
+			var temp = produtos.Icon != "NULL" ? ds = "d" : ds = "Null";
+			command.CommandText = "Insert into dbo.tbl_Produtos([Nome],[Valor],[NomedaEmpresa],[CategoriaClasse],[CategoriaSubClasse],[Sexo],[Icon]) values(@nome, '" + produtos.valor.ToString().Replace(',', '.')+"', '"+produtos.NomedaEmpresa+"', '"+produtos.CategoriaClass+"', '"+produtos.CategoriaSubClass+"', '"+produtos.Sexo+"', '"+ds+"') ";
+			comando.Parameters.AddWithValue("@nome", produtos.Nome);
+			comando.Parameters.AddWithValue("@Valor", txtmorada.Text);
+			comando.Parameters.AddWithValue("@imagem", pic);
+			command.ExecuteNonQuery();
 			#region Teste
 			// SqlCommand MyCommand = new SqlCommand("StPrInsertProdutos", liga);
 			//// Set the command type property.
@@ -52,7 +56,10 @@ namespace VesteBem_Admin.Class
 
 			#endregion
 
+			command.CommandText = "UPDATE dbo.tbl_Produtos set Icon = (SELECT * FROM OPENROWSET(BULK N'" + produtos.Icon + "', SINGLE_BLOB) as tempimg) where Icon like 0x64";
+			command.ExecuteNonQuery();
 
+			liga.Close();
 
 			return null;
         }

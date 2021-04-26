@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color: red; width: 100%;">
+	<div style="background-color: red; width: 100%;">
 		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
 			<div style="padding: 15px 15px 2500px; font-size: 30px;">
 				<br />
