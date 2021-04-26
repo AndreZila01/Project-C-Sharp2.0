@@ -19,11 +19,12 @@ namespace VesteBem_Admin.Class
 			command.Connection = liga;
 
 			string ds;
-			var temp = produtos.Icon != "NULL" ? ds = "d" : ds = "Null";
-			command.CommandText = "Insert into dbo.tbl_Produtos([Nome],[Valor],[NomedaEmpresa],[CategoriaClasse],[CategoriaSubClasse],[Sexo],[Icon]) values(@nome, '" + produtos.valor.ToString().Replace(',', '.')+"', '"+produtos.NomedaEmpresa+"', '"+produtos.CategoriaClass+"', '"+produtos.CategoriaSubClass+"', '"+produtos.Sexo+"', '"+ds+"') ";
-			comando.Parameters.AddWithValue("@nome", produtos.Nome);
-			comando.Parameters.AddWithValue("@Valor", txtmorada.Text);
-			comando.Parameters.AddWithValue("@imagem", pic);
+			var temp = produtos.Icon != "NULL" ? ds = "d" : ds = produtos.Icon;
+			//command.CommandText = "Insert into dbo.tbl_Produtos([Nome],[Valor],[NomedaEmpresa],[CategoriaClasse],[CategoriaSubClasse],[Sexo],[Icon]) values(@nome, '" + produtos.valor.ToString().Replace(',', '.')+"', '"+produtos.NomedaEmpresa+"', '"+produtos.CategoriaClass+"', '"+produtos.CategoriaSubClass+"', '"+produtos.Sexo+"', '"+ds+"') ";
+			//command.Parameters.AddWithValue("@nome", produtos.Nome);
+			//command.Parameters.AddWithValue("@Valor", txtmorada.Text);
+			//command.Parameters.AddWithValue("@imagem", pic);
+			command.CommandText = "Insert into tbl_Produtos(Nome, Valor, NomedaEmpresa, CategoriaClasse, CategoriaSubClasse, Sexo, Icon) values('" + produtos.Nome + "','" + produtos.valor + "','" + produtos.NomedaEmpresa + "','" + produtos.CategoriaClass + "','" + produtos.CategoriaSubClass + "','" + produtos.Sexo + "','" + ds + "')";
 			command.ExecuteNonQuery();
 			#region Teste
 			// SqlCommand MyCommand = new SqlCommand("StPrInsertProdutos", liga);
