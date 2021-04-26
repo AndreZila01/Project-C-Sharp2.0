@@ -6,7 +6,7 @@
 <head runat="server">
 	<asp:ContentPlaceHolder ID="head" runat="server">
 	</asp:ContentPlaceHolder>
-	<title>Bootstrap Example</title>
+	<title>VesteBem & CO</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="~/bootstrap/css/navbar.css">
@@ -53,7 +53,7 @@
      <asp:Image runat="server" ImageUrl="~/Resources/avatar.png" alt="Avatar" class="avatar" Width="150px" />
     </div>
 
-    <div class="container">
+    <div class="container" style="background-color:white ">
       <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -66,7 +66,7 @@
       </label>
     </div>
 
-    <div class="container" style="background-color:transparent">
+    <div class="container" style="background-color:white">
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>

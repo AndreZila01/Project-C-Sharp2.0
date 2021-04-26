@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<div style="background-color: red; width: 100%;">
+    <div style="background-color: red; width: 100%;">
 		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
 			<div style="padding: 15px 15px 2500px; font-size: 30px;">
 				<br />
@@ -11,7 +11,7 @@
 					<asp:Label runat="server" Text="Homem > "></asp:Label>
 				</div>
 				<p></p>
-				<div style="margin: -5px 10px 0px 10px; background-color: ghostwhite; font-size: 20px;">
+				<div style="margin: 10px 10px 0px 10px; background-color: ghostwhite; font-size: 20px; min-width:100px">
 					<asp:LinkButton runat="server" Text="Calças" OnClick="lblLink_Click"></asp:LinkButton><p />
 					<p />
 					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblLink_Click"></asp:LinkButton><p />
@@ -34,7 +34,7 @@
 
 			</div>
 		</div>
-		<div class="col-xs-8 col-sm-9 col-md-9 col-lg-9" style="background-color: green;">
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color: green;">
 			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
 			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10" style="margin-top: 15px; padding-bottom: 2500px; padding-left: 0px; padding-right: 0px; background-color: aliceblue; font-size: 30px;">
 				<div style="background-color: aqua; margin-left: 5%; width: 89%">
@@ -60,7 +60,7 @@
 			<br />
 		</div>
 	</div>
-	>
+
 	<%--<div style="background-color: red; width: 100%;">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
             <div style="padding: 15px 15px 2500px; font-size: 30px;">
@@ -97,7 +97,6 @@
                     <asp:LinkButton runat="server" Text="Acessórios" OnClick="lblLink_Click"></asp:LinkButton><br />
                     <p />
                 </div>
-
             </div>
         </div>
         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="background-color: green">
