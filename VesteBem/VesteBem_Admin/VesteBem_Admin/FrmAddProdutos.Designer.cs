@@ -33,7 +33,6 @@
 			this.TxtEmpresa = new System.Windows.Forms.TextBox();
 			this.TxtCat = new System.Windows.Forms.TextBox();
 			this.TxtSubCat = new System.Windows.Forms.TextBox();
-			this.TxtSexo = new System.Windows.Forms.TextBox();
 			this.TxtIcon = new System.Windows.Forms.TextBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +46,7 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.button1 = new System.Windows.Forms.Button();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
@@ -58,11 +58,13 @@
 			this.TxtNome.Name = "TxtNome";
 			this.TxtNome.Size = new System.Drawing.Size(100, 20);
 			this.TxtNome.TabIndex = 0;
+			this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KeyPress);
 			this.TxtNome.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
 			// 
 			// TxtValor
 			// 
 			this.TxtValor.Location = new System.Drawing.Point(109, 83);
+			this.TxtValor.MaxLength = 9;
 			this.TxtValor.Name = "TxtValor";
 			this.TxtValor.Size = new System.Drawing.Size(100, 20);
 			this.TxtValor.TabIndex = 1;
@@ -91,14 +93,6 @@
 			this.TxtSubCat.Name = "TxtSubCat";
 			this.TxtSubCat.Size = new System.Drawing.Size(100, 20);
 			this.TxtSubCat.TabIndex = 4;
-			// 
-			// TxtSexo
-			// 
-			this.TxtSexo.Location = new System.Drawing.Point(109, 239);
-			this.TxtSexo.MaxLength = 1;
-			this.TxtSexo.Name = "TxtSexo";
-			this.TxtSexo.Size = new System.Drawing.Size(100, 20);
-			this.TxtSexo.TabIndex = 5;
 			// 
 			// TxtIcon
 			// 
@@ -220,11 +214,24 @@
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// comboBox1
+			// 
+			this.comboBox1.FormattingEnabled = true;
+			this.comboBox1.Items.AddRange(new object[] {
+            "Masculino",
+            "Feminino",
+            "Indefenido"});
+			this.comboBox1.Location = new System.Drawing.Point(109, 242);
+			this.comboBox1.Name = "comboBox1";
+			this.comboBox1.Size = new System.Drawing.Size(100, 21);
+			this.comboBox1.TabIndex = 19;
+			// 
 			// FrmAddProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(594, 404);
+			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.pictureBox2);
 			this.Controls.Add(this.label9);
@@ -238,7 +245,6 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.TxtIcon);
-			this.Controls.Add(this.TxtSexo);
 			this.Controls.Add(this.TxtSubCat);
 			this.Controls.Add(this.TxtCat);
 			this.Controls.Add(this.TxtEmpresa);
@@ -261,7 +267,6 @@
 		private System.Windows.Forms.TextBox TxtEmpresa;
 		private System.Windows.Forms.TextBox TxtCat;
 		private System.Windows.Forms.TextBox TxtSubCat;
-		private System.Windows.Forms.TextBox TxtSexo;
 		private System.Windows.Forms.TextBox TxtIcon;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
@@ -275,5 +280,6 @@
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.ComboBox comboBox1;
 	}
 }
