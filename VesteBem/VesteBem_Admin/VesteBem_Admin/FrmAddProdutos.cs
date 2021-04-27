@@ -62,7 +62,6 @@ namespace VesteBem_Admin
 				produtos.CategoriaClass = TxtCat.Text;
 				produtos.CategoriaSubClass = TxtSubCat.Text;
 				var ds=TxtIcon.Text!=null?produtos.Icon= TxtIcon.Text:produtos.Icon="NULL";
-				//var ts=pE_PauseaPlay.Tag.ToString()=="0"? Processo="pause": Processo="start";
 				CreateProdutos.InsertProdutos(produtos);
 			}
 		}
@@ -83,17 +82,20 @@ namespace VesteBem_Admin
 
 		}
 
-		private void Txt_KeyPress(object sender, KeyPressEventArgs e)
+		private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			TextBox txt = sender as TextBox;
-
-			switch (txt.Text)
-			{
-				case "txtValor":
-					e.Handled = !char.IsDigit(e.KeyChar);
-					break;
-
-			}
+			e.Handled = !char.IsDigit(e.KeyChar);
 		}
+
+		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+		}
+
+		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+		}
+
 	}
 }

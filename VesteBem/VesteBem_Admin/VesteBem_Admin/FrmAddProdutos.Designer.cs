@@ -58,7 +58,6 @@
 			this.TxtNome.Name = "TxtNome";
 			this.TxtNome.Size = new System.Drawing.Size(100, 20);
 			this.TxtNome.TabIndex = 0;
-			this.TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_KeyPress);
 			this.TxtNome.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
 			// 
 			// TxtValor
@@ -68,6 +67,7 @@
 			this.TxtValor.Name = "TxtValor";
 			this.TxtValor.Size = new System.Drawing.Size(100, 20);
 			this.TxtValor.TabIndex = 1;
+			this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
 			this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
 			// 
 			// TxtEmpresa
@@ -85,6 +85,7 @@
 			this.TxtCat.Name = "TxtCat";
 			this.TxtCat.Size = new System.Drawing.Size(100, 20);
 			this.TxtCat.TabIndex = 3;
+			this.TxtCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCat_KeyPress);
 			// 
 			// TxtSubCat
 			// 
@@ -93,6 +94,7 @@
 			this.TxtSubCat.Name = "TxtSubCat";
 			this.TxtSubCat.Size = new System.Drawing.Size(100, 20);
 			this.TxtSubCat.TabIndex = 4;
+			this.TxtSubCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSubCat_KeyPress);
 			// 
 			// TxtIcon
 			// 
@@ -216,6 +218,7 @@
 			// 
 			// comboBox1
 			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Items.AddRange(new object[] {
             "Masculino",

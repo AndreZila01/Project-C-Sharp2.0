@@ -16,7 +16,7 @@ namespace VesteBem_Admin
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FrmAddProdutos());
+			Application.Run(new FrmLogin());
 		}
 	}
 }

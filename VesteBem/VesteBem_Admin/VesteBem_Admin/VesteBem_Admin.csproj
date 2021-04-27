@@ -118,5 +118,11 @@
   <ItemGroup>
     <None Include="Resources\add.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash-can-with-cover.png" />
+    <None Include="Resources\draw.png" />
+    <Content Include="Resources\Open-trash.png" />
+    <Content Include="Resources\Close-trash.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

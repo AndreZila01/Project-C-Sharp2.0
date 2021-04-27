@@ -30,6 +30,10 @@ namespace VesteBem_Admin
 					FrmAddProdutos frm = new FrmAddProdutos();
 					frm.Show();
 				break;
+				case "Adicionar Clientes":
+					FrmCliEFun frms = new FrmCliEFun();
+					frms.Show();
+					break;
 			}
 		}
 
