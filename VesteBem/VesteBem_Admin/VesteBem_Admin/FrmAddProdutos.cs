@@ -37,32 +37,42 @@ namespace VesteBem_Admin
 
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
-			Debug.Print(""+Convert.ToDouble("52,8725945"));
-			string s = "233,33";
-			double result = double.Parse(s);
-		}
-
-		private void textBox_MouseLeave(object sender, EventArgs e)
-		{
-			TextBox txt = sender as TextBox;
-
-			//if(txt.Text.Length==0 || txt.Text.Length>100)
-			//txt.BorderStyle=meter a borda a vermelho
+			
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (TxtValor.Text != "" && TxtNome.Text!="" && TxtEmpresa.Text!="" && comboBox1.Text!="" && TxtSubCat.Text!="" && TxtCat.Text!="")
+			try
 			{
-				Produtos produtos = new Produtos();
-				produtos.Nome = TxtNome.Text;
-				produtos.NomedaEmpresa = TxtEmpresa.Text;
-				produtos.Sexo = comboBox1.Text.Substring(0,1);
-				produtos.valor = double.Parse(TxtValor.Text);
-				produtos.CategoriaClass = TxtCat.Text;
-				produtos.CategoriaSubClass = TxtSubCat.Text;
-				var ds=TxtIcon.Text!=null?produtos.Icon= TxtIcon.Text:produtos.Icon="NULL";
-				CreateProdutos.InsertProdutos(produtos);
+
+
+				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") throw new ArgumentException("Complete os Dados!!");
+				{
+					Produtos produtos = new Produtos();
+					produtos.Nome = TxtNome.Text;
+					produtos.NomedaEmpresa = TxtEmpresa.Text;
+					produtos.Sexo = comboBox1.Text.Substring(0, 1);
+					produtos.valor = double.Parse(TxtValor.Text);
+					produtos.CategoriaClass = TxtCat.Text;
+					produtos.CategoriaSubClass = TxtSubCat.Text;
+					var ds = TxtIcon.Text != null ? produtos.Icon = TxtIcon.Text : produtos.Icon = "NULL";
+					string dss = CreateProdutos.InsertProdutos(produtos);
+
+					if (dss == "Correu bem")
+					{
+						TxtCat.Text = null;
+						TxtIcon.Text = null;
+						TxtNome.Text = null;
+						TxtSubCat.Text = null;
+						TxtValor.Text = null;
+						TxtEmpresa.Text = null;
+					}
+
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(""+ex.Message, "Eror 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 		
@@ -72,7 +82,7 @@ namespace VesteBem_Admin
 				TxtValor.Text = TxtValor.Text.Replace('.', ',');
 			if (!TxtValor.Text.Contains(',') && TxtValor.Text!="")
 				TxtValor.Text += ",00";
-			if(TxtValor.Text.Contains('-'))//if (Math.Abs(TxtValor.Text) < 0.001)//|| TxtValor.Text.Contains('-')
+			if(TxtValor.Text.Contains('-'))
 				TxtValor.Text = "";
 			if (Regex.IsMatch(TxtValor.Text, @"\,\d\d"))
 			{
@@ -84,17 +94,20 @@ namespace VesteBem_Admin
 
 		private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
 		{
+			if(e.KeyChar!='.' && e.KeyChar != '\u0016')
 			e.Handled = !char.IsDigit(e.KeyChar);
 		}
 
 		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+			if (e.KeyChar != '\u0016')
+				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+			if(e.KeyChar!='\u0016')
+				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 	}

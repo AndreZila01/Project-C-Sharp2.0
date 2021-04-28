@@ -18,41 +18,43 @@ namespace VesteBem_Admin.Class
 			SqlCommand command = new SqlCommand();
 			try
 			{
-				liga.Open(); 
-
-				command.Connection = liga;
+				if (liga.State == System.Data.ConnectionState.Closed) throw new ArgumentException("Problemas a ligar ao servidor!!");
+				liga.Open();
+				command.CommandText = "SPAddProdutos";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
 
 				string ds;
 				var temp = produtos.Icon != "NULL" ? ds = "d" : ds = produtos.Icon;
-				if (produtos.Icon != "NULL")
+				if (produtos.Icon != "NULL") 
 				{
 					Image img = Image.FromFile(produtos.Icon);
-					byte[] arr;
-					using (MemoryStream ms = new MemoryStream())
+					byte[] arr; string base64String;
+					using (MemoryStream m = new MemoryStream())
 					{
-						img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-						arr = ms.ToArray();
+						img.Save(m, img.RawFormat);
+						byte[] imageBytes = m.ToArray();
+						base64String = Convert.ToBase64String(imageBytes);
 					}
 
-					command.CommandText = "Insert into tbl_Produtos(Nome, Valor, NomedaEmpresa, CategoriaClasse, CategoriaSubClasse, Sexo, Icon) values(@Nome, @Valor, @NomedaEmpresa, @CategoriaClasse, @CategoriaSubClasse, @Sexo, @Icon)";
-					command.Parameters.AddWithValue("@Nome", produtos.Nome);
-					command.Parameters.AddWithValue("@Valor", produtos.valor);
-					command.Parameters.AddWithValue("@NomedaEmpresa", produtos.NomedaEmpresa);
-					command.Parameters.AddWithValue("@CategoriaClasse", produtos.CategoriaClass);
-					command.Parameters.AddWithValue("@CategoriaSubClasse", produtos.CategoriaSubClass);
-					command.Parameters.AddWithValue("@Sexo", produtos.Sexo);
+					command.Parameters.Add(new SqlParameter("Nome", produtos.Nome));
+					command.Parameters.Add(new SqlParameter("Valor", produtos.valor));
+					command.Parameters.Add(new SqlParameter("NomedaEmpresa", produtos.NomedaEmpresa));
+					command.Parameters.Add(new SqlParameter("CategoriaClasse", produtos.CategoriaClass));
+					command.Parameters.Add(new SqlParameter("CategoriaSubClasse", produtos.CategoriaSubClass));
+					command.Parameters.Add(new SqlParameter("Sexo", produtos.Sexo));
+					command.Parameters.Add(new SqlParameter("Icon", base64String));
 
-					command.Parameters.AddWithValue("@Icon", arr);
+					command.Connection = liga;
 					command.ExecuteNonQuery();
 				}
 				liga.Close();
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				return ex.Message;
 			}
 
-			return null;
-        }
-    }
+			return "Correu bem";
+		}
+	}
 }

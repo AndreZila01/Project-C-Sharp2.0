@@ -73,9 +73,9 @@ namespace VesteBem_Admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap draw {
+        internal static System.Drawing.Bitmap Close_trash {
             get {
-                object obj = ResourceManager.GetObject("draw", resourceCulture);
+                object obj = ResourceManager.GetObject("Close_trash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace VesteBem_Admin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap trash_can_with_cover {
+        internal static System.Drawing.Bitmap Open_trash {
             get {
-                object obj = ResourceManager.GetObject("trash-can-with-cover", resourceCulture);
+                object obj = ResourceManager.GetObject("Open_trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pencil {
+            get {
+                object obj = ResourceManager.GetObject("Pencil", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

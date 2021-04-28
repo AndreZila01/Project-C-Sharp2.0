@@ -34,6 +34,7 @@ namespace VesteBem_Admin
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.panel2 = new System.Windows.Forms.Panel();
+			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -79,6 +80,12 @@ namespace VesteBem_Admin
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(800, 39);
 			this.panel2.TabIndex = 50;
+			this.panel2.Visible = false;
+			// 
+			// backgroundWorker1
+			// 
+			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
 			// FrmCliEFun
 			// 
@@ -92,6 +99,7 @@ namespace VesteBem_Admin
 			this.Name = "FrmCliEFun";
 			this.Text = "FrmCliEFun";
 			this.Load += new System.EventHandler(this.FrmCliEFun_Load);
+			this.SizeChanged += new System.EventHandler(this.FrmCliEFun_SizeChanged);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -105,5 +113,6 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel2;
+		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 	}
 }

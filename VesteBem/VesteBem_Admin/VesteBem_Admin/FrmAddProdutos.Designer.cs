@@ -58,7 +58,6 @@
 			this.TxtNome.Name = "TxtNome";
 			this.TxtNome.Size = new System.Drawing.Size(100, 20);
 			this.TxtNome.TabIndex = 0;
-			this.TxtNome.MouseLeave += new System.EventHandler(this.textBox_MouseLeave);
 			// 
 			// TxtValor
 			// 

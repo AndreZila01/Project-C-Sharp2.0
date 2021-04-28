@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
 	public partial class FrmCliEFun : Form
 	{
+		List<Cliente> lst = new List<Cliente>();
 		public FrmCliEFun()
 		{
 			InitializeComponent();
@@ -19,23 +22,26 @@ namespace VesteBem_Admin
 
 		private void FrmCliEFun_Load(object sender, EventArgs e)
 		{
-
+			if (!backgroundWorker1.IsBusy)
+				backgroundWorker1.RunWorkerAsync();
 		}
 
 		private void ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ToolStripMenuItem item = sender as ToolStripMenuItem;
-			
+			ToolStripMenuItem dss = sender as ToolStripMenuItem;
 
-			if (item.Text == "Cliente")
+			if (dss.Text == "Cliente")
 			{
 				panel1.Visible = true;
-				
-				for (int ds = 0; ds < 8; ds++)
+				panel1.Controls.Clear();
+				MemoryStream stream = new MemoryStream();
+				int ds = 0;
+
+				lst.ToList().ForEach(item => //for (int ds = 0; ds < lst.Count(); ds++)
 				{
 					Panel pnl = new Panel();
 					pnl.Location = new Point(0, 82 * ds);
-					pnl.Size = new Size(800, 82); pnl.BorderStyle = BorderStyle.None; pnl.BackColor = Color.AntiqueWhite; pnl.Margin = new Padding(0, 0, 0, 0); pnl.BackColor = Color.FromArgb((15*ds), (20*ds), 213);
+					pnl.Size = new Size(800, 82); pnl.BorderStyle = BorderStyle.None; pnl.BackColor = Color.AntiqueWhite; pnl.Margin = new Padding(0, 0, 0, 0); pnl.BackColor = Color.FromArgb((15 * ds), (20 * ds), 213);
 					pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 			| System.Windows.Forms.AnchorStyles.Right)));
 					pnl.AutoScroll = true;
@@ -48,12 +54,14 @@ namespace VesteBem_Admin
 					lblUser.Name = "lblUser";
 					lblUser.Size = new System.Drawing.Size(209, 27);
 					lblUser.TabIndex = 1;
-					lblUser.Text = "label1";
+					lblUser.Text = item.Nome;
 					pnl.Controls.Add(lblUser);
 
 					PictureBox pctEdit = new PictureBox();
 					pctEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
 					pctEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
+					pctEdit.Image = Properties.Resources.Pencil;
+					pctEdit.SizeMode = PictureBoxSizeMode.Zoom;
 					pctEdit.Location = new System.Drawing.Point(700, 21);
 					pctEdit.Name = "pctEdit";
 					pctEdit.Size = new System.Drawing.Size(33, 35);
@@ -66,6 +74,8 @@ namespace VesteBem_Admin
 					pctRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 					pctRemove.Location = new System.Drawing.Point(755, 21);
 					pctRemove.Name = "pctRemove";
+					pctEdit.Image = Properties.Resources.Close_trash;
+					pctRemove.SizeMode = PictureBoxSizeMode.Zoom;
 					pctRemove.Size = new System.Drawing.Size(33, 35);
 					pctRemove.TabIndex = 3;
 					pctRemove.TabStop = false;
@@ -76,14 +86,35 @@ namespace VesteBem_Admin
 					pctUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
 					pctUser.Location = new System.Drawing.Point(12, 13);
 					pctUser.Name = "pctUser";
+
+					pctEdit.Image = item.Icon;
+					pctUser.SizeMode = PictureBoxSizeMode.Zoom;
 					pctUser.Size = new System.Drawing.Size(44, 45);
 					pctUser.TabIndex = 0;
 					pctUser.TabStop = false;
 					pnl.Controls.Add(pctUser);
-				}
+					ds++;
+
+				});
 
 			}
 
+		}
+
+		private void FrmCliEFun_SizeChanged(object sender, EventArgs e)
+		{
+			//this.SizeChanged += ToolStripMenuItem_Click;
+		}
+
+		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+		{
+			lst = ConsultaClientes.ConsultaCliente();
+			backgroundWorker1.DoWork += ToolStripMenuItem_Click;
+		}
+
+		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			//backgroundWorker1.RunWorkerAsync += ToolStripMenuItem_Click;
 		}
 	}
 }
