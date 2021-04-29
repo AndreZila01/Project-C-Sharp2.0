@@ -122,6 +122,7 @@
     <Content Include="Resources\Pencil.png" />
     <Content Include="Resources\Open-trash.png" />
     <Content Include="Resources\Close-trash.png" />
+    <None Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

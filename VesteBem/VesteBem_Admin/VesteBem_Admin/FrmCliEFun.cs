@@ -67,6 +67,7 @@ namespace VesteBem_Admin
 					pctEdit.Size = new System.Drawing.Size(33, 35);
 					pctEdit.TabIndex = 2;
 					pctEdit.TabStop = false;
+					pctEdit.Tag = "" + item.Id_Login;
 					pnl.Controls.Add(pctEdit);
 
 					PictureBox pctRemove = new PictureBox();
@@ -74,20 +75,23 @@ namespace VesteBem_Admin
 					pctRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 					pctRemove.Location = new System.Drawing.Point(755, 21);
 					pctRemove.Name = "pctRemove";
-					pctEdit.Image = Properties.Resources.Close_trash;
+					pctRemove.Image = Properties.Resources.Close_trash;
 					pctRemove.SizeMode = PictureBoxSizeMode.Zoom;
 					pctRemove.Size = new System.Drawing.Size(33, 35);
 					pctRemove.TabIndex = 3;
 					pctRemove.TabStop = false;
+					pctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
+					pctRemove.MouseLeave += new System.EventHandler(pctRemove_MouseLeave);
 					pnl.Controls.Add(pctRemove);
 
 					PictureBox pctUser = new PictureBox();
 					pctUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
 					pctUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
+					pctUser.Image = Properties.Resources.user;
 					pctUser.Location = new System.Drawing.Point(12, 13);
 					pctUser.Name = "pctUser";
 
-					pctEdit.Image = item.Icon;
+					pctEdit.Image = Properties.Resources.Pencil;
 					pctUser.SizeMode = PictureBoxSizeMode.Zoom;
 					pctUser.Size = new System.Drawing.Size(44, 45);
 					pctUser.TabIndex = 0;
@@ -99,6 +103,19 @@ namespace VesteBem_Admin
 
 			}
 
+		}
+		private void pctRemove_MouseLeave(object sender, EventArgs e)
+		{
+			PictureBox pct = sender as PictureBox;
+
+			pct.Image = Properties.Resources.Close_trash;
+		}
+
+		private void pctRemove_MouseEnter(object sender, EventArgs e)
+		{
+			PictureBox pct = sender as PictureBox;
+
+			pct.Image = Properties.Resources.Open_trash;
 		}
 
 		private void FrmCliEFun_SizeChanged(object sender, EventArgs e)

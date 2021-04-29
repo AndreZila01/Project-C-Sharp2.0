@@ -12,6 +12,7 @@ namespace VesteBem_Admin.Class
 {
 	public class Cliente
 	{
+		public int Id_Cliente { get; set; }
 		public string Nome { get; set; }
 		public string Sexo { get; set; }
 		public string Nif { get; set; }
@@ -44,7 +45,7 @@ namespace VesteBem_Admin.Class
 				liga.Open();
 				command.Connection = liga;
 
-				command.CommandText = "Select * From tbl_Cliente";
+				command.CommandText = "select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin and tbl_login.Funcionario=0";
 				dr = command.ExecuteReader();
 				if (dr.Read())
 				{
@@ -54,12 +55,13 @@ namespace VesteBem_Admin.Class
 					while (dr.Read())
 					{
 						Cliente cli = new Cliente();
+						cli.Id_Cliente = int.Parse(dr["IdCliente"].ToString());
 						cli.CodPostal = (dr["CodPostal"]).ToString();
 						cli.DataNasc = (dr["DataNasc"]).ToString();
 						cli.Email = (dr["Email"]).ToString();
 						cli.Id_Login = int.Parse(dr["Id_Login"].ToString());
 						//Image.FromStream((new MemoryStream( ... ), true, true))
-						cli.Icon = Image.FromStream(new MemoryStream(Convert.FromBase64String(dr["Icon"].ToString())), true, true);
+						cli.Icon = Properties.Resources.user;//cli.Icon = Image.FromStream(new MemoryStream(Convert.FromBase64String(dr["Icon"].ToString())), true, true);
 						cli.Localidade = (dr["Localidade"]).ToString();
 						cli.Morada = (dr["Morada"]).ToString();
 						cli.Nif = (dr["Nif"]).ToString();
