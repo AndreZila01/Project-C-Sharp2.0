@@ -129,6 +129,13 @@
     <Compile Include="FrmLogin.aspx.designer.cs">
       <DependentUpon>FrmLogin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MasterCliente.Master.cs">
+      <DependentUpon>MasterCliente.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterCliente.Master.designer.cs">
+      <DependentUpon>MasterCliente.Master</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +165,7 @@
     <Content Include="MasterPage.Master" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\VesteBem_Site.csprojAssemblyReference.cache" />
+    <Content Include="MasterCliente.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

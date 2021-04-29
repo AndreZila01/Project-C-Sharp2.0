@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,6 +11,54 @@ namespace VesteBem
 	public partial class MasterPage : System.Web.UI.MasterPage
 
 	{
+		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+		SqlCommand comando = new SqlCommand();
+		SqlDataReader dr;
+
+		protected void Log_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				liga.Open();
+				comando.Connection = liga;
+				comando.CommandText = "Select Passw from Tbl_login where Usern like '" + uname.Value + "'";
+				dr = comando.ExecuteReader();
+				
+				if (dr.Read())
+				{
+					string pass = dr[0].ToString();
+
+
+					if (pass == psw.Value) 
+					{
+						Session["Username"] = uname.Value;
+						Response.Write("<script>alert('Sessão efetuada com sucesso')</script>");
+						Response.Redirect("~/MasterCliente.aspx");
+					}
+					else
+                    {
+						Response.Write("<script>alert('Pass ou Username/Email Inválidos!!!')</script>");
+						Response.Redirect("~/Teste.aspx");
+					}
+					
+
+				}
+				else
+				{
+					Response.Write("<script>alert('Pass ou Username/Email Inválidos!!!')</script>");
+					Response.Redirect("~/Teste.aspx");
+				}
+
+
+
+			}
+			catch {
+
+				Response.Write("<script>alert('login mal sucedido')</script>");
+			
+			}
+		}
+
 
 		protected void btnSearch_Click(object sender, EventArgs e)
 		{

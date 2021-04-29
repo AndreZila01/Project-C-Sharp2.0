@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VesteBem
+namespace VesteBem_Site
 {
 
 
-    public partial class MasterPage
+    public partial class MasterCliente
     {
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="VesteBem.MasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterCliente.master.cs" Inherits="VesteBem_Site.MasterCliente" %>
 
 <!DOCTYPE html>
 
@@ -123,7 +123,7 @@
 				}
 				prevScrollpos = currentScrollPos;
 			}
-		</script>
+        </script>
 	</form>
 </body>
 </html>
