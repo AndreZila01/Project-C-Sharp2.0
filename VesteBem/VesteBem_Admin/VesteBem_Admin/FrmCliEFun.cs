@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VesteBem_Admin.Class;
+
 
 namespace VesteBem_Admin
 {
@@ -63,10 +65,12 @@ namespace VesteBem_Admin
 					pctEdit.Image = Properties.Resources.Pencil;
 					pctEdit.SizeMode = PictureBoxSizeMode.Zoom;
 					pctEdit.Location = new System.Drawing.Point(700, 21);
-					pctEdit.Name = "pctEdit";
+					pctEdit.Name = @"pctEdit\"+ds;
 					pctEdit.Size = new System.Drawing.Size(33, 35);
 					pctEdit.TabIndex = 2;
 					pctEdit.TabStop = false;
+					pctEdit.Click += new System.EventHandler(pctEdit_Click);
+					pctEdit.Image = Properties.Resources.Pencil;
 					pctEdit.Tag = "" + item.Id_Login;
 					pnl.Controls.Add(pctEdit);
 
@@ -90,8 +94,6 @@ namespace VesteBem_Admin
 					pctUser.Image = Properties.Resources.user;
 					pctUser.Location = new System.Drawing.Point(12, 13);
 					pctUser.Name = "pctUser";
-
-					pctEdit.Image = Properties.Resources.Pencil;
 					pctUser.SizeMode = PictureBoxSizeMode.Zoom;
 					pctUser.Size = new System.Drawing.Size(44, 45);
 					pctUser.TabIndex = 0;
@@ -104,6 +106,16 @@ namespace VesteBem_Admin
 			}
 
 		}
+
+		private void pctEdit_Click(object sender, EventArgs e)
+		{
+			PictureBox pct = sender as PictureBox;
+			int ds = int.Parse(pct.Name.Substring(8, pct.Name.Length));
+			string message = "Nome";
+			string Title = "Editar campos";
+			//Interaction.InputBox(message, Title, lst[ds]);//Interaction.InputBox(message, title, defaultValue, 100, 100);
+		}
+
 		private void pctRemove_MouseLeave(object sender, EventArgs e)
 		{
 			PictureBox pct = sender as PictureBox;

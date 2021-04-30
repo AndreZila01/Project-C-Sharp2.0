@@ -77,3 +77,14 @@ values('Admin', 'Admin', 1)
 
 Insert into tbl_login(Usern,Passw,Funcionario)
 values('Marco', '123', 0)
+
+CREATE PROCEDURE SPAddProdutos
+AS
+BEGIN
+ALTER PROCEDURE [dbo].[SPAddProdutos]
+            (@Nome varchar(100),@Valor Decimal(7,2),@NomedaEmpresa varchar(100),@CategoriaClasse varchar(100), @CategoriaSubClasse varchar(100), @Sexo varchar(1),@Icon Image)
+            AS
+            BEGIN
+            -- Insert statements for procedure here
+            INSERT INTO tbl_Produtos(Nome,Valor,NomedaEmpresa,CategoriaClasse,CategoriaSubClasse,Sexo,Icon) values (@Nome,@Valor,@NomedaEmpresa,@CategoriaClasse,@CategoriaSubClasse,@Sexo, @Icon)
+            END

@@ -44,8 +44,6 @@ namespace VesteBem_Admin
 		{
 			try
 			{
-
-
 				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") throw new ArgumentException("Complete os Dados!!");
 				{
 					Produtos produtos = new Produtos();
