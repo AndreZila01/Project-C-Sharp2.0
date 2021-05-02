@@ -109,11 +109,58 @@ namespace VesteBem_Admin
 
 		private void pctEdit_Click(object sender, EventArgs e)
 		{
+			Cliente cli = new Cliente();
 			PictureBox pct = sender as PictureBox;
-			int ds = int.Parse(pct.Name.Substring(8, pct.Name.Length));
-			string message = "Nome";
+			int ds = int.Parse(pct.Name.Substring(8, (pct.Name.Length-8)));
+			string message = "Nome: ";
 			string Title = "Editar campos";
-			//Interaction.InputBox(message, Title, lst[ds]);//Interaction.InputBox(message, title, defaultValue, 100, 100);
+		Nome:
+			string name = Interaction.InputBox(message, Title, lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome);//Interaction.InputBox(message, title, defaultValue, 100, 100);
+			if (lst.FirstOrDefault(Item => Item.Nome == name) != null)
+			{
+				message = "Essse nome já existe\nMeta outro nome"; goto Nome;
+			}
+			else
+			if (System.Text.RegularExpressions.Regex.IsMatch(name, "[^a-zA-Z] + $"))
+			{
+				message = "Só é possível meter letras"; goto Nome;
+			}
+			else
+				var temp = name.Length >100 ? cli.Nome = name.Substring(100) : cli.Nome = name;
+																				  
+
+			#region Rascunhos de Interation
+
+			/*if (valor.Trim().Length == 0)//trim remove espaços
+					{
+						MessageBox.Show("Valor invalido, meta um valor superior a 0!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						var d = i!=0 ? i--:i=0;
+					}
+					else
+					{
+						if(System.Text.RegularExpressions.Regex.IsMatch(valor, "[^0-9]"))
+						{
+							MessageBox.Show("Valor invalido, meta um valor superior a 0!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+							var d = i != 0 ? i-- : i = 0;
+						}
+						else { alturas[i] = int.Parse(valor); lstAlturas.Items.Add(alturas[i]); }
+					}
+			if (Nome == string.Empty)//trim remove espaços
+					{
+						MessageBox.Show("Nome invalido, meta um nome sem numeros!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						var d = i != 0 ? i-- : i = 0;
+					}
+					else
+					{
+						if (System.Text.RegularExpressions.Regex.IsMatch(Nome, "[^a-zA-Z] + $"))
+						{
+							MessageBox.Show("Nome invalido, meta um nome sem numeros!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+							var d = i != 0 ? i-- : i = 0;
+						}
+						else { nomes[i] = Nome; lstNome.Items.Add(nomes[i]); }
+					}
+			 */
+			#endregion
 		}
 
 		private void pctRemove_MouseLeave(object sender, EventArgs e)
