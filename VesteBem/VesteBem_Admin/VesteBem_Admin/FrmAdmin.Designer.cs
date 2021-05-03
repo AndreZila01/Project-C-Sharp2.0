@@ -61,6 +61,7 @@
 			this.Controls.Add(this.button1);
 			this.Name = "FrmAdmin";
 			this.Text = "FrmAdmin";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAdmin_FormClosed);
 			this.Load += new System.EventHandler(this.FrmAdmin_Load);
 			this.ResumeLayout(false);
 

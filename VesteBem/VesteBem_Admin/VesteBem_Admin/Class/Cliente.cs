@@ -10,24 +10,10 @@ using System.Net;
 using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace VesteBem_Admin.Class
 {
-	public class Cliente
-	{
-		public int Id_Cliente { get; set; }
-		public string Nome { get; set; }
-		public string Sexo { get; set; }
-		public string Nif { get; set; }
-		public int Id_Login { get; set; }
-		public string Morada { get; set; }
-		public string CodPostal { get; set; }
-		public string Localidade { get; set; }
-		public string DataNasc { get; set; }
-		public string Email { get; set; }
-		public string Telefone { get; set; }
-		public Icon Icon { get; set; }
-	}
 	public class ConsultaClientes
 	{
 		public static List<Cliente> ConsultaCliente()
@@ -39,8 +25,8 @@ namespace VesteBem_Admin.Class
 			//SqlCommand command = new SqlCommand();
 			List<Cliente> lst = new List<Cliente>();
 			//SqlDataReader dr; Bitmap bitmap;
-			try
-			{
+			//try
+			//{
 				//Image images = Properties.Resources.add;
 				//using (var ms = new MemoryStream())
 				//{
@@ -85,52 +71,80 @@ namespace VesteBem_Admin.Class
 				//        bitmap.Save(Response.OutputStream, ImageFormat.Jpeg);*/
 				//	}
 				//}
-				ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-				string str = string.Empty;
-				using (SqlConnection conn = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; DataBase=Work; Integrated Security=True"))
+				//ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+				//string str = string.Empty;
+				//	using (SqlConnection conn = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+				//	//using (SqlConnection conn = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; DataBase=Work; Integrated Security=True"))
+				//	{
+				//		ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+				//		using (SqlCommand command = new SqlCommand("select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin"))//select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin and tbl_login.Funcionario=0
+				//		{
+				//			using (SqlDataAdapter adapter = new SqlDataAdapter())
+				//			{
+				//				command.Connection = conn;
+				//				adapter.SelectCommand = command;
+				//				conn.Open(); ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+				//				//using (SqlDataReader oReader = command.ExecuteReader())
+				//				{
+				//					DataSet dataSet = new DataSet();
+				//					adapter.Fill(dataSet);
+
+
+
+				//					int ds = 0;
+				//					//while (oReader.Read())
+				//					{
+				//						Cliente cli = new Cliente();
+				//						//cli.Id_Cliente = int.Parse(oReader["IdCliente"].ToString());
+				//						//cli.Nome = oReader["Nome"].ToString();
+				//						//cli.Sexo = oReader["Sexo"].ToString();
+				//						//cli.Id_Login = int.Parse(oReader["Id_Login"].ToString());
+				//						//cli.Morada = oReader["Morada"].ToString();
+				//						//cli.CodPostal = oReader["CodPostal"].ToString();
+				//						//cli.Localidade = oReader["Localidade"].ToString();
+				//						//cli.DataNasc = oReader["DataNasc"].ToString();
+				//						//cli.Email = oReader["Email"].ToString();
+				//						//cli.Telefone = oReader["Telefone"].ToString();
+				//						//cli.Nif = oReader["Nif"].ToString();
+				//						//cli.Funcionario = int.Parse(oReader["Funcionario"].ToString());
+				//						Byte[] data = new Byte[0];
+				//						data = (Byte[])(dataSet.Tables[0].Rows[ds]["Icon"]);
+				//						MemoryStream mem = new MemoryStream(data);
+				//						cli.Icon = Image.FromStream(mem);
+				//						//cli.Icon = Image.FromStream(new MemoryStream((Byte[])oReader["Icon"].ToString()));
+				//						ds++;
+				//						lstdoutors.Add(cli);
+				//					}
+				//					conn.Close();
+				//				}
+
+				//			}
+				//		}
+				//	}
+
+				//}
+				//catch (Exception ex)
+				//{
+
+				//}
+				System.Windows.Forms.DataGridView grdLogin = new System.Windows.Forms.DataGridView();
+				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+					
+				SqlDataAdapter dataAdapter = new SqlDataAdapter(new SqlCommand("SELECT * FROM tbl_Cliente", liga));
+				DataSet dataSet = new DataSet();
+				dataAdapter.Fill(dataSet);
+
+				if (dataSet.Tables[0].Rows.Count > 1)
 				{
-					ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-					using (SqlCommand command = new SqlCommand("select * From tbl_Cliente"))//select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin and tbl_login.Funcionario=0
-					{
-						using (SqlDataAdapter adapter = new SqlDataAdapter())
-						{
-							command.Connection = conn;
-							adapter.SelectCommand = command;
-							conn.Open(); ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-							using (SqlDataReader oReader = command.ExecuteReader())
-							{
-
-								while (oReader.Read())
-								{
-									Cliente cli = new Cliente();
-									cli.Id_Cliente = int.Parse(oReader["IdCliente"].ToString());
-									cli.Nome = oReader["Nome"].ToString();
-									cli.Sexo = oReader["Sexo"].ToString();
-									cli.Id_Login = int.Parse(oReader["Id_Login"].ToString());
-									cli.Morada = oReader["Morada"].ToString();
-									cli.CodPostal = oReader["CodPostal"].ToString();
-									cli.Localidade = oReader["Localidade"].ToString();
-									cli.DataNasc = oReader["DataNasc"].ToString();
-									cli.Email = oReader["Email"].ToString();
-									cli.Telefone = oReader["Telefone"].ToString();
-									cli.Nif = oReader["Nif"].ToString();
-									//cli.Icon = oReader["Icon"].ToString();
-
-									lstdoutors.Add(cli);
-								}
-								conn.Close();
-							}
-
-						}
-					}
+					Byte[] data = new Byte[0];
+					data = (Byte[])(dataSet.Tables[0].Rows[0]["Icon"]);
+					MemoryStream mem = new MemoryStream(data);
+					System.Windows.Forms.PictureBox pictureBox2=new System.Windows.Forms.PictureBox();
+					pictureBox2.Image	= Image.FromStream(mem);
+					pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
 				}
 
-			}
-			catch (Exception ex)
-			{
-
-			}
-			return lstdoutors;
+				return lstdoutors;
 		}
 	}
 }

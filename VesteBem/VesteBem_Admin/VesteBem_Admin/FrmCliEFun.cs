@@ -41,66 +41,68 @@ namespace VesteBem_Admin
 
 				lst.ToList().ForEach(item => //for (int ds = 0; ds < lst.Count(); ds++)
 				{
-					Panel pnl = new Panel();
-					pnl.Location = new Point(0, 82 * ds);
-					pnl.Size = new Size(800, 82); pnl.BorderStyle = BorderStyle.None; pnl.BackColor = Color.AntiqueWhite; pnl.Margin = new Padding(0, 0, 0, 0); pnl.BackColor = Color.FromArgb((15 * ds), (20 * ds), 213);
-					pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-			| System.Windows.Forms.AnchorStyles.Right)));
-					pnl.AutoScroll = true;
-					panel1.Controls.Add(pnl);
+					if (item.Funcionario != 1)
+					{
+						Panel pnl = new Panel();
+						pnl.Location = new Point(0, 82 * ds);
+						pnl.Size = new Size(800, 82); pnl.BorderStyle = BorderStyle.None; pnl.BackColor = Color.AntiqueWhite; pnl.Margin = new Padding(0, 0, 0, 0); pnl.BackColor = Color.FromArgb((15 * ds), (20 * ds), 213);
+						pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+				| System.Windows.Forms.AnchorStyles.Right)));
+						pnl.AutoScroll = true;
+						panel1.Controls.Add(pnl);
 
-					Label lblUser = new Label();
-					lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-					lblUser.BackColor = System.Drawing.SystemColors.ActiveCaption;
-					lblUser.Location = new System.Drawing.Point(73, 21);
-					lblUser.Name = "lblUser";
-					lblUser.Size = new System.Drawing.Size(209, 27);
-					lblUser.TabIndex = 1;
-					lblUser.Text = item.Nome;
-					pnl.Controls.Add(lblUser);
+						Label lblUser = new Label();
+						lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+						lblUser.BackColor = System.Drawing.SystemColors.ActiveCaption;
+						lblUser.Location = new System.Drawing.Point(73, 21);
+						lblUser.Name = "lblUser";
+						lblUser.Size = new System.Drawing.Size(209, 27);
+						lblUser.TabIndex = 1;
+						lblUser.Text = item.Nome;
+						pnl.Controls.Add(lblUser);
 
-					PictureBox pctEdit = new PictureBox();
-					pctEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
-					pctEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
-					pctEdit.Image = Properties.Resources.Pencil;
-					pctEdit.SizeMode = PictureBoxSizeMode.Zoom;
-					pctEdit.Location = new System.Drawing.Point(700, 21);
-					pctEdit.Name = @"pctEdit\"+ds;
-					pctEdit.Size = new System.Drawing.Size(33, 35);
-					pctEdit.TabIndex = 2;
-					pctEdit.TabStop = false;
-					pctEdit.Click += new System.EventHandler(pctEdit_Click);
-					pctEdit.Image = Properties.Resources.Pencil;
-					pctEdit.Tag = "" + item.Id_Login;
-					pnl.Controls.Add(pctEdit);
+						PictureBox pctEdit = new PictureBox();
+						pctEdit.Anchor = System.Windows.Forms.AnchorStyles.Right;
+						pctEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
+						pctEdit.Image = Properties.Resources.Pencil;
+						pctEdit.SizeMode = PictureBoxSizeMode.Zoom;
+						pctEdit.Location = new System.Drawing.Point(700, 21);
+						pctEdit.Name = @"pctEdit\" + ds;
+						pctEdit.Size = new System.Drawing.Size(33, 35);
+						pctEdit.TabIndex = 2;
+						pctEdit.TabStop = false;
+						pctEdit.Click += new System.EventHandler(pctEdit_Click);
+						pctEdit.Image = Properties.Resources.Pencil;
+						pctEdit.Tag = "" + item.Id_Login;
+						pnl.Controls.Add(pctEdit);
 
-					PictureBox pctRemove = new PictureBox();
-					pctRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
-					pctRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-					pctRemove.Location = new System.Drawing.Point(755, 21);
-					pctRemove.Name = "pctRemove";
-					pctRemove.Image = Properties.Resources.Close_trash;
-					pctRemove.SizeMode = PictureBoxSizeMode.Zoom;
-					pctRemove.Size = new System.Drawing.Size(33, 35);
-					pctRemove.TabIndex = 3;
-					pctRemove.TabStop = false;
-					pctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
-					pctRemove.MouseLeave += new System.EventHandler(pctRemove_MouseLeave);
-					pnl.Controls.Add(pctRemove);
+						PictureBox pctRemove = new PictureBox();
+						pctRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
+						pctRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+						pctRemove.Location = new System.Drawing.Point(755, 21);
+						pctRemove.Name = "pctRemove";
+						pctRemove.Image = Properties.Resources.Close_trash;
+						pctRemove.SizeMode = PictureBoxSizeMode.Zoom;
+						pctRemove.Size = new System.Drawing.Size(33, 35);
+						pctRemove.TabIndex = 3;
+						pctRemove.TabStop = false;
+						pctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
+						pctRemove.MouseLeave += new System.EventHandler(pctRemove_MouseLeave);
+						pnl.Controls.Add(pctRemove);
 
-					PictureBox pctUser = new PictureBox();
-					pctUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
-					pctUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
-					pctUser.Image = Properties.Resources.user;
-					pctUser.Location = new System.Drawing.Point(12, 13);
-					pctUser.Name = "pctUser";
-					pctUser.SizeMode = PictureBoxSizeMode.Zoom;
-					pctUser.Size = new System.Drawing.Size(44, 45);
-					pctUser.TabIndex = 0;
-					pctUser.TabStop = false;
-					pnl.Controls.Add(pctUser);
+						PictureBox pctUser = new PictureBox();
+						pctUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
+						pctUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
+						pctUser.Image = Properties.Resources.user;
+						pctUser.Location = new System.Drawing.Point(12, 13);
+						pctUser.Name = "pctUser";
+						pctUser.SizeMode = PictureBoxSizeMode.Zoom;
+						pctUser.Size = new System.Drawing.Size(44, 45);
+						pctUser.TabIndex = 0;
+						pctUser.TabStop = false;
+						pnl.Controls.Add(pctUser);
+					}
 					ds++;
-
 				});
 
 			}
@@ -111,23 +113,62 @@ namespace VesteBem_Admin
 		{
 			Cliente cli = new Cliente();
 			PictureBox pct = sender as PictureBox;
-			int ds = int.Parse(pct.Name.Substring(8, (pct.Name.Length-8)));
-			string message = "Nome: ";
-			string Title = "Editar campos";
-		Nome:
-			string name = Interaction.InputBox(message, Title, lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome);//Interaction.InputBox(message, title, defaultValue, 100, 100);
-			if (lst.FirstOrDefault(Item => Item.Nome == name) != null)
-			{
-				message = "Essse nome já existe\nMeta outro nome"; goto Nome;
-			}
-			else
-			if (System.Text.RegularExpressions.Regex.IsMatch(name, "[^a-zA-Z] + $"))
-			{
-				message = "Só é possível meter letras"; goto Nome;
-			}
-			else
-				var temp = name.Length >100 ? cli.Nome = name.Substring(100) : cli.Nome = name;
-																				  
+
+			cli.Nome= lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
+			cli.Sexo= lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Sexo;
+			cli.Telefone= lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telefone;
+			cli.Nif= lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nif;
+			cli.Morada = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
+			cli.CodPostal = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].CodPostal;
+			cli.DataNasc = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].DataNasc;
+			cli.Email = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
+			cli.Localidade = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Localidade;
+			cli.Id_Login = int.Parse(pct.Tag.ToString());
+			cli.Id_Cliente = lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Id_Cliente;
+			cli.Funcionario= lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Funcionario;
+			/*
+			 int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8))
+			 int.Parse(pct.Tag.ToString())
+			 */
+
+
+			FrmModificarCliFun frm = new FrmModificarCliFun(cli);
+			frm.ShowDialog();
+			#region Rascunho
+			//	int ds = int.Parse(pct.Name.Substring(8, (pct.Name.Length-8)));
+			//	string message = "Nome: ";
+			//	string Title = "Editar campos";
+			//Nome:
+			//	string name = Interaction.InputBox(message, Title, lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome);//Interaction.InputBox(message, title, defaultValue, 100, 100);
+			//	if (lst.FirstOrDefault(Item => Item.Nome == name) != null)
+			//	{
+			//		message = "Essse nome já existe\nMeta outro nome"; goto Nome;
+			//	}
+			//	else
+			//	if (System.Text.RegularExpressions.Regex.IsMatch(name, "[^a-zA-Z] + $"))
+			//	{
+			//		message = "Só é possível meter letras"; goto Nome;
+			//	}
+			//	else
+			//	{
+			//		var temp = name.Length > 100 ? cli.Nome = name.Substring(100) : cli.Nome = name;
+			//	}
+
+			//	//string name = Interaction.InputBox(message, Title, lst[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome);//Interaction.InputBox(message, title, defaultValue, 100, 100);
+			//	if (lst.FirstOrDefault(Item => Item.Nome == name) != null)
+			//	{
+			//		message = "Essse nome já existe\nMeta outro nome"; goto Nome;
+			//	}
+			//	else
+			//	if (System.Text.RegularExpressions.Regex.IsMatch(name, "[^a-zA-Z] + $"))
+			//	{
+			//		message = "Só é possível meter letras"; goto Nome;
+			//	}
+			//	else
+			//	{
+			//		var temp = name.Length > 100 ? cli.Nome = name.Substring(100) : cli.Nome = name;
+			//	}
+			#endregion
 
 			#region Rascunhos de Interation
 

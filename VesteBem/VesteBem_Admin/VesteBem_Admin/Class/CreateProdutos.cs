@@ -23,18 +23,17 @@ namespace VesteBem_Admin.Class
 				command.CommandText = "SPAddProdutos";
 				command.CommandType = System.Data.CommandType.StoredProcedure;
 
-				string ds;
-				var temp = produtos.Icon != "NULL" ? ds = "d" : ds = produtos.Icon;
 				if (produtos.Icon != "NULL") 
 				{
 					Image img = Image.FromFile(produtos.Icon);
-					byte[] arr; string base64String;
-					using (MemoryStream m = new MemoryStream())
-					{
-						img.Save(m, img.RawFormat);
-						byte[] imageBytes = m.ToArray();
-						base64String = Convert.ToBase64String(imageBytes);
-					}
+					//using (MemoryStream m = new MemoryStream())
+					//{
+					//	img.Save(m, img.RawFormat);
+					//	byte[] imageBytes = m.ToArray();
+					//	base64String = Convert.ToBase64String(imageBytes);
+					//}
+					ImageConverter converter = new ImageConverter();
+					byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
 					command.Parameters.Add(new SqlParameter("Nome", produtos.Nome));
 					command.Parameters.Add(new SqlParameter("Valor", produtos.valor));
@@ -42,7 +41,7 @@ namespace VesteBem_Admin.Class
 					command.Parameters.Add(new SqlParameter("CategoriaClasse", produtos.CategoriaClass));
 					command.Parameters.Add(new SqlParameter("CategoriaSubClasse", produtos.CategoriaSubClass));
 					command.Parameters.Add(new SqlParameter("Sexo", produtos.Sexo));
-					command.Parameters.Add(new SqlParameter("Icon", base64String));
+					command.Parameters.Add(new SqlParameter("Icon", pic));
 
 					command.Connection = liga;
 					command.ExecuteNonQuery();

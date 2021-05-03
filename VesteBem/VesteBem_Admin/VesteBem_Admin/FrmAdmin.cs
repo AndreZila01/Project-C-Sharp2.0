@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,13 @@ namespace VesteBem_Admin
 					break;
 			}
 		}
+
+		private void FrmAdmin_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
+		}
+
+		
 
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{

@@ -44,7 +44,7 @@ namespace VesteBem_Admin
 		{
 			try
 			{
-				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") throw new ArgumentException("Complete os Dados!!");
+				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") 
 				{
 					Produtos produtos = new Produtos();
 					produtos.Nome = TxtNome.Text;
@@ -53,7 +53,7 @@ namespace VesteBem_Admin
 					produtos.valor = double.Parse(TxtValor.Text);
 					produtos.CategoriaClass = TxtCat.Text;
 					produtos.CategoriaSubClass = TxtSubCat.Text;
-					var ds = TxtIcon.Text != null ? produtos.Icon = TxtIcon.Text : produtos.Icon = "NULL";
+					produtos.Icon = TxtIcon.Text;
 					string dss = CreateProdutos.InsertProdutos(produtos);
 
 					if (dss == "Correu bem")
