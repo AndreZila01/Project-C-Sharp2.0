@@ -40,13 +40,13 @@ namespace VesteBem_Admin
 			TxtEmail.Text = lst[0].Email;
 			TxtTele.Text = lst[0].Telefone;
 			DateTime time = lst[0].DataNasc;
-			DTPdate.Value=time;
+			DTPdate.Value = time;
 
 
 			if (lst[0].Sexo == "M")
 				CboSexo.SelectedItem = "Masculino";
 			else
-			if(lst[0].Sexo=="F")
+			if (lst[0].Sexo == "F")
 				CboSexo.SelectedItem = "Feminino";
 			else
 				CboSexo.SelectedItem = "Indefenido";
@@ -57,7 +57,7 @@ namespace VesteBem_Admin
 		{
 			Button btn = sender as Button;
 
-			switch(btn.Text)
+			switch (btn.Text)
 			{
 				case "Guardar":
 					Save();
@@ -77,12 +77,22 @@ namespace VesteBem_Admin
 			cli.Id_Cliente = lst[0].Id_Cliente;
 			cli.Id_Login = lst[0].Id_Login;
 			cli.Localidade = TxtLoc.Text;
-			cli.Morada =TxtMorada.Text;
-			cli.Nif=TxtNif.Text;
-			cli.Nome=txtNome.Text;
-			cli.Sexo=CboSexo.Text.Substring(0,1);
-			cli.Telefone=TxtTele.Text;
-			//string result = InsertCliente.InsertCliente(cli);
+			cli.Morada = TxtMorada.Text;
+			cli.Nif = TxtNif.Text;
+			cli.Nome = txtNome.Text;
+			cli.Sexo = CboSexo.Text.Substring(0, 1);
+			cli.Telefone = TxtTele.Text;
+			string result = InsertClientes.InsertCliente(cli);
+
+
+			if (result == "sucesso")
+				this.Close();
+			else
+				if (MessageBox.Show("" + result +"\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+				{
+					this.Close();
+					
+				}
 		}
 	}
 }

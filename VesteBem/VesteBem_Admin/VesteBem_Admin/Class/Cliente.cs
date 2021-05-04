@@ -126,16 +126,42 @@ namespace VesteBem_Admin.Class
 			return lstdoutors;
 		}
 	}
-	public class InsertCliente
+	public class InsertClientes
 	{
-		//public static string InsertCliente(Cliente cli)
-		//{
+		public static string InsertCliente(Cliente cli)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "SPUpdateCliente";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+				try
+				{
+					command.Parameters.Add(new SqlParameter("Nome", cli.Nome));
+					command.Parameters.Add(new SqlParameter("Sexo", cli.Sexo));
+					command.Parameters.Add(new SqlParameter("Nif", cli.Nif));
+					command.Parameters.Add(new SqlParameter("Morada", cli.Morada));
+					command.Parameters.Add(new SqlParameter("CodPostal", cli.CodPostal));
+					command.Parameters.Add(new SqlParameter("Localidade", cli.Localidade));
+					command.Parameters.Add(new SqlParameter("DataNasc", cli.DataNasc));
+					command.Parameters.Add(new SqlParameter("Email", cli.Email));
+					command.Parameters.Add(new SqlParameter("Telefone", cli.Telefone));
+					command.Parameters.Add(new SqlParameter("IdCliente", cli.Id_Cliente)); 
+					command.Parameters.Add(new SqlParameter("Id_Login", cli.Id_Login));
 
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	//using()
+					command.Connection = liga;
+										
+					liga.Open();
 
+				command.ExecuteNonQuery();
+					return "sucesso";
+				}
+				catch(Exception ex)
+				{
+					return ex.Message;
+				}
 
-		//	return "";
-		//}
+			}			
+		}		
 	}
 }
