@@ -12,23 +12,23 @@
 				</div>
 				<p></p>
 				<div style="margin: 10px 10px 0px 10px; background-color: ghostwhite; font-size: 20px; min-width:100px">
-					<asp:LinkButton runat="server" Text="Calças" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Calças" OnClick="lblCalcas_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblPijama_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Sapatos" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Sapatos" OnClick="lblSapatos_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Camisola Interior" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Camisola Interior" OnClick="lblCamisolaI_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Camisa" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Camisa" OnClick="lblCamisa_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblCamisolaE_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblRoupaI_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Casacos" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Casacos" OnClick="lblCasacos_Click"></asp:LinkButton><p />
 					<p />
-					<asp:LinkButton runat="server" Text="Acessórios" OnClick="lblLink_Click"></asp:LinkButton><p />
+					<asp:LinkButton runat="server" Text="Acessórios" OnClick="lblAcessorios_Click"></asp:LinkButton><p />
 					<p />
 				</div>
 
@@ -36,11 +36,7 @@
 		</div>
 		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color: green;">
 			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
-			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10" style="margin-top: 15px; padding-bottom: 2500px; padding-left: 0px; padding-right: 0px; background-color: aliceblue; font-size: 30px;">
-				<div style="background-color: aqua; margin-left: 5%; width: 89%">
-                    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
-				</div>
-			</div>
+			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10" style="margin-top: 15px; padding-bottom: 2500px; padding-left: 0px; padding-right: 0px; background-color: aliceblue; font-size: 30px;"></div>
 			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
 			<br />
 			<br />
