@@ -32,8 +32,8 @@
 			this.TxtNif = new System.Windows.Forms.TextBox();
 			this.TxtMorada = new System.Windows.Forms.TextBox();
 			this.TxtCod = new System.Windows.Forms.TextBox();
-			this.textBox7 = new System.Windows.Forms.TextBox();
-			this.textBox8 = new System.Windows.Forms.TextBox();
+			this.TxtTele = new System.Windows.Forms.TextBox();
+			this.TxtEmail = new System.Windows.Forms.TextBox();
 			this.TxtLoc = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
@@ -47,7 +47,7 @@
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.CboSexo = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.DTPdate = new System.Windows.Forms.DateTimePicker();
 			this.SuspendLayout();
 			// 
 			// txtNome
@@ -82,21 +82,21 @@
 			this.TxtCod.Size = new System.Drawing.Size(172, 20);
 			this.TxtCod.TabIndex = 4;
 			// 
-			// textBox7
+			// TxtTele
 			// 
-			this.textBox7.Location = new System.Drawing.Point(127, 221);
-			this.textBox7.MaxLength = 9;
-			this.textBox7.Name = "textBox7";
-			this.textBox7.Size = new System.Drawing.Size(172, 20);
-			this.textBox7.TabIndex = 8;
+			this.TxtTele.Location = new System.Drawing.Point(127, 221);
+			this.TxtTele.MaxLength = 9;
+			this.TxtTele.Name = "TxtTele";
+			this.TxtTele.Size = new System.Drawing.Size(172, 20);
+			this.TxtTele.TabIndex = 8;
 			// 
-			// textBox8
+			// TxtEmail
 			// 
-			this.textBox8.Location = new System.Drawing.Point(127, 195);
-			this.textBox8.MaxLength = 300;
-			this.textBox8.Name = "textBox8";
-			this.textBox8.Size = new System.Drawing.Size(172, 20);
-			this.textBox8.TabIndex = 7;
+			this.TxtEmail.Location = new System.Drawing.Point(127, 195);
+			this.TxtEmail.MaxLength = 300;
+			this.TxtEmail.Name = "TxtEmail";
+			this.TxtEmail.Size = new System.Drawing.Size(172, 20);
+			this.TxtEmail.TabIndex = 7;
 			// 
 			// TxtLoc
 			// 
@@ -209,28 +209,30 @@
 			// 
 			// CboSexo
 			// 
+			this.CboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.CboSexo.FormattingEnabled = true;
 			this.CboSexo.Items.AddRange(new object[] {
             "Masculino",
-            "Femenino"});
+            "Feminino",
+            "Indefenido"});
 			this.CboSexo.Location = new System.Drawing.Point(127, 39);
 			this.CboSexo.Name = "CboSexo";
 			this.CboSexo.Size = new System.Drawing.Size(172, 21);
 			this.CboSexo.TabIndex = 21;
 			// 
-			// dateTimePicker1
+			// DTPdate
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(127, 166);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(172, 20);
-			this.dateTimePicker1.TabIndex = 22;
+			this.DTPdate.Location = new System.Drawing.Point(127, 166);
+			this.DTPdate.Name = "DTPdate";
+			this.DTPdate.Size = new System.Drawing.Size(172, 20);
+			this.DTPdate.TabIndex = 22;
 			// 
 			// FrmModificarCliFun
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(359, 322);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.DTPdate);
 			this.Controls.Add(this.CboSexo);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
@@ -243,8 +245,8 @@
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.textBox7);
-			this.Controls.Add(this.textBox8);
+			this.Controls.Add(this.TxtTele);
+			this.Controls.Add(this.TxtEmail);
 			this.Controls.Add(this.TxtLoc);
 			this.Controls.Add(this.TxtCod);
 			this.Controls.Add(this.TxtMorada);
@@ -268,8 +270,8 @@
 		private System.Windows.Forms.TextBox TxtNif;
 		private System.Windows.Forms.TextBox TxtMorada;
 		private System.Windows.Forms.TextBox TxtCod;
-		private System.Windows.Forms.TextBox textBox7;
-		private System.Windows.Forms.TextBox textBox8;
+		private System.Windows.Forms.TextBox TxtTele;
+		private System.Windows.Forms.TextBox TxtEmail;
 		private System.Windows.Forms.TextBox TxtLoc;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
@@ -283,6 +285,6 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.ComboBox CboSexo;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker DTPdate;
 	}
 }

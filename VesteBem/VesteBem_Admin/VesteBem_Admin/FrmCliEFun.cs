@@ -93,7 +93,7 @@ namespace VesteBem_Admin
 						PictureBox pctUser = new PictureBox();
 						pctUser.Anchor = System.Windows.Forms.AnchorStyles.Left;
 						pctUser.BackColor = System.Drawing.SystemColors.ButtonShadow;
-						pctUser.Image = Properties.Resources.user;
+						pctUser.Image = item.Icon;
 						pctUser.Location = new System.Drawing.Point(12, 13);
 						pctUser.Name = "pctUser";
 						pctUser.SizeMode = PictureBoxSizeMode.Zoom;

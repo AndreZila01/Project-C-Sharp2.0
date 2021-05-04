@@ -26,12 +26,6 @@ namespace VesteBem_Admin.Class
 				if (produtos.Icon != "NULL") 
 				{
 					Image img = Image.FromFile(produtos.Icon);
-					//using (MemoryStream m = new MemoryStream())
-					//{
-					//	img.Save(m, img.RawFormat);
-					//	byte[] imageBytes = m.ToArray();
-					//	base64String = Convert.ToBase64String(imageBytes);
-					//}
 					ImageConverter converter = new ImageConverter();
 					byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
 

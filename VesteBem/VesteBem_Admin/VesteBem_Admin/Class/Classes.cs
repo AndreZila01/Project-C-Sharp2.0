@@ -22,7 +22,7 @@ namespace VesteBem_Admin.Class
 		public string Morada { get; set; }
 		public string CodPostal { get; set; }
 		public string Localidade { get; set; }
-		public string DataNasc { get; set; }
+		public DateTime DataNasc { get; set; }
 		public string Email { get; set; }
 		public string Telefone { get; set; }
 		public Image Icon { get; set; }
