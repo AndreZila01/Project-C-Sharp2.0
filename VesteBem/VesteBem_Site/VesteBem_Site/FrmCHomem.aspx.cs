@@ -21,17 +21,51 @@ namespace VesteBem
             
         }
 
-        protected void lblLink_Click(object sender, EventArgs e)
+        protected void lblCalcas_Click(object sender, EventArgs e)
+        {
+            GridCalcas.Visible = true;
+            
+        }
+        protected void lblPijama_Click(object sender, EventArgs e)
         {
 
-            LinkButton linkButton = new LinkButton();
-            switch (linkButton.Text)
-            {
-                case "":
-                    break;
-                default:
-                    break;
-            }
+
         }
+        protected void lblSapatos_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblCamisolaI_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblCamisa_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblCamisolaE_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblRoupaI_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblCasacos_Click(object sender, EventArgs e)
+        {
+
+
+        }
+        protected void lblAcessorios_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
     }
 }
