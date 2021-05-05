@@ -18,59 +18,9 @@ namespace VesteBem_Admin.Class
 	{
 		public static List<Cliente> ConsultaCliente()
 		{
-			List<Cliente> lstdoutors = new List<Cliente>();
-			List<Cliente> lst = new List<Cliente>();
-			#region ds
-			//SqlDataReader dr; Bitmap bitmap;
-			//try
-			//{
-			//Image images = Properties.Resources.add;
-			//using (var ms = new MemoryStream())
-			//{
-			//	images.Save(ms, images.RawFormat);
-			//	Debug.Print(""+ms.ToArray());
-			//}
-			//if (liga.State == System.Data.ConnectionState.Open) throw new ArgumentException("Problemas a ligar ao servidor!!");
-			//liga.Open();
-			//command.Connection = liga;
-
-			//command.CommandText = "select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin and tbl_login.Funcionario=0";
-			//dr = command.ExecuteReader();
-			//if (dr.Read())
-			//{
-			//	lst.Clear();
-			//	MemoryStream MS = new MemoryStream();
-
-			//	while (dr.Read())
-			//	{
-			//		Cliente cli = new Cliente();
-			//		cli.Id_Cliente = int.Parse(dr["IdCliente"].ToString());
-			//		cli.CodPostal = (dr["CodPostal"]).ToString();
-			//		cli.DataNasc = (dr["DataNasc"]).ToString();
-			//		cli.Email = (dr["Email"]).ToString();
-			//		cli.Id_Login = int.Parse(dr["Id_Login"].ToString());
-			//		//Image.FromStream((new MemoryStream( ... ), true, true))
-			//		cli.Icon = Properties.Resources.user;//cli.Icon = Image.FromStream(new MemoryStream(Convert.FromBase64String(dr["Icon"].ToString())), true, true);
-			//		cli.Localidade = (dr["Localidade"]).ToString();
-			//		cli.Morada = (dr["Morada"]).ToString();
-			//		cli.Nif = (dr["Nif"]).ToString();
-			//		cli.Nome = (dr["Nome"]).ToString();
-			//		cli.Sexo = (dr["Sexo"]).ToString();
-			//		cli.Telefone = (dr["Telefone"]).ToString();
-
-			//		lst.Add(cli);
-
-			//		/*MemoryStream stream = new MemoryStream();
-			//	 byte[] image = (byte[])comando.ExecuteScalar();
-			//        stream.Write(image, 0, image.Length);
-			//        Bitmap bitmap = new Bitmap(stream);
-			//        Response.ContentType = "image/Jpeg";
-			//        bitmap.Save(Response.OutputStream, ImageFormat.Jpeg);*/
-			//	}
-			//}
-			#endregion
+			List<Cliente> lstcliclidoutors = new List<Cliente>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("select * From tbl_Cliente, tbl_login where tbl_Cliente.Id_Login=tbl_login.IdLogin", liga);
+			SqlCommand comando = new SqlCommand("select * From tbl_Cliente", liga);
 			SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
 			try
 			{
@@ -109,9 +59,8 @@ namespace VesteBem_Admin.Class
 						cli.Email = oReader["Email"].ToString();
 						cli.Telefone = oReader["Telefone"].ToString();
 						cli.Nif = oReader["Nif"].ToString();
-						cli.Funcionario = int.Parse(oReader["Funcionario"].ToString());
 						ds++;
-						lstdoutors.Add(cli);
+						lstcliclidoutors.Add(cli);
 					}
 					liga.Close();
 				}
@@ -120,10 +69,7 @@ namespace VesteBem_Admin.Class
 			{
 
 			}
-
-
-
-			return lstdoutors;
+			return lstcliclidoutors;
 		}
 	}
 	public class InsertClientes
@@ -146,22 +92,83 @@ namespace VesteBem_Admin.Class
 					command.Parameters.Add(new SqlParameter("DataNasc", cli.DataNasc));
 					command.Parameters.Add(new SqlParameter("Email", cli.Email));
 					command.Parameters.Add(new SqlParameter("Telefone", cli.Telefone));
-					command.Parameters.Add(new SqlParameter("IdCliente", cli.Id_Cliente)); 
+					command.Parameters.Add(new SqlParameter("Id_Cliente", cli.Id_Cliente));
 					command.Parameters.Add(new SqlParameter("Id_Login", cli.Id_Login));
 
 					command.Connection = liga;
-										
+
 					liga.Open();
 
-				command.ExecuteNonQuery();
+					command.ExecuteNonQuery();
 					return "sucesso";
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
 					return ex.Message;
 				}
 
-			}			
-		}		
+			}
+		}
 	}
+	public class ApagarClientes
+	{
+		public static string ApagarCliente(int id_Cli, string Nome)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "Delete tbl_Cliente where IdCliente="+ id_Cli + " and Nome='"+ Nome + "'";
+				try
+				{
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
+					return "sucesso";
+				}
+				catch (Exception ex)
+				{
+					return ex.Message;
+				}
+				
+			}
+		}
+	}
+	public class ConsultarFuncionarios
+	{
+		public static List<Funcionario> ConsultarFuncionario()
+		{
+			List<Funcionario> lstFun = new List<Funcionario>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Id_Login, Funcao From tbl_Funcionario, tblFuncao where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao", liga);
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						Funcionario fun = new Funcionario();
+						fun.IdFuncionario = int.Parse(oReader["IdFuncionario"].ToString());
+						fun.Funcao = oReader["Funcao"].ToString();
+						fun.Id_Login = int.Parse(oReader["Id_Login"].ToString());
+						fun.Nome = oReader["Nome"].ToString();
+						fun.Telemovel = oReader["Telemovel"].ToString();
+
+						lstFun.Add(fun);
+					}
+					liga.Close();
+				}
+			}
+			catch (Exception ex)
+			{
+
+			}
+			return lstFun;
+		}
+
+	}
+
 }
