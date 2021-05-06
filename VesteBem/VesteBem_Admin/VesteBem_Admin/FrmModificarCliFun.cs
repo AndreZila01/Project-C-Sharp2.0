@@ -14,13 +14,14 @@ namespace VesteBem_Admin
 {
 	public partial class FrmModificarCliFun : Form
 	{
-		List<Cliente> lstcli = new List<Cliente>();
-		Cliente cli = new Cliente();
+		List<Cliente> Lstcli = new List<Cliente>(); List<Funcionario> Lstfun = new List<Funcionario>();
+		Cliente Cli = new Cliente();
 		private const int CP_NOCLOSE_BUTTON = 0x200;
-		public FrmModificarCliFun(Cliente cli)
+		public FrmModificarCliFun(Cliente cli, Funcionario fun)
 		{
 			InitializeComponent();
-			lstcli.Add(cli);
+			Lstcli.Add(cli);
+			Lstfun.Add(fun);
 		}
 		protected override CreateParams CreateParams
 		{
@@ -37,40 +38,99 @@ namespace VesteBem_Admin
 			switch (Txt.Name)
 			{
 				case "txtNome":
-					cli.Nome = Txt.Text;
+					Cli.Nome = Txt.Text;
 					break;
 				case "TxtNif":
-					cli.Nif = Txt.Text;
+					Cli.Nif = Txt.Text;
 					break;
 				case "TxtMorada":
-					cli.Morada = Txt.Text;
+					Cli.Morada = Txt.Text;
 					break;
 				case "TxtCod":
-					cli.CodPostal = Txt.Text;
+					Cli.CodPostal = Txt.Text;
 					break;
 				case "TxtTele":
-					cli.Telefone = Txt.Text;
+					Cli.Telefone = Txt.Text;
 					break;
 				case "TxtEmail":
-					cli.Email = Txt.Text;
+					Cli.Email = Txt.Text;
 					break;
 				case "TxtLoc":
-					cli.Localidade = Txt.Text;
+					Cli.Localidade = Txt.Text;
 					break;
 			}
 		}
 
 		private void FrmModificar_Load(object sender, EventArgs e)
 		{
-			if(lstcli.Count>0)
+			if (!backgroundWorker1.IsBusy)
+				backgroundWorker1.RunWorkerAsync();
+		}
+
+		private void comboBox1_Leave(object sender, EventArgs e)
+		{
+			ComboBox Cbo = sender as ComboBox;
+			Cli.Sexo= Cbo.Text.Substring(0, 1);
+		}
+
+		private void dateTimePicker1_Leave(object sender, EventArgs e)
+		{
+			DateTimePicker Dtp = sender as DateTimePicker;
+			Cli.DataNasc = Dtp.Value;
+		}
+
+		private void button_Click(object sender, EventArgs e)
+		{
+			Button btn = sender as Button;
+
+			switch (btn.Text)
+			{
+				case "Guardar":
+					Save();
+					break;
+				case "Cancel":
+					Close();
+					break;
+			}
+		}
+
+		private void Save()
+		{
+
+			Cli.Icon = Lstcli[0].Icon;
+			Cli.Id_Login = Lstcli[0].Id_Login;
+			Cli.Id_Cliente = Lstcli[0].Id_Cliente;
+			string result = InsertClientes.InsertCliente(Cli);
+
+
+			if (result == "sucesso")
+				Close();
+			else
+				if (MessageBox.Show("" + result +"\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+				{
+					Close();
+					
+				}
+		}
+
+		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+		{
+			
+		}
+
+		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+		{
+			this.Controls.Clear();
+			if (Lstcli.Count > 0 && Lstcli[0].Id_Login != 0 && Lstcli[0].Id_Cliente != 0)
 			{
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(127, 13);
 				TxtNome.MaxLength = 100;
 				TxtNome.Name = "txtNome";
+				TxtNome.Text = "TxtNome";
 				TxtNome.Size = new System.Drawing.Size(172, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text = lstcli[0].Nome;
+				TxtNome.Text = Lstcli[0].Nome;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -78,9 +138,10 @@ namespace VesteBem_Admin
 				TxtNif.Location = new System.Drawing.Point(127, 65);
 				TxtNif.MaxLength = 9;
 				TxtNif.Name = "TxtNif";
+				TxtNif.Text = "TxtNif";
 				TxtNif.Size = new System.Drawing.Size(172, 20);
 				TxtNif.TabIndex = 2;
-				TxtNif.Text = lstcli[0].Nif;
+				TxtNif.Text = Lstcli[0].Nif;
 				TxtNif.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNif);
 
@@ -88,9 +149,10 @@ namespace VesteBem_Admin
 				TxtMorada.Location = new System.Drawing.Point(127, 91);
 				TxtMorada.MaxLength = 250;
 				TxtMorada.Name = "TxtMorada";
+				TxtMorada.Text = "TxtMorada";
 				TxtMorada.Size = new System.Drawing.Size(172, 20);
 				TxtMorada.TabIndex = 3;
-				TxtMorada.Text = lstcli[0].Morada;
+				TxtMorada.Text = Lstcli[0].Morada;
 				TxtMorada.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtMorada);
 
@@ -98,46 +160,50 @@ namespace VesteBem_Admin
 				TxtCod.Location = new System.Drawing.Point(127, 117);
 				TxtCod.MaxLength = 8;
 				TxtCod.Name = "TxtCod";
+				TxtCod.Text = "TxtCod";
 				TxtCod.Size = new System.Drawing.Size(172, 20);
 				TxtCod.TabIndex = 4;
-				TxtCod.Text = lstcli[0].CodPostal;
+				TxtCod.Text = Lstcli[0].CodPostal;
 				TxtCod.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtCod);
 
 				TextBox TxtTele = new TextBox();
 				TxtTele.Location = new System.Drawing.Point(127, 221);
 				TxtTele.MaxLength = 9;
+				TxtTele.Text = "TxtTele";
 				TxtTele.Name = "TxtTele";
 				TxtTele.Size = new System.Drawing.Size(172, 20);
 				TxtTele.TabIndex = 8;
-				TxtTele.Text = lstcli[0].Telefone;
-				TxtTele.Leave += new System.EventHandler(txt_Leave); 
+				TxtTele.Text = Lstcli[0].Telefone;
+				TxtTele.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTele);
 
 				TextBox TxtEmail = new TextBox();
 				TxtEmail.Location = new System.Drawing.Point(127, 195);
 				TxtEmail.MaxLength = 300;
+				TxtEmail.Text = "TxtEmail";
 				TxtEmail.Name = "TxtEmail";
 				TxtEmail.Size = new System.Drawing.Size(172, 20);
 				TxtEmail.TabIndex = 7;
-				TxtEmail.Text = lstcli[0].Email;
+				TxtEmail.Text = Lstcli[0].Email;
 				TxtEmail.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtEmail);
 
 				TextBox TxtLoc = new TextBox();
 				TxtLoc.Location = new System.Drawing.Point(127, 143);
 				TxtLoc.MaxLength = 100;
+				TxtLoc.Text = "TxtLoc";
 				TxtLoc.Name = "TxtLoc";
 				TxtLoc.Size = new System.Drawing.Size(172, 20);
 				TxtLoc.TabIndex = 5;
-				TxtLoc.Text = lstcli[0].Localidade;
+				TxtLoc.Text = Lstcli[0].Localidade;
 				TxtLoc.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtLoc);
 
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
 				LblNome.Location = new System.Drawing.Point(17, 16);
-				LblNome.Name = "label1";
+				LblNome.Name = "LblNome";
 				LblNome.Size = new System.Drawing.Size(35, 13);
 				LblNome.TabIndex = 10;
 				LblNome.Text = "Nome";
@@ -146,7 +212,7 @@ namespace VesteBem_Admin
 				Label LblSexo = new Label();
 				LblSexo.AutoSize = true;
 				LblSexo.Location = new System.Drawing.Point(17, 42);
-				LblSexo.Name = "label2";
+				LblSexo.Name = "LblSexo";
 				LblSexo.Size = new System.Drawing.Size(31, 13);
 				LblSexo.TabIndex = 11;
 				LblSexo.Text = "Sexo";
@@ -155,7 +221,7 @@ namespace VesteBem_Admin
 				Label LblNif = new Label();
 				LblNif.AutoSize = true;
 				LblNif.Location = new System.Drawing.Point(17, 68);
-				LblNif.Name = "label3";
+				LblNif.Name = "LblNif";
 				LblNif.Size = new System.Drawing.Size(20, 13);
 				LblNif.TabIndex = 12;
 				LblNif.Text = "Nif";
@@ -164,7 +230,7 @@ namespace VesteBem_Admin
 				Label LblLoc = new Label();
 				LblLoc.AutoSize = true;
 				LblLoc.Location = new System.Drawing.Point(17, 146);
-				LblLoc.Name = "label4";
+				LblLoc.Name = "LblLoc";
 				LblLoc.Size = new System.Drawing.Size(59, 13);
 				LblLoc.TabIndex = 15;
 				LblLoc.Text = "Localidade";
@@ -173,7 +239,7 @@ namespace VesteBem_Admin
 				Label LlbCod = new Label();
 				LlbCod.AutoSize = true;
 				LlbCod.Location = new System.Drawing.Point(17, 120);
-				LlbCod.Name = "label5";
+				LlbCod.Name = "LlbCod";
 				LlbCod.Size = new System.Drawing.Size(72, 13);
 				LlbCod.TabIndex = 14;
 				LlbCod.Text = "Codigo Postal";
@@ -182,7 +248,7 @@ namespace VesteBem_Admin
 				Label LblMorada = new Label();
 				LblMorada.AutoSize = true;
 				LblMorada.Location = new System.Drawing.Point(17, 94);
-				LblMorada.Name = "label6";
+				LblMorada.Name = "LblMorada";
 				LblMorada.Size = new System.Drawing.Size(43, 13);
 				LblMorada.TabIndex = 13;
 				LblMorada.Text = "Morada";
@@ -191,7 +257,7 @@ namespace VesteBem_Admin
 				Label LblTele = new Label();
 				LblTele.AutoSize = true;
 				LblTele.Location = new System.Drawing.Point(17, 224);
-				LblTele.Name = "label7";
+				LblTele.Name = "LblTele";
 				LblTele.Size = new System.Drawing.Size(49, 13);
 				LblTele.TabIndex = 18;
 				LblTele.Text = "Telefone";
@@ -200,7 +266,7 @@ namespace VesteBem_Admin
 				Label LblEmail = new Label();
 				LblEmail.AutoSize = true;
 				LblEmail.Location = new System.Drawing.Point(17, 198);
-				LblEmail.Name = "label8";
+				LblEmail.Name = "LblEmail";
 				LblEmail.Size = new System.Drawing.Size(32, 13);
 				LblEmail.TabIndex = 17;
 				LblEmail.Text = "Email";
@@ -209,7 +275,7 @@ namespace VesteBem_Admin
 				Label LblData = new Label();
 				LblData.AutoSize = true;
 				LblData.Location = new System.Drawing.Point(17, 172);
-				LblData.Name = "label9";
+				LblData.Name = "LblData";
 				LblData.Size = new System.Drawing.Size(104, 13);
 				LblData.TabIndex = 16;
 				LblData.Text = "Data de Nascimento";
@@ -217,7 +283,7 @@ namespace VesteBem_Admin
 
 				Button BtnSave = new Button();
 				BtnSave.Location = new System.Drawing.Point(20, 258);
-				BtnSave.Name = "button1";
+				BtnSave.Name = "BtnSave";
 				BtnSave.Size = new System.Drawing.Size(145, 52);
 				BtnSave.TabIndex = 19;
 				BtnSave.Text = "Guardar";
@@ -247,10 +313,10 @@ namespace VesteBem_Admin
 				CboSexo.Size = new System.Drawing.Size(172, 21);
 				CboSexo.TabIndex = 21;
 				CboSexo.Leave += new System.EventHandler(comboBox1_Leave);
-				if (lstcli[0].Sexo == "M")
+				if (Lstcli[0].Sexo == "M")
 					CboSexo.SelectedItem = "Masculino";
 				else
-				if (lstcli[0].Sexo == "F")
+				if (Lstcli[0].Sexo == "F")
 					CboSexo.SelectedItem = "Feminino";
 				else
 					CboSexo.SelectedItem = "Indefenido";
@@ -261,59 +327,230 @@ namespace VesteBem_Admin
 				Data.Name = "DTPdate";
 				Data.Size = new System.Drawing.Size(172, 20);
 				Data.TabIndex = 22;
-				DateTime time = lstcli[0].DataNasc;
+				DateTime time = Lstcli[0].DataNasc;
 				Data.Value = time;
 				Data.Leave += new System.EventHandler(dateTimePicker1_Leave);
 				this.Controls.Add(Data);
 			}
-
-
-		}
-
-		private void comboBox1_Leave(object sender, EventArgs e)
-		{
-			ComboBox Cbo = sender as ComboBox;
-			cli.Sexo= Cbo.Text.Substring(0, 1);
-		}
-
-		private void dateTimePicker1_Leave(object sender, EventArgs e)
-		{
-			DateTimePicker Dtp = sender as DateTimePicker;
-			cli.DataNasc = Dtp.Value;
-		}
-
-		private void button_Click(object sender, EventArgs e)
-		{
-			Button btn = sender as Button;
-
-			switch (btn.Text)
-			{
-				case "Guardar":
-					Save();
-					break;
-				case "Cancel":
-					Close();
-					break;
-			}
-		}
-
-		private void Save()
-		{
-
-			cli.Icon = lstcli[0].Icon;
-			cli.Id_Login = lstcli[0].Id_Login;
-			cli.Id_Cliente = lstcli[0].Id_Cliente;
-			string result = InsertClientes.InsertCliente(cli);
-
-
-			if (result == "sucesso")
-				Close();
 			else
-				if (MessageBox.Show("" + result +"\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
-				{
-					Close();
-					
-				}
+			if (Lstfun.Count > 0 && Lstfun[0].Id_Login != 0 && Lstfun[0].Nome != null)
+			{
+				Label LblNome = new Label();
+				LblNome.AutoSize = true;
+				LblNome.Location = new System.Drawing.Point(51, 80);
+				LblNome.Name = "LblNome";
+				LblNome.Size = new System.Drawing.Size(43, 13);
+				LblNome.TabIndex = 1;
+				LblNome.Text = "Nomes:";
+				this.Controls.Add(LblNome);
+
+				TextBox TxtNome = new TextBox();
+				TxtNome.Location = new System.Drawing.Point(156, 80);
+				TxtNome.Name = "TxtNome";
+				TxtNome.Size = new System.Drawing.Size(135, 20);
+				TxtNome.TabIndex = 0;
+				TxtNome.Text = Lstfun[0].Nome;
+				TxtNome.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtNome);
+
+				ComboBox CmbFuncao = new ComboBox();
+				CmbFuncao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+				CmbFuncao.FormattingEnabled = true;
+				CmbFuncao.Location = new System.Drawing.Point(156, 39);
+				CmbFuncao.Name = "CmbFuncao";
+				CmbFuncao.SelectedItem = Lstfun[0].Funcao;
+				CmbFuncao.Size = new System.Drawing.Size(135, 21);
+				CmbFuncao.TabIndex = 2;
+				this.Controls.Add(CmbFuncao);
+
+				Label LblFuncao = new Label();
+				LblFuncao.AutoSize = true;
+				LblFuncao.Location = new System.Drawing.Point(51, 42);
+				LblFuncao.Name = "LblFuncao";
+				LblFuncao.Size = new System.Drawing.Size(46, 13);
+				LblFuncao.TabIndex = 3;
+				LblFuncao.Text = "Função:";
+				this.Controls.Add(LblFuncao);
+
+				Label LblTelemovel = new Label();
+				LblTelemovel.AutoSize = true;
+				LblTelemovel.Location = new System.Drawing.Point(51, 126);
+				LblTelemovel.Name = "LblTelemovel";
+				LblTelemovel.Size = new System.Drawing.Size(56, 13);
+				LblTelemovel.TabIndex = 5;
+				LblTelemovel.Text = "Telemovel: ";
+				this.Controls.Add(LblTelemovel);
+
+				TextBox TxtTelemovel = new TextBox();
+				TxtTelemovel.Location = new System.Drawing.Point(156, 123);
+				TxtTelemovel.Name = "TxtTelemovel";
+				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
+				TxtTelemovel.TabIndex = 4;
+				TxtTelemovel.Text = Lstfun[0].Telemovel;
+				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtTelemovel);
+
+				Label LblLogin = new Label();
+				LblLogin.AutoSize = true;
+				LblLogin.Location = new System.Drawing.Point(51, 171);
+				LblLogin.Name = "LblLogin";
+				LblLogin.Size = new System.Drawing.Size(82, 13);
+				LblLogin.TabIndex = 7;
+				LblLogin.Text = "Nome de Login:";
+				this.Controls.Add(LblLogin);
+
+				TextBox TxtLogin = new TextBox();
+				TxtLogin.Location = new System.Drawing.Point(156, 168);
+				TxtLogin.Name = "TxtLogin";
+				TxtLogin.Text = ColectIdFun.SelectName(Lstfun[0].Id_Login);
+				TxtLogin.Size = new System.Drawing.Size(135, 20);
+				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtLogin);
+
+				Label LblPass = new Label();
+				LblPass.AutoSize = true;
+				LblPass.Location = new System.Drawing.Point(51, 214);
+				LblPass.Name = "LblPass";
+				LblPass.Size = new System.Drawing.Size(53, 13);
+				LblPass.TabIndex = 9;
+				LblPass.Text = "Password: ";
+				this.Controls.Add(LblPass);
+
+				TextBox TxtPass = new TextBox();
+				TxtPass.Location = new System.Drawing.Point(156, 211);
+				TxtPass.Name = "TxtPass";
+				TxtPass.Text = ColectIdFun.SelectPass(Lstfun[0].Id_Login);
+				TxtPass.Size = new System.Drawing.Size(135, 20);
+				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtPass);
+
+				Button BtnGuardar = new Button();
+				BtnGuardar.Location = new System.Drawing.Point(22, 262);
+				BtnGuardar.Name = "BtnGuardarFun";
+				BtnGuardar.Size = new System.Drawing.Size(118, 48);
+				BtnGuardar.TabIndex = 10;
+				BtnGuardar.Text = "Guardar Alterações";
+				BtnGuardar.UseVisualStyleBackColor = true;
+				BtnGuardar.Click += new System.EventHandler(button_Click);
+				this.Controls.Add(BtnGuardar);
+
+				Button BtnCancelar = new Button();
+				BtnCancelar.Location = new System.Drawing.Point(198, 262);
+				BtnCancelar.Name = "BtnCancelar";
+				BtnCancelar.Size = new System.Drawing.Size(122, 48);
+				BtnCancelar.TabIndex = 11;
+				BtnCancelar.Text = "Cancelar";
+				BtnCancelar.UseVisualStyleBackColor = true;
+				BtnCancelar.Click += new System.EventHandler(button_Click);
+				this.Controls.Add(BtnCancelar);
+			}
+			else
+			{
+				TextBox TxtNome = new TextBox();
+				TxtNome.Location = new System.Drawing.Point(156, 80);
+				TxtNome.Name = "TxtNome";
+				TxtNome.Size = new System.Drawing.Size(135, 20);
+				TxtNome.TabIndex = 0;
+				TxtNome.Text = "TxtNome";
+				TxtNome.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtNome);
+
+				Label LblNome = new Label();
+				LblNome.AutoSize = true;
+				LblNome.Location = new System.Drawing.Point(51, 80);
+				LblNome.Name = "LblNome";
+				LblNome.Size = new System.Drawing.Size(43, 13);
+				LblNome.TabIndex = 1;
+				LblNome.Text = "Nomes:";
+				this.Controls.Add(LblNome);
+
+				ComboBox CmbFuncao = new ComboBox();
+				CmbFuncao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+				CmbFuncao.FormattingEnabled = true;
+				CmbFuncao.Location = new System.Drawing.Point(156, 39);
+				CmbFuncao.Name = "CmbFuncao";
+				CmbFuncao.Size = new System.Drawing.Size(135, 21);
+				CmbFuncao.TabIndex = 2;
+				this.Controls.Add(CmbFuncao);
+
+				Label LblFuncao = new Label();
+				LblFuncao.AutoSize = true;
+				LblFuncao.Location = new System.Drawing.Point(51, 42);
+				LblFuncao.Name = "LblFuncao";
+				LblFuncao.Size = new System.Drawing.Size(46, 13);
+				LblFuncao.TabIndex = 3;
+				LblFuncao.Text = "Função:";
+				this.Controls.Add(LblFuncao);
+
+				Label LblTelemovel = new Label();
+				LblTelemovel.AutoSize = true;
+				LblTelemovel.Location = new System.Drawing.Point(51, 126);
+				LblTelemovel.Name = "LblTelemovel";
+				LblTelemovel.Size = new System.Drawing.Size(56, 13);
+				LblTelemovel.TabIndex = 5;
+				LblTelemovel.Text = "Telemovel: ";
+				this.Controls.Add(LblTelemovel);
+
+				TextBox TxtTelemovel = new TextBox();
+				TxtTelemovel.Location = new System.Drawing.Point(156, 123);
+				TxtTelemovel.Name = "TxtTelemovel";
+				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
+				TxtTelemovel.TabIndex = 4;
+				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtTelemovel);
+
+				Label LblLogin = new Label();
+				LblLogin.AutoSize = true;
+				LblLogin.Location = new System.Drawing.Point(51, 171);
+				LblLogin.Name = "LblLogin";
+				LblLogin.Size = new System.Drawing.Size(82, 13);
+				LblLogin.TabIndex = 7;
+				LblLogin.Text = "Nome de Login:";
+				this.Controls.Add(LblLogin);
+
+				TextBox TxtLogin = new TextBox();
+				TxtLogin.Location = new System.Drawing.Point(156, 168);
+				TxtLogin.Name = "TxtLogin";
+				TxtLogin.Size = new System.Drawing.Size(135, 20);
+				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtLogin);
+
+				Label LblPass = new Label();
+				LblPass.AutoSize = true;
+				LblPass.Location = new System.Drawing.Point(51, 214);
+				LblPass.Name = "LblPass";
+				LblPass.Size = new System.Drawing.Size(53, 13);
+				LblPass.TabIndex = 9;
+				LblPass.Text = "Password: ";
+				this.Controls.Add(LblPass);
+
+				TextBox TxtPass = new TextBox();
+				TxtPass.Location = new System.Drawing.Point(156, 211);
+				TxtPass.Name = "TxtPass";
+				TxtPass.Size = new System.Drawing.Size(135, 20);
+				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
+				this.Controls.Add(TxtPass);
+
+				Button BtnGuardar = new Button();
+				BtnGuardar.Location = new System.Drawing.Point(22, 262);
+				BtnGuardar.Name = "BtnGuardar";
+				BtnGuardar.Size = new System.Drawing.Size(118, 48);
+				BtnGuardar.TabIndex = 10;
+				BtnGuardar.Text = "Guardar Alterações";
+				BtnGuardar.UseVisualStyleBackColor = true;
+				BtnGuardar.Click += new System.EventHandler(button_Click);
+				this.Controls.Add(BtnGuardar);
+
+				Button BtnCancelar = new Button();
+				BtnCancelar.Location = new System.Drawing.Point(198, 262);
+				BtnCancelar.Name = "BtnCancelar";
+				BtnCancelar.Size = new System.Drawing.Size(122, 48);
+				BtnCancelar.TabIndex = 11;
+				BtnCancelar.Text = "Cancelar";
+				BtnCancelar.UseVisualStyleBackColor = true;
+				BtnCancelar.Click += new System.EventHandler(button_Click);
+				this.Controls.Add(BtnCancelar);
+			}
 		}
 	}
 }

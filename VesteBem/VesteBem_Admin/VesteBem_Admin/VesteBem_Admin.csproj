@@ -53,6 +53,7 @@
     <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\CreateProdutos.cs" />
     <Compile Include="Class\Classes.cs" />
+    <Compile Include="Class\EncryptADeDecrypt.cs" />
     <Compile Include="FrmAddProdutos.cs">
       <SubType>Form</SubType>
     </Compile>

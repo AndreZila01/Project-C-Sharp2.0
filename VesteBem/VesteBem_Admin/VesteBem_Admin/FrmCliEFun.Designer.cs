@@ -32,9 +32,9 @@ namespace VesteBem_Admin
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.novosFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.panel1 = new System.Windows.Forms.Panel();
+			this.BgwCliente = new System.ComponentModel.BackgroundWorker();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -66,6 +66,14 @@ namespace VesteBem_Admin
 			this.funcionarioToolStripMenuItem.Text = "Funcionario";
 			this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
 			// 
+			// novosFuncionariosToolStripMenuItem
+			// 
+			this.novosFuncionariosToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.novosFuncionariosToolStripMenuItem.Name = "novosFuncionariosToolStripMenuItem";
+			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
+			this.novosFuncionariosToolStripMenuItem.Text = "Novos Funcionarios";
+			this.novosFuncionariosToolStripMenuItem.Visible = false;
+			// 
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
@@ -76,18 +84,10 @@ namespace VesteBem_Admin
 			this.panel1.TabIndex = 49;
 			this.panel1.Visible = false;
 			// 
-			// backgroundWorker1
+			// BgwCliente
 			// 
-			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-			// 
-			// novosFuncionariosToolStripMenuItem
-			// 
-			this.novosFuncionariosToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.novosFuncionariosToolStripMenuItem.Name = "novosFuncionariosToolStripMenuItem";
-			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
-			this.novosFuncionariosToolStripMenuItem.Text = "Novos Funcionarios";
-			this.novosFuncionariosToolStripMenuItem.Visible = false;
+			this.BgwCliente.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.BgwCliente.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
 			// FrmCliEFun
 			// 
@@ -113,7 +113,7 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
 		private System.Windows.Forms.Panel panel1;
-		private System.ComponentModel.BackgroundWorker backgroundWorker1;
+		private System.ComponentModel.BackgroundWorker BgwCliente;
 		private System.Windows.Forms.ToolStripMenuItem novosFuncionariosToolStripMenuItem;
 	}
 }

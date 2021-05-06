@@ -25,8 +25,8 @@ namespace VesteBem_Admin
 
 		private void FrmCliEFun_Load(object sender, EventArgs e)
 		{
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker1.RunWorkerAsync();
+			if (!BgwCliente.IsBusy)
+				BgwCliente.RunWorkerAsync();
 		}
 
 		private void ToolstripMenuItem_Click(object sender, EventArgs e)
@@ -128,7 +128,32 @@ namespace VesteBem_Admin
 
 		private void pctEditFun_Click(object sender, EventArgs e)
 		{
+			Cliente cli = new Cliente(); Funcionario fun = new Funcionario();
+			PictureBox pct = sender as PictureBox;
+			fun.IdFuncionario= lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].IdFuncionario;
+			fun.Id_Login = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Id_Login;
+			fun.Nome = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
+			fun.Telemovel = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telemovel;
+			fun.Funcao = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Funcao;
+			//cli.Nome = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
+			//cli.Sexo = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Sexo;
+			//cli.Telefone = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telefone;
+			//cli.Nif = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nif;
+			//cli.Morada = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
+			//cli.CodPostal = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].CodPostal;
+			//cli.DataNasc = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].DataNasc;
+			//cli.Email = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
+			//cli.Localidade = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Localidade;
+			//cli.Id_Login = int.Parse(pct.Tag.ToString());
+			//cli.Id_Cliente = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Id_Cliente;
 
+
+
+			FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
+			frm.ShowDialog();
+			lstFun.Clear();
+			lstFun = ConsultarFuncionarios.ConsultarFuncionario();
+			CreateObjectsCli();
 		}
 
 		private void CreateObjectsCli()
@@ -208,7 +233,7 @@ namespace VesteBem_Admin
 
 		private void pctEdit_Click(object sender, EventArgs e)
 		{
-			Cliente cli = new Cliente();
+			Cliente cli = new Cliente(); Funcionario fun = new Funcionario();
 			PictureBox pct = sender as PictureBox;
 			cli.Nome = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
 			cli.Sexo = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Sexo;
@@ -224,7 +249,7 @@ namespace VesteBem_Admin
 
 
 
-			FrmModificarCliFun frm = new FrmModificarCliFun(cli);
+			FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
 			frm.ShowDialog();
 			lstCli.Clear();
 			lstCli = ConsultaClientes.ConsultaCliente();
@@ -255,7 +280,7 @@ namespace VesteBem_Admin
 		{
 			lstCli = ConsultaClientes.ConsultaCliente();
 			lstFun = ConsultarFuncionarios.ConsultarFuncionario();
-			backgroundWorker1.DoWork += ToolstripMenuItem_Click;
+			BgwCliente.DoWork += ToolstripMenuItem_Click;
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
