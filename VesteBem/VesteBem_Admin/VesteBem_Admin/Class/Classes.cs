@@ -107,6 +107,10 @@ namespace VesteBem_Admin.Class
 		/// Telemovel do Funcionario
 		/// </summary>
 		public string Telemovel { get; set; }
+		/// <summary>
+		/// Password do Funcionario
+		/// </summary>
+		public string Pass { get; set; }
 		public int Id_Login { get; set; }
 	}
 }

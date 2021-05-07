@@ -34,10 +34,14 @@ namespace VesteBem_Admin
 			ToolStripMenuItem dss = sender as ToolStripMenuItem;
 			novosFuncionariosToolStripMenuItem.Visible = false;
 			if (dss.Text == "Cliente")
+			{
 				CreateObjectsCli();
+				this.Tag = "Cliente";
+			}
 			else
-				CreateObjectsFun(); 
-
+			{
+				CreateObjectsFun(); this.Tag = "Funcionario";
+			}
 
 		}
 		private void CreateObjectsFun()
@@ -130,7 +134,7 @@ namespace VesteBem_Admin
 		{
 			Cliente cli = new Cliente(); Funcionario fun = new Funcionario();
 			PictureBox pct = sender as PictureBox;
-			fun.IdFuncionario= lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].IdFuncionario;
+			fun.IdFuncionario = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].IdFuncionario;
 			fun.Id_Login = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Id_Login;
 			fun.Nome = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
 			fun.Telemovel = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telemovel;
@@ -153,7 +157,10 @@ namespace VesteBem_Admin
 			frm.ShowDialog();
 			lstFun.Clear();
 			lstFun = ConsultarFuncionarios.ConsultarFuncionario();
-			CreateObjectsCli();
+			if (this.Tag.ToString() == "Cliente")
+				CreateObjectsCli();
+			else
+				CreateObjectsFun();
 		}
 
 		private void CreateObjectsCli()

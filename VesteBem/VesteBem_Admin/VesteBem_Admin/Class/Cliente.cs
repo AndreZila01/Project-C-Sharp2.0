@@ -141,7 +141,7 @@ namespace VesteBem_Admin.Class
 		{
 			List<Funcionario> lstFun = new List<Funcionario>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Id_Login, Funcao From tbl_Funcionario, tblFuncao where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao", liga);
+			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Id_Login, Funcao, passw From tbl_Funcionario, tblFuncao, tbl_login where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao and tbl_login.Funcionario=1", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -156,6 +156,7 @@ namespace VesteBem_Admin.Class
 						fun.Id_Login = int.Parse(oReader["Id_Login"].ToString());
 						fun.Nome = oReader["Nome"].ToString();
 						fun.Telemovel = oReader["Telemovel"].ToString();
+						fun.Pass = oReader["Passw"].ToString();
 
 						lstFun.Add(fun);
 					}
@@ -173,6 +174,31 @@ namespace VesteBem_Admin.Class
 
 	public class ColectIdFun
 	{
+		public static List<string> SelectFuncao()
+		{
+			string nome = "";List<string> lst = new List<string>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("SELECT Funcao FROM tblFuncao", liga);
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						lst.Add(oReader["Funcao"].ToString());
+					}
+					liga.Close();
+				}
+			}
+			catch(Exception ex)
+			{
+				return null;
+			}
+
+			return lst;
+		}
 		public static string SelectName(int id_logi)
 		{
 			string nome = "";
@@ -201,7 +227,6 @@ namespace VesteBem_Admin.Class
 
 			return nome;
 		}
-
 		public static string SelectPass(int id_logi)
 		{
 			string pass = "";
@@ -217,7 +242,7 @@ namespace VesteBem_Admin.Class
 					{
 						Funcionario fun = new Funcionario();
 						pass = oReader["Usern"].ToString();
-						pass = EncryptADeDecrypt.EncryptRSA(pass);
+						//pass = EncryptADeDecrypt.EncryptRSA(pass);
 						liga.Close();
 						break;
 

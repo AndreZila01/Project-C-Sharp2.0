@@ -15,7 +15,7 @@ namespace VesteBem_Admin
 	public partial class FrmModificarCliFun : Form
 	{
 		List<Cliente> Lstcli = new List<Cliente>(); List<Funcionario> Lstfun = new List<Funcionario>();
-		Cliente Cli = new Cliente();
+		Cliente Cli = new Cliente(); Funcionario Fun = new Funcionario();
 		private const int CP_NOCLOSE_BUTTON = 0x200;
 		public FrmModificarCliFun(Cliente cli, Funcionario fun)
 		{
@@ -37,26 +37,41 @@ namespace VesteBem_Admin
 			TextBox Txt = sender as TextBox;
 			switch (Txt.Name)
 			{
-				case "txtNome":
+				case "TxtNomeCli":
 					Cli.Nome = Txt.Text;
 					break;
-				case "TxtNif":
+				case "TxtNifCli":
 					Cli.Nif = Txt.Text;
 					break;
-				case "TxtMorada":
+				case "TxtMoradaCli":
 					Cli.Morada = Txt.Text;
 					break;
-				case "TxtCod":
+				case "TxtCodCli":
 					Cli.CodPostal = Txt.Text;
 					break;
-				case "TxtTele":
+				case "TxtTeleCli":
 					Cli.Telefone = Txt.Text;
 					break;
-				case "TxtEmail":
+				case "TxtEmailCli":
 					Cli.Email = Txt.Text;
 					break;
-				case "TxtLoc":
+				case "TxtLocCli":
 					Cli.Localidade = Txt.Text;
+					break;
+				case "TxtNomeFun":
+					Fun.Nome = Txt.Text;
+					break;
+				case "CmbFuncaoFun":
+					Fun.Funcao = Txt.Text;
+					break;
+				case "TxtTelemovelFun":
+					Fun.Telemovel = Txt.Text;
+					break;
+				case "TxtLoginFun":
+					Fun.Id_Login = int.Parse(Txt.Tag.ToString());
+					break;
+				case "TxtPassFun":
+					Fun.Pass = Txt.Text;
 					break;
 			}
 		}
@@ -88,20 +103,19 @@ namespace VesteBem_Admin
 				case "Guardar":
 					Save();
 					break;
-				case "Cancel":
+				case "Cancelar":
 					Close();
 					break;
+
 			}
 		}
 
 		private void Save()
 		{
-
 			Cli.Icon = Lstcli[0].Icon;
 			Cli.Id_Login = Lstcli[0].Id_Login;
 			Cli.Id_Cliente = Lstcli[0].Id_Cliente;
 			string result = InsertClientes.InsertCliente(Cli);
-
 
 			if (result == "sucesso")
 				Close();
@@ -126,7 +140,7 @@ namespace VesteBem_Admin
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(127, 13);
 				TxtNome.MaxLength = 100;
-				TxtNome.Name = "txtNome";
+				TxtNome.Name = "TxtNomeCli";
 				TxtNome.Text = "TxtNome";
 				TxtNome.Size = new System.Drawing.Size(172, 20);
 				TxtNome.TabIndex = 0;
@@ -137,7 +151,7 @@ namespace VesteBem_Admin
 				TextBox TxtNif = new TextBox();
 				TxtNif.Location = new System.Drawing.Point(127, 65);
 				TxtNif.MaxLength = 9;
-				TxtNif.Name = "TxtNif";
+				TxtNif.Name = "TxtNifCli";
 				TxtNif.Text = "TxtNif";
 				TxtNif.Size = new System.Drawing.Size(172, 20);
 				TxtNif.TabIndex = 2;
@@ -148,7 +162,7 @@ namespace VesteBem_Admin
 				TextBox TxtMorada = new TextBox();
 				TxtMorada.Location = new System.Drawing.Point(127, 91);
 				TxtMorada.MaxLength = 250;
-				TxtMorada.Name = "TxtMorada";
+				TxtMorada.Name = "TxtMoradaCli";
 				TxtMorada.Text = "TxtMorada";
 				TxtMorada.Size = new System.Drawing.Size(172, 20);
 				TxtMorada.TabIndex = 3;
@@ -159,7 +173,7 @@ namespace VesteBem_Admin
 				TextBox TxtCod = new TextBox();
 				TxtCod.Location = new System.Drawing.Point(127, 117);
 				TxtCod.MaxLength = 8;
-				TxtCod.Name = "TxtCod";
+				TxtCod.Name = "TxtCodCli";
 				TxtCod.Text = "TxtCod";
 				TxtCod.Size = new System.Drawing.Size(172, 20);
 				TxtCod.TabIndex = 4;
@@ -170,7 +184,7 @@ namespace VesteBem_Admin
 				TextBox TxtTele = new TextBox();
 				TxtTele.Location = new System.Drawing.Point(127, 221);
 				TxtTele.MaxLength = 9;
-				TxtTele.Text = "TxtTele";
+				TxtTele.Text = "TxtTeleCli";
 				TxtTele.Name = "TxtTele";
 				TxtTele.Size = new System.Drawing.Size(172, 20);
 				TxtTele.TabIndex = 8;
@@ -181,7 +195,7 @@ namespace VesteBem_Admin
 				TextBox TxtEmail = new TextBox();
 				TxtEmail.Location = new System.Drawing.Point(127, 195);
 				TxtEmail.MaxLength = 300;
-				TxtEmail.Text = "TxtEmail";
+				TxtEmail.Text = "TxtEmailCli";
 				TxtEmail.Name = "TxtEmail";
 				TxtEmail.Size = new System.Drawing.Size(172, 20);
 				TxtEmail.TabIndex = 7;
@@ -192,7 +206,7 @@ namespace VesteBem_Admin
 				TextBox TxtLoc = new TextBox();
 				TxtLoc.Location = new System.Drawing.Point(127, 143);
 				TxtLoc.MaxLength = 100;
-				TxtLoc.Text = "TxtLoc";
+				TxtLoc.Text = "TxtLocCli";
 				TxtLoc.Name = "TxtLoc";
 				TxtLoc.Size = new System.Drawing.Size(172, 20);
 				TxtLoc.TabIndex = 5;
@@ -296,7 +310,7 @@ namespace VesteBem_Admin
 				BtnCancel.Name = "button2";
 				BtnCancel.Size = new System.Drawing.Size(145, 52);
 				BtnCancel.TabIndex = 20;
-				BtnCancel.Text = "Cancel";
+				BtnCancel.Text = "Cancelar";
 				BtnCancel.UseVisualStyleBackColor = true;
 				BtnCancel.Click += new System.EventHandler(button_Click);
 				this.Controls.Add(BtnCancel);
@@ -309,7 +323,7 @@ namespace VesteBem_Admin
 			"Feminino",
 			"Indefenido"});
 				CboSexo.Location = new System.Drawing.Point(127, 39);
-				CboSexo.Name = "CboSexo";
+				CboSexo.Name = "CboSexoCli";
 				CboSexo.Size = new System.Drawing.Size(172, 21);
 				CboSexo.TabIndex = 21;
 				CboSexo.Leave += new System.EventHandler(comboBox1_Leave);
@@ -346,7 +360,7 @@ namespace VesteBem_Admin
 
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(156, 80);
-				TxtNome.Name = "TxtNome";
+				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
 				TxtNome.Text = Lstfun[0].Nome;
@@ -357,10 +371,15 @@ namespace VesteBem_Admin
 				CmbFuncao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 				CmbFuncao.FormattingEnabled = true;
 				CmbFuncao.Location = new System.Drawing.Point(156, 39);
-				CmbFuncao.Name = "CmbFuncao";
-				CmbFuncao.SelectedItem = Lstfun[0].Funcao;
+				CmbFuncao.Name = "CmbFuncaoFun";
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
+				List<string> lst = ColectIdFun.SelectFuncao();
+				foreach (string ds in lst)
+				{
+					CmbFuncao.Items.Add(ds);
+				}
+				CmbFuncao.Text = Lstfun[0].Funcao;
 				this.Controls.Add(CmbFuncao);
 
 				Label LblFuncao = new Label();
@@ -383,7 +402,7 @@ namespace VesteBem_Admin
 
 				TextBox TxtTelemovel = new TextBox();
 				TxtTelemovel.Location = new System.Drawing.Point(156, 123);
-				TxtTelemovel.Name = "TxtTelemovel";
+				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
 				TxtTelemovel.TabIndex = 4;
 				TxtTelemovel.Text = Lstfun[0].Telemovel;
@@ -401,7 +420,8 @@ namespace VesteBem_Admin
 
 				TextBox TxtLogin = new TextBox();
 				TxtLogin.Location = new System.Drawing.Point(156, 168);
-				TxtLogin.Name = "TxtLogin";
+				TxtLogin.Name = "TxtLoginFun";
+				TxtLogin.Tag = "" + Lstfun[0].Id_Login;
 				TxtLogin.Text = ColectIdFun.SelectName(Lstfun[0].Id_Login);
 				TxtLogin.Size = new System.Drawing.Size(135, 20);
 				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
@@ -418,8 +438,8 @@ namespace VesteBem_Admin
 
 				TextBox TxtPass = new TextBox();
 				TxtPass.Location = new System.Drawing.Point(156, 211);
-				TxtPass.Name = "TxtPass";
-				TxtPass.Text = ColectIdFun.SelectPass(Lstfun[0].Id_Login);
+				TxtPass.Name = "TxtPassFun";
+				//TxtPass.Text = ;
 				TxtPass.Size = new System.Drawing.Size(135, 20);
 				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtPass);
@@ -448,7 +468,7 @@ namespace VesteBem_Admin
 			{
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(156, 80);
-				TxtNome.Name = "TxtNome";
+				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
 				TxtNome.Text = "TxtNome";
