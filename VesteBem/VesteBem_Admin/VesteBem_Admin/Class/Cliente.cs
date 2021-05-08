@@ -171,7 +171,82 @@ namespace VesteBem_Admin.Class
 		}
 
 	}
+	public class AtualizarFuncionarios
+	{
+		public static string AtualizarFuncionario(Funcionario fun)
+		{
+			SqlCommand command = new SqlCommand();
+			List<Funcionario> lstFun = new List<Funcionario>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
+			command.CommandText = "SPUpdateFuncionarios";
+			command.CommandType = System.Data.CommandType.StoredProcedure;
+			try
+			{
+				command.Parameters.Add(new SqlParameter("Id_Funcao", fun.Id_Login));
+				command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
+				command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
+				command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
+				command.Parameters.Add(new SqlParameter("UserN", EncryptADeDecrypt.EncryptRSA(fun.Nome)));
+				command.Parameters.Add(new SqlParameter("Passw", EncryptADeDecrypt.EncryptRSA(fun.Pass)));
+				//pass
+				//user
+
+				command.Connection = liga;
+
+				liga.Open();
+
+				command.ExecuteNonQuery();
+				return "sucesso";
+			}
+			catch (Exception ex)
+			{
+				return ex.Message;
+			}
+			finally
+			{
+				liga.Close();
+			}
+		}
+
+	}
+	public class InsertFuncionarios
+	{
+		public static string InsertFuncionario(Funcionario fun)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "SPAddFuncionarios";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+				try
+				{
+					command.Parameters.Add(new SqlParameter("Id_Funcao", fun.Id_Login));
+					command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
+					command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
+					command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
+					//pass
+					//user
+
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
+					return "sucesso";
+				}
+				catch (Exception ex)
+				{
+					return ex.Message;
+				}
+				finally
+				{
+					liga.Close();
+				}
+
+			}
+		}
+	}
 	public class ColectIdFun
 	{
 		public static List<string> SelectFuncao()

@@ -42,16 +42,19 @@ namespace VesteBem_Admin
 		{
 			if (TxtUser.Text != "" && TxtPass.Text != "")
 			{
+				string pass = "", user = "";
+				pass = EncryptADeDecrypt.EncryptRSA(TxtPass.Text);
+				user = EncryptADeDecrypt.EncryptRSA(TxtUser.Text);
 				command.Connection = liga;
 				liga.Open();
 				try
 				{
-					command.CommandText = "Select * fROM tbl_Login  where Usern='" + TxtUser.Text + "' and Passw='" + TxtPass.Text + "' and Funcionario=1";
+					command.CommandText = "Select * fROM tbl_Login  where Usern='" + user + "' and Passw='" + pass + "' and Funcionario=1";
 					dr = command.ExecuteReader();
 					if (dr.Read())
 					{
 						liga.Close();
-						FrmAdmin frm = new FrmAdmin(TxtUser.Text, TxtPass.Text);
+						FrmAdmin frm = new FrmAdmin(user,pass);
 						frm.Show();
 						this.Hide();
 					}

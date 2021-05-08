@@ -139,6 +139,7 @@ namespace VesteBem_Admin
 			fun.Nome = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
 			fun.Telemovel = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telemovel;
 			fun.Funcao = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Funcao;
+			fun.Pass = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Pass;
 			//cli.Nome = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
 			//cli.Sexo = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Sexo;
 			//cli.Telefone = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telefone;

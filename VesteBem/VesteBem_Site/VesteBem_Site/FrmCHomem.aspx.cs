@@ -23,7 +23,7 @@ namespace VesteBem
 
         protected void lblCalcas_Click(object sender, EventArgs e)
         {
-            GridCalcas.Visible = true;
+            //GridCalcas.Visible = true;
             
         }
         protected void lblPijama_Click(object sender, EventArgs e)

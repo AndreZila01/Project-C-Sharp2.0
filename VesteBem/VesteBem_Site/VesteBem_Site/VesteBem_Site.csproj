@@ -98,6 +98,7 @@
     <Content Include="Resources\user.png" />
     <Content Include="RegistoCliente.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Teste.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\LoginAndRegist.cs" />
@@ -151,6 +152,12 @@
     </Compile>
     <Compile Include="RegistoCliente.aspx.designer.cs">
       <DependentUpon>RegistoCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teste.aspx.cs">
+      <DependentUpon>Teste.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Teste.aspx.designer.cs">
+      <DependentUpon>Teste.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -85,7 +85,10 @@ namespace VesteBem_Admin
 		private void comboBox1_Leave(object sender, EventArgs e)
 		{
 			ComboBox Cbo = sender as ComboBox;
-			Cli.Sexo= Cbo.Text.Substring(0, 1);
+			if (Cbo.Name == "CboSexoCli")
+				Cli.Sexo = Cbo.Text.Substring(0, 1);
+			else
+				Fun.Funcao = Cbo.Text;
 		}
 
 		private void dateTimePicker1_Leave(object sender, EventArgs e)
@@ -101,16 +104,34 @@ namespace VesteBem_Admin
 			switch (btn.Text)
 			{
 				case "Guardar":
-					Save();
+					SaveCli();
 					break;
 				case "Cancelar":
 					Close();
+					break;
+				case "Guardar Alterações":
+					SaveFun();
 					break;
 
 			}
 		}
 
-		private void Save()
+		private void SaveFun()
+		{
+			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
+			string result = AtualizarFuncionarios.AtualizarFuncionario(Fun);
+
+			if (result == "sucesso")
+				Close();
+			else
+				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+			{
+				Close();
+
+			}
+		}
+
+		private void SaveCli()
 		{
 			Cli.Icon = Lstcli[0].Icon;
 			Cli.Id_Login = Lstcli[0].Id_Login;
@@ -363,7 +384,8 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text = Lstfun[0].Nome;
+				TxtNome.Text = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Nome);
+				Fun.Nome = EncryptADeDecrypt.DecryptRSA((Lstfun[0].Nome));
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -375,11 +397,13 @@ namespace VesteBem_Admin
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
 				List<string> lst = ColectIdFun.SelectFuncao();
+				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
 				foreach (string ds in lst)
 				{
 					CmbFuncao.Items.Add(ds);
 				}
 				CmbFuncao.Text = Lstfun[0].Funcao;
+				Fun.Funcao = Lstfun[0].Funcao;
 				this.Controls.Add(CmbFuncao);
 
 				Label LblFuncao = new Label();
@@ -405,6 +429,7 @@ namespace VesteBem_Admin
 				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
 				TxtTelemovel.TabIndex = 4;
+				Fun.Telemovel = Lstfun[0].Telemovel;
 				TxtTelemovel.Text = Lstfun[0].Telemovel;
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTelemovel);
@@ -422,6 +447,7 @@ namespace VesteBem_Admin
 				TxtLogin.Location = new System.Drawing.Point(156, 168);
 				TxtLogin.Name = "TxtLoginFun";
 				TxtLogin.Tag = "" + Lstfun[0].Id_Login;
+				Fun.Id_Login = Lstfun[0].Id_Login;
 				TxtLogin.Text = ColectIdFun.SelectName(Lstfun[0].Id_Login);
 				TxtLogin.Size = new System.Drawing.Size(135, 20);
 				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
@@ -439,7 +465,8 @@ namespace VesteBem_Admin
 				TextBox TxtPass = new TextBox();
 				TxtPass.Location = new System.Drawing.Point(156, 211);
 				TxtPass.Name = "TxtPassFun";
-				//TxtPass.Text = ;
+				TxtPass.Text = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Pass);
+				Fun.Pass = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Pass);
 				TxtPass.Size = new System.Drawing.Size(135, 20);
 				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtPass);
