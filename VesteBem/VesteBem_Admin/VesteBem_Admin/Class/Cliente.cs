@@ -62,13 +62,17 @@ namespace VesteBem_Admin.Class
 						ds++;
 						lstcliclidoutors.Add(cli);
 					}
-					liga.Close();
 				}
 			}
 			catch (Exception ex)
 			{
 
 			}
+			finally
+			{
+				liga.Close();
+			}
+
 			return lstcliclidoutors;
 		}
 	}
@@ -141,7 +145,7 @@ namespace VesteBem_Admin.Class
 		{
 			List<Funcionario> lstFun = new List<Funcionario>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Id_Login, Funcao, passw From tbl_Funcionario, tblFuncao, tbl_login where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao and tbl_login.Funcionario=1", liga);
+			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Usern, Id_Login, Funcao, passw From tbl_Funcionario, tblFuncao, tbl_login where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao and tbl_login.Funcionario=1", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -156,16 +160,20 @@ namespace VesteBem_Admin.Class
 						fun.Id_Login = int.Parse(oReader["Id_Login"].ToString());
 						fun.Nome = oReader["Nome"].ToString();
 						fun.Telemovel = oReader["Telemovel"].ToString();
-						fun.Pass = oReader["Passw"].ToString();
+						fun.Username = EncryptADeDecrypt.DecryptOther(oReader["Usern"].ToString());
+						fun.Pass = EncryptADeDecrypt.DecryptRSA(oReader["Passw"].ToString());
 
 						lstFun.Add(fun);
 					}
-					liga.Close();
 				}
 			}
 			catch (Exception ex)
 			{
 
+			}
+			finally
+			{
+				liga.Close();
 			}
 			return lstFun;
 		}
@@ -183,12 +191,14 @@ namespace VesteBem_Admin.Class
 			command.CommandType = System.Data.CommandType.StoredProcedure;
 			try
 			{
+				string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+				string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
 				command.Parameters.Add(new SqlParameter("Id_Funcao", fun.Id_Login));
 				command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
 				command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
 				command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
-				command.Parameters.Add(new SqlParameter("UserN", EncryptADeDecrypt.EncryptRSA(fun.Nome)));
-				command.Parameters.Add(new SqlParameter("Passw", EncryptADeDecrypt.EncryptRSA(fun.Pass)));
+				command.Parameters.Add(new SqlParameter("UserN", user));
+				command.Parameters.Add(new SqlParameter("Passw", pass));
 				//pass
 				//user
 

@@ -42,21 +42,23 @@ namespace VesteBem_Admin
 		{
 			if (TxtUser.Text != "" && TxtPass.Text != "")
 			{
-				string pass = "", user = "";
-				pass = EncryptADeDecrypt.EncryptRSA(TxtPass.Text);
-				user = EncryptADeDecrypt.EncryptRSA(TxtUser.Text);
+				string pass = TxtPass.Text, user = "";
+				user = EncryptADeDecrypt.EncryptOther(TxtUser.Text);
 				command.Connection = liga;
 				liga.Open();
 				try
 				{
-					command.CommandText = "Select * fROM tbl_Login  where Usern='" + user + "' and Passw='" + pass + "' and Funcionario=1";
+					command.CommandText = "Select * fROM tbl_Login where Funcionario=1 and Usern='"+user+"'";
 					dr = command.ExecuteReader();
 					if (dr.Read())
 					{
-						liga.Close();
-						FrmAdmin frm = new FrmAdmin(user,pass);
-						frm.Show();
-						this.Hide();
+						if (pass == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()))
+						{
+							liga.Close();
+							FrmAdmin frm = new FrmAdmin(user, pass);
+							frm.Show();
+							this.Hide();
+						}
 					}
 					else
 						MessageBox.Show("Login sem sucesso!\nCertifique se a password e username está correto!", "Error Login", MessageBoxButtons.OK, MessageBoxIcon.Error);

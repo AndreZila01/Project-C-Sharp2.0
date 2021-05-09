@@ -111,6 +111,10 @@ namespace VesteBem_Admin.Class
 		/// Password do Funcionario
 		/// </summary>
 		public string Pass { get; set; }
+		/// <summary>
+		/// Username do Funcionario
+		/// </summary>
+		public string Username { get; set; }
 		public int Id_Login { get; set; }
 	}
 }

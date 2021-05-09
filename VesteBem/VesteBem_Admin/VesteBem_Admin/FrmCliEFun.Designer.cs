@@ -98,6 +98,7 @@ namespace VesteBem_Admin
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FrmCliEFun";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmCliEFun";
 			this.Load += new System.EventHandler(this.FrmCliEFun_Load);
 			this.SizeChanged += new System.EventHandler(this.FrmCliEFun_SizeChanged);

@@ -119,6 +119,7 @@ namespace VesteBem_Admin
 		private void SaveFun()
 		{
 			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
+			Fun.Id_Login = Lstfun[0].Id_Login;
 			string result = AtualizarFuncionarios.AtualizarFuncionario(Fun);
 
 			if (result == "sucesso")
@@ -384,8 +385,8 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Nome);
-				Fun.Nome = EncryptADeDecrypt.DecryptRSA((Lstfun[0].Nome));
+				TxtNome.Text =Lstfun[0].Nome;
+				Fun.Nome = Lstfun[0].Nome;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -446,9 +447,9 @@ namespace VesteBem_Admin
 				TextBox TxtLogin = new TextBox();
 				TxtLogin.Location = new System.Drawing.Point(156, 168);
 				TxtLogin.Name = "TxtLoginFun";
-				TxtLogin.Tag = "" + Lstfun[0].Id_Login;
-				Fun.Id_Login = Lstfun[0].Id_Login;
-				TxtLogin.Text = ColectIdFun.SelectName(Lstfun[0].Id_Login);
+				TxtLogin.Tag = "" + Lstfun[0].Username;
+				Fun.Username = Lstfun[0].Username;
+				TxtLogin.Text = Lstfun[0].Username.ToString();
 				TxtLogin.Size = new System.Drawing.Size(135, 20);
 				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtLogin);
@@ -465,8 +466,8 @@ namespace VesteBem_Admin
 				TextBox TxtPass = new TextBox();
 				TxtPass.Location = new System.Drawing.Point(156, 211);
 				TxtPass.Name = "TxtPassFun";
-				TxtPass.Text = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Pass);
-				Fun.Pass = EncryptADeDecrypt.DecryptRSA(Lstfun[0].Pass);
+				TxtPass.Text = Lstfun[0].Pass;
+				Fun.Pass = Lstfun[0].Pass;
 				TxtPass.Size = new System.Drawing.Size(135, 20);
 				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtPass);
