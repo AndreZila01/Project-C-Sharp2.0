@@ -68,7 +68,7 @@ namespace VesteBem_Admin
 					Fun.Telemovel = Txt.Text;
 					break;
 				case "TxtLoginFun":
-					Fun.Id_Login = int.Parse(Txt.Tag.ToString());
+					Fun.Username = Txt.Text;
 					break;
 				case "TxtPassFun":
 					Fun.Pass = Txt.Text;
@@ -88,7 +88,12 @@ namespace VesteBem_Admin
 			if (Cbo.Name == "CboSexoCli")
 				Cli.Sexo = Cbo.Text.Substring(0, 1);
 			else
+			{
 				Fun.Funcao = Cbo.Text;
+				if (Cbo.Name == "CmbFuncao")
+					Fun.IdFuncionario = Cbo.SelectedIndex;
+			}
+
 		}
 
 		private void dateTimePicker1_Leave(object sender, EventArgs e)
@@ -112,6 +117,24 @@ namespace VesteBem_Admin
 				case "Guardar Alterações":
 					SaveFun();
 					break;
+				case "Criar Novo Funcionario":
+					SaveNewFun();
+					break;
+
+			}
+		}
+		private void SaveNewFun()
+		{
+			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
+			Fun.Id_Login = Lstfun[0].Id_Login;
+			string result = Funcionarios.InsertFuncionario(Fun);
+
+			if (result == "sucesso")
+				Close();
+			else
+				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+			{
+				Close();
 
 			}
 		}
@@ -120,7 +143,7 @@ namespace VesteBem_Admin
 		{
 			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
 			Fun.Id_Login = Lstfun[0].Id_Login;
-			string result = AtualizarFuncionarios.AtualizarFuncionario(Fun);
+			string result = Funcionarios.InsertFuncionario(Fun);
 
 			if (result == "sucesso")
 				Close();
@@ -137,21 +160,20 @@ namespace VesteBem_Admin
 			Cli.Icon = Lstcli[0].Icon;
 			Cli.Id_Login = Lstcli[0].Id_Login;
 			Cli.Id_Cliente = Lstcli[0].Id_Cliente;
-			string result = InsertClientes.InsertCliente(Cli);
+			string result = Clientes.InsertCliente(Cli);
 
 			if (result == "sucesso")
 				Close();
 			else
-				if (MessageBox.Show("" + result +"\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
-				{
+				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
 					Close();
-					
-				}
+
+
 		}
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
 		{
-			
+
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -163,7 +185,6 @@ namespace VesteBem_Admin
 				TxtNome.Location = new System.Drawing.Point(127, 13);
 				TxtNome.MaxLength = 100;
 				TxtNome.Name = "TxtNomeCli";
-				TxtNome.Text = "TxtNome";
 				TxtNome.Size = new System.Drawing.Size(172, 20);
 				TxtNome.TabIndex = 0;
 				TxtNome.Text = Lstcli[0].Nome;
@@ -385,7 +406,7 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text =Lstfun[0].Nome;
+				TxtNome.Text = Lstfun[0].Nome;
 				Fun.Nome = Lstfun[0].Nome;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
@@ -499,7 +520,6 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text = "TxtNome";
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -519,6 +539,14 @@ namespace VesteBem_Admin
 				CmbFuncao.Name = "CmbFuncao";
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
+				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
+				List<string> lst = ColectIdFun.SelectFuncao();
+				foreach (string ds in lst)
+				{
+					CmbFuncao.Items.Add(ds);
+				}
+				CmbFuncao.Text = Lstfun[0].Funcao;
+				Fun.Funcao = Lstfun[0].Funcao;
 				this.Controls.Add(CmbFuncao);
 
 				Label LblFuncao = new Label();
@@ -541,7 +569,7 @@ namespace VesteBem_Admin
 
 				TextBox TxtTelemovel = new TextBox();
 				TxtTelemovel.Location = new System.Drawing.Point(156, 123);
-				TxtTelemovel.Name = "TxtTelemovel";
+				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
 				TxtTelemovel.TabIndex = 4;
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
@@ -558,7 +586,7 @@ namespace VesteBem_Admin
 
 				TextBox TxtLogin = new TextBox();
 				TxtLogin.Location = new System.Drawing.Point(156, 168);
-				TxtLogin.Name = "TxtLogin";
+				TxtLogin.Name = "TxtLoginFun";
 				TxtLogin.Size = new System.Drawing.Size(135, 20);
 				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtLogin);
@@ -574,17 +602,17 @@ namespace VesteBem_Admin
 
 				TextBox TxtPass = new TextBox();
 				TxtPass.Location = new System.Drawing.Point(156, 211);
-				TxtPass.Name = "TxtPass";
+				TxtPass.Name = "TxtPassFun";
 				TxtPass.Size = new System.Drawing.Size(135, 20);
 				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtPass);
 
 				Button BtnGuardar = new Button();
 				BtnGuardar.Location = new System.Drawing.Point(22, 262);
-				BtnGuardar.Name = "BtnGuardar";
+				BtnGuardar.Name = "BtnGuardarNew";
 				BtnGuardar.Size = new System.Drawing.Size(118, 48);
 				BtnGuardar.TabIndex = 10;
-				BtnGuardar.Text = "Guardar Alterações";
+				BtnGuardar.Text = "Criar Novo Funcionario";
 				BtnGuardar.UseVisualStyleBackColor = true;
 				BtnGuardar.Click += new System.EventHandler(button_Click);
 				this.Controls.Add(BtnGuardar);

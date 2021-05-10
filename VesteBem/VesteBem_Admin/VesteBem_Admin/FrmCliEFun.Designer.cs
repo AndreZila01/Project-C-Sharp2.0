@@ -73,6 +73,7 @@ namespace VesteBem_Admin
 			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
 			this.novosFuncionariosToolStripMenuItem.Text = "Novos Funcionarios";
 			this.novosFuncionariosToolStripMenuItem.Visible = false;
+			this.novosFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
 			// 
 			// panel1
 			// 

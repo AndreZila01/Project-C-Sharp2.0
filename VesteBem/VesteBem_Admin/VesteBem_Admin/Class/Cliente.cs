@@ -11,10 +11,11 @@ using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin.Class
 {
-	public class ConsultaClientes
+	public class Clientes
 	{
 		public static List<Cliente> ConsultaCliente()
 		{
@@ -64,7 +65,7 @@ namespace VesteBem_Admin.Class
 					}
 				}
 			}
-			catch (Exception ex)
+			catch
 			{
 
 			}
@@ -75,9 +76,6 @@ namespace VesteBem_Admin.Class
 
 			return lstcliclidoutors;
 		}
-	}
-	public class InsertClientes
-	{
 		public static string InsertCliente(Cliente cli)
 		{
 			SqlCommand command = new SqlCommand();
@@ -113,9 +111,6 @@ namespace VesteBem_Admin.Class
 
 			}
 		}
-	}
-	public class ApagarClientes
-	{
 		public static string ApagarCliente(int id_Cli, string Nome)
 		{
 			SqlCommand command = new SqlCommand();
@@ -139,7 +134,7 @@ namespace VesteBem_Admin.Class
 			}
 		}
 	}
-	public class ConsultarFuncionarios
+	public class Funcionarios
 	{
 		public static List<Funcionario> ConsultarFuncionario()
 		{
@@ -167,7 +162,7 @@ namespace VesteBem_Admin.Class
 					}
 				}
 			}
-			catch (Exception ex)
+			catch
 			{
 
 			}
@@ -177,10 +172,6 @@ namespace VesteBem_Admin.Class
 			}
 			return lstFun;
 		}
-
-	}
-	public class AtualizarFuncionarios
-	{
 		public static string AtualizarFuncionario(Funcionario fun)
 		{
 			SqlCommand command = new SqlCommand();
@@ -199,8 +190,6 @@ namespace VesteBem_Admin.Class
 				command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
 				command.Parameters.Add(new SqlParameter("UserN", user));
 				command.Parameters.Add(new SqlParameter("Passw", pass));
-				//pass
-				//user
 
 				command.Connection = liga;
 
@@ -219,30 +208,60 @@ namespace VesteBem_Admin.Class
 			}
 		}
 
-	}
-	public class InsertFuncionarios
-	{
 		public static string InsertFuncionario(Funcionario fun)
 		{
-			SqlCommand command = new SqlCommand();
+
 			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 			{
-				command.CommandText = "SPAddFuncionarios";
+				SqlCommand command = new SqlCommand();
+				command.CommandText = "SpInsertLogin";
 				command.CommandType = System.Data.CommandType.StoredProcedure;
 				try
 				{
-					command.Parameters.Add(new SqlParameter("Id_Funcao", fun.Id_Login));
-					command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
-					command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
-					command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
-					//pass
-					//user
+					liga.Open();
+					string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+					string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
+					command.Parameters.Add(new SqlParameter("UserN", user));
+					command.Parameters.Add(new SqlParameter("Passw", pass));
+					command.Parameters.Add(new SqlParameter("Funcionario", "1"));
+
 
 					command.Connection = liga;
-
-					liga.Open();
-
 					command.ExecuteNonQuery();
+				}
+				catch (Exception ex)
+				{
+					return ex.Message;
+				}
+				finally
+				{
+					liga.Close();
+				}
+
+			}
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				SqlCommand command = new SqlCommand();
+				command.CommandText = "SpInsertLogin";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+				try
+				{
+					liga.Open();
+					string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+					string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
+
+					command.CommandText = "SPInsertFuncionarios";
+					command.CommandType = System.Data.CommandType.StoredProcedure;
+					//(@Id_Funcao int, @Nome varchar(100), @Telemovel varchar(9), @Id_Login int)
+					int id = ColectIdFun.SelectId(user, pass);
+					command.Parameters.Add(new SqlParameter("Id_Funcao", (fun.IdFuncionario + 1)));
+					command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
+					command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
+					command.Parameters.Add(new SqlParameter("Id_Login", id));
+
+					command.Connection = liga;
+					command.ExecuteNonQuery();
+
 					return "sucesso";
 				}
 				catch (Exception ex)
@@ -257,89 +276,119 @@ namespace VesteBem_Admin.Class
 			}
 		}
 	}
-	public class ColectIdFun
+}
+public class ColectIdFun
+{
+	public static List<string> SelectFuncao()
 	{
-		public static List<string> SelectFuncao()
+		List<string> lst = new List<string>();
+		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+		SqlCommand comando = new SqlCommand("SELECT Funcao FROM tblFuncao", liga);
+		try
 		{
-			string nome = "";List<string> lst = new List<string>();
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("SELECT Funcao FROM tblFuncao", liga);
-			try
+			comando.Connection = liga;
+			liga.Open();
+			using (SqlDataReader oReader = comando.ExecuteReader())
 			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
+				while (oReader.Read())
 				{
-					while (oReader.Read())
-					{
-						lst.Add(oReader["Funcao"].ToString());
-					}
+					lst.Add(oReader["Funcao"].ToString());
+				}
+				liga.Close();
+			}
+		}
+		catch
+		{
+			return null;
+		}
+
+		return lst;
+	}
+	public static string SelectName(int id_logi)
+	{
+		string nome = "";
+		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+		SqlCommand comando = new SqlCommand("Select Usern From tbl_Funcionario, tbl_login where tbl_Funcionario.Id_Login = tbl_login.IdLogin", liga);
+		try
+		{
+			comando.Connection = liga;
+			liga.Open();
+			using (SqlDataReader oReader = comando.ExecuteReader())
+			{
+				while (oReader.Read())
+				{
+					Funcionario fun = new Funcionario();
+					nome = oReader["Usern"].ToString();
 					liga.Close();
+					break;
+
 				}
 			}
-			catch(Exception ex)
-			{
-				return null;
-			}
-
-			return lst;
 		}
-		public static string SelectName(int id_logi)
+		catch
 		{
-			string nome = "";
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select Usern From tbl_Funcionario, tbl_login where tbl_Funcionario.Id_Login = tbl_login.IdLogin", liga);
-			try
-			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
-				{
-					while (oReader.Read())
-					{
-						Funcionario fun = new Funcionario();
-						nome = oReader["Usern"].ToString();
-						liga.Close();
-						break;
+			return null;
+		}
 
-					}
+		return nome;
+	}
+	public static string SelectPass(int id_logi)
+	{
+		string pass = "";
+		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+		SqlCommand comando = new SqlCommand("Select Usern From tbl_Funcionario, tbl_login where tbl_Funcionario.Id_Login = tbl_login.IdLogin", liga);
+		try
+		{
+			comando.Connection = liga;
+			liga.Open();
+			using (SqlDataReader oReader = comando.ExecuteReader())
+			{
+				while (oReader.Read())
+				{
+					Funcionario fun = new Funcionario();
+					pass = oReader["Usern"].ToString();
+					//pass = EncryptADeDecrypt.EncryptRSA(pass);
+					liga.Close();
+					break;
+
 				}
 			}
-			catch
-			{
-				return null;
-			}
-
-			return nome;
 		}
-		public static string SelectPass(int id_logi)
+		catch
 		{
-			string pass = "";
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select Usern From tbl_Funcionario, tbl_login where tbl_Funcionario.Id_Login = tbl_login.IdLogin", liga);
-			try
+			return null;
+		}
+		return pass;
+	}
+	public static int SelectId(string user, string pass)
+	{
+		int id = 0;
+		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+		SqlCommand comando = new SqlCommand("Select [IdLogin], passW From [tbl_login] where Usern='" + user + "'", liga);
+		try
+		{
+			comando.Connection = liga;
+			liga.Open();
+			using (SqlDataReader oReader = comando.ExecuteReader())
 			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
+				while (oReader.Read())
 				{
-					while (oReader.Read())
+					if (EncryptADeDecrypt.DecryptRSA(pass) == EncryptADeDecrypt.DecryptRSA(oReader["passW"].ToString()))
 					{
 						Funcionario fun = new Funcionario();
-						pass = oReader["Usern"].ToString();
+						id = int.Parse(oReader["IdLogin"].ToString());
 						//pass = EncryptADeDecrypt.EncryptRSA(pass);
 						liga.Close();
 						break;
-
 					}
 				}
 			}
-			catch
-			{
-				return null;
-			}
-			return pass;
 		}
-
+		catch
+		{
+			return 0;
+		}
+		return id;
 	}
+
 }

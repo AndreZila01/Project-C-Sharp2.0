@@ -39,8 +39,17 @@ namespace VesteBem_Admin
 				this.Tag = "Cliente";
 			}
 			else
+			if(dss.Text=="Funcionario")
 			{
 				CreateObjectsFun(); this.Tag = "Funcionario";
+			}
+			else
+			{
+				Cliente cli = new Cliente(); Funcionario fun = new Funcionario();
+				CreateObjectsFun(); this.Tag = "New Funcionario";
+				FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
+				frm.ShowDialog();
+				lstFun.Clear();
 			}
 
 		}
@@ -127,7 +136,7 @@ namespace VesteBem_Admin
 			if (Pct.Name == "pctRemoveU")
 				name = lstCli[0].Nome;
 
-			string ds = ApagarClientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name);
+			string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name);
 		}
 
 		private void pctEditFun_Click(object sender, EventArgs e)
@@ -158,7 +167,7 @@ namespace VesteBem_Admin
 			FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
 			frm.ShowDialog();
 			lstFun.Clear();
-			lstFun = ConsultarFuncionarios.ConsultarFuncionario();
+			lstFun = Funcionarios.ConsultarFuncionario();
 			if (this.Tag.ToString() == "Cliente")
 				CreateObjectsCli();
 			else
@@ -261,7 +270,7 @@ namespace VesteBem_Admin
 			FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
 			frm.ShowDialog();
 			lstCli.Clear();
-			lstCli = ConsultaClientes.ConsultaCliente();
+			lstCli = Clientes.ConsultaCliente();
 			CreateObjectsCli();
 
 		}
@@ -287,8 +296,8 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
 		{
-			lstCli = ConsultaClientes.ConsultaCliente();
-			lstFun = ConsultarFuncionarios.ConsultarFuncionario();
+			lstCli = Clientes.ConsultaCliente();
+			lstFun = Funcionarios.ConsultarFuncionario();
 			BgwCliente.DoWork += ToolstripMenuItem_Click;
 		}
 
