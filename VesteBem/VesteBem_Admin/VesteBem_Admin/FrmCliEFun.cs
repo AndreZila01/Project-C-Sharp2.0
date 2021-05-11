@@ -305,5 +305,11 @@ namespace VesteBem_Admin
 		{
 
 		}
+
+		private void FrmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			//FrmAdmin frm.WindowState = FormWindowState.Normal;
+			//se fechar este form tirar o minimize do formadmin e mostrar ao utilizador
+		}
 	}
 }

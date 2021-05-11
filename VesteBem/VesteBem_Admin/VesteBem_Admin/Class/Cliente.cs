@@ -140,7 +140,7 @@ namespace VesteBem_Admin.Class
 		{
 			List<Funcionario> lstFun = new List<Funcionario>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Usern, Id_Login, Funcao, passw From tbl_Funcionario, tblFuncao, tbl_login where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao and tbl_login.Funcionario=1", liga);
+			SqlCommand comando = new SqlCommand("Select IdFuncionario, Nome, Telemovel, Usern, Id_Login, Funcao, passw From tbl_Funcionario, tblFuncao, tbl_login where tbl_Funcionario.Id_Funcao=tblFuncao.IdFuncao and tbl_login.Funcionario=1 and tbl_Funcionario.Id_Login=tbl_login.IdLogin", liga);
 			try
 			{
 				comando.Connection = liga;

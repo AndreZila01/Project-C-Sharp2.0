@@ -101,6 +101,7 @@ namespace VesteBem_Admin
 			this.Name = "FrmCliEFun";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmCliEFun";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCliEFun_FormClosed);
 			this.Load += new System.EventHandler(this.FrmCliEFun_Load);
 			this.SizeChanged += new System.EventHandler(this.FrmCliEFun_SizeChanged);
 			this.menuStrip1.ResumeLayout(false);

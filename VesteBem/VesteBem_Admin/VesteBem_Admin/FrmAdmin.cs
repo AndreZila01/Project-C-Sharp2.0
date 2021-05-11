@@ -36,15 +36,13 @@ namespace VesteBem_Admin
 					frms.Show();
 					break;
 			}
+			this.WindowState = FormWindowState.Minimized;
 		}
 
 		private void FrmAdmin_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			Application.Exit();
 		}
-
-		
-
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
 
