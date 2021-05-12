@@ -30,7 +30,7 @@ namespace VesteBem_Admin.Class
 					byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
 
 					command.Parameters.Add(new SqlParameter("Nome", produtos.Nome));
-					command.Parameters.Add(new SqlParameter("Valor", produtos.valor));
+					command.Parameters.Add(new SqlParameter("Valor", produtos.Valor));
 					command.Parameters.Add(new SqlParameter("NomedaEmpresa", produtos.NomedaEmpresa));
 					command.Parameters.Add(new SqlParameter("CategoriaClasse", produtos.CategoriaClass));
 					command.Parameters.Add(new SqlParameter("CategoriaSubClasse", produtos.CategoriaSubClass));

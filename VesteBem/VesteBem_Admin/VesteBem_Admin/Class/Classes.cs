@@ -64,13 +64,17 @@ namespace VesteBem_Admin.Class
 	}
 	public class Produtos
 	{/// <summary>
-	 /// Nome do Produto
+	 /// Id do Produto
 	 /// </summary>
+		public int IdProduto { get; set; }
+		/// <summary>
+		/// Nome do Produto
+		/// </summary>
 		public string Nome { get; set; }
 		/// <summary>
 		/// valor do Produto
 		/// </summary>
-		public double valor { get; set; }
+		public double Valor { get; set; }
 		/// <summary>
 		/// Nome da Empresa
 		/// </summary>

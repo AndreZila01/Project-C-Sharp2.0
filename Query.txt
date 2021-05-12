@@ -43,7 +43,7 @@ IdProduto int identity(1,1) primary key,
 Nome varchar(100) not null,
 Valor Decimal(7,2) not null,
 NomedaEmpresa varchar(100) not null,
-CategoriaClasse varchar(100), -- Setor Calças, Sapatos, Acessórios
+CategoriaClasse varchar(100), -- Setor Calï¿½as, Sapatos, Acessï¿½rios
 CategoriaSubClasse varchar(100), -- Tenis, botas, roupa desportiva
 Sexo varchar(1) not null,
 Icon Image not null
@@ -105,5 +105,10 @@ CREATE PROCEDURE SpInsertLogin
 AS
 BEGIN
 SET NOCOUNT ON
-
 End
+
+  Insert into tblEstado(Estado) values('Entregue')
+   Insert into tblEstado(Estado) values('Na Fabrica')
+    Insert into tblEstado(Estado) values('Nos CTT')
+	 Insert into tblEstado(Estado) values('A caminho de casa')
+	  Insert into tblEstado(Estado) values('Limpeza da embalagem')

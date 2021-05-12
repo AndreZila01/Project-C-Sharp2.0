@@ -50,7 +50,7 @@ namespace VesteBem_Admin
 					produtos.Nome = TxtNome.Text;
 					produtos.NomedaEmpresa = TxtEmpresa.Text;
 					produtos.Sexo = comboBox1.Text.Substring(0, 1);
-					produtos.valor = double.Parse(TxtValor.Text);
+					produtos.Valor = double.Parse(TxtValor.Text);
 					produtos.CategoriaClass = TxtCat.Text;
 					produtos.CategoriaSubClass = TxtSubCat.Text;
 					produtos.Icon = TxtIcon.Text;

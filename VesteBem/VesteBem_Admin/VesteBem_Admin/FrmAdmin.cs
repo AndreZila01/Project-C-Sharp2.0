@@ -35,6 +35,10 @@ namespace VesteBem_Admin
 					FrmCliEFun frms = new FrmCliEFun();
 					frms.Show();
 					break;
+				case "Adicionar Carrinho":
+					FrmCarrinho frmss = new FrmCarrinho();
+					frmss.Show();
+					break;
 			}
 			this.WindowState = FormWindowState.Minimized;
 		}
@@ -45,7 +49,7 @@ namespace VesteBem_Admin
 		}
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
-
+			
 		}
 	}
 }

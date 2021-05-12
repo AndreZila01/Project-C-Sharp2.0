@@ -50,6 +50,8 @@ namespace VesteBem_Admin
 				FrmModificarCliFun frm = new FrmModificarCliFun(cli, fun);
 				frm.ShowDialog();
 				lstFun.Clear();
+				lstFun = Funcionarios.ConsultarFuncionario();
+				CreateObjectsFun();
 			}
 
 		}
@@ -308,8 +310,10 @@ namespace VesteBem_Admin
 
 		private void FrmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			//FrmAdmin frm.WindowState = FormWindowState.Normal;
-			//se fechar este form tirar o minimize do formadmin e mostrar ao utilizador
+			FormCollection fc = Application.OpenForms;
+			foreach(Form frm in fc)
+				frm.WindowState = FormWindowState.Normal;
+			
 		}
 	}
 }

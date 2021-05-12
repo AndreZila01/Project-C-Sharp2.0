@@ -108,7 +108,10 @@ namespace VesteBem_Admin.Class
 				{
 					return ex.Message;
 				}
-
+				finally
+				{
+					liga.Close();
+				}
 			}
 		}
 		public static string ApagarCliente(int id_Cli, string Nome)
@@ -129,6 +132,10 @@ namespace VesteBem_Admin.Class
 				catch (Exception ex)
 				{
 					return ex.Message;
+				}
+				finally
+				{
+					liga.Close();
 				}
 
 			}
@@ -294,12 +301,15 @@ public class ColectIdFun
 				{
 					lst.Add(oReader["Funcao"].ToString());
 				}
-				liga.Close();
 			}
 		}
 		catch
 		{
 			return null;
+		}
+		finally
+		{
+			liga.Close();
 		}
 
 		return lst;
@@ -319,7 +329,6 @@ public class ColectIdFun
 				{
 					Funcionario fun = new Funcionario();
 					nome = oReader["Usern"].ToString();
-					liga.Close();
 					break;
 
 				}
@@ -328,6 +337,10 @@ public class ColectIdFun
 		catch
 		{
 			return null;
+		}
+		finally
+		{
+			liga.Close();
 		}
 
 		return nome;
@@ -348,7 +361,6 @@ public class ColectIdFun
 					Funcionario fun = new Funcionario();
 					pass = oReader["Usern"].ToString();
 					//pass = EncryptADeDecrypt.EncryptRSA(pass);
-					liga.Close();
 					break;
 
 				}
@@ -358,13 +370,18 @@ public class ColectIdFun
 		{
 			return null;
 		}
+		finally
+		{
+			liga.Close();
+		}
+
 		return pass;
 	}
 	public static int SelectId(string user, string pass)
 	{
 		int id = 0;
 		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		SqlCommand comando = new SqlCommand("Select [IdLogin], passW From [tbl_login] where Usern='" + user + "'", liga);
+		SqlCommand comando = new SqlCommand("Select IdCliente, Nome From tbl_Cliente", liga);
 		try
 		{
 			comando.Connection = liga;
@@ -376,10 +393,9 @@ public class ColectIdFun
 					if (EncryptADeDecrypt.DecryptRSA(pass) == EncryptADeDecrypt.DecryptRSA(oReader["passW"].ToString()))
 					{
 						Funcionario fun = new Funcionario();
-						id = int.Parse(oReader["IdLogin"].ToString());
+						id = int.Parse(oReader["IdCliente"].ToString());
 						//pass = EncryptADeDecrypt.EncryptRSA(pass);
-						liga.Close();
-						break;
+						//break;
 					}
 				}
 			}
@@ -387,6 +403,10 @@ public class ColectIdFun
 		catch
 		{
 			return 0;
+		}
+		finally
+		{
+			liga.Close();
 		}
 		return id;
 	}
