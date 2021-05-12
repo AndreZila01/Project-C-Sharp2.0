@@ -23,9 +23,9 @@ namespace VesteBem_Admin.Class
 				command.CommandText = "SPAddProdutos";
 				command.CommandType = System.Data.CommandType.StoredProcedure;
 
-				if (produtos.Icon != "NULL") 
+				if (produtos.CaminhoImg != "NULL") 
 				{
-					Image img = Image.FromFile(produtos.Icon);
+					Image img = Image.FromFile(produtos.CaminhoImg);
 					ImageConverter converter = new ImageConverter();
 					byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
 

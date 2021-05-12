@@ -4,7 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -84,8 +87,11 @@ namespace VesteBem_Admin
 			//}
 		}
 
+		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+		{
 
-
+			pictureBox1.Image = lstProduto[comboBox3.SelectedIndex].Icon;
+		}
 	}
 	public class Estado
 	{
@@ -96,13 +102,24 @@ namespace VesteBem_Admin
 			SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
 			try
 			{
+				DataSet dataSet = new DataSet();
+				SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+				dataAdapter.Fill(dataSet);
 				comando.Connection = liga;
 				liga.Open();
 				using (SqlDataReader oReader = comando.ExecuteReader())
 				{
+					ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+					
+					int dss = 0;
 					while (oReader.Read())
 					{
+						Byte[] data = new Byte[0];
+						data = (Byte[])(dataSet.Tables[0].Rows[dss]["Icon"]);
+						MemoryStream mem = new MemoryStream(data);
+
 						Produtos pro = new Produtos();
+						pro.Icon = Image.FromStream(mem);
 						pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
 						pro.Nome = (oReader["Nome"].ToString());
 						pro.Valor = double.Parse(oReader["Valor"].ToString());
@@ -110,8 +127,7 @@ namespace VesteBem_Admin
 						pro.CategoriaClass = (oReader["CategoriaClasse"].ToString());
 						pro.CategoriaSubClass = (oReader["CategoriaSubClasse"].ToString());
 						pro.Sexo = (oReader["Sexo"].ToString());
-						pro.Icon = (oReader["Icon"].ToString());
-
+						dss++;
 						lstProduto.Add(pro);
 					}
 				}

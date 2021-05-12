@@ -148,11 +148,13 @@
 			// 
 			// comboBox3
 			// 
+			this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox3.FormattingEnabled = true;
 			this.comboBox3.Location = new System.Drawing.Point(517, 50);
 			this.comboBox3.Name = "comboBox3";
 			this.comboBox3.Size = new System.Drawing.Size(239, 21);
 			this.comboBox3.TabIndex = 15;
+			this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
 			// 
 			// button2
 			// 

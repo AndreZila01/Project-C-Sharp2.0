@@ -94,7 +94,11 @@ namespace VesteBem_Admin.Class
 		/// <summary>
 		/// Imagem do produto, em bytes
 		/// </summary>
-		public string Icon { get; set; }
+		public Image Icon { get; set; }
+		/// <summary>
+		/// Caminho para a imagem
+		/// </summary>
+		public string CaminhoImg { get; set; }
 	}
 	public class Funcionario
 	{

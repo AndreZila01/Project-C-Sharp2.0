@@ -53,7 +53,7 @@ namespace VesteBem_Admin
 					produtos.Valor = double.Parse(TxtValor.Text);
 					produtos.CategoriaClass = TxtCat.Text;
 					produtos.CategoriaSubClass = TxtSubCat.Text;
-					produtos.Icon = TxtIcon.Text;
+					produtos.CaminhoImg = TxtIcon.Text;
 					string dss = CreateProdutos.InsertProdutos(produtos);
 
 					if (dss == "Correu bem")
