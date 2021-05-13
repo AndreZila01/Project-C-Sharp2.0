@@ -39,10 +39,15 @@
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
 			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
 			this.button1 = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.comboBox3 = new System.Windows.Forms.ComboBox();
 			this.button2 = new System.Windows.Forms.Button();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.label6 = new System.Windows.Forms.Label();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -138,14 +143,6 @@
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Location = new System.Drawing.Point(517, 77);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(239, 205);
-			this.pictureBox1.TabIndex = 14;
-			this.pictureBox1.TabStop = false;
-			// 
 			// comboBox3
 			// 
 			this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -158,28 +155,82 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(595, 305);
+			this.button2.Location = new System.Drawing.Point(324, 259);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(75, 23);
 			this.button2.TabIndex = 17;
-			this.button2.Text = "button2";
+			this.button2.Text = "Adicionar";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// listBox1
+			// flowLayoutPanel1
 			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(398, 305);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(151, 95);
-			this.listBox1.TabIndex = 18;
+			this.flowLayoutPanel1.AutoScroll = true;
+			this.flowLayoutPanel1.Location = new System.Drawing.Point(517, 288);
+			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+			this.flowLayoutPanel1.Size = new System.Drawing.Size(271, 121);
+			this.flowLayoutPanel1.TabIndex = 19;
+			// 
+			// numericUpDown1
+			// 
+			this.numericUpDown1.Location = new System.Drawing.Point(324, 233);
+			this.numericUpDown1.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(75, 20);
+			this.numericUpDown1.TabIndex = 20;
+			this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(671, 423);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(40, 13);
+			this.label6.TabIndex = 21;
+			this.label6.Text = "Total : ";
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = global::VesteBem_Admin.Properties.Resources.shopping_cart;
+			this.pictureBox2.Location = new System.Drawing.Point(753, 415);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(35, 27);
+			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox2.TabIndex = 22;
+			this.pictureBox2.TabStop = false;
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Location = new System.Drawing.Point(517, 77);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(239, 205);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pictureBox1.TabIndex = 14;
+			this.pictureBox1.TabStop = false;
 			// 
 			// FrmCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.listBox1);
+			this.Controls.Add(this.pictureBox2);
+			this.Controls.Add(this.label6);
+			this.Controls.Add(this.numericUpDown1);
+			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.comboBox3);
 			this.Controls.Add(this.pictureBox1);
@@ -197,6 +248,8 @@
 			this.Name = "FrmCarrinho";
 			this.Text = "FrmCarrinho";
 			this.Load += new System.EventHandler(this.FrmCarrinho_Load);
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -219,6 +272,9 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.ComboBox comboBox3;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.PictureBox pictureBox2;
 	}
 }

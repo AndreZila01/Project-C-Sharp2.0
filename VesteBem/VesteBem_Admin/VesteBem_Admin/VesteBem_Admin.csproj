@@ -138,6 +138,8 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\shopping-cart.png" />
+    <None Include="Resources\shopping-cart1.png" />
     <None Include="Resources\administrator.png" />
     <Content Include="Resources\Pencil.png" />
     <Content Include="Resources\Open-trash.png" />
