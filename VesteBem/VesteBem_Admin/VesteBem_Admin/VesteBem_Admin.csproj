@@ -138,6 +138,8 @@
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\remove %281%29.png" />
+    <None Include="Resources\remove.png" />
     <Content Include="Resources\shopping-cart.png" />
     <None Include="Resources\shopping-cart1.png" />
     <None Include="Resources\administrator.png" />

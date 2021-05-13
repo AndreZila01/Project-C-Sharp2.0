@@ -23,6 +23,7 @@ namespace VesteBem_Admin
 			InitializeComponent();
 		}
 		List<string> lstEstado = new List<string>();
+		List<DetalhesEncomendas> lstDetalhesEncomendas = new List<DetalhesEncomendas>();
 		List<Encomenda> lstEncomenda = new List<Encomenda>();
 		List<Cliente> lstcli = new List<Cliente>();
 		List<Produtos> lstProduto = new List<Produtos>();
@@ -49,64 +50,152 @@ namespace VesteBem_Admin
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
-			//if (lstEncomenda)
 			{
-
 				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
-				Panel pnl = new Panel();
-				pnl.Location = new System.Drawing.Point(0, 0);
-				pnl.Name = "panel1";
-				pnl.BackColor = Color.Red;
-				pnl.Size = new System.Drawing.Size(245, 30);//271; 150
-				pnl.TabIndex = 0;
-				flowLayoutPanel1.Controls.Add(pnl);
+				Panel Pnl = new Panel();
+				Pnl.Location = new System.Drawing.Point(0, 0);
+				Pnl.Name = "panel1";
+				Pnl.BackColor = Color.Red;
+				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
+				Pnl.TabIndex = 0;
+				flowLayoutPanel1.Controls.Add(Pnl);
 
-				Label lblNome = new Label();
-				lblNome.AutoSize = true;
-				lblNome.Location = new System.Drawing.Point(5, 5);
-				lblNome.Name = "label6";
-				lblNome.Size = new System.Drawing.Size(35, 13);
-				lblNome.TabIndex = 0;
-				lblNome.BackColor = Color.LightGray;
-				lblNome.Tag = pictureBox1.Tag.ToString();
-				var ds = lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Length > 20 ? lblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Substring(0, 20) : lblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome;
-				lblNome.Click += new System.EventHandler(label_Click);
-				pnl.Controls.Add(lblNome);
+				Label LblNome = new Label();
+				LblNome.AutoSize = true;
+				LblNome.Location = new System.Drawing.Point(5, 10);
+				LblNome.Name = "label6";
+				LblNome.Size = new System.Drawing.Size(35, 13);
+				LblNome.TabIndex = 0;
+				LblNome.BackColor = Color.LightGray;
+				LblNome.Tag = pictureBox1.Tag.ToString();
+				var ds = lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome;
+				LblNome.Click += new System.EventHandler(label_Click);
+				Pnl.Controls.Add(LblNome);
 
-				Label lblPreco = new Label();
-				lblPreco.AutoSize = true;
-				lblPreco.Location = new System.Drawing.Point(191, 5);
-				lblPreco.Name = "label7";
-				lblPreco.Size = new System.Drawing.Size(35, 13);
-				lblPreco.TabIndex = 1;
-				lblPreco.BackColor = Color.Green;
-				lblPreco.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor + "€";
-				lblPreco.Tag = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor;
-				pnl.Controls.Add(lblPreco);
+				Label LblPreco = new Label();
+				LblPreco.AutoSize = true;
+				LblPreco.Location = new System.Drawing.Point(160, 10);
+				LblPreco.Name = "label7";
+				LblPreco.Size = new System.Drawing.Size(25, 13);
+				LblPreco.TabIndex = 1;
+				LblPreco.BackColor = Color.Green;
+				LblPreco.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor + "€";
+				LblPreco.Tag = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor;
+				Pnl.Controls.Add(LblPreco);
 
-				Label lblQuantidade = new Label();
-				lblQuantidade.Location = new System.Drawing.Point(148, 5);
-				lblQuantidade.Name = "label7";
-				lblQuantidade.Size = new System.Drawing.Size(35, 13);
-				lblQuantidade.TabIndex = 1;
-				lblQuantidade.BackColor = Color.Gray;
-				lblQuantidade.Text = " " + numericUpDown1.Value + " x";
-				lblQuantidade.Tag = "" + numericUpDown1.Value;
-				pnl.Controls.Add(lblQuantidade);
+				Label LblQuantidade = new Label();
+				LblQuantidade.Location = new System.Drawing.Point(140, 10);
+				LblQuantidade.Name = "label7";
+				LblQuantidade.Size = new System.Drawing.Size(35, 13);
+				LblQuantidade.TabIndex = 1;
+				LblQuantidade.BackColor = Color.Gray;
+				LblQuantidade.Text = " " + numericUpDown1.Value + " x";
+				LblQuantidade.Tag = "" + numericUpDown1.Value;
+				Pnl.Controls.Add(LblQuantidade);
 
-				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((int.Parse(lblQuantidade.Tag.ToString()) * double.Parse(lblPreco.Tag.ToString()))));
+				PictureBox PctRemove = new PictureBox();
+				PctRemove.Image = Properties.Resources.Red_Remove;
+				PctRemove.Location = new System.Drawing.Point(225, 10);
+				PctRemove.Size = new System.Drawing.Size(15, 13);
+				PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
+				PctRemove.Click += new System.EventHandler(PctRemove_Click);
+				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
+				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
+				PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
+				Pnl.Controls.Add(PctRemove);
+
+				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
 				label6.Text = "Total: " + label6.Tag + "€";
 
 
 				Detalhes.Id_Produtos = lstProduto[int.Parse(pictureBox1.Tag.ToString())].IdProduto;
 				Detalhes.QuantEnc = int.Parse(numericUpDown1.Value.ToString());
-				List<Author> authors = new List<Author>
-{
-	new Author { Name = "Mahesh Chand", Book = "Apress", Price = 49.95 },
-	new Author { Name = "Neel Beniwal", Book = "Apress", Price = 19.95 },
-	new Author { Name = "Chris Love", Book = "PakT", Price = 29.95 }
-};
+				lstDetalhesEncomendas.Add(Detalhes);
 			}
+		}
+
+		private void PctRemove_MouseEnter(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void PctRemove_MouseLeave(object sender, EventArgs e)
+		{
+			try
+			{
+
+			}catch
+			{
+
+			}
+		}
+
+		private void PctRemove_Click(object sender, EventArgs e)
+		{
+			int value = 0;
+			flowLayoutPanel1.Controls.Clear();
+			PictureBox Pct = sender as PictureBox;
+			lstDetalhesEncomendas.RemoveAt(int.Parse(Pct.Tag.ToString())); label6.Tag = "00";
+			lstDetalhesEncomendas.ToList().ForEach(item =>
+			{
+				int index = lstProduto.FindIndex(r => r.IdProduto == item.Id_Produtos);
+				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
+				Panel Pnl = new Panel();
+				Pnl.Location = new System.Drawing.Point(0, 0);
+				Pnl.Name = "panel1";
+				Pnl.BackColor = Color.Red;
+				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
+				Pnl.TabIndex = 0;
+				flowLayoutPanel1.Controls.Add(Pnl);
+
+				Label LblNome = new Label();
+				LblNome.AutoSize = true;
+				LblNome.Location = new System.Drawing.Point(5, 10);
+				LblNome.Name = "label6";
+				LblNome.Size = new System.Drawing.Size(35, 13);
+				LblNome.TabIndex = 0;
+				LblNome.BackColor = Color.LightGray;
+				LblNome.Tag = pictureBox1.Tag.ToString();
+				var ds = lstProduto[index].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[index].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[index].Nome;
+				LblNome.Click += new System.EventHandler(label_Click);
+				Pnl.Controls.Add(LblNome);
+
+				Label LblPreco = new Label();
+				LblPreco.AutoSize = true;
+				LblPreco.Location = new System.Drawing.Point(160, 10);
+				LblPreco.Name = "label7";
+				LblPreco.Size = new System.Drawing.Size(25, 13);
+				LblPreco.TabIndex = 1;
+				LblPreco.BackColor = Color.Green;
+				LblPreco.Text = "" + lstProduto[index].Valor + "€";
+				LblPreco.Tag = "" + lstProduto[index].Valor;
+				Pnl.Controls.Add(LblPreco);
+
+				Label LblQuantidade = new Label();
+				LblQuantidade.Location = new System.Drawing.Point(140, 10);
+				LblQuantidade.Name = "label7";
+				LblQuantidade.Size = new System.Drawing.Size(35, 13);
+				LblQuantidade.TabIndex = 1;
+				LblQuantidade.BackColor = Color.Gray;
+				LblQuantidade.Text = " " + numericUpDown1.Value + " x";
+				LblQuantidade.Tag = "" + numericUpDown1.Value;
+				Pnl.Controls.Add(LblQuantidade);
+
+				PictureBox PctRemove = new PictureBox();
+				PctRemove.Image = Properties.Resources.Red_Remove;
+				PctRemove.Location = new System.Drawing.Point(225, 10);
+				PctRemove.Size = new System.Drawing.Size(15, 13);
+				PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
+				PctRemove.Click += new System.EventHandler(PctRemove_Click);
+				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
+				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
+				PctRemove.Tag = "" + value;
+				Pnl.Controls.Add(PctRemove);
+
+				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
+				label6.Text = "Total: " + label6.Tag + "€";
+				value++;
+			});
 		}
 
 		private void label_Click(object sender, EventArgs e)
@@ -156,7 +245,6 @@ namespace VesteBem_Admin
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
 		{
-
 			pictureBox1.Image = lstProduto[comboBox3.SelectedIndex].Icon;
 			pictureBox1.Tag = comboBox3.SelectedIndex;
 		}
@@ -179,7 +267,6 @@ namespace VesteBem_Admin
 			public DateTime DataEncomenda { get; set; }
 			public DateTime DataEntrega { get; set; }
 			public int Id_Cliente { get; set; }
-			public List<DetalhesEncomendas> DetalhesEncomendas { get; set; }
 		}
 
 		public class DetalhesEncomendas

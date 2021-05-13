@@ -96,7 +96,6 @@ C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Adm
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.pdb
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\Newtonsoft.Json.dll
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\Newtonsoft.Json.xml
-C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAddProdutos.resources
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAdmin.resources
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmCliEFun.resources
