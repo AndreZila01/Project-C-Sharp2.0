@@ -6,7 +6,6 @@
     <div style="background-color: red; width: 100%;">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
             <div style="padding: 15px 15px 2500px; font-size: 30px;">
-                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Button" />
                 <br />
                 <div style="color: black; font-size: 15px">
                     <asp:Label runat="server" Text="Mulher > "></asp:Label>

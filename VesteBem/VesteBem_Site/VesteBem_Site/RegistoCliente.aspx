@@ -58,10 +58,8 @@
     <p>
     &nbsp;</p>
 <p style="font-size: xx-large; text-align:center"> Criar Usuário</p>
-    <p>
-        
-        
-    &nbsp;<table style="margin-left:400px; class="auto-style14"  class="auto-style20">
+    
+    &nbsp;<table style="margin-left:400px"; class="auto-style14">
 
         <tr>
             <td class="auto-style10" style="font-size: medium; ">Nome do cliente:</td>
@@ -141,16 +139,23 @@
         </tr>
         <tr>
             <td class="auto-style18" style="font-size: medium; ">
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                <asp:Button ID="BtnRegistar" runat="server" OnClick="BtnRegistar_Click" Text="Registar" />
             </td>
             <td class="auto-style19" style="font-size: medium">
-                <asp:Button ID="Button2" runat="server" Text="Button" />
+                <asp:Button ID="BtnVoltar" runat="server" OnClick="BtnVoltar_Click1" Text="Voltar" />
             </td>
+        </tr>
+        <tr>
+            <td class="auto-style18" style="font-size: medium; ">
+                <asp:Label ID="lblMensagem" runat="server" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style19" style="font-size: medium">
+                &nbsp;</td>
         </tr>
         </table>
             
         
-</p>
+
 <p>
 </p>
 <p>
