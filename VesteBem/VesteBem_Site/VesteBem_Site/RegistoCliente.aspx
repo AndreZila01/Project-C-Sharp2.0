@@ -139,6 +139,14 @@
                 <asp:TextBox ID="txtPasswordConfirmar" runat="server" TextMode="Password" Font-Size="Medium"></asp:TextBox>
             </td>
         </tr>
+        <tr>
+            <td class="auto-style18" style="font-size: medium; ">
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+            </td>
+            <td class="auto-style19" style="font-size: medium">
+                <asp:Button ID="Button2" runat="server" Text="Button" />
+            </td>
+        </tr>
         </table>
             
         
