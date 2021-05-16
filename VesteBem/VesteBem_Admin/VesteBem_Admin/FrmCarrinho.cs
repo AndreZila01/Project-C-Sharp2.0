@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace VesteBem_Admin
 
 				Label LblPreco = new Label();
 				LblPreco.AutoSize = true;
-				LblPreco.Location = new System.Drawing.Point(160, 10);
+				LblPreco.Location = new System.Drawing.Point(175, 10);
 				LblPreco.Name = "label7";
 				LblPreco.Size = new System.Drawing.Size(25, 13);
 				LblPreco.TabIndex = 1;
@@ -84,12 +85,14 @@ namespace VesteBem_Admin
 				Pnl.Controls.Add(LblPreco);
 
 				Label LblQuantidade = new Label();
-				LblQuantidade.Location = new System.Drawing.Point(140, 10);
+				LblQuantidade.Location = new System.Drawing.Point(135, 10);
 				LblQuantidade.Name = "label7";
 				LblQuantidade.Size = new System.Drawing.Size(35, 13);
 				LblQuantidade.TabIndex = 1;
 				LblQuantidade.BackColor = Color.Gray;
-				LblQuantidade.Text = " " + numericUpDown1.Value + " x";
+				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
+				//this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+				LblQuantidade.Text = numericUpDown1.Value + " x";
 				LblQuantidade.Tag = "" + numericUpDown1.Value;
 				Pnl.Controls.Add(LblQuantidade);
 
@@ -116,7 +119,7 @@ namespace VesteBem_Admin
 
 		private void PctRemove_MouseEnter(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void PctRemove_MouseLeave(object sender, EventArgs e)
@@ -124,7 +127,8 @@ namespace VesteBem_Admin
 			try
 			{
 
-			}catch
+			}
+			catch
 			{
 
 			}
@@ -250,14 +254,96 @@ namespace VesteBem_Admin
 		}
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
-			Encomenda en = new Encomenda();
-			en.ValorEncomendas = double.Parse(label6.Text.ToString());
+			//int count = 0;
+			List<int> lstIdProduto = new List<int>();
+			List<int> lstId = new List<int>();
+			List<PreEncomendas> lst = new List<PreEncomendas>();
+			Encomenda enc = new Encomenda();
+			enc.ValorEncomendas = double.Parse(label6.Tag.ToString());
+			int ds = 0;
+			List<int> indexT = new List<int>();//new int[lstDetalhesEncomendas.Count()];
 
+			lstDetalhesEncomendas.ToList().ForEach(item =>
+			{
+				PreEncomendas Pre = new PreEncomendas();
+				Pre.IdProduto = item.Id_Produtos;
+				Pre.QuantEnc = item.QuantEnc;
+				Pre.IdEncomendas = ds;
+				lst.Add(Pre);
+				ds++;
+			});
+
+			lst.ToList().ForEach(item =>
+			{
+				//var index = lstDetalhesEncomendas.IndexOf(lst);
+				//int indexT = listEmployee.FindIndex(r >= r.Name == findName);
+				//int [] dsssssss = lstDetalhesEncomendas.FindAll(""+item.IdProduto);
+				int index = 0;
+				int quant = 0;
+
+				var count = lstDetalhesEncomendas.Count(s => (s.Id_Produtos == item.IdProduto));
+				if (count > 1)
+				{
+
+					lstDetalhesEncomendas.ToList().ForEach(itemss =>
+					{
+						if (item.IdProduto == itemss.Id_Produtos)
+						{
+							indexT.Add(item.QuantEnc);//indexT[index] = item.QuantEnc;
+						}
+						index++;
+					});
+					//indexT.ToList().ForEach(items =>
+					//{
+					//	var dss = indexT[indexT.LastIndexOf(items)];
+					//	quant += items;
+					//});
+					index = 0;
+					lstDetalhesEncomendas.ToList().ForEach(itemss =>
+					{
+						if (item.IdProduto == itemss.Id_Produtos)
+						{
+							//lstDetalhesEncomendas.ToList().ForEach(itemsss =>
+							//{
+							//	if (item.IdProduto == itemsss.Id_Produtos)
+							//	{
+									quant += itemss.QuantEnc;
+									DetalhesEncomendas detalhes = itemss;
+
+									if (lst[lstDetalhesEncomendas.Count()-1].IdEncomendas == itemss.Id_Encomendas && lst[lstDetalhesEncomendas.Count() - 1].IdProduto == itemss.Id_Produtos)
+									{
+										itemss.QuantEnc = quant;
+									}
+									else
+										lstDetalhesEncomendas.Remove(detalhes);
+
+									index++;
+									//Verificar se é o ultimo index da lista, se for não apagar o valor
+
+									//indexT.Add(item.QuantEnc);//indexT[index] = item.QuantEnc;
+							//	}
+							//});
+						}
+						//index++;
+					});
+
+					//lstDetalhesEncomendas
+				}
+				//count++;
+			});
+			pictureBox2.Click += button2_Click;
+			//Encomenda obj = lstDetalhesEncomendas.Find(x => (x.Name == "product name"));
 			//Certificar se o utilizador meteu varias vezes os produtos
 		}
 	}
 	public class Estado
 	{
+		public class PreEncomendas
+		{
+			public int IdEncomendas { get; set; }
+			public int IdProduto { get; set; }
+			public int QuantEnc { get; set; }
+		}
 		public class Encomenda
 		{
 			public int IdEncomendas { get; set; }
