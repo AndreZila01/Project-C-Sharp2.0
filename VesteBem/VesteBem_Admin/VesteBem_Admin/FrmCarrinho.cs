@@ -104,14 +104,23 @@ namespace VesteBem_Admin
 
 		private void PctRemove_MouseEnter(object sender, EventArgs e)
 		{
+			PictureBox Pct = sender as PictureBox;
+			try
+			{
+				Pct.Image = Properties.Resources.Red_Remove;
+			}
+			catch
+			{
 
+			}
 		}
 
 		private void PctRemove_MouseLeave(object sender, EventArgs e)
 		{
+			PictureBox Pct = sender as PictureBox;
 			try
 			{
-
+				Pct.Image = Properties.Resources.Red_Remove;
 			}
 			catch
 			{
@@ -187,7 +196,7 @@ namespace VesteBem_Admin
 				label6.Text = "Total: " + label6.Tag + "€";
 				value++;
 			});
-			if (lstDetalhesEncomendas.Count ==0)
+			if (lstDetalhesEncomendas.Count == 0)
 			{
 				label6.Tag = "0";
 				label6.Text = "Total: " + label6.Tag + "€";
@@ -274,7 +283,7 @@ namespace VesteBem_Admin
 				//int indexT = listEmployee.FindIndex(r >= r.Name == findName);
 				//int [] dsssssss = lstDetalhesEncomendas.FindAll(""+item.IdProduto);
 				#endregion
-				
+
 				int index = 0;
 				int quant = 0;
 
@@ -311,7 +320,7 @@ namespace VesteBem_Admin
 							//	{
 							DetalhesEncomendas detalhes = itemss;
 							count = lstDetalhesEncomendas.Count(s => (s.Id_Produtos == item.Id_Produtos));
-							if (lstDetalhesEncomendas.Count>1&&(count>1)&&!((lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Encomendas && lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Produtos)))
+							if (lstDetalhesEncomendas.Count > 1 && (count > 1) && !((lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Encomendas && lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Produtos)))
 							{
 								quant += itemss.QuantEnc;
 								lstDetalhesEncomendas.Remove(detalhes);
@@ -334,6 +343,7 @@ namespace VesteBem_Admin
 			});
 			//Encomenda obj = lstDetalhesEncomendas.Find(x => (x.Name == "product name"));
 			//Certificar se o utilizador meteu varias vezes os produtos
+			InsertDetalhes(lstDetalhesEncomendas);
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -505,6 +515,35 @@ namespace VesteBem_Admin
 			}
 
 			return lst;
+		}
+		public static string InsertDetalhes(List<DetalhesEncomendas> lst)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "SpInsertDetalhes";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+				lst.ToList().ForEach(item => {
+					try
+					{
+						command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
+						command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
+						command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
+
+						command.Connection = liga;
+
+						liga.Open();
+
+						command.ExecuteNonQuery();
+					}
+					catch (Exception ex)
+					{
+						
+					}
+				});
+					liga.Close();
+				return "sucesso";
+			}
 		}
 		public static List<Cliente> SelectId()
 		{
