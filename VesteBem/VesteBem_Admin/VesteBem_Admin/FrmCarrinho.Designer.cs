@@ -46,6 +46,7 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -222,6 +223,10 @@
 			this.pictureBox1.TabIndex = 14;
 			this.pictureBox1.TabStop = false;
 			// 
+			// backgroundWorker1
+			// 
+			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			// 
 			// FrmCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,5 +281,6 @@
 		private System.Windows.Forms.NumericUpDown numericUpDown1;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 	}
 }
