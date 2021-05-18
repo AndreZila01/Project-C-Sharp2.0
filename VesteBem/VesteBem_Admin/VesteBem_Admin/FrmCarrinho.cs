@@ -248,6 +248,9 @@ namespace VesteBem_Admin
 			//	}
 			//}
 			#endregion
+
+
+			InsertDetalhes(lstDetalhesEncomendas);
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -320,12 +323,12 @@ namespace VesteBem_Admin
 							//	{
 							DetalhesEncomendas detalhes = itemss;
 							count = lstDetalhesEncomendas.Count(s => (s.Id_Produtos == item.Id_Produtos));
-							if (lstDetalhesEncomendas.Count > 1 && (count > 1) && !((lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Encomendas && lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Produtos)))
+							if (lstDetalhesEncomendas.Count > 1 && (count > 1) && !((lst[lstDetalhesEncomendas.Count() - 1].Id_Encomendas == itemss.Id_Encomendas && lst[lstDetalhesEncomendas.Count() - 1].Id_Produtos == itemss.Id_Produtos)))
 							{
 								quant += itemss.QuantEnc;
 								lstDetalhesEncomendas.Remove(detalhes);
 								int test = lstDetalhesEncomendas.FindIndex(ash => ash.Id_Produtos == (itemss.Id_Produtos));//lstDetalhesEncomendas.IndexOf(lst.Where(p => p.Id_Encomendas == itemss.Id_Encomendas).FirstOrDefault());
-								lstDetalhesEncomendas[test].QuantEnc = quant;
+								lstDetalhesEncomendas[test].QuantEnc += quant;
 							}
 							index++;
 							//Verificar se é o ultimo index da lista, se for não apagar o valor
@@ -343,7 +346,8 @@ namespace VesteBem_Admin
 			});
 			//Encomenda obj = lstDetalhesEncomendas.Find(x => (x.Name == "product name"));
 			//Certificar se o utilizador meteu varias vezes os produtos
-			InsertDetalhes(lstDetalhesEncomendas);
+			textBox1.Text = label6.Tag.ToString();
+			comboBox2.SelectedItem = "Na Fabrica";
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -357,7 +361,7 @@ namespace VesteBem_Admin
 			lstcli = Estado.SelectId();
 			lstcli.ToList().ForEach(item =>
 			{
-				comboBox2.Items.Add(item.Nome);
+				comboBox1.Items.Add(item.Nome);
 			});
 			lstProduto = Estado.SelectProdutos();
 			lstProduto.ToList().ForEach(item =>
@@ -366,6 +370,23 @@ namespace VesteBem_Admin
 			});
 
 			pictureBox2.Click += PctRemove_Click;
+			dateTimePicker1.Value = DateTime.Today;
+			dateTimePicker1.MinDate = DateTime.Today;
+			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day+4);
+			dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1);
+			int data;
+			if (DateTime.Today.Month != 2)
+			{
+				var temp = DateTime.Today.Month == 1 || DateTime.Today.Month == 1 || DateTime.Today.Month == 3 || DateTime.Today.Month == 5 || DateTime.Today.Month == 7 || DateTime.Today.Month == 8 || DateTime.Today.Month == 9 || DateTime.Today.Month == 12 ? data = 31 : data = 28;
+			}
+			else
+				if (DateTime.Today.Year % 400 == 0 || (DateTime.Today.Year % 4 == 0 && DateTime.Today.Year % 100 != 0))
+					data = 29;
+				else
+					data = 28;
+			
+
+				dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 4, data);
 		}
 	}
 	public class Estado
