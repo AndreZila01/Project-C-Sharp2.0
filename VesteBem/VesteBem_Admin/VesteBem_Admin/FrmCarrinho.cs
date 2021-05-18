@@ -176,8 +176,8 @@ namespace VesteBem_Admin
 				LblQuantidade.Size = new System.Drawing.Size(35, 13);
 				LblQuantidade.TabIndex = 1;
 				LblQuantidade.BackColor = Color.Gray;
-				LblQuantidade.Text = " " + numericUpDown1.Value + " x";
-				LblQuantidade.Tag = "" + numericUpDown1.Value;
+				LblQuantidade.Text = " " + item.QuantEnc + " x";
+				LblQuantidade.Tag = "" + item.QuantEnc;
 				Pnl.Controls.Add(LblQuantidade);
 
 				PictureBox PctRemove = new PictureBox();
