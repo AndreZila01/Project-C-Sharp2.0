@@ -248,8 +248,14 @@ namespace VesteBem_Admin
 			//	}
 			//}
 			#endregion
-
-
+			Encomenda enc = new Encomenda();
+			enc.EstadoEncomendas=comboBox2.Text;
+			enc.DataEntrega;
+			enc.DataEncomenda;
+			enc.IdEncomendas;
+			enc.Id_Cliente;
+			enc.ValorEncomendas;
+			InsertEncomendas()
 			InsertDetalhes(lstDetalhesEncomendas);
 		}
 
@@ -372,35 +378,27 @@ namespace VesteBem_Admin
 			pictureBox2.Click += PctRemove_Click;
 			dateTimePicker1.Value = DateTime.Today;
 			dateTimePicker1.MinDate = DateTime.Today;
-			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day+4);
+			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4);
 			dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1);
-			int data;
-			if (DateTime.Today.Month != 2)
+			int data; int mes = 12 + 4;//DateTime.Today.Month+4;
+			if (mes > 12)
+				mes -= 12;
+			if (mes != 2)
 			{
-				var temp = DateTime.Today.Month == 1 || DateTime.Today.Month == 1 || DateTime.Today.Month == 3 || DateTime.Today.Month == 5 || DateTime.Today.Month == 7 || DateTime.Today.Month == 8 || DateTime.Today.Month == 9 || DateTime.Today.Month == 12 ? data = 31 : data = 28;
+				var temp = mes == 1 || mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 9 || mes == 12 ? data = 31 : data = 28;
 			}
 			else
 				if (DateTime.Today.Year % 400 == 0 || (DateTime.Today.Year % 4 == 0 && DateTime.Today.Year % 100 != 0))
-					data = 29;
-				else
-					data = 28;
-			
+				data = 29;
+			else
+				data = 28;
 
-				dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 4, data);
+
+			dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
 		}
 	}
 	public class Estado
 	{
-		public class Encomenda
-		{
-			public int IdEncomendas { get; set; }
-			public double ValorEncomendas { get; set; }
-			public int Id_EstadoEncomendas { get; set; }
-			public string EstadoEncomendas { get; set; }
-			public DateTime DataEncomenda { get; set; }
-			public DateTime DataEntrega { get; set; }
-			public int Id_Cliente { get; set; }
-		}
 
 		public class DetalhesEncomendas
 		{
@@ -537,6 +535,34 @@ namespace VesteBem_Admin
 
 			return lst;
 		}
+		public static string InsertEncomendas(Encomenda enc)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "SpInsertDetalhes";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+
+				try
+				{
+					command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
+					command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
+					command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
+
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
+				}
+				catch (Exception ex)
+				{
+
+				}
+				liga.Close();
+				return "sucesso";
+			}
+		}
 		public static string InsertDetalhes(List<DetalhesEncomendas> lst)
 		{
 			SqlCommand command = new SqlCommand();
@@ -544,7 +570,8 @@ namespace VesteBem_Admin
 			{
 				command.CommandText = "SpInsertDetalhes";
 				command.CommandType = System.Data.CommandType.StoredProcedure;
-				lst.ToList().ForEach(item => {
+				lst.ToList().ForEach(item =>
+				{
 					try
 					{
 						command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
@@ -559,10 +586,10 @@ namespace VesteBem_Admin
 					}
 					catch (Exception ex)
 					{
-						
+
 					}
 				});
-					liga.Close();
+				liga.Close();
 				return "sucesso";
 			}
 		}

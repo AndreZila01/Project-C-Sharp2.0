@@ -125,4 +125,31 @@ namespace VesteBem_Admin.Class
 		public string Username { get; set; }
 		public int Id_Login { get; set; }
 	}
+	public class Encomenda
+	{   /// <summary>
+		/// Id da encomenda
+		/// </summary>
+		public int IdEncomendas { get; set; }
+		/// <summary>
+		/// Valor da Encomenda, valor total
+		/// </summary>
+		public double ValorEncomendas { get; set; }
+		/// <summary>
+		/// Estado da Encomenda
+		/// </summary>
+		public string EstadoEncomendas { get; set; }
+		/// <summary>
+		/// DataEncomenda
+		/// </summary>
+		public DateTime DataEncomenda { get; set; }
+		/// <summary>
+		/// DataEntrega
+		/// </summary>
+		public DateTime DataEntrega { get; set; }
+		/// <summary>
+		/// Id do cliente
+		/// </summary>
+		public int Id_Cliente { get; set; }
+
+	}
 }
