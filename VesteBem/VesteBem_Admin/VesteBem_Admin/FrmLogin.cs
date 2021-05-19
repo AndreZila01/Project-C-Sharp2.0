@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VesteBem_Admin.Class;
 
-
 namespace VesteBem_Admin
 {
 	public partial class FrmLogin : Form
