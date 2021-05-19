@@ -5,9 +5,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VesteBem_Admin.Class
+namespace VesteBem_Site
 {
-	public class EncryptADeDecrypt
+	public static class EncryptADeDecrypt
 	{
         public static string EncryptRSA(string strText)
         {
