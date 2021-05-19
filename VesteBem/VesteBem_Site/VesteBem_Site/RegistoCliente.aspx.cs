@@ -35,6 +35,9 @@ namespace VesteBem
 			comando.Connection = liga;
 			liga.Open();
 			comando.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "')";
+			comando.ExecuteNonQuery();
+			comando.CommandText = "Insert into Tbl_Login(Usern ,Passw, Funcionario) " + "VALUES('" + txtUsername.Text + "', '"+ txtPassword.Text + "', '0')";
+
 
 			try
 			{
