@@ -111,3 +111,15 @@ C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\Ve
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmCarrinho.resources
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAddProdutos.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmAdmin.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmCarrinho.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmCliEFun.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmLogin.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmModificarCliFun.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.Properties.Resources.resources
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.GenerateResource.cache
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.CoreCompileInputs.cache
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.exe
+C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.pdb
