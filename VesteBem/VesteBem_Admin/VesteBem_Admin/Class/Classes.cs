@@ -125,6 +125,17 @@ namespace VesteBem_Admin.Class
 		public string Username { get; set; }
 		public int Id_Login { get; set; }
 	}
+	public class Estados
+	{
+		/// <summary>
+		/// Id do Estado
+		/// </summary>
+		public int IdEstado { get; set; }
+		/// <summary>
+		/// Nome do Estado
+		/// </summary>
+		public string Estado { get; set; }
+	}
 	public class Encomenda
 	{   /// <summary>
 		/// Id da encomenda
