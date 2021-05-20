@@ -21,6 +21,8 @@ namespace VesteBem
     {
         SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433; Database=bd; User ID=epbjc;Password=Teste123; Encrypt=True; TrustServerCertificate=False; Connection Timeout=30;");
         SqlCommand comando = new SqlCommand();
+        SqlCommand comando2 = new SqlCommand();
+        SqlCommand comando3 = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -34,6 +36,8 @@ namespace VesteBem
         protected void BtnRegistar_Click(object sender, EventArgs e)
         {
             comando.Connection = liga;
+            comando2.Connection = liga;
+            comando3.Connection = liga;
             liga.Open();
 
             comando.CommandText = "Insert into Tbl_Login(Usern ,Passw, Funcionario) " + "VALUES('" + EncryptADeDecrypt.EncryptOther(txtUsername.Text) + "', '" + EncryptADeDecrypt.EncryptRSA(txtPassword.Text) + "', '0')";
@@ -56,22 +60,23 @@ namespace VesteBem
 
 
 
+                liga.Close();
 
+                liga.Open();
+                comando2.CommandText = "Select IdLogin, Passw from tbl_Login where Usern like '" + EncryptADeDecrypt.EncryptOther(txtUsername.Text) + "'";
+                dr = comando2.ExecuteReader();
                
-
-                comando.CommandText = "Select IdLogin, Passw from tbl_Login where Usern= '" + EncryptADeDecrypt.EncryptOther(txtUsername.Text) + "'";
-                dr = comando.ExecuteReader();
-
                 if (dr.Read())
                 {
+                    int id = Convert.ToInt32(dr["IdLogin"].ToString());
                     if (txtPassword.Text == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()))
                     {
 
-                        liga.Close();
-                        liga.Open();
+                         liga.Close();
+                         liga.Open();
 
-                        comando.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '"+ dr["IdLogin"].ToString() + ")";
-                        comando.ExecuteNonQuery();
+                        comando3.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '" + id + "')";
+                        comando3.ExecuteNonQuery();
 
                     }
                 }

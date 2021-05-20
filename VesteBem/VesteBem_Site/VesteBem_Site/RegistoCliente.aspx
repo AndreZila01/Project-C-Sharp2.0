@@ -88,7 +88,7 @@
         <tr>
             <td class="auto-style11" style="font-size: medium; ">NIF:</td>
             <td class="auto-style12" style="font-size: medium">
-                <asp:TextBox ID="txtNif" runat="server" TextMode="Number"></asp:TextBox>
+                <asp:TextBox ID="txtNif" runat="server" MaxLength="9"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -110,13 +110,13 @@
         <tr>
             <td class="auto-style10" style="font-size: medium; ">Email</td>
             <td class="auto-style13" style="font-size: medium">
-                <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="auto-style10" style="font-size: medium; ">Telefone:</td>
             <td class="auto-style13" style="font-size: medium">
-                <asp:TextBox ID="txtTelefone" runat="server" TextMode="Phone"></asp:TextBox>
+                <asp:TextBox ID="txtTelefone" runat="server" TextMode="Phone" MaxLength="9"></asp:TextBox>
             </td>
         </tr>
         <tr>
