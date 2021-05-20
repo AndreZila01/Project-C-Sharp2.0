@@ -78,6 +78,12 @@
     <Compile Include="FrmCliEFun.Designer.cs">
       <DependentUpon>FrmCliEFun.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarCarrinho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarCarrinho.Designer.cs">
+      <DependentUpon>FrmEditarCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

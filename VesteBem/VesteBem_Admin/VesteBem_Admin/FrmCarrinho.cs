@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VesteBem_Admin.Class;
-using static VesteBem_Admin.Estado;
 
 namespace VesteBem_Admin
 {
@@ -249,8 +248,9 @@ namespace VesteBem_Admin
 			//}
 			#endregion
 
+			//Receber um email com um codigo e confirmar a encomenda.
 
-			InsertDetalhes(lstDetalhesEncomendas);
+			EncomendasEDetalhes.InsertDetalhes(lstDetalhesEncomendas);
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -353,17 +353,17 @@ namespace VesteBem_Admin
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			label6.Tag = "00";
-			lstEstado = Estado.SelectFuncao();
+			lstEstado = EncomendasEDetalhes.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
 				comboBox2.Items.Add(item);
 			});
-			lstcli = Estado.SelectId();
+			lstcli = Clientes.SelectId();
 			lstcli.ToList().ForEach(item =>
 			{
 				comboBox1.Items.Add(item.Nome);
 			});
-			lstProduto = Estado.SelectProdutos();
+			lstProduto = EncomendasEDetalhes.SelectProdutos();
 			lstProduto.ToList().ForEach(item =>
 			{
 				comboBox3.Items.Add(item.IdProduto + " - " + item.Nome);
@@ -387,213 +387,6 @@ namespace VesteBem_Admin
 			
 
 				dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month + 4, data);
-		}
-	}
-	public class Estado
-	{
-		public class Encomenda
-		{
-			public int IdEncomendas { get; set; }
-			public double ValorEncomendas { get; set; }
-			public int Id_EstadoEncomendas { get; set; }
-			public string EstadoEncomendas { get; set; }
-			public DateTime DataEncomenda { get; set; }
-			public DateTime DataEntrega { get; set; }
-			public int Id_Cliente { get; set; }
-		}
-
-		public class DetalhesEncomendas
-		{
-			public int Id_Encomendas { get; set; }
-			public int Id_Produtos { get; set; }
-			public int QuantEnc { get; set; }
-		}
-
-		public static List<Produtos> SelectProdutos()
-		{
-			List<Produtos> lstProdutos = new List<Produtos>();
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
-			SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
-			try
-			{
-				ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-				string str = string.Empty;
-				DataSet dataSet = new DataSet();
-				dataAdapter.Fill(dataSet);
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
-				{
-					int ds = 0;
-					while (oReader.Read())
-					{
-						Produtos pro = new Produtos();
-						try
-						{
-							Byte[] data = new Byte[0];
-							data = (Byte[])(dataSet.Tables[0].Rows[ds]["Icon"]);
-							MemoryStream mem = new MemoryStream(data);
-
-							pro.Icon = Image.FromStream(mem);
-						}
-						catch
-						{
-							pro.Icon = Properties.Resources.user;
-						}
-						pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
-						pro.Nome = oReader["Nome"].ToString();
-						pro.Valor = double.Parse(oReader["Valor"].ToString());
-						pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
-						pro.CategoriaClass = oReader["CategoriaClasse"].ToString();
-						pro.CategoriaSubClass = oReader["CategoriaSubClasse"].ToString();
-						pro.Sexo = oReader["Sexo"].ToString();
-						ds++;
-						lstProdutos.Add(pro);
-					}
-				}
-			}
-			catch
-			{
-
-			}
-			finally
-			{
-				liga.Close();
-			}
-
-			return lstProdutos;
-			//List<Produtos> lstProduto = new List<Produtos>();
-			//SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			//SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
-			//try
-			//{
-			//	DataSet dataSet = new DataSet();
-			//	SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
-			//	dataAdapter.Fill(dataSet);
-			//	comando.Connection = liga;
-			//	liga.Open();
-			//	using (SqlDataReader oReader = comando.ExecuteReader())
-			//	{
-			//		ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-
-			//		int dss = 0;
-			//		while (oReader.Read())
-			//		{
-			//			Byte[] data = new Byte[0];
-			//			data = (Byte[])(dataSet.Tables[0].Rows[dss]["Icon"]);
-			//			MemoryStream mem = new MemoryStream(data);
-
-			//			Produtos pro = new Produtos();
-			//			pro.Icon = Image.FromStream(mem);
-			//			pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
-			//			pro.Nome = (oReader["Nome"].ToString());
-			//			pro.Valor = double.Parse(oReader["Valor"].ToString());
-			//			pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
-			//			pro.CategoriaClass = (oReader["CategoriaClasse"].ToString());
-			//			pro.CategoriaSubClass = (oReader["CategoriaSubClasse"].ToString());
-			//			pro.Sexo = (oReader["Sexo"].ToString());
-			//			dss++;
-			//			lstProduto.Add(pro);
-			//		}
-			//	}
-			//}
-			//catch(Exception ex)
-			//{
-			//	return null;
-			//}
-			//finally
-			//{
-			//	liga.Close();
-			//}
-
-			//return lstProduto;
-		}
-		public static List<string> SelectFuncao()
-		{
-			List<string> lst = new List<string>();
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select Estado From tblEstado", liga);
-			try
-			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
-				{
-					while (oReader.Read())
-					{
-						lst.Add(oReader["Estado"].ToString());
-					}
-				}
-			}
-			catch
-			{
-				return null;
-			}
-			finally
-			{
-				liga.Close();
-			}
-
-			return lst;
-		}
-		public static string InsertDetalhes(List<DetalhesEncomendas> lst)
-		{
-			SqlCommand command = new SqlCommand();
-			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-			{
-				command.CommandText = "SpInsertDetalhes";
-				command.CommandType = System.Data.CommandType.StoredProcedure;
-				lst.ToList().ForEach(item => {
-					try
-					{
-						command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
-						command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
-						command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
-
-						command.Connection = liga;
-
-						liga.Open();
-
-						command.ExecuteNonQuery();
-					}
-					catch (Exception ex)
-					{
-						
-					}
-				});
-					liga.Close();
-				return "sucesso";
-			}
-		}
-		public static List<Cliente> SelectId()
-		{
-			List<Cliente> lstcli = new List<Cliente>();
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdCliente, Nome From tbl_Cliente", liga);
-			try
-			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
-				{
-					while (oReader.Read())
-					{
-						Cliente cli = new Cliente();
-						cli.Id_Cliente = (int.Parse(oReader["IdCliente"].ToString()));
-						cli.Nome = oReader["Nome"].ToString();
-
-						lstcli.Add(cli);
-					}
-					liga.Close();
-				}
-			}
-			catch
-			{
-				return null;
-			}
-
-			return lstcli;
 		}
 	}
 }

@@ -7,10 +7,58 @@ using System.Threading.Tasks;
 
 namespace VesteBem_Admin.Class
 {
+	public class Encomenda
+	{
+		/// <summary>
+		/// Id da Encomenda
+		/// </summary>
+		public int IdEncomendas { get; set; }
+		/// <summary>
+		/// Valor da Encomenda
+		/// </summary>
+		public double ValorEncomendas { get; set; }
+		/// <summary>
+		/// Id do Estado da Encomenda
+		/// </summary>
+		public int Id_EstadoEncomendas { get; set; }
+		/// <summary>
+		/// Estado da Encomenda
+		/// </summary>
+		public string EstadoEncomendas { get; set; }
+		/// <summary>
+		/// Data Encomendadad
+		/// </summary>
+		public DateTime DataEncomenda { get; set; }
+		/// <summary>
+		/// Data de Entrega da Encomenda
+		/// </summary>
+		public DateTime DataEntrega { get; set; }
+		/// <summary>
+		/// Id do Cliente que fez a Encomenda 
+		/// </summary>
+		public int Id_Cliente { get; set; }
+	}
+
+	public class DetalhesEncomendas
+	{
+		/// <summary>
+		/// Id da Encomenda
+		/// </summary>
+		public int Id_Encomendas { get; set; }
+		/// <summary>
+		/// Id do Produto
+		/// </summary>
+		public int Id_Produtos { get; set; }
+		/// <summary>
+		/// Quantidade da Encomenda
+		/// </summary>
+		public int QuantEnc { get; set; }
+	}
 	public class Logins
-	{/// <summary>
-	 /// Nome de Username no Login
-	 /// </summary>
+	{
+		/// <summary>
+		/// Nome de Username no Login
+		/// </summary>
 		public string UserName { get; set; }
 		/// <summary>
 		/// Password de Username no Login

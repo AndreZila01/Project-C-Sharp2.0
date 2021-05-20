@@ -39,6 +39,8 @@ namespace VesteBem_Admin
 					FrmCarrinho frmss = new FrmCarrinho();
 					frmss.Show();
 					break;
+				case "Editar Carrinho":
+					break;
 			}
 			this.WindowState = FormWindowState.Minimized;
 		}
