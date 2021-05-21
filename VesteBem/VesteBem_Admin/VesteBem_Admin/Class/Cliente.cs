@@ -17,6 +17,30 @@ namespace VesteBem_Admin.Class
 {
 	public class Clientes
 	{
+		public static int SelectIdCliente(string cli)
+		{
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select IdCliente From tbl_Cliente WHERE Nome like '" + cli + "'", liga);
+			int idcli = 0;
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					if (oReader.Read())
+						idcli = int.Parse(oReader["IdCliente"].ToString());
+
+
+				}
+				return idcli;
+			}
+			catch
+			{
+				return idcli;
+			}
+
+		}
 		public static List<Cliente> SelectId()
 		{
 			List<Cliente> lstcli = new List<Cliente>();
@@ -314,11 +338,11 @@ namespace VesteBem_Admin.Class
 	}
 	public class ColectIdFun
 	{
-		public static List<string> SelectFuncao()
+		public static List<Estados> SelectEstado()
 		{
-			List<string> lst = new List<string>();
+			List<Estados> lst = new List<Estados>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("SELECT Funcao FROM tblFuncao", liga);
+			SqlCommand comando = new SqlCommand("Select IdEstado, Estado From tblEstado", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -327,7 +351,10 @@ namespace VesteBem_Admin.Class
 				{
 					while (oReader.Read())
 					{
-						lst.Add(oReader["Funcao"].ToString());
+						Estados est = new Estados();
+						est.IdEstado = int.Parse(oReader["IdEstado"].ToString());
+						est.Estado = (oReader["Estado"].ToString());
+						lst.Add(est);
 					}
 				}
 			}
@@ -442,6 +469,36 @@ namespace VesteBem_Admin.Class
 	}
 	public class EncomendasEDetalhes
 	{
+		public static string InsertEncomendas(Encomenda enc, int IdEstado)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "SpInsertEncomenda";
+				command.CommandType = System.Data.CommandType.StoredProcedure;
+
+				try
+				{
+					command.Parameters.Add(new SqlParameter("ValorEncomendas", enc.ValorEncomendas));
+					command.Parameters.Add(new SqlParameter("EstadoEncomendas", IdEstado));
+					command.Parameters.Add(new SqlParameter("DataEncomenda", enc.DataEncomenda));
+					command.Parameters.Add(new SqlParameter("DataEntrega", enc.DataEntrega));
+					command.Parameters.Add(new SqlParameter("Id_Cliente", enc.Id_Cliente));
+
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
+				}
+				catch (Exception ex)
+				{
+
+				}
+				liga.Close();
+				return "sucesso";
+			}
+		}
 		public static List<Produtos> SelectProdutos()
 		{
 			List<Produtos> lstProdutos = new List<Produtos>();
@@ -599,6 +656,31 @@ namespace VesteBem_Admin.Class
 				liga.Close();
 				return "sucesso";
 			}
+		}
+		public static int SelectIdEncomenda(int cli)
+		{
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select idEncomendas From tbl_Encomendas", liga);
+			int idEncomenda = 0;
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					if (oReader.Read())
+						if (int.Parse(oReader["IdEncomendas"].ToString()) == cli)
+							idEncomenda = int.Parse(oReader["IdEncomendas"].ToString());
+					liga.Close();
+
+					return idEncomenda;
+				}
+			}
+			catch
+			{
+				return idEncomenda;
+			}
+
 		}
 	}
 

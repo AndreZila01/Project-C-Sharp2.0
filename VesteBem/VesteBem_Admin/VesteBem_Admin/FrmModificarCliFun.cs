@@ -418,11 +418,11 @@ namespace VesteBem_Admin
 				CmbFuncao.Name = "CmbFuncaoFun";
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
-				List<string> lst = ColectIdFun.SelectFuncao();
+				List<Estados> lst = ColectIdFun.SelectEstado();
 				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
-				foreach (string ds in lst)
+				foreach (Estados ds in lst)
 				{
-					CmbFuncao.Items.Add(ds);
+					CmbFuncao.Items.Add(ds.Estado);
 				}
 				CmbFuncao.Text = Lstfun[0].Funcao;
 				Fun.Funcao = Lstfun[0].Funcao;
@@ -540,8 +540,8 @@ namespace VesteBem_Admin
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
 				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
-				List<string> lst = ColectIdFun.SelectFuncao();
-				foreach (string ds in lst)
+				List<Estados> lst = ColectIdFun.SelectEstado();
+				foreach (Estados ds in lst)
 				{
 					CmbFuncao.Items.Add(ds);
 				}
