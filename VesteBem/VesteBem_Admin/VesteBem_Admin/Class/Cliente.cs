@@ -196,6 +196,68 @@ namespace VesteBem_Admin.Class
 	}
 	public class Funcionarios
 	{
+		public static List<Funcao> SelectFuncao()
+		{
+			List<Funcao> lst = new List<Funcao>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select  IdFuncao, Funcao From tblFuncao", liga);
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						Funcao Fun = new Funcao();
+						Fun.IdFuncao = int.Parse(oReader["IdFuncao"].ToString());
+						Fun.Funcoes = oReader["Funcao"].ToString();
+						lst.Add(Fun);
+					}
+				}
+			}
+			catch
+			{
+				return null;
+			}
+			finally
+			{
+				liga.Close();
+			}
+
+			return lst;
+		}
+		public static List<Estados> SelectEstado()
+		{
+			List<Estados> lst = new List<Estados>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select IdEstado, Estado From tblEstado", liga);
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						Estados est = new Estados();
+						est.IdEstado = int.Parse(oReader["IdEstado"].ToString());
+						est.Estado = (oReader["Estado"].ToString());
+						lst.Add(est);
+					}
+				}
+			}
+			catch
+			{
+				return null;
+			}
+			finally
+			{
+				liga.Close();
+			}
+
+			return lst;
+		}
 		public static List<Funcionario> ConsultarFuncionario()
 		{
 			List<Funcionario> lstFun = new List<Funcionario>();
@@ -244,7 +306,7 @@ namespace VesteBem_Admin.Class
 			{
 				string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
 				string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
-				command.Parameters.Add(new SqlParameter("Id_Funcao", fun.Id_Login));
+				command.Parameters.Add(new SqlParameter("Id_Funcao", fun.id_Funcao));
 				command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
 				command.Parameters.Add(new SqlParameter("Telemovel", fun.Telemovel));
 				command.Parameters.Add(new SqlParameter("Id_Login", fun.Id_Login));
@@ -338,37 +400,6 @@ namespace VesteBem_Admin.Class
 	}
 	public class ColectIdFun
 	{
-		public static List<Estados> SelectEstado()
-		{
-			List<Estados> lst = new List<Estados>();
-			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdEstado, Estado From tblEstado", liga);
-			try
-			{
-				comando.Connection = liga;
-				liga.Open();
-				using (SqlDataReader oReader = comando.ExecuteReader())
-				{
-					while (oReader.Read())
-					{
-						Estados est = new Estados();
-						est.IdEstado = int.Parse(oReader["IdEstado"].ToString());
-						est.Estado = (oReader["Estado"].ToString());
-						lst.Add(est);
-					}
-				}
-			}
-			catch
-			{
-				return null;
-			}
-			finally
-			{
-				liga.Close();
-			}
-
-			return lst;
-		}
 		public static string SelectName(int id_logi)
 		{
 			string nome = "";

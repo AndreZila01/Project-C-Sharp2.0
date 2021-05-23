@@ -92,19 +92,19 @@ namespace VesteBem_Admin
 
 		private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if(e.KeyChar!='.' && e.KeyChar != '\u0016')
+			if(e.KeyChar!='.' && e.KeyChar != '\u0016' && e.KeyChar != '\b')
 			e.Handled = !char.IsDigit(e.KeyChar);
 		}
 
 		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '\u0016')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if(e.KeyChar!='\u0016')
+			if(e.KeyChar!='\u0016' && e.KeyChar != '\b')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 

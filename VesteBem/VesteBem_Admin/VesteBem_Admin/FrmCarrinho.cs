@@ -75,7 +75,6 @@ namespace VesteBem_Admin
 				LblQuantidade.TabIndex = 1;
 				LblQuantidade.BackColor = Color.Gray;
 				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
-				//this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 				LblQuantidade.Text = numericUpDown1.Value + " x";
 				LblQuantidade.Tag = "" + numericUpDown1.Value;
 				Pnl.Controls.Add(LblQuantidade);
@@ -361,7 +360,7 @@ namespace VesteBem_Admin
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
 			label6.Tag = "00";
-			lstEstado = ColectIdFun.SelectEstado();
+			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
 				comboBox2.Items.Add(item.Estado);

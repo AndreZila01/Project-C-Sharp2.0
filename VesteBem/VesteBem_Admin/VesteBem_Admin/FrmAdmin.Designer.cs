@@ -70,7 +70,7 @@
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(148, 90);
 			this.button4.TabIndex = 3;
-			this.button4.Text = "Editar Carrinho";
+			this.button4.Text = "Consultar Carrinho";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.button_Click);
 			// 

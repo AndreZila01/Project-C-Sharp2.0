@@ -67,6 +67,9 @@ namespace VesteBem_Admin.Class
 	}
 	public class Cliente
 	{
+		/// <summary>
+		/// Id do Cliente
+		/// </summary>
 		public int Id_Cliente { get; set; }
 		/// <summary>
 		/// Nome do Cliente
@@ -111,7 +114,8 @@ namespace VesteBem_Admin.Class
 		public Image Icon { get; set; }
 	}
 	public class Produtos
-	{/// <summary>
+	{
+		/// <summary>
 	 /// Id do Produto
 	 /// </summary>
 		public int IdProduto { get; set; }
@@ -150,7 +154,14 @@ namespace VesteBem_Admin.Class
 	}
 	public class Funcionario
 	{
+		/// <summary>
+		/// Id do Funcionario 
+		/// </summary>
 		public int IdFuncionario { get; set; }
+		/// <summary>
+		/// Id da Funcao
+		/// </summary>
+		public int id_Funcao { get; set; }
 		/// <summary>
 		/// Funcao do Funcionario
 		/// </summary>
@@ -184,5 +195,15 @@ namespace VesteBem_Admin.Class
 		/// </summary>
 		public string Estado { get; set; }
 	}
-	
+	public class Funcao
+	{
+		/// <summary>
+		/// Id da Funcão
+		/// </summary>
+		public int IdFuncao { get; set; }
+		/// <summary>
+		/// Nome da Funcao
+		/// </summary>
+		public string Funcoes { get; set; }
+	}
 }

@@ -14,14 +14,14 @@ namespace VesteBem_Admin
 {
 	public partial class FrmModificarCliFun : Form
 	{
-		List<Cliente> Lstcli = new List<Cliente>(); List<Funcionario> Lstfun = new List<Funcionario>();
+		List<Cliente> Lstcli = new List<Cliente>(); List<Funcionario> Lstfunc = new List<Funcionario>(); List<Funcao> LstFun = new List<Funcao>();
 		Cliente Cli = new Cliente(); Funcionario Fun = new Funcionario();
 		private const int CP_NOCLOSE_BUTTON = 0x200;
 		public FrmModificarCliFun(Cliente cli, Funcionario fun)
 		{
 			InitializeComponent();
 			Lstcli.Add(cli);
-			Lstfun.Add(fun);
+			Lstfunc.Add(fun);
 		}
 		protected override CreateParams CreateParams
 		{
@@ -47,13 +47,32 @@ namespace VesteBem_Admin
 					Cli.Morada = Txt.Text;
 					break;
 				case "TxtCodCli":
+					if (Txt.TextLength > 7 && !(Txt.Text.Contains('-')))
+					{
+						char[] charArr = Txt.Text.ToCharArray();
+						charArr[4] = '-';
+						Txt.Text = "";
+						charArr.ToList().ForEach(item =>
+						{
+							Txt.Text += item;
+						});
+					}
 					Cli.CodPostal = Txt.Text;
 					break;
 				case "TxtTeleCli":
 					Cli.Telefone = Txt.Text;
 					break;
-				case "TxtEmailCli":
-					Cli.Email = Txt.Text;
+				case "TxtEmail":
+					try
+					{
+						var addr = new System.Net.Mail.MailAddress(Cli.Email);
+						if (addr.Address != "") 
+							Cli.Email = Txt.Text;
+					}
+					catch
+					{
+						Cli.Email = "";
+					}
 					break;
 				case "TxtLocCli":
 					Cli.Localidade = Txt.Text;
@@ -65,13 +84,20 @@ namespace VesteBem_Admin
 					Fun.Funcao = Txt.Text;
 					break;
 				case "TxtTelemovelFun":
-					Fun.Telemovel = Txt.Text;
+					if (Txt.Text != "")
+						Fun.Telemovel = Txt.Text;
 					break;
 				case "TxtLoginFun":
-					Fun.Username = Txt.Text;
+					if (Txt.Text != "")
+						Fun.Username = Txt.Text;
 					break;
 				case "TxtPassFun":
-					Fun.Pass = Txt.Text;
+					/*Regex r = new Regex("^[a-zA-Z0-9]*$");
+if (r.IsMatch(SomeString)) {
+  ...
+}*/
+					if (Txt.Text != "")
+						Fun.Pass = Txt.Text;
 					break;
 			}
 		}
@@ -125,8 +151,8 @@ namespace VesteBem_Admin
 		}
 		private void SaveNewFun()
 		{
-			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
-			Fun.Id_Login = Lstfun[0].Id_Login;
+			Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
+			Fun.Id_Login = Lstfunc[0].Id_Login;
 			string result = Funcionarios.InsertFuncionario(Fun);
 
 			if (result == "sucesso")
@@ -141,9 +167,10 @@ namespace VesteBem_Admin
 
 		private void SaveFun()
 		{
-			Fun.IdFuncionario = Lstfun[0].IdFuncionario;
-			Fun.Id_Login = Lstfun[0].Id_Login;
-			string result = Funcionarios.InsertFuncionario(Fun);
+			Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
+			Fun.Id_Login = Lstfunc[0].Id_Login;
+			Fun.id_Funcao = (LstFun[LstFun.FindIndex(r => r.Funcoes == Lstfunc[0].Funcao)].IdFuncao);
+			string result = Funcionarios.AtualizarFuncionario(Fun);
 
 			if (result == "sucesso")
 				Close();
@@ -188,6 +215,7 @@ namespace VesteBem_Admin
 				TxtNome.Size = new System.Drawing.Size(172, 20);
 				TxtNome.TabIndex = 0;
 				TxtNome.Text = Lstcli[0].Nome;
+				TxtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -199,6 +227,7 @@ namespace VesteBem_Admin
 				TxtNif.Size = new System.Drawing.Size(172, 20);
 				TxtNif.TabIndex = 2;
 				TxtNif.Text = Lstcli[0].Nif;
+				TxtNif.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtNif.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNif);
 
@@ -221,6 +250,7 @@ namespace VesteBem_Admin
 				TxtCod.Size = new System.Drawing.Size(172, 20);
 				TxtCod.TabIndex = 4;
 				TxtCod.Text = Lstcli[0].CodPostal;
+				TxtCod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtCod.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtCod);
 
@@ -232,6 +262,7 @@ namespace VesteBem_Admin
 				TxtTele.Size = new System.Drawing.Size(172, 20);
 				TxtTele.TabIndex = 8;
 				TxtTele.Text = Lstcli[0].Telefone;
+				TxtTele.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtTele.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTele);
 
@@ -390,7 +421,7 @@ namespace VesteBem_Admin
 				this.Controls.Add(Data);
 			}
 			else
-			if (Lstfun.Count > 0 && Lstfun[0].Id_Login != 0 && Lstfun[0].Nome != null)
+			if (Lstfunc.Count > 0 && Lstfunc[0].Id_Login != 0 && Lstfunc[0].Nome != null)
 			{
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
@@ -398,7 +429,7 @@ namespace VesteBem_Admin
 				LblNome.Name = "LblNome";
 				LblNome.Size = new System.Drawing.Size(43, 13);
 				LblNome.TabIndex = 1;
-				LblNome.Text = "Nomes:";
+				LblNome.Text = "Nome:";
 				this.Controls.Add(LblNome);
 
 				TextBox TxtNome = new TextBox();
@@ -406,8 +437,8 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
-				TxtNome.Text = Lstfun[0].Nome;
-				Fun.Nome = Lstfun[0].Nome;
+				TxtNome.Text = Lstfunc[0].Nome;
+				Fun.Nome = Lstfunc[0].Nome;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -418,14 +449,14 @@ namespace VesteBem_Admin
 				CmbFuncao.Name = "CmbFuncaoFun";
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
-				List<Estados> lst = ColectIdFun.SelectEstado();
+				LstFun = Funcionarios.SelectFuncao();
 				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
-				foreach (Estados ds in lst)
+				foreach (Funcao ds in LstFun)
 				{
-					CmbFuncao.Items.Add(ds.Estado);
+					CmbFuncao.Items.Add(ds.Funcoes);
 				}
-				CmbFuncao.Text = Lstfun[0].Funcao;
-				Fun.Funcao = Lstfun[0].Funcao;
+				CmbFuncao.Text = Lstfunc[0].Funcao;
+				Fun.Funcao = Lstfunc[0].Funcao;
 				this.Controls.Add(CmbFuncao);
 
 				Label LblFuncao = new Label();
@@ -451,8 +482,9 @@ namespace VesteBem_Admin
 				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
 				TxtTelemovel.TabIndex = 4;
-				Fun.Telemovel = Lstfun[0].Telemovel;
-				TxtTelemovel.Text = Lstfun[0].Telemovel;
+				TxtTelemovel.MaxLength = 9;
+				Fun.Telemovel = Lstfunc[0].Telemovel;
+				TxtTelemovel.Text = Lstfunc[0].Telemovel;
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTelemovel);
 
@@ -462,15 +494,15 @@ namespace VesteBem_Admin
 				LblLogin.Name = "LblLogin";
 				LblLogin.Size = new System.Drawing.Size(82, 13);
 				LblLogin.TabIndex = 7;
-				LblLogin.Text = "Nome de Login:";
+				LblLogin.Text = "Username:";
 				this.Controls.Add(LblLogin);
 
 				TextBox TxtLogin = new TextBox();
 				TxtLogin.Location = new System.Drawing.Point(156, 168);
 				TxtLogin.Name = "TxtLoginFun";
-				TxtLogin.Tag = "" + Lstfun[0].Username;
-				Fun.Username = Lstfun[0].Username;
-				TxtLogin.Text = Lstfun[0].Username.ToString();
+				TxtLogin.Tag = "" + Lstfunc[0].Username;
+				Fun.Username = Lstfunc[0].Username;
+				TxtLogin.Text = Lstfunc[0].Username.ToString();
 				TxtLogin.Size = new System.Drawing.Size(135, 20);
 				TxtLogin.TabIndex = 6; TxtLogin.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtLogin);
@@ -487,8 +519,8 @@ namespace VesteBem_Admin
 				TextBox TxtPass = new TextBox();
 				TxtPass.Location = new System.Drawing.Point(156, 211);
 				TxtPass.Name = "TxtPassFun";
-				TxtPass.Text = Lstfun[0].Pass;
-				Fun.Pass = Lstfun[0].Pass;
+				TxtPass.Text = Lstfunc[0].Pass;
+				Fun.Pass = Lstfunc[0].Pass;
 				TxtPass.Size = new System.Drawing.Size(135, 20);
 				TxtPass.TabIndex = 8; TxtPass.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtPass);
@@ -529,7 +561,7 @@ namespace VesteBem_Admin
 				LblNome.Name = "LblNome";
 				LblNome.Size = new System.Drawing.Size(43, 13);
 				LblNome.TabIndex = 1;
-				LblNome.Text = "Nomes:";
+				LblNome.Text = "Nome:";
 				this.Controls.Add(LblNome);
 
 				ComboBox CmbFuncao = new ComboBox();
@@ -540,13 +572,13 @@ namespace VesteBem_Admin
 				CmbFuncao.Size = new System.Drawing.Size(135, 21);
 				CmbFuncao.TabIndex = 2;
 				CmbFuncao.Leave += new System.EventHandler(comboBox1_Leave);
-				List<Estados> lst = ColectIdFun.SelectEstado();
-				foreach (Estados ds in lst)
+				LstFun = Funcionarios.SelectFuncao();
+				foreach (Funcao ds in LstFun)
 				{
-					CmbFuncao.Items.Add(ds);
+					CmbFuncao.Items.Add(ds.Funcoes);
 				}
-				CmbFuncao.Text = Lstfun[0].Funcao;
-				Fun.Funcao = Lstfun[0].Funcao;
+				CmbFuncao.Text = Lstfunc[0].Funcao;
+				Fun.Funcao = Lstfunc[0].Funcao;
 				this.Controls.Add(CmbFuncao);
 
 				Label LblFuncao = new Label();
@@ -572,6 +604,7 @@ namespace VesteBem_Admin
 				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
 				TxtTelemovel.TabIndex = 4;
+				TxtTelemovel.MaxLength = 9;
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTelemovel);
 
@@ -581,7 +614,7 @@ namespace VesteBem_Admin
 				LblLogin.Name = "LblLogin";
 				LblLogin.Size = new System.Drawing.Size(82, 13);
 				LblLogin.TabIndex = 7;
-				LblLogin.Text = "Nome de Login:";
+				LblLogin.Text = "Username:";
 				this.Controls.Add(LblLogin);
 
 				TextBox TxtLogin = new TextBox();
@@ -626,6 +659,26 @@ namespace VesteBem_Admin
 				BtnCancelar.UseVisualStyleBackColor = true;
 				BtnCancelar.Click += new System.EventHandler(button_Click);
 				this.Controls.Add(BtnCancelar);
+			}
+		}
+
+		private void txt_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			TextBox Txt = sender as TextBox;
+
+			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli")
+			{
+				if(e.KeyChar!='\b')
+				e.Handled = !char.IsDigit(e.KeyChar);
+			}
+			else if(Txt.Name== "TxtCodCli")
+			{
+				if (e.KeyChar != '\b' && e.KeyChar!='-')
+					e.Handled = !char.IsDigit(e.KeyChar);
+			}
+			else
+			{
+				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 			}
 		}
 	}

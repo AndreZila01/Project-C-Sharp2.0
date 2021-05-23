@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace VesteBem_Admin
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			Process[] procs = Process.GetProcessesByName("VesteBem_Admin");
+			if (procs.Length > 1) foreach (Process proc in procs) { if (proc != procs[0]) proc.Kill(); }
 			//string Paths = Path.Combine(Path.GetTempPath());
 			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
