@@ -108,5 +108,11 @@ namespace VesteBem_Admin
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
+		private void FrmAddProdutos_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			FormCollection fc = Application.OpenForms;
+			foreach (Form frm in fc)
+				frm.WindowState = FormWindowState.Normal;
+		}
 	}
 }

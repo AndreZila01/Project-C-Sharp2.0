@@ -116,6 +116,12 @@
     <EmbeddedResource Include="FrmCliEFun.resx">
       <DependentUpon>FrmCliEFun.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmConsultarCarrinho.resx">
+      <DependentUpon>FrmConsultarCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarCarrinho.resx">
+      <DependentUpon>FrmEditarCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>

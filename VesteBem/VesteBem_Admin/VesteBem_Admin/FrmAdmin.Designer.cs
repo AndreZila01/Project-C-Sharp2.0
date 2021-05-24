@@ -84,6 +84,7 @@
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
 			this.Name = "FrmAdmin";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmAdmin";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAdmin_FormClosed);
 			this.Load += new System.EventHandler(this.FrmAdmin_Load);

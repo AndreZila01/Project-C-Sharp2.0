@@ -50,7 +50,7 @@ namespace VesteBem_Admin
 				liga.Open();
 				try
 				{
-					command.CommandText = "Select * fROM tbl_Login where Funcionario=1 and Usern='"+user+"'";
+					command.CommandText = "Select * fROM tbl_Login where Cargo=1 and Usern='" + user+"'";
 					dr = command.ExecuteReader();
 					if (dr.Read())
 					{

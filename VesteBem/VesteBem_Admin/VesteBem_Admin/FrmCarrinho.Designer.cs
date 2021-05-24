@@ -251,7 +251,9 @@
 			this.Controls.Add(this.comboBox1);
 			this.Controls.Add(this.textBox1);
 			this.Name = "FrmCarrinho";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmCarrinho";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCarrinho_FormClosed);
 			this.Load += new System.EventHandler(this.FrmCarrinho_Load);
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -253,7 +253,9 @@
 			this.Controls.Add(this.TxtValor);
 			this.Controls.Add(this.TxtNome);
 			this.Name = "FrmAddProdutos";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmAddProdutos";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProdutos_FormClosed);
 			this.Load += new System.EventHandler(this.FrmAddProdutos_Load);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

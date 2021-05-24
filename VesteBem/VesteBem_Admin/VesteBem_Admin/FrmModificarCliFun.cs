@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VesteBem_Admin.Class;
@@ -41,7 +42,8 @@ namespace VesteBem_Admin
 					Cli.Nome = Txt.Text;
 					break;
 				case "TxtNifCli":
-					Cli.Nif = Txt.Text;
+					if(Txt.Text.Length>8)
+						Cli.Nif = Txt.Text;
 					break;
 				case "TxtMoradaCli":
 					Cli.Morada = Txt.Text;
@@ -92,12 +94,10 @@ namespace VesteBem_Admin
 						Fun.Username = Txt.Text;
 					break;
 				case "TxtPassFun":
-					/*Regex r = new Regex("^[a-zA-Z0-9]*$");
-if (r.IsMatch(SomeString)) {
-  ...
-}*/
-					if (Txt.Text != "")
+					if (Txt.Text != "" && Txt.Text.Length > 9)
 						Fun.Pass = Txt.Text;
+					else
+						MessageBox.Show("A password convém ter mais de 9 caracteres!!", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					break;
 			}
 		}

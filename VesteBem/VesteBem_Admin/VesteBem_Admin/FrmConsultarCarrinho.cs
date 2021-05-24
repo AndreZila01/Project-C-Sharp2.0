@@ -16,5 +16,12 @@ namespace VesteBem_Admin
 		{
 			InitializeComponent();
 		}
+
+		private void FrmConsultarCarrinho_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			FormCollection fc = Application.OpenForms;
+			foreach (Form frm in fc)
+				frm.WindowState = FormWindowState.Normal;
+		}
 	}
 }

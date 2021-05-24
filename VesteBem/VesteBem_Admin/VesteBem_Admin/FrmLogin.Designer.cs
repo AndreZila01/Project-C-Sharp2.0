@@ -102,6 +102,7 @@
 			this.Controls.Add(this.btnLogin);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "FrmLogin";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);

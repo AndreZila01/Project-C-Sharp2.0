@@ -398,6 +398,13 @@ namespace VesteBem_Admin
 
 			dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
 		}
+
+		private void FrmCarrinho_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			FormCollection fc = Application.OpenForms;
+			foreach (Form frm in fc)
+				frm.WindowState = FormWindowState.Normal;
+		}
 	}
 	public class Estado
 	{
