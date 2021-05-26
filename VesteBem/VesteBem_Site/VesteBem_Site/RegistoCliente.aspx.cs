@@ -75,8 +75,13 @@ namespace VesteBem
                          liga.Close();
                          liga.Open();
 
-                        comando3.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '" + id + "')";
+                        int len = FUpload.PostedFile.ContentLength;
+                        byte[] pic = new byte[len + 1];
+                        FUpload.PostedFile.InputStream.Read(pic, 0, len);
+
+                        comando3.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone,Icon, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '" + pic + "', '" + id + "')";
                         comando3.ExecuteNonQuery();
+                        lblMensagem.Text = "Registado com sucesso";
 
                     }
                 }

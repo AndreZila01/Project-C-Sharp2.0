@@ -49,10 +49,7 @@
             width: 354px;
             height: 22px;
         }
-        .auto-style20 {
-            margin-right: 0px;
-        }
-    </style>
+        </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
@@ -135,6 +132,12 @@
             <td class="auto-style18" style="font-size: medium; ">Confirmar Password</td>
             <td class="auto-style19" style="font-size: medium">
                 <asp:TextBox ID="txtPasswordConfirmar" runat="server" TextMode="Password" Font-Size="Medium"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style18" style="font-size: medium; ">Imagem de perfil:</td>
+            <td class="auto-style19" style="font-size: medium">
+                <asp:FileUpload ID="FUpload" runat="server" />
             </td>
         </tr>
         <tr>
