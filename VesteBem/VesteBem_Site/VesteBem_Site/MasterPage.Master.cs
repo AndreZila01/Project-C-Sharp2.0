@@ -33,7 +33,7 @@ namespace VesteBem
 					{
 						Session["Username"] = uname.Value;
 						Response.Write("<script>alert('Sessão efetuada com sucesso')</script>");
-						Response.Redirect("~/MasterCliente.aspx");
+						Response.Redirect("~/logincerto.aspx");
 					}
 					else
                     {
