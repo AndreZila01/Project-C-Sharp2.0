@@ -292,7 +292,7 @@ namespace VesteBem_Admin
 			textBox1.Text = label6.Tag.ToString();
 			comboBox2.SelectedItem = "Na Fabrica";
 			textBox1.Enabled = false;
-			panel2.Visible = true;
+			panel2.Enabled = true;
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -301,7 +301,8 @@ namespace VesteBem_Admin
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
-				comboBox2.Items.Add(item.Estado);
+				if(item.Estado== "Na Fabrica")
+					comboBox2.Items.Add(item.Estado);
 			});
 			lstcli = Clientes.SelectId();
 			lstcli.ToList().ForEach(item =>

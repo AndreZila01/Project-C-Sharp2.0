@@ -20,6 +20,7 @@ namespace VesteBem_Admin
 		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 		SqlCommand command = new SqlCommand();
 		SqlDataReader dr;
+		//string mes, hora, minuto, segundo;
 		List<Logins> lst = new List<Logins>();
 		public FrmLogin()
 		{
@@ -35,14 +36,15 @@ namespace VesteBem_Admin
 
 			TxtUser.Text = EncryptADeDecrypt.DecryptOther(lst[0].UserName);
 			TxtPass.Text = EncryptADeDecrypt.DecryptRSA(lst[0].Password);
-
+			timer1.Start();
+			//var ds = DateTime.Now.Month.ToString().Length == 1 ? mes = "0" + (DateTime.Now.Month.ToString()) : mes = DateTime.Now.Month.ToString();
 			TxtPass.Enabled = false; TxtUser.Enabled = false;
-			lblTimer.Text = DateTime.Now.Date.ToString();
 			//File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			timer1.Stop();
 			if (TxtUser.Text != "" && TxtPass.Text != "")
 			{
 				string pass = TxtPass.Text, user = "";
@@ -51,7 +53,7 @@ namespace VesteBem_Admin
 				liga.Open();
 				try
 				{
-					command.CommandText = "Select * fROM tbl_Login where Funcionario=1 and Usern='" + user+"'";
+					command.CommandText = "Select * fROM tbl_Login where Funcionario=1 and Usern='" + user + "'";
 					dr = command.ExecuteReader();
 					if (dr.Read())
 					{
@@ -64,16 +66,28 @@ namespace VesteBem_Admin
 						}
 					}
 					else
+					{
 						MessageBox.Show("Login sem sucesso!\nCertifique se a password e username está correto!", "Error Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+						timer1.Start();
+					}
 				}
 				catch (Exception ex)
 				{
 					MessageBox.Show(ex.Message, "Error Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+					timer1.Start();
 				}
 				liga.Close();
 				TxtPass.Text = string.Empty;
 				TxtUser.Text = string.Empty;
 			}
+		}
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			DateTime dt = new DateTime(int.Parse(DateTime.Now.Year.ToString()), int.Parse(DateTime.Now.Month.ToString()), int.Parse(DateTime.Now.Day.ToString()), int.Parse(DateTime.Now.Hour.ToString()), int.Parse(DateTime.Now.Minute.ToString()), int.Parse(DateTime.Now.Second.ToString()));
+			lblTimer.Text = (dt.ToString("dd.MM.yyyy \n HH:mm:ss tt").Replace('.', '/'));
+
 		}
 	}
 }

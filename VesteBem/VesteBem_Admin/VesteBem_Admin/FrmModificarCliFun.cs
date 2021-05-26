@@ -485,6 +485,7 @@ namespace VesteBem_Admin
 				TxtTelemovel.MaxLength = 9;
 				Fun.Telemovel = Lstfunc[0].Telemovel;
 				TxtTelemovel.Text = Lstfunc[0].Telemovel;
+				TxtTelemovel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtTelemovel);
 
@@ -666,7 +667,7 @@ namespace VesteBem_Admin
 		{
 			TextBox Txt = sender as TextBox;
 
-			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli")
+			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli"|| Txt.Text== "TxtTelemovelFun")
 			{
 				if(e.KeyChar!='\b')
 				e.Handled = !char.IsDigit(e.KeyChar);

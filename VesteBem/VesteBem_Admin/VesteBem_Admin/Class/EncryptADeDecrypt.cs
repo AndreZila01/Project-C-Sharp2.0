@@ -62,8 +62,9 @@ namespace VesteBem_Admin.Class
             }
         }
 
-        public static string EncryptOther(string input, string key= "sblw-3hn8-sqoy19")
+        public static string EncryptOther(string input)
         {
+            string key = "sblw-3hn8-sqoy19";
             try
             {
                 //byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);//string to bytes
@@ -91,9 +92,10 @@ namespace VesteBem_Admin.Class
             }
 
         }
-        public static string DecryptOther(string input, string key="sblw-3hn8-sqoy19")
+        public static string DecryptOther(string input)
         {
-            try
+            string key = "sblw-3hn8-sqoy19";
+			try
             {
                 byte[] inputArray = Convert.FromBase64String(input);
                 TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();

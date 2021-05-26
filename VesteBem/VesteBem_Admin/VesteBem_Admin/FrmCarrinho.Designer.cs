@@ -262,11 +262,11 @@
 			this.panel2.Controls.Add(this.label4);
 			this.panel2.Controls.Add(this.label5);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panel2.Enabled = false;
 			this.panel2.Location = new System.Drawing.Point(0, 0);
 			this.panel2.Name = "panel2";
 			this.panel2.Size = new System.Drawing.Size(378, 450);
 			this.panel2.TabIndex = 24;
-			this.panel2.Visible = false;
 			// 
 			// FrmCarrinho
 			// 
