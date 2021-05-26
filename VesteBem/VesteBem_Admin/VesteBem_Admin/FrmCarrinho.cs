@@ -25,7 +25,6 @@ namespace VesteBem_Admin
 		}
 		List<Estados> lstEstado = new List<Estados>();
 		List<DetalhesEncomendas> lstDetalhesEncomendas = new List<DetalhesEncomendas>();
-		List<Encomenda> lstEncomenda = new List<Encomenda>();
 		List<Cliente> lstcli = new List<Cliente>();
 		List<Produtos> lstProduto = new List<Produtos>();
 		private void FrmCarrinho_Load(object sender, EventArgs e)
@@ -35,7 +34,7 @@ namespace VesteBem_Admin
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
-			
+
 		}
 
 		private void PctRemove_MouseEnter(object sender, EventArgs e)
@@ -289,10 +288,13 @@ namespace VesteBem_Admin
 			});
 			//Encomenda obj = lstDetalhesEncomendas.Find(x => (x.Name == "product name"));
 			//Certificar se o utilizador meteu varias vezes os produtos
-			textBox1.Text = label6.Tag.ToString();
-			comboBox2.SelectedItem = "Na Fabrica";
-			textBox1.Enabled = false;
-			panel2.Enabled = true;
+			if (lstDetalhesEncomendas.Count() > 0)
+			{
+				textBox1.Text = label6.Tag.ToString();
+				comboBox2.SelectedItem = "Na Fabrica";
+				textBox1.Enabled = false;
+				panel2.Enabled = true;
+			}
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -301,7 +303,7 @@ namespace VesteBem_Admin
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
-				if(item.Estado== "Na Fabrica")
+				if (item.Estado == "Na Fabrica")
 					comboBox2.Items.Add(item.Estado);
 			});
 			lstcli = Clientes.SelectId();
@@ -326,7 +328,7 @@ namespace VesteBem_Admin
 			if (mes != 2)
 			{
 				var temp = mes == 1 && mes == 3 && mes == 5 && mes == 7 && mes == 8 && mes == 9 && mes == 12 ? data = 31 : data = 30;
-			 //var temp = mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 9 || mes == 12 ? data = 31 : data = 28;
+				//var temp = mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 9 || mes == 12 ? data = 31 : data = 28;
 			}
 			else
 				if (DateTime.Today.Year % 400 == 0 || (DateTime.Today.Year % 4 == 0 && DateTime.Today.Year % 100 != 0))

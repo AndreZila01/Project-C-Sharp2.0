@@ -1,0 +1,53 @@
+[
+	{
+		"IdMode": 1,
+		"NomeMode": "WhiteMode",
+		"Configuration": [
+			{
+				"TipoLetraTitulo": "",
+				"TamanhoTitulo": "",
+				"CorTitulo": "",
+				"CorSubTitulo": "",
+				"TamanhoSubTitulo": "",
+				"TipoLetraSubTitulo": "",
+				"CorTexto": "",
+				"TamanhoTexto": "",
+				"TipoLetra": ""
+			}
+		]
+	},
+	{
+		"IdMode": 2,
+		"NomeMode": "BlackMode",
+		"Configuration": [
+			{
+				"TipoLetraTitulo": "",
+				"TamanhoTitulo": "",
+				"CorTitulo": "",
+				"CorSubTitulo": "",
+				"TamanhoSubTitulo": "",
+				"TipoLetraSubTitulo": "",
+				"CorTexto": "",
+				"TamanhoTexto": "",
+				"TipoLetra": ""
+			}
+		]
+	},
+	{
+		"IdMode": 3,
+		"NomeMode": "CostumizadoPeloUser",
+		"Configuration": [
+			{
+				"TipoLetraTitulo": "",
+				"TamanhoTitulo": "",
+				"CorTitulo": "",
+				"CorSubTitulo": "",
+				"TamanhoSubTitulo": "",
+				"TipoLetraSubTitulo": "",
+				"CorTexto": "",
+				"TamanhoTexto": "",
+				"TipoLetra": ""
+			}
+		]
+	}
+]

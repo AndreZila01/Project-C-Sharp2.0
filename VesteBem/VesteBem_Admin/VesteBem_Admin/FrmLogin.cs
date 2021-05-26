@@ -86,7 +86,7 @@ namespace VesteBem_Admin
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			DateTime dt = new DateTime(int.Parse(DateTime.Now.Year.ToString()), int.Parse(DateTime.Now.Month.ToString()), int.Parse(DateTime.Now.Day.ToString()), int.Parse(DateTime.Now.Hour.ToString()), int.Parse(DateTime.Now.Minute.ToString()), int.Parse(DateTime.Now.Second.ToString()));
-			lblTimer.Text = (dt.ToString("dd.MM.yyyy \n HH:mm:ss tt").Replace('.', '/'));
+			lblTimer.Text = (dt.ToString("dd.MM.yyyy \n HH:mm:ss").Replace('.', '/'));
 
 		}
 	}

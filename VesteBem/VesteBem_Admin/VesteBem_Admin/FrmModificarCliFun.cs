@@ -233,7 +233,7 @@ namespace VesteBem_Admin
 
 				TextBox TxtMorada = new TextBox();
 				TxtMorada.Location = new System.Drawing.Point(127, 91);
-				TxtMorada.MaxLength = 250;
+				TxtMorada.MaxLength = 300;
 				TxtMorada.Name = "TxtMoradaCli";
 				TxtMorada.Text = "TxtMorada";
 				TxtMorada.Size = new System.Drawing.Size(172, 20);
@@ -415,6 +415,8 @@ namespace VesteBem_Admin
 				Data.Name = "DTPdate";
 				Data.Size = new System.Drawing.Size(172, 20);
 				Data.TabIndex = 22;
+				Data.MinDate = new DateTime((DateTime.Today.Year - 100), DateTime.Today.Month, DateTime.Today.Day);
+				Data.MaxDate = DateTime.Now;
 				DateTime time = Lstcli[0].DataNasc;
 				Data.Value = time;
 				Data.Leave += new System.EventHandler(dateTimePicker1_Leave);
@@ -437,6 +439,7 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
+				TxtNome.MaxLength = 100;
 				TxtNome.Text = Lstfunc[0].Nome;
 				Fun.Nome = Lstfunc[0].Nome;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
@@ -553,6 +556,7 @@ namespace VesteBem_Admin
 				TxtNome.Name = "TxtNomeFun";
 				TxtNome.Size = new System.Drawing.Size(135, 20);
 				TxtNome.TabIndex = 0;
+				TxtNome.MaxLength = 100;
 				TxtNome.Leave += new System.EventHandler(txt_Leave);
 				this.Controls.Add(TxtNome);
 
@@ -667,7 +671,7 @@ namespace VesteBem_Admin
 		{
 			TextBox Txt = sender as TextBox;
 
-			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli"|| Txt.Text== "TxtTelemovelFun")
+			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli"|| Txt.Name== "TxtTele" || Txt.Name== "TxtTelemovelFun")
 			{
 				if(e.KeyChar!='\b')
 				e.Handled = !char.IsDigit(e.KeyChar);
