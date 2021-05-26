@@ -1,21 +1,21 @@
 
 
-Insert tbl_login(Usern, Passw, Cargo) values(
+Insert tbl_login(Usern, Passw, Funcionario) values(
 '5fJ7/GDcQYE=',
 'Ui07PYPxaiYRk2MT5fphsPVIOMNizbcKsqCmLokSQmlVV169BN126CrTmk/Kvm9fH8VPtMgGdljFCIMEl5K3rlmmXVNh4Tvx/lrgSdfeLQAMqOd3dm+a4qUS1z3fmIiYgEmgDHfmuA6Gd5b7ZlcNnM68KqkNZKTgK3CPKpdM0SE=',
 1)
 
-Insert tbl_login(Usern, Passw, Cargo) values(
+Insert tbl_login(Usern, Passw, Funcionario) values(
 'Marco',
 '123',	
 3)
 
-Insert tbl_login(Usern, Passw, Cargo) values(
+Insert tbl_login(Usern, Passw, Funcionario) values(
 'WDBFV2Drgfs=',
 'GX/FzcwfZo0VyeBuVycMQTRdLkYNAOlYRIVtHMK7uVvSYbO/D30n1+bpw9ouRYsjplF6HV/PqV3oTJd/3OMz8W7S2iBACsZMa0KacqXnnOGrXnBtcjsFlAmE4d2pJxzv8b9wZdN8M6Mx58udXBhZFjHPtYs6P/UIXCthzr9fjs='
 , 3)
 
-Insert tbl_login(Usern, Passw, Cargo) values(
+Insert tbl_login(Usern, Passw, Funcionario) values(
 'XditihOAJ3M1yGucWx6U6Q==',
 'YPIZL1N/bfJqNdbOElwU3mj55oj99SC8bedkKXGXHUay77g/sjxNF2wKWKrpcEb4aiHknIS4V7P583OyIyjMsvMZqEeaxQfTfSge7MmamqyrHJhHjwhLgSCfurBe8Zsaf/Fe5zYI39ekyTBDhNe64A/jn31pBa6HlFKYZ4L4qJg=',
 3)

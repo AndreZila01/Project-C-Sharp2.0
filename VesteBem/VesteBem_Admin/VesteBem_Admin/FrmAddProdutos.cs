@@ -44,7 +44,7 @@ namespace VesteBem_Admin
 		{
 			try
 			{
-				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") 
+				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text!="" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") 
 				{
 					Produtos produtos = new Produtos();
 					produtos.Nome = TxtNome.Text;

@@ -33,11 +33,12 @@ namespace VesteBem_Admin
 			//string Paths = Path.Combine(Path.GetTempPath());
 			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
-			TxtUser.Text = lst[0].UserName;
-			TxtPass.Text = lst[0].Password;
+			TxtUser.Text = EncryptADeDecrypt.DecryptOther(lst[0].UserName);
+			TxtPass.Text = EncryptADeDecrypt.DecryptRSA(lst[0].Password);
 
 			TxtPass.Enabled = false; TxtUser.Enabled = false;
-			lblTimer.Text = DateTime.Now.ToString();
+			lblTimer.Text = DateTime.Now.Date.ToString();
+			//File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -50,7 +51,7 @@ namespace VesteBem_Admin
 				liga.Open();
 				try
 				{
-					command.CommandText = "Select * fROM tbl_Login where Cargo=1 and Usern='" + user+"'";
+					command.CommandText = "Select * fROM tbl_Login where Funcionario=1 and Usern='" + user+"'";
 					dr = command.ExecuteReader();
 					if (dr.Read())
 					{

@@ -27,8 +27,8 @@ namespace VesteBem_Site
 				{
 					File.Delete($"{Paths + @"\Login.json"}");
 				}
-				login.UserName = "Admin";
-				login.Password = "Admin";
+				login.UserName = EncryptADeDecrypt.EncryptOther("Admin");
+				login.Password = EncryptADeDecrypt.EncryptRSA("Admin");
 
 				ListLogin.Clear();
 				ListLogin.Add(login);

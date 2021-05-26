@@ -125,3 +125,5 @@ C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\Ve
 C:\Users\l1974\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.pdb
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmConsultarCarrinho.resources
 C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmEditarCarrinho.resources
+C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmConsultarCarrinho.resources
+C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.FrmEditarCarrinho.resources

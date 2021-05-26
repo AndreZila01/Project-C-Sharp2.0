@@ -35,70 +35,7 @@ namespace VesteBem_Admin
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
-			{
-				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
-				Panel Pnl = new Panel();
-				Pnl.Location = new System.Drawing.Point(0, 0);
-				Pnl.Name = "panel1";
-				Pnl.BackColor = Color.Red;
-				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
-				Pnl.TabIndex = 0;
-				flowLayoutPanel1.Controls.Add(Pnl);
-
-				Label LblNome = new Label();
-				LblNome.AutoSize = true;
-				LblNome.Location = new System.Drawing.Point(5, 10);
-				LblNome.Name = "label6";
-				LblNome.Size = new System.Drawing.Size(35, 13);
-				LblNome.TabIndex = 0;
-				LblNome.BackColor = Color.LightGray;
-				LblNome.Tag = pictureBox1.Tag.ToString();
-				var ds = lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome;
-				LblNome.Click += new System.EventHandler(label_Click);
-				Pnl.Controls.Add(LblNome);
-
-				Label LblPreco = new Label();
-				LblPreco.AutoSize = true;
-				LblPreco.Location = new System.Drawing.Point(175, 10);
-				LblPreco.Name = "label7";
-				LblPreco.Size = new System.Drawing.Size(25, 13);
-				LblPreco.TabIndex = 1;
-				LblPreco.BackColor = Color.Green;
-				LblPreco.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor + "€";
-				LblPreco.Tag = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor;
-				Pnl.Controls.Add(LblPreco);
-
-				Label LblQuantidade = new Label();
-				LblQuantidade.Location = new System.Drawing.Point(135, 10);
-				LblQuantidade.Name = "label7";
-				LblQuantidade.Size = new System.Drawing.Size(35, 13);
-				LblQuantidade.TabIndex = 1;
-				LblQuantidade.BackColor = Color.Gray;
-				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
-				LblQuantidade.Text = numericUpDown1.Value + " x";
-				LblQuantidade.Tag = "" + numericUpDown1.Value;
-				Pnl.Controls.Add(LblQuantidade);
-
-				PictureBox PctRemove = new PictureBox();
-				PctRemove.Image = Properties.Resources.Red_Remove;
-				PctRemove.Name = "Remove";
-				PctRemove.Location = new System.Drawing.Point(225, 10);
-				PctRemove.Size = new System.Drawing.Size(15, 13);
-				PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
-				PctRemove.Click += new System.EventHandler(PctRemove_Click);
-				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
-				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
-				PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
-				Pnl.Controls.Add(PctRemove);
-
-				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
-				label6.Text = "Total: " + label6.Tag + "€";
-
-				Detalhes.Id_Encomendas = lstDetalhesEncomendas.Count();
-				Detalhes.Id_Produtos = lstProduto[int.Parse(pictureBox1.Tag.ToString())].IdProduto;
-				Detalhes.QuantEnc = int.Parse(numericUpDown1.Value.ToString());
-				lstDetalhesEncomendas.Add(Detalhes);
-			}
+			
 		}
 
 		private void PctRemove_MouseEnter(object sender, EventArgs e)
@@ -106,7 +43,7 @@ namespace VesteBem_Admin
 			PictureBox Pct = sender as PictureBox;
 			try
 			{
-				Pct.Image = Properties.Resources.Red_Remove;
+				Pct.Image = Properties.Resources.White_Remove;
 			}
 			catch
 			{
@@ -355,6 +292,7 @@ namespace VesteBem_Admin
 			textBox1.Text = label6.Tag.ToString();
 			comboBox2.SelectedItem = "Na Fabrica";
 			textBox1.Enabled = false;
+			panel2.Visible = true;
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -404,6 +342,74 @@ namespace VesteBem_Admin
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
 				frm.WindowState = FormWindowState.Normal;
+		}
+
+		private void pictureBox3_Click(object sender, EventArgs e)
+		{
+			{
+				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
+				Panel Pnl = new Panel();
+				Pnl.Location = new System.Drawing.Point(0, 0);
+				Pnl.Name = "panel1";
+				Pnl.BackColor = Color.Red;
+				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
+				Pnl.TabIndex = 0;
+				flowLayoutPanel1.Controls.Add(Pnl);
+
+				Label LblNome = new Label();
+				LblNome.AutoSize = true;
+				LblNome.Location = new System.Drawing.Point(5, 10);
+				LblNome.Name = "label6";
+				LblNome.Size = new System.Drawing.Size(35, 13);
+				LblNome.TabIndex = 0;
+				LblNome.BackColor = Color.LightGray;
+				LblNome.Tag = pictureBox1.Tag.ToString();
+				var ds = lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome;
+				LblNome.Click += new System.EventHandler(label_Click);
+				Pnl.Controls.Add(LblNome);
+
+				Label LblPreco = new Label();
+				LblPreco.AutoSize = true;
+				LblPreco.Location = new System.Drawing.Point(175, 10);
+				LblPreco.Name = "label7";
+				LblPreco.Size = new System.Drawing.Size(25, 13);
+				LblPreco.TabIndex = 1;
+				LblPreco.BackColor = Color.Green;
+				LblPreco.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor + "€";
+				LblPreco.Tag = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor;
+				Pnl.Controls.Add(LblPreco);
+
+				Label LblQuantidade = new Label();
+				LblQuantidade.Location = new System.Drawing.Point(135, 10);
+				LblQuantidade.Name = "label7";
+				LblQuantidade.Size = new System.Drawing.Size(35, 13);
+				LblQuantidade.TabIndex = 1;
+				LblQuantidade.BackColor = Color.Gray;
+				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
+				LblQuantidade.Text = numericUpDown1.Value + " x";
+				LblQuantidade.Tag = "" + numericUpDown1.Value;
+				Pnl.Controls.Add(LblQuantidade);
+
+				PictureBox PctRemove = new PictureBox();
+				PctRemove.Image = Properties.Resources.Red_Remove;
+				PctRemove.Name = "Remove";
+				PctRemove.Location = new System.Drawing.Point(225, 10);
+				PctRemove.Size = new System.Drawing.Size(15, 13);
+				PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
+				PctRemove.Click += new System.EventHandler(PctRemove_Click);
+				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
+				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
+				PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
+				Pnl.Controls.Add(PctRemove);
+
+				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
+				label6.Text = "Total: " + label6.Tag + "€";
+
+				Detalhes.Id_Encomendas = lstDetalhesEncomendas.Count();
+				Detalhes.Id_Produtos = lstProduto[int.Parse(pictureBox1.Tag.ToString())].IdProduto;
+				Detalhes.QuantEnc = int.Parse(numericUpDown1.Value.ToString());
+				lstDetalhesEncomendas.Add(Detalhes);
+			}
 		}
 	}
 	public class Estado
