@@ -3,91 +3,44 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color: red; width: 100%;">
-		<div class="col-xs-4 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
-			<div style="padding: 15px 15px 2500px; font-size: 30px;">
-				<br />
-				<div style="color: black; font-size: 15px">
-					<asp:Label runat="server" Text="Homem > "></asp:Label>
-				</div>
-				<p></p>
-				<div style="margin: 10px 10px 0px 10px; background-color: ghostwhite; font-size: 20px; min-width:100px">
-					<asp:LinkButton runat="server" Text="Calças" OnClick="lblCalcas_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblPijama_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Sapatos" OnClick="lblSapatos_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisola Interior" OnClick="lblCamisolaI_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisa" OnClick="lblCamisa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblCamisolaE_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblRoupaI_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Casacos" OnClick="lblCasacos_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Acessórios" OnClick="lblAcessorios_Click"></asp:LinkButton><p />
-					<p />
-				</div>
-
-			</div>
-		</div>
-		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color: green;">
-			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
-			<div class="col-xs-10 col-sm-8 col-md-10 col-lg-10" style="margin-top: 15px; padding-bottom: 2500px; padding-left: 0px; padding-right: 0px; background-color: aliceblue; font-size: 30px;"></div>
-			<div class="col-xs-1 col-sm-2 col-md-1 col-lg-1" style="padding-bottom: 2500px"></div>
-			<br />
-			<br />
-			<br />
-		</div>
-	</div>
-
-	<%--<div style="background-color: red; width: 100%;">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
-            <div style="padding: 15px 15px 2500px; font-size: 30px;">
-                <br />
-                <div style="color: black; font-size: 15px">
-                    <asp:Label runat="server" Text="Homem > "></asp:Label>
-                </div>
-                <p></p>
-                <div style="margin: -5px 10px 0px 10px; background-color: ghostwhite; font-size: 20px;">
-                    <asp:LinkButton runat="server" Text="Calças" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Pijama" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Sapatos" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Camisola Interior" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Camisa" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Casacos" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                    <p></p>
-                    <asp:LinkButton runat="server" Text="Acessórios" OnClick="lblLink_Click"></asp:LinkButton><br />
-                    <p />
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="background-color: green">
-            <div style="padding: 15px 15px 2500px; font-size: 30px;">
-                <br />
-                <br />
-                <br />
-            </div>
-        </div>
-    </div>--%>
+   
+    <p>
+        <asp:DropDownList ID="DDListClasse" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="CategoriaClasse" DataValueField="CategoriaClasse">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:bdConnectionString %>" SelectCommand="SELECT DISTINCT [CategoriaClasse] FROM [tbl_Produtos]"></asp:SqlDataSource>
+    </p>
+    <p>
+        &nbsp;</p>
+    <p>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataKeyNames="IdProduto" DataSourceID="SqlDataSource2" Width="758px">
+            
+            <Columns>
+                <asp:BoundField DataField="IdProduto" HeaderText="IdProduto" InsertVisible="False" ReadOnly="True" SortExpression="IdProduto" />
+                <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome" />
+                <asp:BoundField DataField="NomedaEmpresa" HeaderText="NomedaEmpresa" SortExpression="NomedaEmpresa" />
+                <asp:BoundField DataField="Valor" HeaderText="Valor" SortExpression="Valor" />
+                <asp:ImageField DataImageUrlField="Icon" HeaderText="Imagem do Produto">
+                    <ItemStyle Height="100px" />
+                </asp:ImageField>
+            </Columns>
+            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FFF1D4" />
+            <SortedAscendingHeaderStyle BackColor="#B95C30" />
+            <SortedDescendingCellStyle BackColor="#F1E5CE" />
+            <SortedDescendingHeaderStyle BackColor="#93451F" />
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:bdConnectionString %>" SelectCommand="SELECT [IdProduto], [Valor], [Nome], [NomedaEmpresa], [Icon] FROM [tbl_Produtos] WHERE ([CategoriaClasse] = @CategoriaClasse)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DDListClasse" Name="CategoriaClasse" PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
+    </p>
+    <p>
+        &nbsp;</p>
+   
 </asp:Content>
