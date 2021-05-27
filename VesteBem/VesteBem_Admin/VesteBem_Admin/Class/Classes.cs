@@ -116,8 +116,8 @@ namespace VesteBem_Admin.Class
 	public class Produtos
 	{
 		/// <summary>
-	 /// Id do Produto
-	 /// </summary>
+		/// Id do Produto
+		/// </summary>
 		public int IdProduto { get; set; }
 		/// <summary>
 		/// Nome do Produto
@@ -205,5 +205,37 @@ namespace VesteBem_Admin.Class
 		/// Nome da Funcao
 		/// </summary>
 		public string Funcoes { get; set; }
+	}
+
+	public class VerEncomenda
+	{
+		/// <summary>
+		/// Id do Cliente
+		/// </summary>
+		public int IdCliente { get; set; }
+		/// <summary>
+		/// Nome do Cliente
+		/// </summary>
+		public string Nome { get; set; }
+		/// <summary>
+		/// Id da Encomenda
+		/// </summary>
+		public int IdEncomendas { get; set; }
+		/// <summary>
+		/// Valor Da Encomenda
+		/// </summary>
+		public double ValorEncomendas { get; set; }
+		/// <summary>
+		/// Estado Da Encomenda
+		/// </summary>
+		public int EstadoEncomendas { get; set; }
+		/// <summary>
+		/// Data Efectuada a Encomenda
+		/// </summary>
+		public DateTime DataEncomenda { get; set; }
+		/// <summary>
+		/// Data de Entrega
+		/// </summary>
+		public DateTime DataEntrega { get; set; }
 	}
 }
