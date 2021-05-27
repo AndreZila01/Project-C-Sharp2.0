@@ -23,75 +23,41 @@ namespace VesteBem
         {
             command.Connection = liga;
             liga.Open();
-            command.CommandText = "select Icon from tbl_Produtos";
+            command.CommandText = "select Icon, CategoriaClasse, CategoriaSubClasse from tbl_Produtos where CategoriaClasse = 'Casacos'";
             dr = command.ExecuteReader();
 
             while (dr.Read())
             {
                 Panel productPanel = new Panel();
                 ImageButton images = new ImageButton();
-                // Label LBL = new Label();
+                 Label LBL = new Label();
                 byte[] image = (byte[])dr["Icon"];
                 string PROFILE_PIC = Convert.ToBase64String(image);
                 images.ImageUrl = String.Format("data:image/jpg;base64,{0}", PROFILE_PIC);
+                images.Width = 50;
+                images.Height = 50;
                 //images.ImageUrl = "~/Image/" + ;
                 images.CssClass = "productImage";
                 // images.PostBackUrl = "~/Detalhes.aspx?CodProdutos=" + dr["CodProdutos"];
-                // LBL.Text = dr["NomeProduto"].ToString();
+                LBL.Text = dr["CategoriaSubClasse"].ToString();
                 // LBL.CssClass = "productName";
                 productPanel.Controls.Add(images);
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
-                // productPanel.Controls.Add(LBL);
+                productPanel.Controls.Add(LBL);
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
-                GridView1.Controls.Add(productPanel);
+                Imagems.Controls.Add(productPanel);
 
             }
 
         }
-
-        protected void lblCalcas_Click(object sender, EventArgs e)
+        protected void lblRoupa_Click(object sender, EventArgs e)
         {
-           GridView1.Visible = true;
-            
-        }
-        protected void lblPijama_Click(object sender, EventArgs e)
-        {
+            Label LblRoupa = sender as Label;
 
+			switch (LblRoupa.Text)
+			{
 
-        }
-        protected void lblSapatos_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblCamisolaI_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblCamisa_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblCamisolaE_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblRoupaI_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblCasacos_Click(object sender, EventArgs e)
-        {
-
-
-        }
-        protected void lblAcessorios_Click(object sender, EventArgs e)
-        {
-
+			}
 
         }
 

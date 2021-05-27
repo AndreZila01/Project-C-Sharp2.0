@@ -190,9 +190,9 @@ namespace VesteBem_Admin
 			enc.DataEncomenda = date;
 			enc.Id_Cliente = Clientes.SelectIdCliente(comboBox1.Text);
 			enc.ValorEncomendas = double.Parse(textBox1.Text);
-			EncomendasEDetalhes.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == comboBox2.SelectedItem)].IdEstado);
-			int idEncomenda = EncomendasEDetalhes.SelectIdEncomenda(enc.Id_Cliente);
-			EncomendasEDetalhes.InsertDetalhes(lstDetalhesEncomendas);
+			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == comboBox2.SelectedItem)].IdEstado);
+			//int idEncomenda = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.Id_Cliente);
+			EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,7 +311,7 @@ namespace VesteBem_Admin
 			{
 				comboBox1.Items.Add(item.Nome);
 			});
-			lstProduto = EncomendasEDetalhes.SelectProdutos();
+			lstProduto = EncomendasEDetalhesEProduto.SelectProdutos();
 			lstProduto.ToList().ForEach(item =>
 			{
 				comboBox3.Items.Add(item.IdProduto + " - " + item.Nome);

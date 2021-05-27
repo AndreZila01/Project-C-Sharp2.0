@@ -89,7 +89,6 @@
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
-    <Content Include="FrmLogin.aspx" />
     <Content Include="logincerto.aspx" />
     <Content Include="Resources\avatar.png" />
     <Content Include="Resources\Logo.png" />
@@ -124,13 +123,6 @@
     </Compile>
     <Compile Include="FrmHome.aspx.designer.cs">
       <DependentUpon>FrmHome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="FrmLogin.aspx.cs">
-      <DependentUpon>FrmLogin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.aspx.designer.cs">
-      <DependentUpon>FrmLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="logincerto.aspx.cs">
       <DependentUpon>logincerto.aspx</DependentUpon>

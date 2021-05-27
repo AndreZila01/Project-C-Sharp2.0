@@ -14,6 +14,7 @@ namespace VesteBem_Admin
 	public partial class FrmConsultarCarrinho : Form
 	{
 		List<Estados> lstEstado = new List<Estados>();
+
 		public FrmConsultarCarrinho()
 		{
 			InitializeComponent();
@@ -31,7 +32,7 @@ namespace VesteBem_Admin
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
-					comboBox1.Items.Add(item.Estado);
+				comboBox1.Items.Add(item.Estado);
 			});
 			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
 		}
@@ -59,16 +60,20 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
 		{
-			int idEncomenda=0; string Cliente="";
+			int idEncomenda = 0; string Cliente = "";
 			var ds = comboBox1.Text != "" ? comboBox1.Tag.ToString() == comboBox1.Text : comboBox1.Tag = "";
 			if (int.TryParse(textBox1.Text, out idEncomenda))
 				idEncomenda = int.Parse(textBox1.Text);
 			else
 				Cliente = textBox1.Text;
-			if(dateTimePicker1.Value<dateTimePicker2.Value)
-				dateTimePicker1.Value=
+			if (dateTimePicker1.Value > dateTimePicker2.Value)
+			{
+				dateTimePicker1.Tag = dateTimePicker1.Value;
+				dateTimePicker1.Value = dateTimePicker2.Value;
+				dateTimePicker2.Value = DateTime.Parse(dateTimePicker1.Tag.ToString());
+			}
 
-			lstEstado = EncomendasEDetalhes.SelectCarrinho();
+			//lstEstado = EncomendasEDetalhes.SelectCarrinho();
 		}
 
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

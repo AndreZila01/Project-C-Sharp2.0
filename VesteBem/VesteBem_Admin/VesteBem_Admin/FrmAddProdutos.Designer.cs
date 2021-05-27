@@ -1,6 +1,6 @@
 ﻿namespace VesteBem_Admin
 {
-	partial class FrmAddProdutos
+	partial class FrmAddChangeProdutos
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -228,7 +228,7 @@
 			this.comboBox1.Size = new System.Drawing.Size(100, 21);
 			this.comboBox1.TabIndex = 19;
 			// 
-			// FrmAddProdutos
+			// FrmAddChangeProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -252,7 +252,7 @@
 			this.Controls.Add(this.TxtEmpresa);
 			this.Controls.Add(this.TxtValor);
 			this.Controls.Add(this.TxtNome);
-			this.Name = "FrmAddProdutos";
+			this.Name = "FrmAddChangeProdutos";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmAddProdutos";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProdutos_FormClosed);

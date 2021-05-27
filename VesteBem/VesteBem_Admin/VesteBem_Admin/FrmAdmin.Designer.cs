@@ -48,10 +48,13 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.panel6 = new System.Windows.Forms.Panel();
 			this.PnlSettings = new System.Windows.Forms.Panel();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
 			this.label7 = new System.Windows.Forms.Label();
+			this.button2 = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.panel7 = new System.Windows.Forms.Panel();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.label8 = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PctFlow)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PctSettings)).BeginInit();
@@ -66,6 +69,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
 			this.panel6.SuspendLayout();
 			this.PnlSettings.SuspendLayout();
+			this.panel7.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -124,6 +129,7 @@
 			// 
 			this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.flowLayoutPanel1.Controls.Add(this.panel2);
+			this.flowLayoutPanel1.Controls.Add(this.panel7);
 			this.flowLayoutPanel1.Controls.Add(this.panel3);
 			this.flowLayoutPanel1.Controls.Add(this.panel4);
 			this.flowLayoutPanel1.Controls.Add(this.panel5);
@@ -174,7 +180,7 @@
 			this.panel3.Controls.Add(this.pictureBox5);
 			this.panel3.Controls.Add(this.label4);
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel3.Location = new System.Drawing.Point(0, 64);
+			this.panel3.Location = new System.Drawing.Point(0, 118);
 			this.panel3.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
 			this.panel3.Name = "panel3";
 			this.panel3.Size = new System.Drawing.Size(158, 52);
@@ -210,7 +216,7 @@
 			this.panel4.Controls.Add(this.pictureBox6);
 			this.panel4.Controls.Add(this.label5);
 			this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel4.Location = new System.Drawing.Point(0, 118);
+			this.panel4.Location = new System.Drawing.Point(0, 172);
 			this.panel4.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
 			this.panel4.Name = "panel4";
 			this.panel4.Size = new System.Drawing.Size(158, 52);
@@ -246,7 +252,7 @@
 			this.panel5.Controls.Add(this.pictureBox7);
 			this.panel5.Controls.Add(this.label6);
 			this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel5.Location = new System.Drawing.Point(0, 172);
+			this.panel5.Location = new System.Drawing.Point(0, 226);
 			this.panel5.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
 			this.panel5.Name = "panel5";
 			this.panel5.Size = new System.Drawing.Size(158, 52);
@@ -301,26 +307,14 @@
 			this.PnlSettings.TabIndex = 0;
 			this.PnlSettings.Visible = false;
 			// 
-			// checkBox1
+			// label7
 			// 
-			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point(45, 27);
-			this.checkBox1.Name = "checkBox1";
-			this.checkBox1.Size = new System.Drawing.Size(243, 17);
-			this.checkBox1.TabIndex = 0;
-			this.checkBox1.Text = "Auto Run (Abrir com o SO, Sistema Operativo)";
-			this.checkBox1.UseVisualStyleBackColor = true;
-			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(45, 97);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(93, 53);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "White Mode";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.Modes_Clicks);
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(45, 72);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(37, 13);
+			this.label7.TabIndex = 3;
+			this.label7.Text = "Mode:";
 			// 
 			// button2
 			// 
@@ -332,14 +326,62 @@
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.Modes_Clicks);
 			// 
-			// label7
+			// button1
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(45, 72);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(37, 13);
-			this.label7.TabIndex = 3;
-			this.label7.Text = "Mode:";
+			this.button1.Location = new System.Drawing.Point(45, 97);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(93, 53);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "White Mode";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.Modes_Clicks);
+			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(45, 27);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(243, 17);
+			this.checkBox1.TabIndex = 0;
+			this.checkBox1.Text = "Auto Run (Abrir com o SO, Sistema Operativo)";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// panel7
+			// 
+			this.panel7.Controls.Add(this.pictureBox1);
+			this.panel7.Controls.Add(this.label8);
+			this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panel7.Location = new System.Drawing.Point(0, 64);
+			this.panel7.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+			this.panel7.Name = "panel7";
+			this.panel7.Size = new System.Drawing.Size(158, 52);
+			this.panel7.TabIndex = 4;
+			this.panel7.Tag = "1";
+			this.panel7.Click += new System.EventHandler(this.label3_Click);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::VesteBem_Admin.Properties.Resources.Pencil;
+			this.pictureBox1.Location = new System.Drawing.Point(8, 8);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(40, 36);
+			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox1.TabIndex = 9;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Tag = "1";
+			this.pictureBox1.Click += new System.EventHandler(this.label3_Click);
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(54, 13);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(89, 26);
+			this.label8.TabIndex = 8;
+			this.label8.Tag = "1";
+			this.label8.Text = "Editar ou Apagar \r\nProdutos";
+			this.label8.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// FrmAdmin
 			// 
@@ -374,6 +416,9 @@
 			this.panel6.ResumeLayout(false);
 			this.PnlSettings.ResumeLayout(false);
 			this.PnlSettings.PerformLayout();
+			this.panel7.ResumeLayout(false);
+			this.panel7.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -403,5 +448,8 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Panel panel7;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label label8;
 	}
 }

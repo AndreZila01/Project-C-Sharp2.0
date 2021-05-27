@@ -84,6 +84,12 @@
     <Compile Include="FrmConsultarCarrinho.Designer.cs">
       <DependentUpon>FrmConsultarCarrinho.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEditarApagarProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditarApagarProdutos.Designer.cs">
+      <DependentUpon>FrmEditarApagarProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditarCarrinho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConsultarCarrinho.resx">
       <DependentUpon>FrmConsultarCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditarApagarProdutos.resx">
+      <DependentUpon>FrmEditarApagarProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarCarrinho.resx">
       <DependentUpon>FrmEditarCarrinho.cs</DependentUpon>

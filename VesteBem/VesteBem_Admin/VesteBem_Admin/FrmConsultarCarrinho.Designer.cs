@@ -136,6 +136,7 @@ namespace VesteBem_Admin
 			// 
 			// flowLayoutPanel1
 			// 
+			this.flowLayoutPanel1.AutoSize = true;
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 63);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -162,6 +163,7 @@ namespace VesteBem_Admin
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 

@@ -14,13 +14,15 @@ using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmAddProdutos : Form
+	public partial class FrmAddChangeProdutos : Form
 	{
 		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 		SqlCommand command = new SqlCommand();
-		public FrmAddProdutos()
+		public FrmAddChangeProdutos(int idProduto)
 		{
 			InitializeComponent();
+			if(idProduto != 0)
+				this.Tag = idProduto;
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)
@@ -37,40 +39,84 @@ namespace VesteBem_Admin
 
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
-			
+			if(int.Parse(this.Tag.ToString())!=0)
+			{
+				List<Produtos> LstProdutos = new List<Produtos>();
+				LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");
+				int index = LstProdutos.FindIndex(r => r.IdProduto == int.Parse(this.Tag.ToString()));
+				TxtCat.Text = LstProdutos[index].CategoriaClass;
+				TxtEmpresa.Text = LstProdutos[index].NomedaEmpresa;
+				pictureBox1.Image = LstProdutos[index].Icon;
+				TxtNome.Text = LstProdutos[index].Nome;
+				TxtSubCat.Text = LstProdutos[index].CategoriaSubClass;
+				TxtValor.Text = LstProdutos[index].Valor.ToString();
+				var ds = LstProdutos[index].Sexo == "F"? comboBox1.Text= "Feminino" : (LstProdutos[index].Sexo=="M" ? comboBox1.Text= "Masculino" : comboBox1.Text= "Indefenido") ;
+				button1.Text = "Alterar os Dados";
+			}
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			try
+			if (button1.Text != "Alterar os Dados")
 			{
-				if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text!="" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "") 
+				try
 				{
-					Produtos produtos = new Produtos();
-					produtos.Nome = TxtNome.Text;
-					produtos.NomedaEmpresa = TxtEmpresa.Text;
-					produtos.Sexo = comboBox1.Text.Substring(0, 1);
-					produtos.Valor = double.Parse(TxtValor.Text);
-					produtos.CategoriaClass = TxtCat.Text;
-					produtos.CategoriaSubClass = TxtSubCat.Text;
-					produtos.CaminhoImg = TxtIcon.Text;
-					string dss = CreateProdutos.InsertProdutos(produtos);
-
-					if (dss == "Correu bem")
+					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
 					{
-						TxtCat.Text = null;
-						TxtIcon.Text = null;
-						TxtNome.Text = null;
-						TxtSubCat.Text = null;
-						TxtValor.Text = null;
-						TxtEmpresa.Text = null;
-					}
+						Produtos produtos = new Produtos();
+						produtos.Nome = TxtNome.Text;
+						produtos.NomedaEmpresa = TxtEmpresa.Text;
+						produtos.Sexo = comboBox1.Text.Substring(0, 1);
+						produtos.Valor = double.Parse(TxtValor.Text);
+						produtos.CategoriaClass = TxtCat.Text;
+						produtos.CategoriaSubClass = TxtSubCat.Text;
+						produtos.CaminhoImg = TxtIcon.Text;
+						string dss = CreateProdutos.InsertProdutos(produtos);
 
+						if (dss == "Correu bem")
+						{
+							TxtCat.Text = null;
+							TxtIcon.Text = null;
+							TxtNome.Text = null;
+							TxtSubCat.Text = null;
+							TxtValor.Text = null;
+							TxtEmpresa.Text = null;
+						}
+
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("" + ex.Message, "Eror 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
-			catch(Exception ex)
+			else
 			{
-				MessageBox.Show(""+ex.Message, "Eror 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				try
+				{
+					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
+					{
+						Produtos produtos = new Produtos();
+						produtos.Nome = TxtNome.Text;
+						produtos.NomedaEmpresa = TxtEmpresa.Text;
+						produtos.Sexo = comboBox1.Text.Substring(0, 1);
+						produtos.Valor = double.Parse(TxtValor.Text);
+						produtos.CategoriaClass = TxtCat.Text;
+						produtos.CategoriaSubClass = TxtSubCat.Text;
+						produtos.CaminhoImg = TxtIcon.Text;
+						string dss = EncomendasEDetalhesEProduto.AtualizarProdutos(produtos);
+
+						if (dss == "sucesso")
+						{
+							this.Close();
+						}
+
+					}
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show("" + ex.Message, "Eror 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
 			}
 		}
 		

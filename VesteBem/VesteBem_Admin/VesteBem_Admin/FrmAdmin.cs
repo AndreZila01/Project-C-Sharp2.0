@@ -31,7 +31,7 @@ namespace VesteBem_Admin
 			switch (btn.Text)
 			{
 				case "Adicionar Produtos":
-					frm = new FrmAddProdutos();
+					frm = new FrmAddChangeProdutos(0);
 					//frm.Show();
 					break;
 				case "Clientes E Funcionarios":
@@ -67,30 +67,39 @@ namespace VesteBem_Admin
 		private void label3_Click(object sender, EventArgs e)
 		{
 			Label Lbl = sender as Label;
-
-			switch (int.Parse(Lbl.Tag.ToString()))
+			try
 			{
-				case 0:
-					frm = new FrmAddProdutos();
-					//frm.Show();
-					break;
-				case 1:
-					frm = new FrmCliEFun();
-					//frm.Show();
-					break;
-				case 2:
-					frm = new FrmCarrinho();
-					//frm.Show();
-					break;
-				case 3:
-					frm = new FrmConsultarCarrinho();
-					//frm.Show();
-					break;
+
+				switch (int.Parse(Lbl.Tag.ToString()))
+				{
+					case 0:
+						frm = new FrmAddChangeProdutos(0);
+						//frm.Show();
+						break;
+					case 1:
+						frm = new FrmEditarApagarProdutos();
+						break;
+					case 2:
+						frm = new FrmCliEFun();
+						//frm.Show();
+						break;
+					case 3:
+						frm = new FrmCarrinho();
+						//frm.Show();
+						break;
+					case 4:
+						frm = new FrmConsultarCarrinho();
+						//frm.Show();
+						break;
+				}
+
+				Forms();
 			}
+			catch
+			{
 
-			Forms();
-
-			Forms();
+			}
+			//Forms();
 		}
 
 		private void Forms()
@@ -117,7 +126,7 @@ namespace VesteBem_Admin
 			switch (int.Parse(Pct.Tag.ToString()))
 			{
 				case 0:
-					frm = new FrmAddProdutos();
+					frm = new FrmAddChangeProdutos(0);
 					//frm.Show();
 					break;
 				case 1:
@@ -144,7 +153,7 @@ namespace VesteBem_Admin
 			switch (int.Parse(Pnl.Tag.ToString()))
 			{
 				case 0:
-					frm = new FrmAddProdutos();
+					frm = new FrmAddChangeProdutos(0);
 					//frm.Show();
 					break;
 				case 1:

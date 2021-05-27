@@ -498,7 +498,7 @@ namespace VesteBem_Admin.Class
 		}
 
 	}
-	public class EncomendasEDetalhes
+	public class EncomendasEDetalhesEProduto
 	{
 		public static string InsertEncomendas(Encomenda enc, int IdEstado)
 		{
@@ -584,6 +584,7 @@ namespace VesteBem_Admin.Class
 			}
 
 			return lstProdutos;
+			#region teste
 			//List<Produtos> lstProduto = new List<Produtos>();
 			//SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 			//SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
@@ -629,6 +630,67 @@ namespace VesteBem_Admin.Class
 			//}
 
 			//return lstProduto;
+			#endregion
+		}
+		public static List<Produtos> SelectCategoriaProdutos(string CategoriaClasse)
+		{
+			SqlCommand comando;
+			List<Produtos> lstProdutos = new List<Produtos>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			if(CategoriaClasse!="")
+				comando = new SqlCommand("Select * From tbl_Produtos where CategoriaClasse='"+CategoriaClasse+"'", liga);
+			else
+				comando = new SqlCommand("Select * From tbl_Produtos", liga);
+
+			SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+			try
+			{
+				ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+				string str = string.Empty;
+				DataSet dataSet = new DataSet();
+				dataAdapter.Fill(dataSet);
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					int ds = 0;
+					while (oReader.Read())
+					{
+						Produtos pro = new Produtos();
+						try
+						{
+							Byte[] data = new Byte[0];
+							data = (Byte[])(dataSet.Tables[0].Rows[ds]["Icon"]);
+							MemoryStream mem = new MemoryStream(data);
+
+							pro.Icon = Image.FromStream(mem);
+						}
+						catch
+						{
+							pro.Icon = Properties.Resources.user;
+						}
+						pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
+						pro.Nome = oReader["Nome"].ToString();
+						pro.Valor = double.Parse(oReader["Valor"].ToString());
+						pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
+						pro.CategoriaClass = oReader["CategoriaClasse"].ToString();
+						pro.CategoriaSubClass = oReader["CategoriaSubClasse"].ToString();
+						pro.Sexo = oReader["Sexo"].ToString();
+						ds++;
+						lstProdutos.Add(pro);
+					}
+				}
+			}
+			catch
+			{
+
+			}
+			finally
+			{
+				liga.Close();
+			}
+
+			return lstProdutos;
 		}
 		public static List<string> SelectEstado()
 		{
@@ -713,7 +775,72 @@ namespace VesteBem_Admin.Class
 			}
 
 		}
-		public static List<VerEncomenda> SelectCarrinho(int CliouId, int Estado, DateTime Inicio, DateTime Fim)
+		public static string DeleteProduto(int idProduto)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "Delete tbl_Produtos where IdProduto=" + idProduto+"";
+				try
+				{
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
+					return "sucesso";
+				}
+				catch (Exception ex)
+				{
+					return ex.Message;
+				}
+				finally
+				{
+					liga.Close();
+				}
+
+			}
+		}
+		public static string AtualizarProdutos(Produtos pro)
+		{
+			SqlCommand command = new SqlCommand();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+
+			command.CommandText = "SpUpdateProdutos";
+			command.CommandType = System.Data.CommandType.StoredProcedure;
+			try
+			{
+				Image img = Image.FromFile(pro.CaminhoImg);
+				ImageConverter converter = new ImageConverter();
+				byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
+				command.Parameters.Add(new SqlParameter("IdProduto", pro.IdProduto));
+				command.Parameters.Add(new SqlParameter("Nome", pro.Nome));
+				command.Parameters.Add(new SqlParameter("Valor", pro.Valor));
+				command.Parameters.Add(new SqlParameter("NomedaEmpresa", pro.NomedaEmpresa));
+				command.Parameters.Add(new SqlParameter("CategoriaClasse", pro.CategoriaClass));
+				command.Parameters.Add(new SqlParameter("CategoriaSubClasse", pro.CategoriaSubClass));
+				command.Parameters.Add(new SqlParameter("Icon", pic));
+				command.Parameters.Add(new SqlParameter("Sexo", pro.Sexo));
+
+
+				command.Connection = liga;
+
+				liga.Open();
+
+				command.ExecuteNonQuery();
+				return "sucesso";
+			}
+			catch (Exception ex)
+			{
+				return ex.Message;
+			}
+			finally
+			{
+				liga.Close();
+			}
+		}
+
+		/*public static List<VerEncomenda> SelectCarrinho(int CliouId,bool IsCli, int Estado, DateTime Inicio, DateTime Fim)
 		{
 			string AuxComando = "";
 			if (CliouId != 0)
@@ -760,7 +887,7 @@ namespace VesteBem_Admin.Class
 			{
 
 			}
-		}
+		}*/
 	}
 
 }
