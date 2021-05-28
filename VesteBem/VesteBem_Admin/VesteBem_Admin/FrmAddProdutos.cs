@@ -18,11 +18,12 @@ namespace VesteBem_Admin
 	{
 		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 		SqlCommand command = new SqlCommand();
+		int idProdutos = 0;
 		public FrmAddChangeProdutos(int idProduto)
 		{
 			InitializeComponent();
 			if(idProduto != 0)
-				this.Tag = idProduto;
+				idProdutos = idProduto;
 		}
 
 		private void pictureBox2_Click(object sender, EventArgs e)
@@ -39,11 +40,11 @@ namespace VesteBem_Admin
 
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
-			if(int.Parse(this.Tag.ToString())!=0)
+			if(idProdutos!=0)
 			{
 				List<Produtos> LstProdutos = new List<Produtos>();
 				LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");
-				int index = LstProdutos.FindIndex(r => r.IdProduto == int.Parse(this.Tag.ToString()));
+				int index = LstProdutos.FindIndex(r => r.IdProduto == idProdutos);
 				TxtCat.Text = LstProdutos[index].CategoriaClass;
 				TxtEmpresa.Text = LstProdutos[index].NomedaEmpresa;
 				pictureBox1.Image = LstProdutos[index].Icon;
@@ -104,6 +105,7 @@ namespace VesteBem_Admin
 						produtos.CategoriaClass = TxtCat.Text;
 						produtos.CategoriaSubClass = TxtSubCat.Text;
 						produtos.CaminhoImg = TxtIcon.Text;
+						produtos.IdProduto = idProdutos;
 						string dss = EncomendasEDetalhesEProduto.AtualizarProdutos(produtos);
 
 						if (dss == "sucesso")

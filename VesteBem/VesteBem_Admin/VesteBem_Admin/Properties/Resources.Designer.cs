@@ -75,7 +75,7 @@ namespace VesteBem_Admin.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap add_to_basket {
             get {
-                object obj = ResourceManager.GetObject("add-to-basket", resourceCulture);
+                object obj = ResourceManager.GetObject("add_to_basket", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +115,7 @@ namespace VesteBem_Admin.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap magnifying_glass {
             get {
-                object obj = ResourceManager.GetObject("magnifying-glass", resourceCulture);
+                object obj = ResourceManager.GetObject("magnifying_glass", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -175,7 +175,17 @@ namespace VesteBem_Admin.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap shopping_cart {
             get {
-                object obj = ResourceManager.GetObject("shopping-cart", resourceCulture);
+                object obj = ResourceManager.GetObject("shopping_cart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopping_cart1 {
+            get {
+                object obj = ResourceManager.GetObject("shopping_cart1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F9BD310F-CA85-47CC-A98A-BEF3699BED38}</ProjectGuid>
+    <ProjectGuid>{C13715E7-0F50-45AD-9F41-C9D43A9EB120}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>VesteBem_Admin</RootNamespace>
     <AssemblyName>VesteBem_Admin</AssemblyName>
@@ -33,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -50,10 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Classes.cs" />
     <Compile Include="Class\Cliente.cs" />
     <Compile Include="Class\CreateProdutos.cs" />
-    <Compile Include="Class\Classes.cs" />
     <Compile Include="Class\EncryptADeDecrypt.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +113,6 @@
     <Compile Include="FrmModificarCliFun.Designer.cs">
       <DependentUpon>FrmModificarCliFun.cs</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAddProdutos.resx">
@@ -138,27 +142,11 @@
     <EmbeddedResource Include="FrmModificarCliFun.resx">
       <DependentUpon>FrmModificarCliFun.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmAddProdutos.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmAdmin.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmCarrinho.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmCliEFun.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmConsultarCarrinho.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmEditarCarrinho.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmLogin.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.FrmModificarCliFun.resources" />
-    <EmbeddedResource Include="obj\Debug\VesteBem_Admin.Properties.Resources.resources" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bin\Debug\VesteBem_Admin.exe.config" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\VesteBem_Admin.csproj.CopyComplete" />
-    <None Include="obj\Debug\VesteBem_Admin.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\VesteBem_Admin.csproj.GenerateResource.cache" />
-    <None Include="obj\Debug\VesteBem_Admin.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,38 +162,26 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Settings\Settings.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\remove %281%29.png" />
-    <None Include="Resources\remove.png" />
-    <None Include="Resources\Logo.png" />
-    <None Include="Resources\settings.png" />
-    <None Include="Resources\menu.png" />
-    <None Include="Resources\add-to-basket.png" />
-    <None Include="Resources\magnifying-glass.png" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
-    <Content Include="bin\Debug\VesteBem_Admin.exe" />
-    <Content Include="bin\Debug\VesteBem_Admin.pdb" />
-    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
-    <Content Include="obj\Debug\VesteBem_Admin.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\VesteBem_Admin.exe" />
-    <Content Include="obj\Debug\VesteBem_Admin.pdb" />
-    <Content Include="Resources\shopping-cart.png" />
-    <None Include="Resources\shopping-cart1.png" />
-    <None Include="Resources\administrator.png" />
-    <Content Include="Resources\Pencil.png" />
-    <Content Include="Resources\Open-trash.png" />
+    <Content Include="Resources\add-to-basket.png" />
+    <Content Include="Resources\add.png" />
+    <None Include="Resources\Admin.png" />
     <Content Include="Resources\Close-trash.png" />
-    <None Include="Resources\user.png" />
+    <Content Include="Resources\Logo.png" />
+    <Content Include="Resources\magnifying-glass.png" />
+    <Content Include="Resources\menu.png" />
+    <Content Include="Resources\Open-trash.png" />
+    <Content Include="Resources\Pencil.png" />
+    <None Include="Resources\White_Remove.png" />
+    <None Include="Resources\Red_Remove.png" />
+    <Content Include="Resources\settings.png" />
+    <Content Include="Resources\shopping-cart.png" />
+    <Content Include="Resources\shopping-cart1.png" />
+    <Content Include="Resources\user.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
