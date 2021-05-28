@@ -21,6 +21,7 @@ namespace VesteBem_Admin
 
 		private void FrmEditarApagarProdutos_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			if (!backgroundWorker1.IsBusy)
 				backgroundWorker1.RunWorkerAsync();
 		}
@@ -137,6 +138,15 @@ namespace VesteBem_Admin
 					EncomendasEDetalhesEProduto.DeleteProduto(int.Parse(Pct.Tag.ToString()));
 					break;
 			}
+
+				backgroundWorker1.RunWorkerAsync();
+		}
+
+		private void FrmEditarApagarProdutos_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			FormCollection fc = Application.OpenForms;
+			foreach (Form frm in fc)
+				frm.WindowState = FormWindowState.Normal;
 		}
 	}
 }

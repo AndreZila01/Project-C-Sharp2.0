@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddChangeProdutos));
 			this.TxtNome = new System.Windows.Forms.TextBox();
 			this.TxtValor = new System.Windows.Forms.TextBox();
 			this.TxtEmpresa = new System.Windows.Forms.TextBox();
@@ -252,6 +253,7 @@
 			this.Controls.Add(this.TxtEmpresa);
 			this.Controls.Add(this.TxtValor);
 			this.Controls.Add(this.TxtNome);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FrmAddChangeProdutos";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmAddProdutos";

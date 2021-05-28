@@ -25,6 +25,7 @@ namespace VesteBem_Admin
 
 		private void FrmCliEFun_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			if (!BgwCliente.IsBusy)
 				BgwCliente.RunWorkerAsync();
 		}

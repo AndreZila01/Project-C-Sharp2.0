@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliEFun));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,6 +98,7 @@ namespace VesteBem_Admin
 			this.ClientSize = new System.Drawing.Size(800, 556);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.menuStrip1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FrmCliEFun";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

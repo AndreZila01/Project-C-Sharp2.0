@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			Process[] procs = Process.GetProcessesByName("VesteBem_Admin");
 			if (procs.Length > 1) foreach (Process proc in procs) { if (proc != procs[0]) proc.Kill(); }
 			//string Paths = Path.Combine(Path.GetTempPath());
@@ -86,7 +87,7 @@ namespace VesteBem_Admin
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			DateTime dt = new DateTime(int.Parse(DateTime.Now.Year.ToString()), int.Parse(DateTime.Now.Month.ToString()), int.Parse(DateTime.Now.Day.ToString()), int.Parse(DateTime.Now.Hour.ToString()), int.Parse(DateTime.Now.Minute.ToString()), int.Parse(DateTime.Now.Second.ToString()));
-			lblTimer.Text = (dt.ToString("dd.MM.yyyy \n HH:mm:ss").Replace('.', '/'));
+			lblTimer.Text = (dt.ToString("dd.MM.yyyy \t\t HH:mm:ss").Replace('.', '/'));
 
 		}
 	}

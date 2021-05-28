@@ -104,6 +104,7 @@ namespace VesteBem_Admin
 
 		private void FrmModificar_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			if (!backgroundWorker1.IsBusy)
 				backgroundWorker1.RunWorkerAsync();
 		}

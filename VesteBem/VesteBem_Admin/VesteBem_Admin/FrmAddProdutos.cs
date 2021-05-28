@@ -40,7 +40,8 @@ namespace VesteBem_Admin
 
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
-			if(idProdutos!=0)
+			this.ShowIcon = false;
+			if (idProdutos!=0)
 			{
 				List<Produtos> LstProdutos = new List<Produtos>();
 				LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");

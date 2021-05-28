@@ -16,5 +16,10 @@ namespace VesteBem_Admin
 		{
 			InitializeComponent();
 		}
+
+		private void FrmEditarCarrinho_Load(object sender, EventArgs e)
+		{
+			this.ShowIcon = false;
+		}
 	}
 }

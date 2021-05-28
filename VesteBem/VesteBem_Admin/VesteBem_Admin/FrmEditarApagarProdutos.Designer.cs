@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarApagarProdutos));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
@@ -151,8 +152,10 @@ namespace VesteBem_Admin
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.panel1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FrmEditarApagarProdutos";
 			this.Text = "FrmEditarApagarProdutos";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmEditarApagarProdutos_FormClosed);
 			this.Load += new System.EventHandler(this.FrmEditarApagarProdutos_Load);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();

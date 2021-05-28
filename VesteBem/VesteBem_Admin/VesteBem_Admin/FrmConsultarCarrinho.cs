@@ -34,11 +34,19 @@ namespace VesteBem_Admin
 			{
 				comboBox1.Items.Add(item.Estado);
 			});
-			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
+			try
+			{
+				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
+			}
+			catch
+			{
+				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1);
+			}
 		}
 
 		private void FrmConsultarCarrinho_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			if (!backgroundWorker1.IsBusy)
 				backgroundWorker1.RunWorkerAsync();
 		}

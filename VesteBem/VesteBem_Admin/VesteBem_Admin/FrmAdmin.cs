@@ -91,6 +91,11 @@ namespace VesteBem_Admin
 						frm = new FrmConsultarCarrinho();
 						//frm.Show();
 						break;
+					case 5:
+						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						break;
+					case 6:
+						break;
 				}
 
 				Forms();
@@ -121,6 +126,9 @@ namespace VesteBem_Admin
 
 		private void pictureBox4_Click(object sender, EventArgs e)
 		{
+			try
+			{
+
 			PictureBox Pct = sender as PictureBox;
 
 			switch (int.Parse(Pct.Tag.ToString()))
@@ -130,24 +138,40 @@ namespace VesteBem_Admin
 					//frm.Show();
 					break;
 				case 1:
+					frm = new FrmEditarApagarProdutos();
+					break;
+				case 2:
 					frm = new FrmCliEFun();
 					//frm.Show();
 					break;
-				case 2:
+				case 3:
 					frm = new FrmCarrinho();
 					//frm.Show();
 					break;
-				case 3:
+				case 4:
 					frm = new FrmConsultarCarrinho();
 					//frm.Show();
+					break;
+				case 5:
+					var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+					break;
+				case 6:
 					break;
 			}
 
 			Forms();
+			}
+			catch
+			{
+
+			}
 		}
 
 		private void panel2_Click(object sender, EventArgs e)
 		{
+			try
+			{
+
 			Panel Pnl = sender as Panel;
 
 			switch (int.Parse(Pnl.Tag.ToString()))
@@ -157,20 +181,33 @@ namespace VesteBem_Admin
 					//frm.Show();
 					break;
 				case 1:
+					frm = new FrmEditarApagarProdutos();
+					break;
+				case 2:
 					frm = new FrmCliEFun();
 					//frm.Show();
 					break;
-				case 2:
+				case 3:
 					frm = new FrmCarrinho();
 					//frm.Show();
 					break;
-				case 3:
+				case 4:
 					frm = new FrmConsultarCarrinho();
 					//frm.Show();
+					break;
+				case 5:
+					var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+					break;
+				case 6:
 					break;
 			}
 
 			Forms();
+			}
+			catch
+			{
+
+			}
 		}
 
 
@@ -183,7 +220,6 @@ namespace VesteBem_Admin
 			}
 			else
 			{
-				var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
 			}
 		}
 
@@ -220,6 +256,7 @@ namespace VesteBem_Admin
 
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			this.Tag = false;
 		}
 	}

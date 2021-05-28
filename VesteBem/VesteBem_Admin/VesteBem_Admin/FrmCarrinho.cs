@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		List<Produtos> lstProduto = new List<Produtos>();
 		private void FrmCarrinho_Load(object sender, EventArgs e)
 		{
+			this.ShowIcon = false;
 			if (!backgroundWorker1.IsBusy)
 				backgroundWorker1.RunWorkerAsync();
 		}
@@ -320,7 +321,14 @@ namespace VesteBem_Admin
 			pictureBox2.Click += PctRemove_Click;
 			dateTimePicker1.Value = DateTime.Today;
 			dateTimePicker1.MinDate = DateTime.Today;
-			dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4);
+			try
+			{
+				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4);
+			}
+			catch
+			{
+				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1);
+			}
 			dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1);
 			int data; int mes = DateTime.Today.Month + 4;
 			if (mes > 12)
@@ -336,7 +344,7 @@ namespace VesteBem_Admin
 			else
 				data = 28;
 
-
+			
 			dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
 		}
 

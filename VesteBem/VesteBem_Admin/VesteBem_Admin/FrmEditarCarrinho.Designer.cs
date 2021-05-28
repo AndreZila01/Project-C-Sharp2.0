@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarCarrinho));
 			this.SuspendLayout();
 			// 
 			// FrmEditarCarrinho
@@ -36,9 +37,11 @@ namespace VesteBem_Admin
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "FrmEditarCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmEditarCarrinho";
+			this.Load += new System.EventHandler(this.FrmEditarCarrinho_Load);
 			this.ResumeLayout(false);
 
 		}
