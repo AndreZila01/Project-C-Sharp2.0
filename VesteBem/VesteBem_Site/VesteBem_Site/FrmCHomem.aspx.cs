@@ -54,10 +54,11 @@ namespace VesteBem
         {
             Label LblRoupa = sender as Label;
 
-			switch (LblRoupa.Text)
-			{
-
-			}
+            switch (LblRoupa.Text)
+            {
+                default:
+                    break;
+            }
 
         }
 

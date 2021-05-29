@@ -289,7 +289,6 @@ C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\Ves
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\bin\Newtonsoft.Json.dll
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\bin\Newtonsoft.Json.xml
-C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\obj\Debug\VesteBem_Site.csprojAssemblyReference.cache
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\obj\Debug\VesteBem_Site.csproj.CoreCompileInputs.cache
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Site\VesteBem_Site\obj\Debug\VesteBem_Site.csproj.CopyComplete

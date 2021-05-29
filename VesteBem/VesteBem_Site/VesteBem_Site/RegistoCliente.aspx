@@ -135,12 +135,6 @@
             </td>
         </tr>
         <tr>
-            <td class="auto-style18" style="font-size: medium; ">Imagem de perfil:</td>
-            <td class="auto-style19" style="font-size: medium">
-                <asp:FileUpload ID="FUpload" runat="server" />
-            </td>
-        </tr>
-        <tr>
             <td class="auto-style18" style="font-size: medium; ">
                 <asp:Button ID="BtnRegistar" runat="server" OnClick="BtnRegistar_Click" Text="Registar" />
             </td>

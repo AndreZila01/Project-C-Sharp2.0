@@ -40,7 +40,7 @@ namespace VesteBem
             comando3.Connection = liga;
             liga.Open();
 
-            comando.CommandText = "Insert into Tbl_Login(Usern ,Passw, Funcionario) " + "VALUES('" + EncryptADeDecrypt.EncryptOther(txtUsername.Text) + "', '" + EncryptADeDecrypt.EncryptRSA(txtPassword.Text) + "', '0')";
+            comando.CommandText = "Insert into Tbl_Login(Usern ,Passw, Funcionario) " + "VALUES('" + txtUsername.Text + "', '" + EncryptADeDecrypt.EncryptRSA(txtPassword.Text) + "', '0')";
             SqlDataReader dr;
             try
             {
@@ -63,7 +63,7 @@ namespace VesteBem
                 liga.Close();
 
                 liga.Open();
-                comando2.CommandText = "Select IdLogin, Passw from tbl_Login where Usern like '" + EncryptADeDecrypt.EncryptOther(txtUsername.Text) + "'";
+                comando2.CommandText = "Select IdLogin, Passw from tbl_Login where Usern like '" + txtUsername.Text + "'";
                 dr = comando2.ExecuteReader();
                
                 if (dr.Read())
@@ -75,11 +75,7 @@ namespace VesteBem
                          liga.Close();
                          liga.Open();
 
-                        int len = FUpload.PostedFile.ContentLength;
-                        byte[] pic = new byte[len + 1];
-                        FUpload.PostedFile.InputStream.Read(pic, 0, len);
-
-                        comando3.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone,Icon, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '" + pic + "', '" + id + "')";
+                        comando3.CommandText = "Insert into Tbl_Cliente(Nome ,Sexo , Nif,Morada ,CodPostal ,Localidade , DataNasc ,Email ,Telefone, Id_Login) " + "VALUES('" + txtNomeCliente.Text + "', '" + RadioButtonList1.SelectedValue + "', '" + txtNif.Text + "', '" + txtMorada.Text + "', '" + txtCodPostal.Text + "', '" + txtLocalidade.Text + "', '" + txtDataNasc.Text + "', '" + txtEmail.Text + "', '" + txtTelefone.Text + "', '" + id + "')";
                         comando3.ExecuteNonQuery();
                         lblMensagem.Text = "Registado com sucesso";
 
