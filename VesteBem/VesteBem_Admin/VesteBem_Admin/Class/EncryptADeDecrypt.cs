@@ -62,56 +62,56 @@ namespace VesteBem_Admin.Class
             }
         }
 
-        public static string EncryptOther(string input)
-        {
-            string key = "sblw-3hn8-sqoy19";
-            try
-            {
-                //byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);//string to bytes
-                //TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-                //tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);//inserir a chave na variavel de encryptacao
-                //tripleDES.Mode = CipherMode.CBC;//modo de encrytação?!?
-                //tripleDES.Padding = PaddingMode.Zeros;//modo de encrytação?!?
-                //ICryptoTransform cTransform = tripleDES.CreateEncryptor();
-                //byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
-                //tripleDES.Clear();
-                //return Convert.ToBase64String(resultArray, 0, resultArray.Length);
-                byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);
-                TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-                tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
-                tripleDES.Mode = CipherMode.ECB;
-                tripleDES.Padding = PaddingMode.PKCS7;
-                ICryptoTransform cTransform = tripleDES.CreateEncryptor();
-                byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
-                tripleDES.Clear();
-                return Convert.ToBase64String(resultArray, 0, resultArray.Length);
-            }
-            catch (Exception ex)
-            {
-                return "ERRO 404!! \n" + ex.Message;
-            }
+   //     public static string EncryptOther(string input)
+   //     {
+   //         string key = "sblw-3hn8-sqoy19";
+   //         try
+   //         {
+   //             //byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);//string to bytes
+   //             //TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
+   //             //tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);//inserir a chave na variavel de encryptacao
+   //             //tripleDES.Mode = CipherMode.CBC;//modo de encrytação?!?
+   //             //tripleDES.Padding = PaddingMode.Zeros;//modo de encrytação?!?
+   //             //ICryptoTransform cTransform = tripleDES.CreateEncryptor();
+   //             //byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
+   //             //tripleDES.Clear();
+   //             //return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+   //             byte[] inputArray = UTF8Encoding.UTF8.GetBytes(input);
+   //             TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
+   //             tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
+   //             tripleDES.Mode = CipherMode.ECB;
+   //             tripleDES.Padding = PaddingMode.PKCS7;
+   //             ICryptoTransform cTransform = tripleDES.CreateEncryptor();
+   //             byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
+   //             tripleDES.Clear();
+   //             return Convert.ToBase64String(resultArray, 0, resultArray.Length);
+   //         }
+   //         catch (Exception ex)
+   //         {
+   //             return "ERRO 404!! \n" + ex.Message;
+   //         }
 
-        }
-        public static string DecryptOther(string input)
-        {
-            string key = "sblw-3hn8-sqoy19";
-			try
-            {
-                byte[] inputArray = Convert.FromBase64String(input);
-                TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
-                tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
-                tripleDES.Mode = CipherMode.ECB;
-                tripleDES.Padding = PaddingMode.PKCS7;
-                ICryptoTransform cTransform = tripleDES.CreateDecryptor();
-                byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
-                tripleDES.Clear();
-                return UTF8Encoding.UTF8.GetString(resultArray);
-            }
-            catch (Exception ex)
-            {
-                return "ERRO 404!! \n" + ex.Message;
-            }
-        }
+   //     }
+   //     public static string DecryptOther(string input)
+   //     {
+   //         string key = "sblw-3hn8-sqoy19";
+			//try
+   //         {
+   //             byte[] inputArray = Convert.FromBase64String(input);
+   //             TripleDESCryptoServiceProvider tripleDES = new TripleDESCryptoServiceProvider();
+   //             tripleDES.Key = UTF8Encoding.UTF8.GetBytes(key);
+   //             tripleDES.Mode = CipherMode.ECB;
+   //             tripleDES.Padding = PaddingMode.PKCS7;
+   //             ICryptoTransform cTransform = tripleDES.CreateDecryptor();
+   //             byte[] resultArray = cTransform.TransformFinalBlock(inputArray, 0, inputArray.Length);
+   //             tripleDES.Clear();
+   //             return UTF8Encoding.UTF8.GetString(resultArray);
+   //         }
+   //         catch (Exception ex)
+   //         {
+   //             return "ERRO 404!! \n" + ex.Message;
+   //         }
+   //     }
 
     }
 

@@ -35,7 +35,7 @@ namespace VesteBem_Admin
 			//string Paths = Path.Combine(Path.GetTempPath());
 			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
-			TxtUser.Text = EncryptADeDecrypt.DecryptOther(lst[0].UserName);
+			TxtUser.Text = /*EncryptADeDecrypt.DecryptOther*/(lst[0].UserName);
 			TxtPass.Text = EncryptADeDecrypt.DecryptRSA(lst[0].Password);
 			timer1.Start();
 			//var ds = DateTime.Now.Month.ToString().Length == 1 ? mes = "0" + (DateTime.Now.Month.ToString()) : mes = DateTime.Now.Month.ToString();
@@ -49,7 +49,7 @@ namespace VesteBem_Admin
 			if (TxtUser.Text != "" && TxtPass.Text != "")
 			{
 				string pass = TxtPass.Text, user = "";
-				user = EncryptADeDecrypt.EncryptOther(TxtUser.Text);
+				user = /*EncryptADeDecrypt.EncryptOther*/(TxtUser.Text);
 				command.Connection = liga;
 				liga.Open();
 				try

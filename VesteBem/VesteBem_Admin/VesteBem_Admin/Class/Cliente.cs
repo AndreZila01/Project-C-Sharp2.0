@@ -277,7 +277,7 @@ namespace VesteBem_Admin.Class
 						fun.Id_Login = int.Parse(oReader["Id_Login"].ToString());
 						fun.Nome = oReader["Nome"].ToString();
 						fun.Telemovel = oReader["Telemovel"].ToString();
-						fun.Username = EncryptADeDecrypt.DecryptOther(oReader["Usern"].ToString());
+						fun.Username = /*EncryptADeDecrypt.DecryptOther*/(oReader["Usern"].ToString());
 						fun.Pass = EncryptADeDecrypt.DecryptRSA(oReader["Passw"].ToString());
 
 						lstFun.Add(fun);
@@ -304,7 +304,7 @@ namespace VesteBem_Admin.Class
 			command.CommandType = System.Data.CommandType.StoredProcedure;
 			try
 			{
-				string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+				string user = "" + /*EncryptADeDecrypt.EncryptOther*/(fun.Username);
 				string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
 				command.Parameters.Add(new SqlParameter("Id_Funcao", fun.id_Funcao));
 				command.Parameters.Add(new SqlParameter("Nome", fun.Nome));
@@ -341,7 +341,7 @@ namespace VesteBem_Admin.Class
 				try
 				{
 					liga.Open();
-					string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+					string user = "" + /*EncryptADeDecrypt.EncryptOther*/(fun.Username);
 					string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
 					command.Parameters.Add(new SqlParameter("UserN", user));
 					command.Parameters.Add(new SqlParameter("Passw", pass));
@@ -369,7 +369,7 @@ namespace VesteBem_Admin.Class
 				try
 				{
 					liga.Open();
-					string user = "" + EncryptADeDecrypt.EncryptOther(fun.Username);
+					string user = "" + /*EncryptADeDecrypt.EncryptOther*/(fun.Username);
 					string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
 
 					command.CommandText = "SPInsertFuncionarios";
@@ -840,18 +840,20 @@ namespace VesteBem_Admin.Class
 			}
 		}
 
-		/*public static List<VerEncomenda> SelectCarrinho(int CliouId,bool IsCli, int Estado, DateTime Inicio, DateTime Fim)
+		public static List<VerEncomenda> SelectCarrinho(int IdConsulta, string Nome,int Estado, DateTime Inicio, DateTime Fim)
 		{
+			List<VerEncomenda> lst = new List<VerEncomenda>();
 			string AuxComando = "";
-			if (CliouId != 0)
-				AuxComando = "and IdClient=" + CliouId;
-			if (Estado != 0)
+			if (IdConsulta != 0)
+				AuxComando = "and IdEncomendas=" + IdConsulta;
+			if (Nome != "")
+				AuxComando += " and Nome='"+Nome+"'";
+			if (Estado != -1)
 				AuxComando += " and EstadoEncomendas= " + Estado;
 			//if()
 
 			try
 			{
-				List<VerEncomenda> lst = new List<VerEncomenda>();
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, Estado, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente order by IdCliente", liga);
 				try
@@ -881,13 +883,13 @@ namespace VesteBem_Admin.Class
 					liga.Close();
 				}
 
-				return lst;
 			}
 			catch
 			{
 
 			}
-		}*/
+			return lst;
+		}
 	}
 
 }

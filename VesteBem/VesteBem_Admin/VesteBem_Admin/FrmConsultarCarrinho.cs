@@ -53,7 +53,12 @@ namespace VesteBem_Admin
 
 		private void Objects_TextChanged(object sender, EventArgs e)
 		{
+			int ds = 0;
+			if (int.TryParse(textBox1.Text, out int dss))
+				ds = int.Parse(textBox1.Text);
 
+
+			List<VerEncomenda> lst = EncomendasEDetalhesEProduto.SelectCarrinho(ds, textBox1.Text, lstEstado.FindIndex(rs => rs.Estado == comboBox1.Text),dateTimePicker1.Value, dateTimePicker2.Value);
 		}
 
 		private void Teste()
