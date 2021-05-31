@@ -192,8 +192,19 @@ namespace VesteBem_Admin
 			enc.Id_Cliente = Clientes.SelectIdCliente(comboBox1.Text);
 			enc.ValorEncomendas = double.Parse(textBox1.Text);
 			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == comboBox2.SelectedItem)].IdEstado);
+			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, enc.DataEntrega, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
 			//int idEncomenda = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.Id_Cliente);
+			int temp = 0;
+			lstDetalhesEncomendas.ToList().ForEach(item=>{
+				lstDetalhesEncomendas[temp].Id_Encomendas = enc.IdEncomendas;
+				temp++;
+			});
 			EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
+			lstDetalhesEncomendas.Clear();
+			panel2.Enabled = false;
+			textBox1.Text = "";
+			comboBox1.Text = "";
+			flowLayoutPanel1.Controls.Clear();
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -323,13 +334,20 @@ namespace VesteBem_Admin
 			dateTimePicker1.MinDate = DateTime.Today;
 			try
 			{
-				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4);
+				var ds = DateTime.Today.Month!=12? dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4): dateTimePicker2.Value = new DateTime((DateTime.Today.Year+1), 1, 4);
 			}
 			catch
 			{
-				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1);
+				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1) : dateTimePicker2.Value = new DateTime((DateTime.Today.Year+1), 1, 1);
 			}
-			dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1);
+			try
+			{
+				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1) : dateTimePicker2.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+			}
+			catch
+			{
+				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1),1): dateTimePicker2.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+			}
 			int data; int mes = DateTime.Today.Month + 4;
 			if (mes > 12)
 				mes -= 12;
@@ -357,6 +375,8 @@ namespace VesteBem_Admin
 
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
+			if(comboBox3.Text!="")
+			try
 			{
 				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
 				Panel Pnl = new Panel();
@@ -421,6 +441,7 @@ namespace VesteBem_Admin
 				Detalhes.QuantEnc = int.Parse(numericUpDown1.Value.ToString());
 				lstDetalhesEncomendas.Add(Detalhes);
 			}
+			catch { }
 		}
 	}
 	public class Estado

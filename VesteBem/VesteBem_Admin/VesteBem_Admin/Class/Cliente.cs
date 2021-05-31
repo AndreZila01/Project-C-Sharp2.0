@@ -39,6 +39,10 @@ namespace VesteBem_Admin.Class
 			{
 				return idcli;
 			}
+			finally
+			{
+				liga.Close();
+			}
 
 		}
 		public static List<Cliente> SelectId()
@@ -60,12 +64,15 @@ namespace VesteBem_Admin.Class
 
 						lstcli.Add(cli);
 					}
-					liga.Close();
 				}
 			}
 			catch
 			{
 				return null;
+			}
+			finally
+			{
+				liga.Close();
 			}
 
 			return lstcli;
@@ -500,6 +507,33 @@ namespace VesteBem_Admin.Class
 	}
 	public class EncomendasEDetalhesEProduto
 	{
+		public static int SelectIdEncomenda(double ValorEncomendas, int Id_Cliente, DateTime DataEncomenda, DateTime DataEntrega, int EstadoEncomendas)
+		{
+			int id=0;
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select * From tbl_Encomendas where ValorEncomendas="+ ValorEncomendas + " and Id_Cliente="+Id_Cliente+" and DataEncomenda='"+DataEncomenda.Date.ToString("yyyyMMdd") + "' and DataEntrega='"+DataEntrega.Date.ToString("yyyyMMdd") + "' and EstadoEncomendas="+EstadoEncomendas+"", liga);
+			try
+			{
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						id= int.Parse(oReader["IdEncomendas"].ToString());
+					}
+				}
+			}
+			catch(Exception EX)
+			{
+				return id;
+			}
+			finally
+			{
+				liga.Close();
+			}
+			return id;
+		}
 		public static string InsertEncomendas(Encomenda enc, int IdEstado)
 		{
 			SqlCommand command = new SqlCommand();
@@ -526,7 +560,10 @@ namespace VesteBem_Admin.Class
 				{
 
 				}
-				liga.Close();
+				finally
+				{
+					liga.Close();
+				}
 				return "sucesso";
 			}
 		}
@@ -725,12 +762,12 @@ namespace VesteBem_Admin.Class
 			SqlCommand command = new SqlCommand();
 			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 			{
-				command.CommandText = "SpInsertDetalhes";
-				command.CommandType = System.Data.CommandType.StoredProcedure;
 				lst.ToList().ForEach(item =>
 				{
 					try
 					{
+						command.CommandText = "SpInsertDetalhes";
+						command.CommandType = System.Data.CommandType.StoredProcedure;
 						command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
 						command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
 						command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
@@ -745,8 +782,11 @@ namespace VesteBem_Admin.Class
 					{
 						//return ex.Message;
 					}
+					finally
+					{
+						liga.Close();
+					}
 				});
-				liga.Close();
 				return "sucesso";
 			}
 		}
@@ -764,7 +804,6 @@ namespace VesteBem_Admin.Class
 					if (oReader.Read())
 						if (int.Parse(oReader["IdEncomendas"].ToString()) == cli)
 							idEncomenda = int.Parse(oReader["IdEncomendas"].ToString());
-					liga.Close();
 
 					return idEncomenda;
 				}
@@ -772,6 +811,10 @@ namespace VesteBem_Admin.Class
 			catch
 			{
 				return idEncomenda;
+			}
+			finally
+			{
+				liga.Close();
 			}
 
 		}
@@ -855,7 +898,7 @@ namespace VesteBem_Admin.Class
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, Estado, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente order by IdCliente", liga);
+				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, Estado, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente order by IdCliente and "+ AuxComando +"", liga);
 				try
 				{
 					comando.Connection = liga;
