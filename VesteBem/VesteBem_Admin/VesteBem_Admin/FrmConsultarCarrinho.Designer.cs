@@ -103,7 +103,7 @@ namespace VesteBem_Admin
 			this.dateTimePicker2.Name = "dateTimePicker2";
 			this.dateTimePicker2.Size = new System.Drawing.Size(143, 20);
 			this.dateTimePicker2.TabIndex = 3;
-			this.dateTimePicker2.ValueChanged += new System.EventHandler(this.Objects_TextChanged);
+			this.dateTimePicker2.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
 			// 
 			// dateTimePicker1
 			// 
@@ -111,7 +111,7 @@ namespace VesteBem_Admin
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(143, 20);
 			this.dateTimePicker1.TabIndex = 2;
-			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.Objects_TextChanged);
+			this.dateTimePicker1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
 			// 
 			// textBox1
 			// 
@@ -119,7 +119,7 @@ namespace VesteBem_Admin
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(152, 20);
 			this.textBox1.TabIndex = 1;
-			this.textBox1.TextChanged += new System.EventHandler(this.Objects_TextChanged);
+			this.textBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
 			// 
 			// comboBox1
 			// 
@@ -128,7 +128,7 @@ namespace VesteBem_Admin
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 21);
 			this.comboBox1.TabIndex = 0;
-			this.comboBox1.TextChanged += new System.EventHandler(this.Objects_TextChanged);
+			this.comboBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
 			// 
 			// backgroundWorker1
 			// 

@@ -768,10 +768,20 @@ namespace VesteBem_Admin.Class
 					{
 						command.CommandText = "SpInsertDetalhes";
 						command.CommandType = System.Data.CommandType.StoredProcedure;
-						command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
-						command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
-						command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
 
+						if (command.Parameters.Count <3)
+						{
+							command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
+							command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
+							command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
+						}
+						else
+						{
+							command.Parameters["Id_Encomendas"].Value = item.Id_Encomendas;
+							command.Parameters["Id_Produtos"].Value = item.Id_Produtos;
+							command.Parameters["QuantEnc"].Value = item.QuantEnc;
+							//command.Parameters["ID_Encomendas"].Value=item.Id_Encomendas;
+						}
 						command.Connection = liga;
 
 						liga.Open();
@@ -898,7 +908,7 @@ namespace VesteBem_Admin.Class
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, Estado, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente order by IdCliente and "+ AuxComando +"", liga);
+				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente "+ AuxComando + " order by IdCliente ", liga);
 				try
 				{
 					comando.Connection = liga;
@@ -908,12 +918,14 @@ namespace VesteBem_Admin.Class
 						while (oReader.Read())
 						{
 							VerEncomenda enc = new VerEncomenda();
-							enc.Nome = oReader["Nome"].ToString();
 							enc.IdCliente = int.Parse(oReader["IdCliente"].ToString());
+							enc.Nome = oReader["Nome"].ToString();
 							enc.IdEncomendas = int.Parse(oReader["IdEncomendas"].ToString());
-							//enc.EstadoEncomendas= (oReader["IdEncomendas"].ToString())
-
-							//lst.Add(oReader["Estado"].ToString());
+							enc.ValorEncomendas = double.Parse(oReader["ValorEncomendas"].ToString());
+							enc.EstadoEncomendas = int.Parse(oReader["EstadoEncomendas"].ToString());
+							enc.DataEncomenda = DateTime.Parse(oReader["DataEncomenda"].ToString());
+							enc.DataEntrega = DateTime.Parse(oReader["DataEntrega"].ToString());
+							lst.Add(enc);
 						}
 					}
 				}
