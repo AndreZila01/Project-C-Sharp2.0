@@ -36,12 +36,14 @@ namespace VesteBem_Admin
 			novosFuncionariosToolStripMenuItem.Visible = false;
 			if (dss.Text == "Cliente")
 			{
+				TstbFuncionario.Visible = false; TstbCliente.Visible = true;
 				CreateObjectsCli();
 				this.Tag = "Cliente";
 			}
 			else
-			if(dss.Text=="Funcionario")
+			if (dss.Text == "Funcionario")
 			{
+				TstbFuncionario.Visible = true;TstbCliente.Visible = false;
 				CreateObjectsFun(); this.Tag = "Funcionario";
 			}
 			else
@@ -312,9 +314,53 @@ namespace VesteBem_Admin
 		private void FrmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			FormCollection fc = Application.OpenForms;
-			foreach(Form frm in fc)
+			foreach (Form frm in fc)
 				frm.WindowState = FormWindowState.Normal;
-			
+
+		}
+
+		private void TstbClienteEFun_TextChanged(object sender, EventArgs e)
+		{
+			ToolStripTextBox Tslb = sender as ToolStripTextBox;
+
+			switch (Tslb.Name)
+			{
+				case "TstbCliente":
+					if (Tslb.Text != "")
+					{
+						lstCli.ToList().ForEach(item =>
+						{
+							try
+							{
+								if (item.Nome.Remove(Tslb.Text.Length) != Tslb.Text)
+									lstCli.Remove(item);
+							}
+							catch { }
+						});
+					}
+					else
+						lstCli = Clientes.ConsultaCliente();
+					CreateObjectsCli();
+					break;
+				case "TstbFuncionario":
+					if (Tslb.Text != "")
+					{
+
+						lstFun.ToList().ForEach(item =>
+						{
+							try { 
+							if (item.Nome.Remove(Tslb.Text.Length) != Tslb.Text)
+								lstFun.Remove(item);
+							}
+							catch { }
+						});
+					}
+					else
+						lstFun = Funcionarios.ConsultarFuncionario();
+					CreateObjectsFun();
+					break;
+			}
+
 		}
 	}
 }

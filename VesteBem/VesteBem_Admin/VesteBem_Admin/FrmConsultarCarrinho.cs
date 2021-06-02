@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,8 @@ namespace VesteBem_Admin
 			{
 				DtpChegada.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1);
 			}
+			DtpChegada.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+			DtpInicio.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 		}
 
 		private void FrmConsultarCarrinho_Load(object sender, EventArgs e)
@@ -76,6 +79,7 @@ namespace VesteBem_Admin
 				Pnl.Name = "panel2";
 				Pnl.Size = new System.Drawing.Size(800, 49);
 				Pnl.TabIndex = 0;
+				Pnl.BackColor = Color.Red;
 				flowLayoutPanel1.Controls.Add(Pnl);
 
 
@@ -83,6 +87,7 @@ namespace VesteBem_Admin
 				LblEstado.AutoSize = true;
 				LblEstado.Location = new System.Drawing.Point(13, 17);
 				LblEstado.Name = "LblEstado";
+				LblEstado.BackColor = Color.Green;
 				LblEstado.Size = new System.Drawing.Size(35, 13);
 				LblEstado.TabIndex = 0;
 				LblEstado.Text = "" + comboBox1.Text;
@@ -91,6 +96,7 @@ namespace VesteBem_Admin
 				LblCliente.AutoSize = true;
 				LblCliente.Location = new System.Drawing.Point(107, 17);
 				LblCliente.Name = "LblCliente";
+				LblCliente.BackColor = Color.Gray;
 				LblCliente.Size = new System.Drawing.Size(35, 13);
 				LblCliente.TabIndex = 1;
 				LblCliente.Tag = "" + item.IdCliente;
@@ -98,19 +104,21 @@ namespace VesteBem_Admin
 
 				Label LblData = new Label();
 				LblData.AutoSize = true;
+				LblData.BackColor = Color.Blue;
 				LblData.Location = new System.Drawing.Point(250, 17);
 				LblData.Name = "LblData";
 				LblData.Size = new System.Drawing.Size(35, 13);
 				LblData.TabIndex = 2;
-				LblData.Text = "Data Encomendada" + item.DataEncomenda+"                       Data da Entrega: "+item.DataEntrega; //\t não funciona
+				LblData.Text = "Data Encomendada" + item.DataEncomenda.ToString("yyyy-MM-dd") + "                       Data da Entrega: "+item.DataEntrega.ToString("yyyy-MM-dd"); //\t não funciona
 
 				PictureBox PctMoreInfo = new PictureBox();
 				PctMoreInfo.Image = global::VesteBem_Admin.Properties.Resources.magnifying_glass;
-				PctMoreInfo.Location = new System.Drawing.Point(744, 6);
+				PctMoreInfo.Location = new System.Drawing.Point(700, 6);
 				PctMoreInfo.Name = "PctMoreInfo";
 				PctMoreInfo.Size = new System.Drawing.Size(44, 40);
 				PctMoreInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 				PctMoreInfo.TabIndex = 3;
+				PctMoreInfo.Anchor = System.Windows.Forms.AnchorStyles.Right;
 				PctMoreInfo.TabStop = false;
 
 				Label LblIdEncomenda = new Label();
@@ -119,6 +127,7 @@ namespace VesteBem_Admin
 				LblIdEncomenda.Name = "LblIdEncomenda";
 				LblIdEncomenda.Size = new System.Drawing.Size(35, 13);
 				LblIdEncomenda.TabIndex = 4;
+				LblIdEncomenda.BackColor = Color.Orange;
 				LblIdEncomenda.Text = "" + item.IdEncomendas;
 
 				Pnl.Controls.Add(LblIdEncomenda);
@@ -138,8 +147,15 @@ namespace VesteBem_Admin
 			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, textBox1.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == comboBox1.Text)].IdEstado, DtpInicio.Value, DtpChegada.Value);
 
 			//if(comboBox1.Tag!=null)	
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker2.RunWorkerAsync();
+			try
+			{
+				if (!backgroundWorker1.IsBusy)
+					backgroundWorker2.RunWorkerAsync();
+			}
+			catch
+			{
+
+			}
 		}
 
 		private void Object_MouseLeavee(object sender, EventArgs e)
@@ -151,6 +167,8 @@ namespace VesteBem_Admin
 				idEncomenda = int.Parse(textBox1.Text);
 			else
 				Cliente = textBox1.Text;
+
+			Select();
 		}
 
 		private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
@@ -174,6 +192,15 @@ namespace VesteBem_Admin
 		private void comboBox1_TextChanged(object sender, EventArgs e)
 		{
 			Select();
+		}
+
+		private void FrmConsultarCarrinho_SizeChanged(object sender, EventArgs e)
+		{
+			if (this.Width < 749)
+				this.Width = 749;
+			if (this.Height < 489)
+				this.Height = 489;
+
 		}
 	}
 }

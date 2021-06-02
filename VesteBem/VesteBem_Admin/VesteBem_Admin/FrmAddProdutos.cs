@@ -22,7 +22,7 @@ namespace VesteBem_Admin
 		public FrmAddChangeProdutos(int idProduto)
 		{
 			InitializeComponent();
-			if(idProduto != 0)
+			if (idProduto != 0)
 				idProdutos = idProduto;
 		}
 
@@ -41,7 +41,7 @@ namespace VesteBem_Admin
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
 			this.ShowIcon = false;
-			if (idProdutos!=0)
+			if (idProdutos != 0)
 			{
 				List<Produtos> LstProdutos = new List<Produtos>();
 				LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");
@@ -52,7 +52,7 @@ namespace VesteBem_Admin
 				TxtNome.Text = LstProdutos[index].Nome;
 				TxtSubCat.Text = LstProdutos[index].CategoriaSubClass;
 				TxtValor.Text = LstProdutos[index].Valor.ToString();
-				var ds = LstProdutos[index].Sexo == "F"? comboBox1.Text= "Feminino" : (LstProdutos[index].Sexo=="M" ? comboBox1.Text= "Masculino" : comboBox1.Text= "Indefenido") ;
+				var ds = LstProdutos[index].Sexo == "F" ? comboBox1.Text = "Feminino" : (LstProdutos[index].Sexo == "M" ? comboBox1.Text = "Masculino" : comboBox1.Text = "Indefenido");
 				button1.Text = "Alterar os Dados";
 			}
 		}
@@ -122,14 +122,14 @@ namespace VesteBem_Admin
 				}
 			}
 		}
-		
+
 		private void TxtValor_Leave(object sender, EventArgs e)
 		{
 			if (TxtValor.Text.Contains("."))
 				TxtValor.Text = TxtValor.Text.Replace('.', ',');
-			if (!TxtValor.Text.Contains(',') && TxtValor.Text!="")
+			if (!TxtValor.Text.Contains(',') && TxtValor.Text != "")
 				TxtValor.Text += ",00";
-			if(TxtValor.Text.Contains('-'))
+			if (TxtValor.Text.Contains('-'))
 				TxtValor.Text = "";
 			if (Regex.IsMatch(TxtValor.Text, @"\,\d\d"))
 			{
@@ -141,8 +141,8 @@ namespace VesteBem_Admin
 
 		private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if(e.KeyChar!='.' && e.KeyChar != '\u0016' && e.KeyChar != '\b')
-			e.Handled = !char.IsDigit(e.KeyChar);
+			if (e.KeyChar != '.' && e.KeyChar != '\u0016' && e.KeyChar != '\b')
+				e.Handled = !char.IsDigit(e.KeyChar);
 		}
 
 		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
@@ -153,15 +153,18 @@ namespace VesteBem_Admin
 
 		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if(e.KeyChar!='\u0016' && e.KeyChar != '\b')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 		private void FrmAddProdutos_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			FormCollection fc = Application.OpenForms;
-			foreach (Form frm in fc)
-				frm.WindowState = FormWindowState.Normal;
+			if (idProdutos == 0)
+			{
+				FormCollection fc = Application.OpenForms;
+				foreach (Form frm in fc)
+					frm.WindowState = FormWindowState.Normal;
+			}
 		}
 	}
 }

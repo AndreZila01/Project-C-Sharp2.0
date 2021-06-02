@@ -41,8 +41,10 @@ namespace VesteBem_Admin
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+			this.panel2 = new System.Windows.Forms.Panel();
 			this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
 			this.panel1.SuspendLayout();
+			this.flowLayoutPanel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// panel1
@@ -63,6 +65,8 @@ namespace VesteBem_Admin
 			// 
 			// label4
 			// 
+			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
 			this.label4.Location = new System.Drawing.Point(642, 17);
 			this.label4.Name = "label4";
@@ -72,6 +76,7 @@ namespace VesteBem_Admin
 			// 
 			// label3
 			// 
+			this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(442, 17);
 			this.label3.Name = "label3";
@@ -81,8 +86,9 @@ namespace VesteBem_Admin
 			// 
 			// label2
 			// 
+			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(220, 17);
+			this.label2.Location = new System.Drawing.Point(187, 17);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(123, 13);
 			this.label2.TabIndex = 5;
@@ -99,25 +105,27 @@ namespace VesteBem_Admin
 			// 
 			// DtpChegada
 			// 
+			this.DtpChegada.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.DtpChegada.Location = new System.Drawing.Point(645, 36);
 			this.DtpChegada.Name = "DtpChegada";
 			this.DtpChegada.Size = new System.Drawing.Size(143, 20);
 			this.DtpChegada.TabIndex = 3;
-			this.DtpChegada.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 			// 
 			// DtpInicio
 			// 
+			this.DtpInicio.Anchor = System.Windows.Forms.AnchorStyles.Right;
 			this.DtpInicio.Location = new System.Drawing.Point(445, 35);
 			this.DtpInicio.Name = "DtpInicio";
 			this.DtpInicio.Size = new System.Drawing.Size(143, 20);
 			this.DtpInicio.TabIndex = 2;
-			this.DtpInicio.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(223, 36);
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.Location = new System.Drawing.Point(190, 36);
 			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(152, 20);
+			this.textBox1.Size = new System.Drawing.Size(185, 20);
 			this.textBox1.TabIndex = 1;
 			this.textBox1.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
 			// 
@@ -139,12 +147,25 @@ namespace VesteBem_Admin
 			// flowLayoutPanel1
 			// 
 			this.flowLayoutPanel1.AutoSize = true;
+			this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+			this.flowLayoutPanel1.Controls.Add(this.panel2);
 			this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 63);
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 387);
 			this.flowLayoutPanel1.TabIndex = 1;
 			this.flowLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
+			// 
+			// panel2
+			// 
+			this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+			this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+			this.panel2.Enabled = false;
+			this.panel2.Location = new System.Drawing.Point(0, 0);
+			this.panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(800, 0);
+			this.panel2.TabIndex = 0;
 			// 
 			// backgroundWorker2
 			// 
@@ -158,14 +179,19 @@ namespace VesteBem_Admin
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.flowLayoutPanel1);
 			this.Controls.Add(this.panel1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "FrmConsultarCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FrmConsultarCarrinho";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmConsultarCarrinho_FormClosed);
 			this.Load += new System.EventHandler(this.FrmConsultarCarrinho_Load);
+			this.SizeChanged += new System.EventHandler(this.FrmConsultarCarrinho_SizeChanged);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.flowLayoutPanel1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -185,5 +211,6 @@ namespace VesteBem_Admin
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.ComponentModel.BackgroundWorker backgroundWorker2;
+		private System.Windows.Forms.Panel panel2;
 	}
 }

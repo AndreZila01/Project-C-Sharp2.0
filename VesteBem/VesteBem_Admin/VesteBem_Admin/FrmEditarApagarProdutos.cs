@@ -57,6 +57,7 @@ namespace VesteBem_Admin
 		}
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
+			flowLayoutPanel1.Controls.Clear();
 			LstProdutos.ToList().ForEach(item =>
 			{
 

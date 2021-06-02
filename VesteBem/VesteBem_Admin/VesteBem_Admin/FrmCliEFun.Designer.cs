@@ -32,8 +32,10 @@ namespace VesteBem_Admin
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliEFun));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TstbCliente = new System.Windows.Forms.ToolStripTextBox();
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.novosFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.TstbFuncionario = new System.Windows.Forms.ToolStripTextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.BgwCliente = new System.ComponentModel.BackgroundWorker();
 			this.menuStrip1.SuspendLayout();
@@ -43,11 +45,13 @@ namespace VesteBem_Admin
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clienteToolStripMenuItem,
+            this.TstbCliente,
             this.funcionarioToolStripMenuItem,
+            this.TstbFuncionario,
             this.novosFuncionariosToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(800, 27);
 			this.menuStrip1.TabIndex = 48;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -55,15 +59,23 @@ namespace VesteBem_Admin
 			// 
 			this.clienteToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.user;
 			this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-			this.clienteToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+			this.clienteToolStripMenuItem.Size = new System.Drawing.Size(72, 23);
 			this.clienteToolStripMenuItem.Text = "Cliente";
 			this.clienteToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+			// 
+			// TstbCliente
+			// 
+			this.TstbCliente.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.TstbCliente.Name = "TstbCliente";
+			this.TstbCliente.Size = new System.Drawing.Size(100, 23);
+			this.TstbCliente.Visible = false;
+			this.TstbCliente.TextChanged += new System.EventHandler(this.TstbClienteEFun_TextChanged);
 			// 
 			// funcionarioToolStripMenuItem
 			// 
 			this.funcionarioToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.Admin;
 			this.funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
-			this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
+			this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
 			this.funcionarioToolStripMenuItem.Text = "Funcionario";
 			this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
 			// 
@@ -71,18 +83,26 @@ namespace VesteBem_Admin
 			// 
 			this.novosFuncionariosToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.add;
 			this.novosFuncionariosToolStripMenuItem.Name = "novosFuncionariosToolStripMenuItem";
-			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 20);
+			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 23);
 			this.novosFuncionariosToolStripMenuItem.Text = "Novos Funcionarios";
 			this.novosFuncionariosToolStripMenuItem.Visible = false;
 			this.novosFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+			// 
+			// TstbFuncionario
+			// 
+			this.TstbFuncionario.Font = new System.Drawing.Font("Segoe UI", 9F);
+			this.TstbFuncionario.Name = "TstbFuncionario";
+			this.TstbFuncionario.Size = new System.Drawing.Size(100, 23);
+			this.TstbFuncionario.Visible = false;
+			this.TstbFuncionario.TextChanged += new System.EventHandler(this.TstbClienteEFun_TextChanged);
 			// 
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(0, 24);
+			this.panel1.Location = new System.Drawing.Point(0, 27);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(800, 532);
+			this.panel1.Size = new System.Drawing.Size(800, 529);
 			this.panel1.TabIndex = 49;
 			this.panel1.Visible = false;
 			// 
@@ -120,5 +140,7 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.Panel panel1;
 		private System.ComponentModel.BackgroundWorker BgwCliente;
 		private System.Windows.Forms.ToolStripMenuItem novosFuncionariosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripTextBox TstbCliente;
+		private System.Windows.Forms.ToolStripTextBox TstbFuncionario;
 	}
 }
