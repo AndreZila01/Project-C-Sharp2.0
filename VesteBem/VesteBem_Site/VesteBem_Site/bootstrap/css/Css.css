@@ -250,3 +250,14 @@ span.psw {
 MarginImg{
 	margin:35px 35px 35px 35px;
 }
+div {
+	text-align: center;
+}
+
+#errorlabel {
+	vertical-align: middle;
+}
+
+#errorno {
+	float: left;
+}

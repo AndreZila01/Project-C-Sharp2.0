@@ -45,7 +45,7 @@ namespace VesteBem
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
                 productPanel.Controls.Add(LBL);
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
-                Imagems.Controls.Add(productPanel);
+                //Imagens.Controls.Add(productPanel);
 
             }
 
