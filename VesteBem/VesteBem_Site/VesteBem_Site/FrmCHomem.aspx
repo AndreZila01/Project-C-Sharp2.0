@@ -11,25 +11,19 @@
 					<asp:Label runat="server" Text="Homem > "></asp:Label>
 				</div>
 				<p></p>
-				<div style="margin: 10px 10px 0px 10px; background-color: ghostwhite; font-size: 20px; min-width: 100px">
-					<asp:LinkButton runat="server" Text="Calças" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Pijama" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Sapatos" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisola Interior" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisa" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Camisola Exterior" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Roupa Interior" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Casacos" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
-					<asp:LinkButton runat="server" Text="Acessórios" OnClick="lblRoupa_Click"></asp:LinkButton><p />
-					<p />
+				<asp:Menu ID="Menu1" runat="server" StaticSubMenuIndent="16px">
+                    <Items>
+                        <asp:MenuItem Text="Camisa" Value="Camisa" NavigateUrl="~/Teste.aspx?TipoProduto=Camisa"></asp:MenuItem>
+                       
+                        <asp:MenuItem Text="T-Shirts" Value="T-Shirts" NavigateUrl="~/ItensMasculino.aspx?TipoProduto=T-Shirts"> </asp:MenuItem>
+                        
+                        <asp:MenuItem Text="Calças" Value="Calças" NavigateUrl="~/ItensMasculino.aspx?TipoProduto=Calças"></asp:MenuItem>
+                       
+                        <asp:MenuItem Text="Tenis" Value="Tenis" NavigateUrl="~/ItensMasculino.aspx?TipoProduto=Ténis"></asp:MenuItem>
+                    </Items>
+                    <StaticMenuStyle HorizontalPadding="60px" VerticalPadding="100px" />
+                </asp:Menu>
+
 				</div>
 
 			</div>
@@ -42,8 +36,7 @@
 			<br />
 			<br />
 		</div>
-	</div>
-
+	
 	<%--<div style="background-color: red; width: 100%;">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: white">
             <div style="padding: 15px 15px 2500px; font-size: 30px;">

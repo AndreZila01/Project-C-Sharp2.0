@@ -83,12 +83,10 @@
 						<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
 					</div>
 					<div style="float:right; height:35px ">
-						<div id="search">         
-						<asp:TextBox CssClass="textbox" ID="txtSearchMaster" runat="server" Visible="true"></asp:TextBox>
-						<input type="text" id="textboxid" name="fname" ><br><br>
+						
 				 </div>
 					
-						</div>
+						
 				</nav>
 
 			</div>

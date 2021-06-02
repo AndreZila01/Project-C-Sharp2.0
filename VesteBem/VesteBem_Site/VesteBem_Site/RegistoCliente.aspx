@@ -53,7 +53,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
-    &nbsp;</p>
+        &nbsp;</p>
 <p style="font-size: xx-large; text-align:center"> Criar Usuário</p>
     
     &nbsp;<table style="margin-left:400px"; class="auto-style14">
@@ -144,13 +144,18 @@
         </tr>
         <tr>
             <td class="auto-style18" style="font-size: medium; ">
-                <asp:Label ID="lblMensagem" runat="server" Font-Size="X-Large"></asp:Label>
-            </td>
+                &nbsp;</td>
             <td class="auto-style19" style="font-size: medium">
                 &nbsp;</td>
         </tr>
+                    
         </table>
+    <div id="errorlabel">
+    <asp:Label ID="lblMensagem" runat="server"  Font-Size="X-Large"  ></asp:Label>
+         </div>   
+           
             
+        
         
 
 <p>
