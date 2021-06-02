@@ -38,16 +38,17 @@ namespace VesteBem_Admin
 			//comboBox1.Tag = 1;
 			try
 			{
-				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
+				DtpChegada.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
 			}
 			catch
 			{
-				dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1);
+				DtpChegada.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1);
 			}
 		}
 
 		private void FrmConsultarCarrinho_Load(object sender, EventArgs e)
 		{
+			//flowLayoutPanel1.MouseMove += Object_MouseLeavee;
 			this.ShowIcon = false;
 			if (!backgroundWorker1.IsBusy)
 				backgroundWorker1.RunWorkerAsync();
@@ -65,6 +66,7 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
+			flowLayoutPanel1.Controls.Clear();
 			LstEncomendas.ToList().ForEach(item =>
 			{
 				Panel Pnl = new Panel();
@@ -127,29 +129,51 @@ namespace VesteBem_Admin
 			});
 		}
 
-		private void comboBox1_MouseLeave(object sender, EventArgs e)
+		private void Select()
 		{
 			int ds = 0;
 			if (int.TryParse(textBox1.Text, out int dss))
 				ds = int.Parse(textBox1.Text);
+
+			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, textBox1.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == comboBox1.Text)].IdEstado, DtpInicio.Value, DtpChegada.Value);
+
+			//if(comboBox1.Tag!=null)	
+			if (!backgroundWorker1.IsBusy)
+				backgroundWorker2.RunWorkerAsync();
+		}
+
+		private void Object_MouseLeavee(object sender, EventArgs e)
+		{
+			
 			int idEncomenda = 0; string Cliente = "";
 			//var ds = comboBox1.Text != "" ? comboBox1.Tag.ToString() == comboBox1.Text : comboBox1.Tag = "";
 			if (int.TryParse(textBox1.Text, out idEncomenda))
 				idEncomenda = int.Parse(textBox1.Text);
 			else
 				Cliente = textBox1.Text;
-			if (dateTimePicker1.Value > dateTimePicker2.Value)
+		}
+
+		private void flowLayoutPanel1_MouseMove(object sender, MouseEventArgs e)
+		{
+
+		}
+
+		private void dateTimePicker_ValueChanged(object sender, EventArgs e)
+		{
+			if (DtpInicio.Value > DtpChegada.Value)
 			{
-				dateTimePicker1.Tag = dateTimePicker1.Value;
-				dateTimePicker1.Value = dateTimePicker2.Value;
-				dateTimePicker2.Value = DateTime.Parse(dateTimePicker1.Tag.ToString());
+				DtpInicio.Tag = DtpInicio.Value;
+				DtpInicio.Value = DtpChegada.Value;
+				DtpChegada.Value = DateTime.Parse(DtpInicio.Tag.ToString());
 			}
 
-			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, textBox1.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == comboBox1.Text)].IdEstado, dateTimePicker1.Value, dateTimePicker2.Value);
+			Select();
 
-			//if(comboBox1.Tag!=null)	
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker2.RunWorkerAsync();
+		}
+
+		private void comboBox1_TextChanged(object sender, EventArgs e)
+		{
+			Select();
 		}
 	}
 }

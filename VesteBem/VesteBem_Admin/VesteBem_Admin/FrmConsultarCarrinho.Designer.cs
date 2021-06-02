@@ -35,8 +35,8 @@ namespace VesteBem_Admin
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.DtpChegada = new System.Windows.Forms.DateTimePicker();
+			this.DtpInicio = new System.Windows.Forms.DateTimePicker();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -51,8 +51,8 @@ namespace VesteBem_Admin
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
-			this.panel1.Controls.Add(this.dateTimePicker2);
-			this.panel1.Controls.Add(this.dateTimePicker1);
+			this.panel1.Controls.Add(this.DtpChegada);
+			this.panel1.Controls.Add(this.DtpInicio);
 			this.panel1.Controls.Add(this.textBox1);
 			this.panel1.Controls.Add(this.comboBox1);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -97,21 +97,21 @@ namespace VesteBem_Admin
 			this.label1.TabIndex = 4;
 			this.label1.Text = "Estados";
 			// 
-			// dateTimePicker2
+			// DtpChegada
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(645, 36);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(143, 20);
-			this.dateTimePicker2.TabIndex = 3;
-			this.dateTimePicker2.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
+			this.DtpChegada.Location = new System.Drawing.Point(645, 36);
+			this.DtpChegada.Name = "DtpChegada";
+			this.DtpChegada.Size = new System.Drawing.Size(143, 20);
+			this.DtpChegada.TabIndex = 3;
+			this.DtpChegada.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 			// 
-			// dateTimePicker1
+			// DtpInicio
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(445, 35);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(143, 20);
-			this.dateTimePicker1.TabIndex = 2;
-			this.dateTimePicker1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
+			this.DtpInicio.Location = new System.Drawing.Point(445, 35);
+			this.DtpInicio.Name = "DtpInicio";
+			this.DtpInicio.Size = new System.Drawing.Size(143, 20);
+			this.DtpInicio.TabIndex = 2;
+			this.DtpInicio.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 			// 
 			// textBox1
 			// 
@@ -119,7 +119,7 @@ namespace VesteBem_Admin
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(152, 20);
 			this.textBox1.TabIndex = 1;
-			this.textBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
+			this.textBox1.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
 			// 
 			// comboBox1
 			// 
@@ -128,7 +128,8 @@ namespace VesteBem_Admin
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(121, 21);
 			this.comboBox1.TabIndex = 0;
-			this.comboBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
+			this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+			this.comboBox1.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
 			// 
 			// backgroundWorker1
 			// 
@@ -143,6 +144,7 @@ namespace VesteBem_Admin
 			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
 			this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 387);
 			this.flowLayoutPanel1.TabIndex = 1;
+			this.flowLayoutPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
 			// 
 			// backgroundWorker2
 			// 
@@ -174,8 +176,8 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker DtpChegada;
+		private System.Windows.Forms.DateTimePicker DtpInicio;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;

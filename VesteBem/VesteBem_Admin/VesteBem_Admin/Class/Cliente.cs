@@ -908,7 +908,7 @@ namespace VesteBem_Admin.Class
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente "+ AuxComando + " order by IdCliente ", liga);
+				SqlCommand comando = new SqlCommand("Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente "+ AuxComando + " and DataEncomenda='"+Inicio+"' and DataEntrega='"+Fim+"'  order by IdCliente ", liga);
 				try
 				{
 					comando.Connection = liga;
