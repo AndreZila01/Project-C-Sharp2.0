@@ -20,6 +20,11 @@
 		color: aliceblue; /*mudar aqui quando for para por o site em light mode*/
 	}
 
+.auto-style18 {
+	width: 36px;
+	height: 36px;
+}
+
 .fa-instagram, .fa-instagram:hover {
 	background: #125688;
 	color: aliceblue;

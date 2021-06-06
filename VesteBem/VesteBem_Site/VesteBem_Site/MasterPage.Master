@@ -29,7 +29,7 @@
 		<header id="navbar">
 			<div style="width: 100%; background-color: #fffaf0">
 				<div class="" style="width: 100%; margin-top: 0px;">
-					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: #fff3dc; float: left; padding: 10px 10px 10px 10px">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color: #fff3dc; float: left; padding: 10px 10px 10px 10px; ">
 						<a href="FrmHome.aspx""><asp:Image runat="server" ImageUrl="~/Resources/LogoV.png" Width="60px" /></a>
 					</div>
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="background-color: #fff3dc; float: left; padding-bottom: 7px; text-align: center">
@@ -44,6 +44,7 @@
 						<a href="#" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 						<a onclick="document.getElementById('id01').style.display='block'"  class="fa fa-user"></a>
+						<a ></a>
 						 <div id="id01" class="modal">
   
   <%--<form class="modal-content animate" action="/action_page.php" method="post">--%>
@@ -81,9 +82,11 @@
 					<div style="float:left; height:14px ">
 						<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
 						<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
-					</div>
-					<div style="float:right; height:35px ">
 						
+					</div>
+					<div style="float:right;margin-right:10px; height:35px ">
+                            <a class="nav-link"></a>
+                            <img class="auto-style18" src="Resources/Carrinho.png" onclick=" window.open('Carrinho.aspx', '_blank'); return false;">
 				 </div>
 					
 						

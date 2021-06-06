@@ -86,22 +86,32 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\npm.js" />
+    <Content Include="Carrinho.aspx" />
     <Content Include="Detalhes.aspx" />
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
     <Content Include="logincerto.aspx" />
     <Content Include="Resources\avatar.png" />
+    <Content Include="Resources\Eliminar.jpg" />
     <Content Include="Resources\Logo.png" />
     <Content Include="Resources\LogoComprido.png" />
     <Content Include="Resources\LogoV.png" />
     <Content Include="Resources\magnifier.png" />
+    <Content Include="Resources\Carrinho.png" />
     <Content Include="Resources\user.png" />
     <Content Include="RegistoCliente.aspx" />
     <Content Include="Web.config" />
     <Content Include="Teste.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carrinho.aspx.cs">
+      <DependentUpon>Carrinho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Carrinho.aspx.designer.cs">
+      <DependentUpon>Carrinho.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classes\EncryptADeDecrypt.cs" />
     <Compile Include="Classes\LoginAndRegist.cs" />
     <Compile Include="Detalhes.aspx.cs">
@@ -139,13 +149,6 @@
     <Compile Include="logincerto.aspx.designer.cs">
       <DependentUpon>logincerto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterCliente.Master.cs">
-      <DependentUpon>MasterCliente.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterCliente.Master.designer.cs">
-      <DependentUpon>MasterCliente.Master</DependentUpon>
-    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,7 +184,6 @@
     <Content Include="MasterPage.Master" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\VesteBem_Site.csprojAssemblyReference.cache" />
-    <Content Include="MasterCliente.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

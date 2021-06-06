@@ -49,12 +49,15 @@
             width: 354px;
             height: 22px;
         }
+        .auto-style20 {
+            margin-left: 0;
+        }
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
         &nbsp;</p>
-<p style="font-size: xx-large; text-align:center"> Criar Usuário</p>
+<p style="font-size: xx-large; text-align:center"> Criar Utilizador</p>
     
     &nbsp;<table style="margin-left:400px"; class="auto-style14">
 
@@ -107,7 +110,7 @@
         <tr>
             <td class="auto-style10" style="font-size: medium; ">Email</td>
             <td class="auto-style13" style="font-size: medium">
-                <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
+                <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="auto-style20"></asp:TextBox>
             </td>
         </tr>
         <tr>

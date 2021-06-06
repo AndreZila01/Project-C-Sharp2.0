@@ -50,17 +50,7 @@ namespace VesteBem
             }
 
         }
-        protected void lblRoupa_Click(object sender, EventArgs e)
-        {
-            Label LblRoupa = sender as Label;
-
-            switch (LblRoupa.Text)
-            {
-                default:
-                    break;
-            }
-
-        }
+       
 
     }
 }
