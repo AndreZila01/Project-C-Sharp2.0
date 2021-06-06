@@ -36,7 +36,7 @@ namespace VesteBem_Admin
 			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
 			TxtUser.Text = /*EncryptADeDecrypt.DecryptOther*/(lst[0].UserName);
-			TxtPass.Text = EncryptADeDecrypt.DecryptRSA(lst[0].Password);
+			TxtPass.Text = /*EncryptADeDecrypt.DecryptRSA*/(lst[0].Password);
 			timer1.Start();
 			//var ds = DateTime.Now.Month.ToString().Length == 1 ? mes = "0" + (DateTime.Now.Month.ToString()) : mes = DateTime.Now.Month.ToString();
 			TxtPass.Enabled = false; TxtUser.Enabled = false;
@@ -48,7 +48,7 @@ namespace VesteBem_Admin
 			timer1.Stop();
 			if (TxtUser.Text != "" && TxtPass.Text != "")
 			{
-				string pass = TxtPass.Text, user = "";
+				string pass = EncryptADeDecrypt.DecryptRSA(TxtPass.Text), user = "";
 				user = /*EncryptADeDecrypt.EncryptOther*/(TxtUser.Text);
 				command.Connection = liga;
 				liga.Open();
@@ -89,6 +89,11 @@ namespace VesteBem_Admin
 			DateTime dt = new DateTime(int.Parse(DateTime.Now.Year.ToString()), int.Parse(DateTime.Now.Month.ToString()), int.Parse(DateTime.Now.Day.ToString()), int.Parse(DateTime.Now.Hour.ToString()), int.Parse(DateTime.Now.Minute.ToString()), int.Parse(DateTime.Now.Second.ToString()));
 			lblTimer.Text = (dt.ToString("dd.MM.yyyy \t\t HH:mm:ss").Replace('.', '/'));
 
+		}
+
+		private void lblAjuda_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("Para conseguir registar no aplicativo, terá de fazer primeiro sessão no site da empresa!\nSó após isso poderá entrar", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

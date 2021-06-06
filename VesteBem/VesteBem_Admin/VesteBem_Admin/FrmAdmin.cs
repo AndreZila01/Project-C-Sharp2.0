@@ -95,10 +95,11 @@ namespace VesteBem_Admin
 						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
 						break;
 					case 6:
+						//leave
 						break;
 				}
-
-				Forms();
+				if (int.Parse(Lbl.Tag.ToString()) != 5)
+					Forms();
 			}
 			catch
 			{
@@ -129,37 +130,38 @@ namespace VesteBem_Admin
 			try
 			{
 
-			PictureBox Pct = sender as PictureBox;
+				PictureBox Pct = sender as PictureBox;
 
-			switch (int.Parse(Pct.Tag.ToString()))
-			{
-				case 0:
-					frm = new FrmAddChangeProdutos(0);
-					//frm.Show();
-					break;
-				case 1:
-					frm = new FrmEditarApagarProdutos();
-					break;
-				case 2:
-					frm = new FrmCliEFun();
-					//frm.Show();
-					break;
-				case 3:
-					frm = new FrmCarrinho();
-					//frm.Show();
-					break;
-				case 4:
-					frm = new FrmConsultarCarrinho();
-					//frm.Show();
-					break;
-				case 5:
-					var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
-					break;
-				case 6:
-					break;
-			}
-
-			Forms();
+				switch (int.Parse(Pct.Tag.ToString()))
+				{
+					case 0:
+						frm = new FrmAddChangeProdutos(0);
+						//frm.Show();
+						break;
+					case 1:
+						frm = new FrmEditarApagarProdutos();
+						break;
+					case 2:
+						frm = new FrmCliEFun();
+						//frm.Show();
+						break;
+					case 3:
+						frm = new FrmCarrinho();
+						//frm.Show();
+						break;
+					case 4:
+						frm = new FrmConsultarCarrinho();
+						//frm.Show();
+						break;
+					case 5:
+						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						break;
+					case 6:
+						//leave
+						break;
+				}
+				if(int.Parse(Pct.Tag.ToString())!=5)
+					Forms();
 			}
 			catch
 			{
@@ -172,37 +174,38 @@ namespace VesteBem_Admin
 			try
 			{
 
-			Panel Pnl = sender as Panel;
+				Panel Pnl = sender as Panel;
 
-			switch (int.Parse(Pnl.Tag.ToString()))
-			{
-				case 0:
-					frm = new FrmAddChangeProdutos(0);
-					//frm.Show();
-					break;
-				case 1:
-					frm = new FrmEditarApagarProdutos();
-					break;
-				case 2:
-					frm = new FrmCliEFun();
-					//frm.Show();
-					break;
-				case 3:
-					frm = new FrmCarrinho();
-					//frm.Show();
-					break;
-				case 4:
-					frm = new FrmConsultarCarrinho();
-					//frm.Show();
-					break;
-				case 5:
-					var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
-					break;
-				case 6:
-					break;
-			}
-
-			Forms();
+				switch (int.Parse(Pnl.Tag.ToString()))
+				{
+					case 0:
+						frm = new FrmAddChangeProdutos(0);
+						//frm.Show();
+						break;
+					case 1:
+						frm = new FrmEditarApagarProdutos();
+						break;
+					case 2:
+						frm = new FrmCliEFun();
+						//frm.Show();
+						break;
+					case 3:
+						frm = new FrmCarrinho();
+						//frm.Show();
+						break;
+					case 4:
+						frm = new FrmConsultarCarrinho();
+						//frm.Show();
+						break;
+					case 5:
+						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						break;
+					case 6:
+						//leave
+						break;
+				}
+				if (int.Parse(Pnl.Tag.ToString()) != 5)
+					Forms();
 			}
 			catch
 			{
@@ -226,16 +229,16 @@ namespace VesteBem_Admin
 		private void checkBox1_CheckedChanged(object sender, EventArgs e)
 		{
 			CheckBox checkBox = sender as CheckBox;
-			if (checkBox.Text == "Auto Run (Open with windows)")
+			if (checkBox.Text == "Auto Run (Abrir com o SO, Sistema Operativo)")
 			{
 				RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 				if (checkBox1.Checked)
 				{
 					Application.EnableVisualStyles();
-					rkApp.SetValue("Download VideoMusic", Application.ExecutablePath.ToString());
+					rkApp.SetValue("VesteBem Admin", Application.ExecutablePath.ToString());
 				}
 				else
-					rkApp.DeleteValue("Download VideoMusic", false);
+					rkApp.DeleteValue("VesteBem Admin", false);
 			}
 		}
 
@@ -243,7 +246,7 @@ namespace VesteBem_Admin
 		{
 			Button BtnMode = sender as Button;
 
-			if(BtnMode.Text== "White Mode")
+			if (BtnMode.Text == "White Mode")
 			{
 
 			}
@@ -256,6 +259,7 @@ namespace VesteBem_Admin
 
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
+			label1.Text = Username;
 			this.ShowIcon = false;
 			this.Tag = false;
 		}

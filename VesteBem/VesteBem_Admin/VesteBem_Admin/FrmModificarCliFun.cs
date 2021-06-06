@@ -62,12 +62,13 @@ namespace VesteBem_Admin
 					Cli.CodPostal = Txt.Text;
 					break;
 				case "TxtTeleCli":
+					if(Txt.Text.Length>8)
 					Cli.Telefone = Txt.Text;
 					break;
 				case "TxtEmail":
 					try
 					{
-						var addr = new System.Net.Mail.MailAddress(Cli.Email);
+						var addr = new System.Net.Mail.MailAddress(Txt.Text);
 						if (addr.Address != "") 
 							Cli.Email = Txt.Text;
 					}
@@ -185,7 +186,6 @@ namespace VesteBem_Admin
 
 		private void SaveCli()
 		{
-			Cli.Icon = Lstcli[0].Icon;
 			Cli.Id_Login = Lstcli[0].Id_Login;
 			Cli.Id_Cliente = Lstcli[0].Id_Cliente;
 			string result = Clientes.InsertCliente(Cli);
@@ -259,7 +259,7 @@ namespace VesteBem_Admin
 				TxtTele.Location = new System.Drawing.Point(127, 221);
 				TxtTele.MaxLength = 9;
 				TxtTele.Text = "TxtTeleCli";
-				TxtTele.Name = "TxtTele";
+				TxtTele.Name = "TxtTeleCli";
 				TxtTele.Size = new System.Drawing.Size(172, 20);
 				TxtTele.TabIndex = 8;
 				TxtTele.Text = Lstcli[0].Telefone;
@@ -282,7 +282,7 @@ namespace VesteBem_Admin
 				TxtLoc.Location = new System.Drawing.Point(127, 143);
 				TxtLoc.MaxLength = 100;
 				TxtLoc.Text = "TxtLocCli";
-				TxtLoc.Name = "TxtLoc";
+				TxtLoc.Name = "TxtLocCli";
 				TxtLoc.Size = new System.Drawing.Size(172, 20);
 				TxtLoc.TabIndex = 5;
 				TxtLoc.Text = Lstcli[0].Localidade;
@@ -684,6 +684,7 @@ namespace VesteBem_Admin
 			}
 			else
 			{
+				if((Txt.Name== "TxtNomeCli" && e.KeyChar!=' '))
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 			}
 		}

@@ -36,7 +36,6 @@ namespace VesteBem_Admin
 				comboBox1.Items.Add(item.Estado);
 			});
 			comboBox1.SelectedItem = lstEstado[0].Estado;
-			//comboBox1.Tag = 1;
 			try
 			{
 				DtpChegada.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
@@ -100,16 +99,16 @@ namespace VesteBem_Admin
 				LblCliente.Size = new System.Drawing.Size(35, 13);
 				LblCliente.TabIndex = 1;
 				LblCliente.Tag = "" + item.IdCliente;
-				LblCliente.Text = "" + item.Nome;
+				LblCliente.Text = "Cliente:   " + item.Nome;
 
 				Label LblData = new Label();
 				LblData.AutoSize = true;
 				LblData.BackColor = Color.Blue;
-				LblData.Location = new System.Drawing.Point(250, 17);
+				LblData.Location = new System.Drawing.Point(500, 17);
 				LblData.Name = "LblData";
 				LblData.Size = new System.Drawing.Size(35, 13);
 				LblData.TabIndex = 2;
-				LblData.Text = "Data Encomendada" + item.DataEncomenda.ToString("yyyy-MM-dd") + "                       Data da Entrega: "+item.DataEntrega.ToString("yyyy-MM-dd"); //\t não funciona
+				LblData.Text = "Data Encomendada:       " + item.DataEncomenda.ToString("yyyy-MM-dd"); //\t não funciona
 
 				PictureBox PctMoreInfo = new PictureBox();
 				PctMoreInfo.Image = global::VesteBem_Admin.Properties.Resources.magnifying_glass;
@@ -123,12 +122,12 @@ namespace VesteBem_Admin
 
 				Label LblIdEncomenda = new Label();
 				LblIdEncomenda.AutoSize = true;
-				LblIdEncomenda.Location = new System.Drawing.Point(220, 17);
+				LblIdEncomenda.Location = new System.Drawing.Point(320, 17);
 				LblIdEncomenda.Name = "LblIdEncomenda";
 				LblIdEncomenda.Size = new System.Drawing.Size(35, 13);
 				LblIdEncomenda.TabIndex = 4;
 				LblIdEncomenda.BackColor = Color.Orange;
-				LblIdEncomenda.Text = "" + item.IdEncomendas;
+				LblIdEncomenda.Text = "Nº de Encomenda:    " + item.IdEncomendas;
 
 				Pnl.Controls.Add(LblIdEncomenda);
 				Pnl.Controls.Add(PctMoreInfo);
@@ -142,8 +141,11 @@ namespace VesteBem_Admin
 		{
 			int ds = 0;
 			if (int.TryParse(textBox1.Text, out int dss))
+			{
 				ds = int.Parse(textBox1.Text);
-
+				textBox1.Text = "";
+			}                                 
+			
 			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, textBox1.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == comboBox1.Text)].IdEstado, DtpInicio.Value, DtpChegada.Value);
 
 			//if(comboBox1.Tag!=null)	
@@ -160,14 +162,6 @@ namespace VesteBem_Admin
 
 		private void Object_MouseLeavee(object sender, EventArgs e)
 		{
-			
-			int idEncomenda = 0; string Cliente = "";
-			//var ds = comboBox1.Text != "" ? comboBox1.Tag.ToString() == comboBox1.Text : comboBox1.Tag = "";
-			if (int.TryParse(textBox1.Text, out idEncomenda))
-				idEncomenda = int.Parse(textBox1.Text);
-			else
-				Cliente = textBox1.Text;
-
 			Select();
 		}
 

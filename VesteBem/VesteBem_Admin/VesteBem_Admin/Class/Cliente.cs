@@ -507,11 +507,11 @@ namespace VesteBem_Admin.Class
 	}
 	public class EncomendasEDetalhesEProduto
 	{
-		public static int SelectIdEncomenda(double ValorEncomendas, int Id_Cliente, DateTime DataEncomenda, DateTime DataEntrega, int EstadoEncomendas)
+		public static int SelectIdEncomenda(double ValorEncomendas, int Id_Cliente, DateTime DataEncomenda, int EstadoEncomendas)
 		{
 			int id=0;
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select * From tbl_Encomendas where ValorEncomendas="+ ValorEncomendas + " and Id_Cliente="+Id_Cliente+" and DataEncomenda='"+DataEncomenda.Date.ToString("yyyyMMdd") + "' and DataEntrega='"+DataEntrega.Date.ToString("yyyyMMdd") + "' and EstadoEncomendas="+EstadoEncomendas+"", liga);
+			SqlCommand comando = new SqlCommand("Select * From tbl_Encomendas where ValorEncomendas="+ ValorEncomendas + " and Id_Cliente="+Id_Cliente+" and DataEncomenda='"+DataEncomenda.Date.ToString("yyyyMMdd") + "' and EstadoEncomendas="+EstadoEncomendas+"", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -547,7 +547,6 @@ namespace VesteBem_Admin.Class
 					command.Parameters.Add(new SqlParameter("ValorEncomendas", enc.ValorEncomendas));
 					command.Parameters.Add(new SqlParameter("EstadoEncomendas", IdEstado));
 					command.Parameters.Add(new SqlParameter("DataEncomenda", enc.DataEncomenda));
-					command.Parameters.Add(new SqlParameter("DataEntrega", enc.DataEntrega));
 					command.Parameters.Add(new SqlParameter("Id_Cliente", enc.Id_Cliente));
 
 					command.Connection = liga;
@@ -863,16 +862,36 @@ namespace VesteBem_Admin.Class
 			command.CommandType = System.Data.CommandType.StoredProcedure;
 			try
 			{
-				Image img = Image.FromFile(pro.CaminhoImg);
-				ImageConverter converter = new ImageConverter();
-				byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
+				
+				try
+				{
+					if (pro.CaminhoImg != "")
+					{
+						Image img = Image.FromFile(pro.CaminhoImg);
+						ImageConverter converter = new ImageConverter();
+						byte[] pic = (byte[])converter.ConvertTo(img, typeof(byte[]));
+						command.Parameters.Add(new SqlParameter("Icon", pic));
+					}
+					else
+					{
+						ImageConverter converter = new ImageConverter();
+						byte[] pic = (byte[])converter.ConvertTo(pro.Icon, typeof(byte[]));
+						command.Parameters.Add(new SqlParameter("Icon", pic));
+					}
+
+				}
+				catch
+				{
+
+				}
+
 				command.Parameters.Add(new SqlParameter("IdProduto", pro.IdProduto));
 				command.Parameters.Add(new SqlParameter("Nome", pro.Nome));
 				command.Parameters.Add(new SqlParameter("Valor", pro.Valor));
 				command.Parameters.Add(new SqlParameter("NomedaEmpresa", pro.NomedaEmpresa));
 				command.Parameters.Add(new SqlParameter("CategoriaClasse", pro.CategoriaClass));
 				command.Parameters.Add(new SqlParameter("CategoriaSubClasse", pro.CategoriaSubClass));
-				command.Parameters.Add(new SqlParameter("Icon", pic));
+				
 				command.Parameters.Add(new SqlParameter("Sexo", pro.Sexo));
 
 
@@ -899,16 +918,16 @@ namespace VesteBem_Admin.Class
 			string AuxComando = "";
 			if (IdConsulta != 0)
 				AuxComando = "and IdEncomendas=" + IdConsulta;
-			if (Nome != "")
+			if (Nome != "" && !(int.TryParse(Nome, out Estado)))
 				AuxComando += " and Nome='"+Nome+"'";
-			if (Estado != -1)
+			if (Estado != 0)
 				AuxComando += " and EstadoEncomendas= " + Estado;
 			//if()
 
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-				SqlCommand comando = new SqlCommand("Select DISTINCT IdCliente,Nome,IdEncomendas,ValorEncomendas,EstadoEncomendas,DataEncomenda,DataEntrega From tbl_Cliente,tbl_Encomendas,tblEstado,tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas=tblEstado.IdEstado and tbl_Encomendas.Id_Cliente=tbl_Cliente.IdCliente "+ AuxComando + " and DataEncomenda Between '"+Inicio.ToString("yyyy-MM-dd hh:mm:ss") + "' and '"+Fim.ToString("yyyy-MM-dd hh:mm:ss") + "' order by IdCliente", liga);
+				SqlCommand comando = new SqlCommand("Select DISTINCT IdCliente,Nome,IdEncomendas,ValorEncomendas,EstadoEncomendas,DataEncomenda From tbl_Cliente,tbl_Encomendas,tblEstado,tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas=tblEstado.IdEstado and tbl_Encomendas.Id_Cliente=tbl_Cliente.IdCliente "+ AuxComando + " and DataEncomenda Between '"+Inicio.ToString("yyyy-MM-dd hh:mm:ss") + "' and '"+Fim.ToString("yyyy-MM-dd hh:mm:ss") + "' order by IdCliente", liga);
 													//Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente  and EstadoEncomendas= 2 and DataEntrega BETWEEN '2021-05-31 02:22:37' and '2021-06-06 12:00:00' order by IdCliente
 				try
 				{
@@ -925,12 +944,11 @@ namespace VesteBem_Admin.Class
 							enc.ValorEncomendas = double.Parse(oReader["ValorEncomendas"].ToString());
 							enc.EstadoEncomendas = int.Parse(oReader["EstadoEncomendas"].ToString());
 							enc.DataEncomenda = DateTime.Parse(oReader["DataEncomenda"].ToString());
-							enc.DataEntrega = DateTime.Parse(oReader["DataEntrega"].ToString());
 							lst.Add(enc);
 						}
 					}
 				}
-				catch
+				catch(Exception ex)
 				{
 					return lst;
 				}

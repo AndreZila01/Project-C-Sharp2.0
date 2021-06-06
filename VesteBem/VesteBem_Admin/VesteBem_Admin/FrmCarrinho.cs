@@ -187,12 +187,11 @@ namespace VesteBem_Admin
 			DateTime date = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
 			Encomenda enc = new Encomenda();
 			enc.EstadoEncomendas = comboBox2.Text;
-			enc.DataEntrega = dateTimePicker2.Value;
 			enc.DataEncomenda = date;
 			enc.Id_Cliente = Clientes.SelectIdCliente(comboBox1.Text);
 			enc.ValorEncomendas = double.Parse(textBox1.Text);
 			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == comboBox2.SelectedItem)].IdEstado);
-			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, enc.DataEntrega, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
+			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
 			//int idEncomenda = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.Id_Cliente);
 			int temp = 0;
 			lstDetalhesEncomendas.ToList().ForEach(item=>{

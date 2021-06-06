@@ -87,6 +87,7 @@ namespace VesteBem_Admin
 			this.comboBox1.Name = "comboBox1";
 			this.comboBox1.Size = new System.Drawing.Size(168, 21);
 			this.comboBox1.TabIndex = 1;
+			this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
 			// 
 			// textBox1
 			// 
@@ -94,6 +95,7 @@ namespace VesteBem_Admin
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(200, 20);
 			this.textBox1.TabIndex = 0;
+			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
 			// flowLayoutPanel1
 			// 
@@ -107,6 +109,10 @@ namespace VesteBem_Admin
 			// 
 			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
 			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			// 
+			// backgroundWorker2
+			// 
+			this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
 			// 
 			// pictureBox2
 			// 

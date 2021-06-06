@@ -38,6 +38,7 @@
 			this.lblTimer = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.lblAjuda = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -109,11 +110,22 @@
 			this.pictureBox1.TabIndex = 6;
 			this.pictureBox1.TabStop = false;
 			// 
+			// lblAjuda
+			// 
+			this.lblAjuda.AutoSize = true;
+			this.lblAjuda.Location = new System.Drawing.Point(220, 149);
+			this.lblAjuda.Name = "lblAjuda";
+			this.lblAjuda.Size = new System.Drawing.Size(101, 13);
+			this.lblAjuda.TabIndex = 7;
+			this.lblAjuda.Text = "Precisa de ajuda?!?";
+			this.lblAjuda.Click += new System.EventHandler(this.lblAjuda_Click);
+			// 
 			// FrmLogin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(453, 223);
+			this.Controls.Add(this.lblAjuda);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.lblTimer);
 			this.Controls.Add(this.LblPass);
@@ -143,6 +155,7 @@
 		private System.Windows.Forms.Label lblTimer;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Label lblAjuda;
 	}
 }
 

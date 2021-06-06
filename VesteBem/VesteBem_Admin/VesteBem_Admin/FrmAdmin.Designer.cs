@@ -31,7 +31,6 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdmin));
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.PctFlow = new System.Windows.Forms.PictureBox();
-			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.PctSettings = new System.Windows.Forms.PictureBox();
 			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -82,7 +81,6 @@
 			// panel1
 			// 
 			this.panel1.Controls.Add(this.PctFlow);
-			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.label1);
 			this.panel1.Controls.Add(this.PctSettings);
 			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,7 +92,7 @@
 			// PctFlow
 			// 
 			this.PctFlow.Image = global::VesteBem_Admin.Properties.Resources.menu;
-			this.PctFlow.Location = new System.Drawing.Point(119, 12);
+			this.PctFlow.Location = new System.Drawing.Point(12, 12);
 			this.PctFlow.Name = "PctFlow";
 			this.PctFlow.Size = new System.Drawing.Size(40, 36);
 			this.PctFlow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -102,19 +100,10 @@
 			this.PctFlow.TabStop = false;
 			this.PctFlow.Click += new System.EventHandler(this.Pct_Click);
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(13, 13);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(39, 13);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Admin ";
-			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(707, 30);
+			this.label1.Location = new System.Drawing.Point(707, 22);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(35, 13);
 			this.label1.TabIndex = 6;
@@ -122,7 +111,7 @@
 			// 
 			// PctSettings
 			// 
-			this.PctSettings.Image = global::VesteBem_Admin.Properties.Resources.settings;
+			this.PctSettings.Image = global::VesteBem_Admin.Properties.Resources.Admin;
 			this.PctSettings.Location = new System.Drawing.Point(748, 12);
 			this.PctSettings.Name = "PctSettings";
 			this.PctSettings.Size = new System.Drawing.Size(40, 36);
@@ -337,6 +326,7 @@
 			this.panel8.Size = new System.Drawing.Size(158, 52);
 			this.panel8.TabIndex = 5;
 			this.panel8.Tag = "5";
+			this.panel8.Click += new System.EventHandler(this.panel2_Click);
 			// 
 			// pictureBox2
 			// 
@@ -348,6 +338,7 @@
 			this.pictureBox2.TabIndex = 9;
 			this.pictureBox2.TabStop = false;
 			this.pictureBox2.Tag = "5";
+			this.pictureBox2.Click += new System.EventHandler(this.pictureBox4_Click);
 			// 
 			// label9
 			// 
@@ -358,6 +349,7 @@
 			this.label9.TabIndex = 8;
 			this.label9.Tag = "5";
 			this.label9.Text = "Definições";
+			this.label9.Click += new System.EventHandler(this.label3_Click);
 			// 
 			// panel6
 			// 
@@ -471,7 +463,6 @@
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.PictureBox PctSettings;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 		private System.Windows.Forms.PictureBox PctFlow;
 		private System.Windows.Forms.Panel panel2;

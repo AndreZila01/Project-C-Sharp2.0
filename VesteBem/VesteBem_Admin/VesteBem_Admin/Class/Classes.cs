@@ -30,10 +30,6 @@ namespace VesteBem_Admin.Class
 		/// </summary>
 		public DateTime DataEncomenda { get; set; }
 		/// <summary>
-		/// Data de Entrega da Encomenda
-		/// </summary>
-		public DateTime DataEntrega { get; set; }
-		/// <summary>
 		/// Id do Cliente que fez a Encomenda 
 		/// </summary>
 		public int Id_Cliente { get; set; }
@@ -233,9 +229,5 @@ namespace VesteBem_Admin.Class
 		/// Data Efectuada a Encomenda
 		/// </summary>
 		public DateTime DataEncomenda { get; set; }
-		/// <summary>
-		/// Data de Entrega
-		/// </summary>
-		public DateTime DataEntrega { get; set; }
 	}
 }

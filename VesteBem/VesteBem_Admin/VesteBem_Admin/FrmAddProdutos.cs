@@ -69,7 +69,7 @@ namespace VesteBem_Admin
 						produtos.Nome = TxtNome.Text;
 						produtos.NomedaEmpresa = TxtEmpresa.Text;
 						produtos.Sexo = comboBox1.Text.Substring(0, 1);
-						produtos.Valor = double.Parse(TxtValor.Text);
+						produtos.Valor = double.Parse(TxtValor.Text.Replace(',','.'));
 						produtos.CategoriaClass = TxtCat.Text;
 						produtos.CategoriaSubClass = TxtSubCat.Text;
 						produtos.CaminhoImg = TxtIcon.Text;
@@ -83,20 +83,21 @@ namespace VesteBem_Admin
 							TxtSubCat.Text = null;
 							TxtValor.Text = null;
 							TxtEmpresa.Text = null;
+							comboBox1.Text = "";
 						}
 
 					}
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show("" + ex.Message, "Eror 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("" + ex.Message, "Error 404", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
 			}
 			else
 			{
 				try
 				{
-					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
+					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
 					{
 						Produtos produtos = new Produtos();
 						produtos.Nome = TxtNome.Text;
@@ -107,6 +108,8 @@ namespace VesteBem_Admin
 						produtos.CategoriaSubClass = TxtSubCat.Text;
 						produtos.CaminhoImg = TxtIcon.Text;
 						produtos.IdProduto = idProdutos;
+							if (TxtIcon.Text == "")
+								produtos.Icon = pictureBox1.Image;
 						string dss = EncomendasEDetalhesEProduto.AtualizarProdutos(produtos);
 
 						if (dss == "sucesso")
@@ -141,19 +144,19 @@ namespace VesteBem_Admin
 
 		private void TxtValor_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '.' && e.KeyChar != '\u0016' && e.KeyChar != '\b')
+			if (e.KeyChar != '.' && e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar != '\u0016' && e.KeyChar != '\u0003')
 				e.Handled = !char.IsDigit(e.KeyChar);
 		}
 
 		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '\u0016' && e.KeyChar != '\b')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar!=' ' && e.KeyChar!= '\u0003')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '\u0016' && e.KeyChar != '\b')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar != ' ' && e.KeyChar != '\u0003')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
