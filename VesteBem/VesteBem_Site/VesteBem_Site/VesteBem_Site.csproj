@@ -86,6 +86,7 @@
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\npm.js" />
+    <Content Include="Detalhes.aspx" />
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
@@ -103,6 +104,13 @@
   <ItemGroup>
     <Compile Include="Classes\EncryptADeDecrypt.cs" />
     <Compile Include="Classes\LoginAndRegist.cs" />
+    <Compile Include="Detalhes.aspx.cs">
+      <DependentUpon>Detalhes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalhes.aspx.designer.cs">
+      <DependentUpon>Detalhes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FrmCHomem.aspx.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

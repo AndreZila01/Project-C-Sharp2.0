@@ -15,6 +15,8 @@
                     <Items>
                         <asp:MenuItem Text="Camisa" Value="Camisa" NavigateUrl="~/Teste.aspx?TipoProduto=Camisa"></asp:MenuItem>
                        
+                        <asp:MenuItem Text="Casaco" Value="Casaco" NavigateUrl="~/Teste.aspx?TipoProduto=Camisa"></asp:MenuItem>
+
                         <asp:MenuItem Text="T-Shirts" Value="T-Shirts" NavigateUrl="~/ItensMasculino.aspx?TipoProduto=T-Shirts"> </asp:MenuItem>
                         
                         <asp:MenuItem Text="Calças" Value="Calças" NavigateUrl="~/ItensMasculino.aspx?TipoProduto=Calças"></asp:MenuItem>

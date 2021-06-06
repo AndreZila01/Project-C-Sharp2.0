@@ -23,7 +23,7 @@ namespace VesteBem
         {
             command.Connection = liga;
             liga.Open();
-            command.CommandText = "select Icon, CategoriaClasse, CategoriaSubClasse from tbl_Produtos";
+            command.CommandText = "select IdProduto ,Icon, CategoriaClasse, CategoriaSubClasse from tbl_Produtos";
             dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -34,11 +34,11 @@ namespace VesteBem
                 byte[] image = (byte[])dr["Icon"];
                 string PROFILE_PIC = Convert.ToBase64String(image);
                 images.ImageUrl = String.Format("data:image/jpg;base64,{0}", PROFILE_PIC);
-                images.Width = 50;
-                images.Height = 50;
+                images.Width = 150;
+                images.Height = 150;
                 //images.ImageUrl = "~/Image/" + ;
                 images.CssClass = "productImage";
-                // images.PostBackUrl = "~/Detalhes.aspx?CodProdutos=" + dr["CodProdutos"];
+                 images.PostBackUrl = "~/Detalhes.aspx?IdProduto=" + dr["IdProduto"];
                 LBL.Text = dr["CategoriaSubClasse"].ToString();
                 // LBL.CssClass = "productName";
                 productPanel.Controls.Add(images);
