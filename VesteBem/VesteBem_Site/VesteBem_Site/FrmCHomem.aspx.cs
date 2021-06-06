@@ -23,7 +23,7 @@ namespace VesteBem
         {
             command.Connection = liga;
             liga.Open();
-            command.CommandText = "select Icon, CategoriaClasse, CategoriaSubClasse from tbl_Produtos where CategoriaClasse = 'Casacos'";
+            command.CommandText = "select Icon, CategoriaClasse, CategoriaSubClasse from tbl_Produtos";
             dr = command.ExecuteReader();
 
             while (dr.Read())
@@ -45,7 +45,7 @@ namespace VesteBem
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
                 productPanel.Controls.Add(LBL);
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
-                //Imagens.Controls.Add(productPanel);
+                Imagems.Controls.Add(productPanel);
 
             }
 

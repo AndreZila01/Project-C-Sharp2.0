@@ -18,7 +18,7 @@ namespace VesteBem_Admin.Class
 			SqlCommand command = new SqlCommand();
 			try
 			{
-				if (liga.State == System.Data.ConnectionState.Closed) throw new ArgumentException("Problemas a ligar ao servidor!!");
+				if (liga.State == System.Data.ConnectionState.Closed) //throw new ArgumentException("Problemas a ligar ao servidor!!");
 				liga.Open();
 				command.CommandText = "SPAddProdutos";
 				command.CommandType = System.Data.CommandType.StoredProcedure;
