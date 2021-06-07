@@ -80,8 +80,8 @@
 
 				<nav class="nav" >
 					<div style="float:left; height:14px ">
-						<a class="nav-link links" href="FrmCHomem.aspx">Homem</a>
-						<a class="nav-link links" href="FrmCMulher.aspx"">Mulher</a>
+						<a class="nav-link links" href="IntermedioHomem.aspx">Homem</a>
+						<a class="nav-link links" href="IntermedioMulher.aspx">Mulher</a>
 						
 					</div>
 					<div style="float:right;margin-right:10px; height:35px ">

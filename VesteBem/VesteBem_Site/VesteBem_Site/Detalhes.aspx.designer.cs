@@ -15,15 +15,6 @@ namespace VesteBem_Site
     {
 
         /// <summary>
-        /// imgProduct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProduct;
-
-        /// <summary>
         /// lblTitle control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace VesteBem_Site
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblTitle;
+
+        /// <summary>
+        /// imgProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgProduct;
 
         /// <summary>
         /// lblItem control.

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace VesteBem_Site
 {
-    public partial class logincerto : System.Web.UI.Page
+    public partial class DisplayRoupaHomem : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
