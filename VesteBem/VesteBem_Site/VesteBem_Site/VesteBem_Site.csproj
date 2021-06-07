@@ -88,10 +88,14 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="Carrinho.aspx" />
     <Content Include="Detalhes.aspx" />
+    <Content Include="Facebook.html" />
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
     <Content Include="logincerto.aspx" />
+    <Content Include="Logos\Logo.png" />
+    <Content Include="Logos\LogoComprido.png" />
+    <Content Include="Logos\LogoV.png" />
     <Content Include="Resources\avatar.png" />
     <Content Include="Resources\Eliminar.jpg" />
     <Content Include="Resources\Logo.png" />
@@ -101,6 +105,15 @@
     <Content Include="Resources\Carrinho.png" />
     <Content Include="Resources\user.png" />
     <Content Include="RegistoCliente.aspx" />
+    <Content Include="Roupa\Roupa1.jpg" />
+    <Content Include="Roupa\Roupa2.jpg" />
+    <Content Include="Roupa\Roupa3.jpg" />
+    <Content Include="Roupa\Roupa4.jpg" />
+    <Content Include="Roupa\Roupa5.jpg" />
+    <Content Include="Roupa\Roupa6.jpg" />
+    <Content Include="Roupa\Roupa7.jpg" />
+    <Content Include="Roupa\Roupa8.jpg" />
+    <Content Include="Roupa\Roupa9.jpg" />
     <Content Include="Web.config" />
     <Content Include="Teste.aspx" />
   </ItemGroup>
