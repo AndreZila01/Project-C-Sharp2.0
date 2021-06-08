@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="FrmCHomem.aspx.cs" Inherits="VesteBem.FrmCHomem" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="IntermedioHomem.aspx.cs" Inherits="VesteBem_Site.DisplayRoupaHomem" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -11,7 +10,7 @@
 					<asp:Label runat="server" Text="Homem > " Font-Size="Large"></asp:Label>
 				</div>
 				<p></p>
-				<p></p>
+                <p></p>
 				<asp:Menu ID="Menu1" runat="server" StaticSubMenuIndent="16px" Height="394px" RenderingMode="Table" Width="297px">
                     <Items>
                         <asp:MenuItem Text="Camisa" Value="Camisa" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=Camisa"></asp:MenuItem>
@@ -47,5 +46,4 @@
 	<p>
 		&nbsp;
 	</p>
-
 </asp:Content>

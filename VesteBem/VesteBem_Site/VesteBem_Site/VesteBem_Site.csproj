@@ -88,10 +88,15 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="Carrinho.aspx" />
     <Content Include="Detalhes.aspx" />
+    <Content Include="IntermedioHomem.aspx" />
+    <Content Include="Facebook.html" />
     <Content Include="FrmCHomem.aspx" />
     <Content Include="FrmCMulher.aspx" />
     <Content Include="FrmHome.aspx" />
-    <Content Include="logincerto.aspx" />
+    <Content Include="IntermedioMulher.aspx" />
+    <Content Include="Logos\Logo.png" />
+    <Content Include="Logos\LogoComprido.png" />
+    <Content Include="Logos\LogoV.png" />
     <Content Include="Resources\avatar.png" />
     <Content Include="Resources\Eliminar.jpg" />
     <Content Include="Resources\Logo.png" />
@@ -101,6 +106,15 @@
     <Content Include="Resources\Carrinho.png" />
     <Content Include="Resources\user.png" />
     <Content Include="RegistoCliente.aspx" />
+    <Content Include="Roupa\Roupa1.jpg" />
+    <Content Include="Roupa\Roupa2.jpg" />
+    <Content Include="Roupa\Roupa3.jpg" />
+    <Content Include="Roupa\Roupa4.jpg" />
+    <Content Include="Roupa\Roupa5.jpg" />
+    <Content Include="Roupa\Roupa6.jpg" />
+    <Content Include="Roupa\Roupa7.jpg" />
+    <Content Include="Roupa\Roupa8.jpg" />
+    <Content Include="Roupa\Roupa9.jpg" />
     <Content Include="Web.config" />
     <Content Include="Teste.aspx" />
   </ItemGroup>
@@ -120,6 +134,13 @@
     </Compile>
     <Compile Include="Detalhes.aspx.designer.cs">
       <DependentUpon>Detalhes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IntermedioHomem.aspx.cs">
+      <DependentUpon>IntermedioHomem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IntermedioHomem.aspx.designer.cs">
+      <DependentUpon>IntermedioHomem.aspx</DependentUpon>
     </Compile>
     <Compile Include="FrmCHomem.aspx.cs">
       <DependentUpon>FrmCHomem.aspx</DependentUpon>
@@ -142,12 +163,12 @@
     <Compile Include="FrmHome.aspx.designer.cs">
       <DependentUpon>FrmHome.aspx</DependentUpon>
     </Compile>
-    <Compile Include="logincerto.aspx.cs">
-      <DependentUpon>logincerto.aspx</DependentUpon>
+    <Compile Include="IntermedioMulher.aspx.cs">
+      <DependentUpon>IntermedioMulher.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="logincerto.aspx.designer.cs">
-      <DependentUpon>logincerto.aspx</DependentUpon>
+    <Compile Include="IntermedioMulher.aspx.designer.cs">
+      <DependentUpon>IntermedioMulher.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>

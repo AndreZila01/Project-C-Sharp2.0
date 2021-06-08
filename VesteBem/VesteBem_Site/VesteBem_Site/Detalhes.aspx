@@ -15,10 +15,9 @@ margin-right: 20px;
     
    
         <div>
-            
-            <asp:Image ID="imgProduct" runat="server" CssClass="detailsImage" />
+             <asp:Label ID="lblTitle" runat="server" Text="Label" Font-Size="X-Large"></asp:Label>
             <br />
-            <asp:Label ID="lblTitle" runat="server" Text="Label"></asp:Label>
+            <asp:Image ID="imgProduct" runat="server" CssClass="detailsImage" />
             <br />
             <asp:Label ID="lblItem" runat="server" Text="Label"></asp:Label>
             <br />

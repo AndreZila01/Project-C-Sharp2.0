@@ -58,23 +58,27 @@
     <table id="Tabela" class="auto-style3">
         <tr>
             <td class="auto-style8">
-                <asp:Label ID="Label1" runat="server" Font-Size="X-Large" Text="O meu carrinho"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Font-Size="XX-Large" Text="O meu carrinho"></asp:Label>
             </td>
         </tr>
     </table>
     <p></p>
         <table id="Tabela2" class="auto-style3">
             <tr>
-                <td class="auto-style22">Produto:</td>
+                <td class="auto-style22">:<asp:Label ID="Label2" runat="server" Font-Size="X-Large" Text="Produto:"></asp:Label>
+                </td>
                 <td class="auto-style28">
-                    <asp:ListBox ID="lstProduto" runat="server" Width="251px"></asp:ListBox>
-                    <asp:ImageButton ID="ImageButton1" runat="server" BorderStyle="None" Height="21px" ImageUrl="~/Resources/Eliminar.jpg" OnClick="ImageButton1_Click" Width="34px" />
+                    <asp:ListBox ID="lstProduto" runat="server" Width="251px" Height="145px"></asp:ListBox>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:ImageButton ID="ImageButton1" runat="server" BorderStyle="None" Height="21px" ImageUrl="~/Resources/Eliminar.jpg" OnClick="ImageButton1_Click" Width="33px" />
                 </td>
                 <td class="auto-style25">
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style23">Preço:</td>
+                <td class="auto-style23">
+                    <asp:Label ID="Label3" runat="server" Font-Size="X-Large" Text="Preço"></asp:Label>
+                </td>
                 <td class="auto-style29">
                     <asp:Label ID="lblpreco" runat="server"></asp:Label>
                 </td>

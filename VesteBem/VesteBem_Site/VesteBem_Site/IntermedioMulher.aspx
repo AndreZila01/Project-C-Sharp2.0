@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="FrmCHomem.aspx.cs" Inherits="VesteBem.FrmCHomem" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="IntermedioMulher.aspx.cs" Inherits="VesteBem_Site.IntermedioMulher" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -8,21 +7,21 @@
 			<div style="padding: 15px 15px 2500px; font-size: 30px;">
 				<br />
 				<div style="color: black; font-size: 15px">
-					<asp:Label runat="server" Text="Homem > " Font-Size="Large"></asp:Label>
+					<asp:Label runat="server" Text="Mulher > " Font-Size="Large"></asp:Label>
 				</div>
 				<p></p>
 				<p></p>
 				<asp:Menu ID="Menu1" runat="server" StaticSubMenuIndent="16px" Height="394px" RenderingMode="Table" Width="297px">
                     <Items>
-                        <asp:MenuItem Text="Camisa" Value="Camisa" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=Camisa"></asp:MenuItem>
+                        <asp:MenuItem Text="Camisa" Value="Camisa" NavigateUrl="~/FrmCMulher.aspx?CategoriaClasse=Camisa"></asp:MenuItem>
                        
-                        <asp:MenuItem Text="Casaco" Value="Casaco" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=Casaco"></asp:MenuItem>
+                        <asp:MenuItem Text="Casaco" Value="Casaco" NavigateUrl="~/FrmCMulher.aspx?CategoriaClasse=Casaco"></asp:MenuItem>
 
-                        <asp:MenuItem Text="T-Shirts" Value="T-Shirts" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=T-Shirts"> </asp:MenuItem>
+                        <asp:MenuItem Text="T-Shirts" Value="T-Shirts" NavigateUrl="~/FrmCMulher.aspx?CategoriaClasse=T-Shirts"> </asp:MenuItem>
                         
-                        <asp:MenuItem Text="Calças" Value="Calças" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=Calças"></asp:MenuItem>
+                        <asp:MenuItem Text="Calças" Value="Calças" NavigateUrl="~/FrmCMulher.aspx?CategoriaClasse=Calças"></asp:MenuItem>
                        
-                        <asp:MenuItem Text="Calçado" Value="Calçado" NavigateUrl="~/FrmCHomem.aspx?CategoriaClasse=Calçado"></asp:MenuItem>
+                        <asp:MenuItem Text="Calçado" Value="Calçado" NavigateUrl="~/FrmCMulher.aspx?CategoriaClasse=Calçado"></asp:MenuItem>
                     </Items>
                     <StaticMenuStyle HorizontalPadding="60px" VerticalPadding="100px" />
                 </asp:Menu>
@@ -47,5 +46,4 @@
 	<p>
 		&nbsp;
 	</p>
-
 </asp:Content>
