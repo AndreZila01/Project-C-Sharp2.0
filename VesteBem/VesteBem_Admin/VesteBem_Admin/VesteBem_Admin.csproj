@@ -185,6 +185,7 @@
     <None Include="Resources\Admin.png" />
     <Content Include="Resources\Close-trash.png" />
     <Content Include="Resources\Logo.png" />
+    <None Include="Resources\logout.png" />
     <Content Include="Resources\magnifying-glass.png" />
     <Content Include="Resources\menu.png" />
     <Content Include="Resources\Open-trash.png" />

@@ -14,6 +14,7 @@ namespace VesteBem_Admin
 {
 	public partial class FrmAdmin : Form
 	{
+		public static int ecra = 0;
 		private string Username, Password;
 		public FrmAdmin(string user, string pass)
 		{
@@ -95,10 +96,16 @@ namespace VesteBem_Admin
 						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
 						break;
 					case 6:
-						//leave
+						FormCollection fc = Application.OpenForms;
+						foreach (Form frms in fc)
+							if (frms.Text == "Login")
+							{
+								this.Hide();
+								frms.Show();
+							}
 						break;
 				}
-				if (int.Parse(Lbl.Tag.ToString()) != 5)
+				if (int.Parse(Lbl.Tag.ToString()) != 5 && int.Parse(Lbl.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -157,10 +164,17 @@ namespace VesteBem_Admin
 						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
 						break;
 					case 6:
-						//leave
+						FormCollection fc = Application.OpenForms;
+						foreach (Form frm in fc)
+							foreach (Form frms in fc)
+								if (frms.Text == "Login")
+								{
+									this.Hide();
+									frms.Show();
+								}
 						break;
 				}
-				if(int.Parse(Pct.Tag.ToString())!=5)
+				if(int.Parse(Pct.Tag.ToString())!=5 && int.Parse(Pct.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -201,10 +215,16 @@ namespace VesteBem_Admin
 						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
 						break;
 					case 6:
-						//leave
+						FormCollection fc = Application.OpenForms;
+						foreach (Form frms in fc)
+							if (frms.Text == "Login")
+							{
+								this.Hide();
+								frms.Show();
+							}
 						break;
 				}
-				if (int.Parse(Pnl.Tag.ToString()) != 5)
+				if (int.Parse(Pnl.Tag.ToString()) != 5 && int.Parse(Pnl.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -219,7 +239,7 @@ namespace VesteBem_Admin
 			PictureBox Pct = sender as PictureBox;
 			if (Pct.Name == "PctFlow")
 			{
-				var ds = flowLayoutPanel1.Visible == true ? flowLayoutPanel1.Visible = false : flowLayoutPanel1.Visible = true;
+				var ds = FlpForms.Visible == true ? FlpForms.Visible = false : FlpForms.Visible = true;
 			}
 			else
 			{
@@ -232,7 +252,7 @@ namespace VesteBem_Admin
 			if (checkBox.Text == "Auto Run (Abrir com o SO, Sistema Operativo)")
 			{
 				RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-				if (checkBox1.Checked)
+				if (ChkAuto.Checked)
 				{
 					Application.EnableVisualStyles();
 					rkApp.SetValue("VesteBem Admin", Application.ExecutablePath.ToString());
@@ -259,7 +279,8 @@ namespace VesteBem_Admin
 
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
-			label1.Text = Username;
+			Screen scrn = Screen.FromControl(this); ecra = int.Parse((scrn.DeviceName.Replace("\\", "").Replace(".DISPLAY", "")));
+			LblNome.Text = Username;
 			this.ShowIcon = false;
 			this.Tag = false;
 		}

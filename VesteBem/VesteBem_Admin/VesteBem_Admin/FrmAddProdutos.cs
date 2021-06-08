@@ -33,13 +33,15 @@ namespace VesteBem_Admin
 			if (ofd.ShowDialog() == DialogResult.OK)
 			{
 				TxtIcon.Text = ofd.FileNames[0].ToString();
-				pictureBox1.ImageLocation = ofd.FileName.ToString();
+				PctImage.ImageLocation = ofd.FileName.ToString();
 
 			}
 		}
 
 		private void FrmAddProdutos_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
 			if (idProdutos != 0)
 			{
@@ -48,27 +50,30 @@ namespace VesteBem_Admin
 				int index = LstProdutos.FindIndex(r => r.IdProduto == idProdutos);
 				TxtCat.Text = LstProdutos[index].CategoriaClass;
 				TxtEmpresa.Text = LstProdutos[index].NomedaEmpresa;
-				pictureBox1.Image = LstProdutos[index].Icon;
+				PctImage.Image = LstProdutos[index].Icon;
 				TxtNome.Text = LstProdutos[index].Nome;
 				TxtSubCat.Text = LstProdutos[index].CategoriaSubClass;
 				TxtValor.Text = LstProdutos[index].Valor.ToString();
-				var ds = LstProdutos[index].Sexo == "F" ? comboBox1.Text = "Feminino" : (LstProdutos[index].Sexo == "M" ? comboBox1.Text = "Masculino" : comboBox1.Text = "Indefenido");
-				button1.Text = "Alterar os Dados";
+				var ds = LstProdutos[index].Sexo == "F" ? CboSexo.Text = "Feminino" : (LstProdutos[index].Sexo == "M" ? CboSexo.Text = "Masculino" : CboSexo.Text = "Indefenido");
+				BtnRegistar.Text = "Alterar os Dados";
+				this.Text = "Alterar os Produtos";
 			}
+			else
+				this.Text = "Adicionar Produtos";
 		}
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			if (button1.Text != "Alterar os Dados")
+			if (BtnRegistar.Text != "Alterar os Dados")
 			{
 				try
 				{
-					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
+					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && TxtIcon.Text != "" && CboSexo.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
 					{
 						Produtos produtos = new Produtos();
 						produtos.Nome = TxtNome.Text;
 						produtos.NomedaEmpresa = TxtEmpresa.Text;
-						produtos.Sexo = comboBox1.Text.Substring(0, 1);
+						produtos.Sexo = CboSexo.Text.Substring(0, 1);
 						produtos.Valor = double.Parse(TxtValor.Text.Replace(',','.'));
 						produtos.CategoriaClass = TxtCat.Text;
 						produtos.CategoriaSubClass = TxtSubCat.Text;
@@ -83,7 +88,7 @@ namespace VesteBem_Admin
 							TxtSubCat.Text = null;
 							TxtValor.Text = null;
 							TxtEmpresa.Text = null;
-							comboBox1.Text = "";
+							CboSexo.Text = "";
 						}
 
 					}
@@ -97,19 +102,19 @@ namespace VesteBem_Admin
 			{
 				try
 				{
-					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && comboBox1.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
+					if (TxtValor.Text != "" && TxtNome.Text != "" && TxtEmpresa.Text != "" && CboSexo.Text != "" && TxtSubCat.Text != "" && TxtCat.Text != "")
 					{
 						Produtos produtos = new Produtos();
 						produtos.Nome = TxtNome.Text;
 						produtos.NomedaEmpresa = TxtEmpresa.Text;
-						produtos.Sexo = comboBox1.Text.Substring(0, 1);
+						produtos.Sexo = CboSexo.Text.Substring(0, 1);
 						produtos.Valor = double.Parse(TxtValor.Text.Replace(',', '.'));
 						produtos.CategoriaClass = TxtCat.Text;
 						produtos.CategoriaSubClass = TxtSubCat.Text;
 						produtos.CaminhoImg = TxtIcon.Text;
 						produtos.IdProduto = idProdutos;
 							if (TxtIcon.Text == "")
-								produtos.Icon = pictureBox1.Image;
+								produtos.Icon = PctImage.Image;
 						string dss = EncomendasEDetalhesEProduto.AtualizarProdutos(produtos);
 
 						if (dss == "sucesso")
@@ -150,13 +155,13 @@ namespace VesteBem_Admin
 
 		private void TxtCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar!=' ' && e.KeyChar!= '\u0003')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar!=' ' && e.KeyChar!= '\u0003' && e.KeyChar!= '-')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 
 		private void TxtSubCat_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar != ' ' && e.KeyChar != '\u0003')
+			if (e.KeyChar != '\u0016' && e.KeyChar != '\b' && e.KeyChar != ' ' && e.KeyChar != '\u0003' && e.KeyChar != '-')
 				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 		}
 

@@ -29,13 +29,13 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModificarCliFun));
-			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
 			this.SuspendLayout();
 			// 
-			// backgroundWorker1
+			// BgwInicio
 			// 
-			this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			this.BgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
 			// FrmModificarCliFun
 			// 
@@ -48,7 +48,7 @@
 			this.MinimizeBox = false;
 			this.Name = "FrmModificarCliFun";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmModificar";
+			this.Text = "Modificar Cliente";
 			this.Load += new System.EventHandler(this.FrmModificar_Load);
 			this.ResumeLayout(false);
 
@@ -56,6 +56,6 @@
 
 		#endregion
 
-		private System.ComponentModel.BackgroundWorker backgroundWorker1;
+		private System.ComponentModel.BackgroundWorker BgwInicio;
 	}
 }

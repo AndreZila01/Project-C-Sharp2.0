@@ -21,9 +21,11 @@ namespace VesteBem_Admin
 
 		private void FrmEditarApagarProdutos_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker1.RunWorkerAsync();
+			if (!BgwInicio.IsBusy)
+				BgwInicio.RunWorkerAsync();
 		}
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -58,7 +60,7 @@ namespace VesteBem_Admin
 		}
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			flowLayoutPanel1.Controls.Clear();
+			FlwCentro.Controls.Clear();
 			LstProdutos.ToList().ForEach(item =>
 			{
 
@@ -69,7 +71,7 @@ namespace VesteBem_Admin
 				Pnl.Name = "panel2";
 				Pnl.Size = new System.Drawing.Size(800, 42);
 				Pnl.TabIndex = 0;
-				flowLayoutPanel1.Controls.Add(Pnl);
+				FlwCentro.Controls.Add(Pnl);
 
 				PictureBox PctRemove = new PictureBox();
 				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
@@ -126,10 +128,10 @@ namespace VesteBem_Admin
 				Pnl.Controls.Add(PctEdit);
 			});
 
-			comboBox1.Items.Add("");
+			CmbCategoria.Items.Add("");
 			LstProdutos.ToList().ForEach(item =>
 			{
-				comboBox1.Items.Add(item.CategoriaClass);
+				CmbCategoria.Items.Add(item.CategoriaClass);
 			});
 		}
 
@@ -148,7 +150,7 @@ namespace VesteBem_Admin
 					break;
 			}
 
-			backgroundWorker1.RunWorkerAsync();
+			BgwInicio.RunWorkerAsync();
 		}
 
 		private void FrmEditarApagarProdutos_FormClosed(object sender, FormClosedEventArgs e)
@@ -160,12 +162,12 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			flowLayoutPanel1.Controls.Clear();
+			FlwCentro.Controls.Clear();
 			LstProdutos.ToList().ForEach(item =>
 			{
 				try
 				{
-					if (((item.CategoriaClass == comboBox1.Text) || (comboBox1.Text == "")) && ((item.Nome.Substring(0, textBox1.Text.Length) == textBox1.Text)))
+					if (((item.CategoriaClass == CmbCategoria.Text) || (CmbCategoria.Text == "")) && ((item.Nome.Substring(0, TxtNome.Text.Length) == TxtNome.Text)))
 					{
 						Panel Pnl = new Panel();
 						Pnl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -174,7 +176,7 @@ namespace VesteBem_Admin
 						Pnl.Name = "panel2";
 						Pnl.Size = new System.Drawing.Size(800, 42);
 						Pnl.TabIndex = 0;
-						flowLayoutPanel1.Controls.Add(Pnl);
+						FlwCentro.Controls.Add(Pnl);
 
 						PictureBox PctRemove = new PictureBox();
 						PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
@@ -240,14 +242,14 @@ namespace VesteBem_Admin
 
 		private void comboBox1_TextChanged(object sender, EventArgs e)
 		{
-			if (!backgroundWorker2.IsBusy)
-				backgroundWorker2.RunWorkerAsync();
+			if (!BgwModificar.IsBusy)
+				BgwModificar.RunWorkerAsync();
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
-			if (!backgroundWorker2.IsBusy)
-				backgroundWorker2.RunWorkerAsync();
+			if (!BgwModificar.IsBusy)
+				BgwModificar.RunWorkerAsync();
 		}
 	}
 }

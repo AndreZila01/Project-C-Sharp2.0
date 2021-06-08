@@ -19,6 +19,8 @@ namespace VesteBem_Admin
 
 		private void FrmEditarCarrinho_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
 		}
 	}

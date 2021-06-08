@@ -30,38 +30,30 @@ namespace VesteBem_Admin
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliEFun));
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.MsMenu = new System.Windows.Forms.MenuStrip();
 			this.TstbCliente = new System.Windows.Forms.ToolStripTextBox();
-			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.novosFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.TstbFuncionario = new System.Windows.Forms.ToolStripTextBox();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.PnlCentro = new System.Windows.Forms.Panel();
 			this.BgwCliente = new System.ComponentModel.BackgroundWorker();
-			this.menuStrip1.SuspendLayout();
+			this.TsmiCliente = new System.Windows.Forms.ToolStripMenuItem();
+			this.TsmiFuncionario = new System.Windows.Forms.ToolStripMenuItem();
+			this.TsmiNovoFuncionario = new System.Windows.Forms.ToolStripMenuItem();
+			this.MsMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// menuStrip1
+			// MsMenu
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clienteToolStripMenuItem,
+			this.MsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsmiCliente,
             this.TstbCliente,
-            this.funcionarioToolStripMenuItem,
+            this.TsmiFuncionario,
             this.TstbFuncionario,
-            this.novosFuncionariosToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(800, 27);
-			this.menuStrip1.TabIndex = 48;
-			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// clienteToolStripMenuItem
-			// 
-			this.clienteToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.user;
-			this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-			this.clienteToolStripMenuItem.Size = new System.Drawing.Size(72, 23);
-			this.clienteToolStripMenuItem.Text = "Cliente";
-			this.clienteToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+            this.TsmiNovoFuncionario});
+			this.MsMenu.Location = new System.Drawing.Point(0, 0);
+			this.MsMenu.Name = "MsMenu";
+			this.MsMenu.Size = new System.Drawing.Size(800, 24);
+			this.MsMenu.TabIndex = 48;
+			this.MsMenu.Text = "menuStrip1";
 			// 
 			// TstbCliente
 			// 
@@ -71,23 +63,6 @@ namespace VesteBem_Admin
 			this.TstbCliente.Visible = false;
 			this.TstbCliente.TextChanged += new System.EventHandler(this.TstbClienteEFun_TextChanged);
 			// 
-			// funcionarioToolStripMenuItem
-			// 
-			this.funcionarioToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.Admin;
-			this.funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
-			this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
-			this.funcionarioToolStripMenuItem.Text = "Funcionario";
-			this.funcionarioToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
-			// 
-			// novosFuncionariosToolStripMenuItem
-			// 
-			this.novosFuncionariosToolStripMenuItem.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.novosFuncionariosToolStripMenuItem.Name = "novosFuncionariosToolStripMenuItem";
-			this.novosFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(140, 23);
-			this.novosFuncionariosToolStripMenuItem.Text = "Novos Funcionarios";
-			this.novosFuncionariosToolStripMenuItem.Visible = false;
-			this.novosFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
-			// 
 			// TstbFuncionario
 			// 
 			this.TstbFuncionario.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -96,50 +71,77 @@ namespace VesteBem_Admin
 			this.TstbFuncionario.Visible = false;
 			this.TstbFuncionario.TextChanged += new System.EventHandler(this.TstbClienteEFun_TextChanged);
 			// 
-			// panel1
+			// PnlCentro
 			// 
-			this.panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel1.Location = new System.Drawing.Point(0, 27);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(800, 529);
-			this.panel1.TabIndex = 49;
-			this.panel1.Visible = false;
+			this.PnlCentro.BackColor = System.Drawing.SystemColors.ButtonShadow;
+			this.PnlCentro.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PnlCentro.Location = new System.Drawing.Point(0, 24);
+			this.PnlCentro.Name = "PnlCentro";
+			this.PnlCentro.Size = new System.Drawing.Size(800, 532);
+			this.PnlCentro.TabIndex = 49;
+			this.PnlCentro.Visible = false;
 			// 
 			// BgwCliente
 			// 
 			this.BgwCliente.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
 			this.BgwCliente.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
+			// TsmiCliente
+			// 
+			this.TsmiCliente.Image = global::VesteBem_Admin.Properties.Resources.user;
+			this.TsmiCliente.Name = "TsmiCliente";
+			this.TsmiCliente.Size = new System.Drawing.Size(72, 20);
+			this.TsmiCliente.Text = "Cliente";
+			this.TsmiCliente.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+			// 
+			// TsmiFuncionario
+			// 
+			this.TsmiFuncionario.Image = global::VesteBem_Admin.Properties.Resources.Admin;
+			this.TsmiFuncionario.Name = "TsmiFuncionario";
+			this.TsmiFuncionario.Size = new System.Drawing.Size(98, 20);
+			this.TsmiFuncionario.Text = "Funcionario";
+			this.TsmiFuncionario.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+			// 
+			// TsmiNovoFuncionario
+			// 
+			this.TsmiNovoFuncionario.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.TsmiNovoFuncionario.Name = "TsmiNovoFuncionario";
+			this.TsmiNovoFuncionario.Size = new System.Drawing.Size(140, 20);
+			this.TsmiNovoFuncionario.Text = "Novos Funcionarios";
+			this.TsmiNovoFuncionario.Visible = false;
+			this.TsmiNovoFuncionario.Click += new System.EventHandler(this.ToolstripMenuItem_Click);
+			// 
 			// FrmCliEFun
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 556);
-			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.PnlCentro);
+			this.Controls.Add(this.MsMenu);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.MsMenu;
+			this.MaximizeBox = false;
 			this.Name = "FrmCliEFun";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmCliEFun";
+			this.Text = "Cliente e Funcionario";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCliEFun_FormClosed);
 			this.Load += new System.EventHandler(this.FrmCliEFun_Load);
 			this.SizeChanged += new System.EventHandler(this.FrmCliEFun_SizeChanged);
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
+			this.MsMenu.ResumeLayout(false);
+			this.MsMenu.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.MenuStrip MsMenu;
+		private System.Windows.Forms.ToolStripMenuItem TsmiCliente;
+		private System.Windows.Forms.ToolStripMenuItem TsmiFuncionario;
+		private System.Windows.Forms.Panel PnlCentro;
 		private System.ComponentModel.BackgroundWorker BgwCliente;
-		private System.Windows.Forms.ToolStripMenuItem novosFuncionariosToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem TsmiNovoFuncionario;
 		private System.Windows.Forms.ToolStripTextBox TstbCliente;
 		private System.Windows.Forms.ToolStripTextBox TstbFuncionario;
 	}

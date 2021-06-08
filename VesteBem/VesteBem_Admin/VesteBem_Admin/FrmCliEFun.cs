@@ -25,6 +25,8 @@ namespace VesteBem_Admin
 
 		private void FrmCliEFun_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
 			if (!BgwCliente.IsBusy)
 				BgwCliente.RunWorkerAsync();
@@ -33,7 +35,7 @@ namespace VesteBem_Admin
 		private void ToolstripMenuItem_Click(object sender, EventArgs e)
 		{
 			ToolStripMenuItem dss = sender as ToolStripMenuItem;
-			novosFuncionariosToolStripMenuItem.Visible = false;
+			TsmiNovoFuncionario.Visible = false;
 			if (dss.Text == "Cliente")
 			{
 				TstbFuncionario.Visible = false; TstbCliente.Visible = true;
@@ -60,10 +62,10 @@ namespace VesteBem_Admin
 		}
 		private void CreateObjectsFun()
 		{
-			novosFuncionariosToolStripMenuItem.Visible = true;
+			TsmiNovoFuncionario.Visible = true;
 
-			panel1.Visible = true;
-			panel1.Controls.Clear();
+			PnlCentro.Visible = true;
+			PnlCentro.Controls.Clear();
 			MemoryStream stream = new MemoryStream();
 			int ds = 0;
 
@@ -75,7 +77,7 @@ namespace VesteBem_Admin
 				pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 		| System.Windows.Forms.AnchorStyles.Right)));
 				pnl.AutoScroll = true;
-				panel1.Controls.Add(pnl);
+				PnlCentro.Controls.Add(pnl);
 
 				Label lblUser = new Label();
 				lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -181,8 +183,8 @@ namespace VesteBem_Admin
 
 		private void CreateObjectsCli()
 		{
-			panel1.Visible = true;
-			panel1.Controls.Clear();
+			PnlCentro.Visible = true;
+			PnlCentro.Controls.Clear();
 			MemoryStream stream = new MemoryStream();
 			int ds = 0;
 
@@ -194,7 +196,7 @@ namespace VesteBem_Admin
 				pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 		| System.Windows.Forms.AnchorStyles.Right)));
 				pnl.AutoScroll = true;
-				panel1.Controls.Add(pnl);
+				PnlCentro.Controls.Add(pnl);
 
 				Label lblUser = new Label();
 				lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));

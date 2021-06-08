@@ -105,9 +105,11 @@ namespace VesteBem_Admin
 
 		private void FrmModificar_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker1.RunWorkerAsync();
+			if (!BgwInicio.IsBusy)
+				BgwInicio.RunWorkerAsync();
 		}
 
 		private void comboBox1_Leave(object sender, EventArgs e)
@@ -209,6 +211,7 @@ namespace VesteBem_Admin
 			this.Controls.Clear();
 			if (Lstcli.Count > 0 && Lstcli[0].Id_Login != 0 && Lstcli[0].Id_Cliente != 0)
 			{
+				this.Text = "Modificar Cliente";
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(127, 13);
 				TxtNome.MaxLength = 100;
@@ -426,6 +429,7 @@ namespace VesteBem_Admin
 			else
 			if (Lstfunc.Count > 0 && Lstfunc[0].Id_Login != 0 && Lstfunc[0].Nome != null)
 			{
+				this.Text = "Modificar Funcionario";
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
 				LblNome.Location = new System.Drawing.Point(51, 80);
@@ -552,6 +556,7 @@ namespace VesteBem_Admin
 			}
 			else
 			{
+				this.Text = "Modificar Funcionario";
 				TextBox TxtNome = new TextBox();
 				TxtNome.Location = new System.Drawing.Point(156, 80);
 				TxtNome.Name = "TxtNomeFun";

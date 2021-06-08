@@ -79,8 +79,6 @@ namespace VesteBem_Admin
 					timer1.Start();
 				}
 				liga.Close();
-				TxtPass.Text = string.Empty;
-				TxtUser.Text = string.Empty;
 			}
 		}
 

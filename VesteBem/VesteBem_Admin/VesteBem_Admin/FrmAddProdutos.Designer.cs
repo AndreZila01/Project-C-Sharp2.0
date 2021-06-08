@@ -35,21 +35,21 @@
 			this.TxtCat = new System.Windows.Forms.TextBox();
 			this.TxtSubCat = new System.Windows.Forms.TextBox();
 			this.TxtIcon = new System.Windows.Forms.TextBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			this.PctImage = new System.Windows.Forms.PictureBox();
+			this.LblNome = new System.Windows.Forms.Label();
+			this.LblValor = new System.Windows.Forms.Label();
+			this.LblEmpresa = new System.Windows.Forms.Label();
+			this.LblCategoria = new System.Windows.Forms.Label();
+			this.LblSubCateg = new System.Windows.Forms.Label();
+			this.LblSexo = new System.Windows.Forms.Label();
+			this.LblIcon = new System.Windows.Forms.Label();
+			this.LblImagem = new System.Windows.Forms.Label();
+			this.LblEuro = new System.Windows.Forms.Label();
+			this.PctAdd = new System.Windows.Forms.PictureBox();
+			this.BtnRegistar = new System.Windows.Forms.Button();
+			this.CboSexo = new System.Windows.Forms.ComboBox();
+			((System.ComponentModel.ISupportInitialize)(this.PctImage)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// TxtNome
@@ -104,163 +104,165 @@
 			this.TxtIcon.Size = new System.Drawing.Size(100, 20);
 			this.TxtIcon.TabIndex = 6;
 			// 
-			// pictureBox1
+			// PctImage
 			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.pictureBox1.Location = new System.Drawing.Point(265, 47);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(288, 323);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 7;
-			this.pictureBox1.TabStop = false;
+			this.PctImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.PctImage.Location = new System.Drawing.Point(265, 47);
+			this.PctImage.Name = "PctImage";
+			this.PctImage.Size = new System.Drawing.Size(288, 323);
+			this.PctImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PctImage.TabIndex = 7;
+			this.PctImage.TabStop = false;
 			// 
-			// label1
+			// LblNome
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(10, 47);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(35, 13);
-			this.label1.TabIndex = 8;
-			this.label1.Text = "Nome";
+			this.LblNome.AutoSize = true;
+			this.LblNome.Location = new System.Drawing.Point(10, 47);
+			this.LblNome.Name = "LblNome";
+			this.LblNome.Size = new System.Drawing.Size(35, 13);
+			this.LblNome.TabIndex = 8;
+			this.LblNome.Text = "Nome";
 			// 
-			// label2
+			// LblValor
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(10, 86);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(31, 13);
-			this.label2.TabIndex = 9;
-			this.label2.Text = "Valor";
+			this.LblValor.AutoSize = true;
+			this.LblValor.Location = new System.Drawing.Point(10, 86);
+			this.LblValor.Name = "LblValor";
+			this.LblValor.Size = new System.Drawing.Size(31, 13);
+			this.LblValor.TabIndex = 9;
+			this.LblValor.Text = "Valor";
 			// 
-			// label3
+			// LblEmpresa
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(10, 125);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(48, 13);
-			this.label3.TabIndex = 10;
-			this.label3.Text = "Empresa";
+			this.LblEmpresa.AutoSize = true;
+			this.LblEmpresa.Location = new System.Drawing.Point(10, 125);
+			this.LblEmpresa.Name = "LblEmpresa";
+			this.LblEmpresa.Size = new System.Drawing.Size(48, 13);
+			this.LblEmpresa.TabIndex = 10;
+			this.LblEmpresa.Text = "Empresa";
 			// 
-			// label4
+			// LblCategoria
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(12, 166);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(52, 13);
-			this.label4.TabIndex = 11;
-			this.label4.Text = "Categoria";
+			this.LblCategoria.AutoSize = true;
+			this.LblCategoria.Location = new System.Drawing.Point(12, 166);
+			this.LblCategoria.Name = "LblCategoria";
+			this.LblCategoria.Size = new System.Drawing.Size(52, 13);
+			this.LblCategoria.TabIndex = 11;
+			this.LblCategoria.Text = "Categoria";
 			// 
-			// label5
+			// LblSubCateg
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(12, 204);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(74, 13);
-			this.label5.TabIndex = 12;
-			this.label5.Text = "Sub Categoria";
+			this.LblSubCateg.AutoSize = true;
+			this.LblSubCateg.Location = new System.Drawing.Point(12, 204);
+			this.LblSubCateg.Name = "LblSubCateg";
+			this.LblSubCateg.Size = new System.Drawing.Size(74, 13);
+			this.LblSubCateg.TabIndex = 12;
+			this.LblSubCateg.Text = "Sub Categoria";
 			// 
-			// label6
+			// LblSexo
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(12, 242);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(31, 13);
-			this.label6.TabIndex = 13;
-			this.label6.Text = "Sexo";
+			this.LblSexo.AutoSize = true;
+			this.LblSexo.Location = new System.Drawing.Point(12, 242);
+			this.LblSexo.Name = "LblSexo";
+			this.LblSexo.Size = new System.Drawing.Size(31, 13);
+			this.LblSexo.TabIndex = 13;
+			this.LblSexo.Text = "Sexo";
 			// 
-			// label7
+			// LblIcon
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(10, 278);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(28, 13);
-			this.label7.TabIndex = 14;
-			this.label7.Text = "Icon";
+			this.LblIcon.AutoSize = true;
+			this.LblIcon.Location = new System.Drawing.Point(10, 278);
+			this.LblIcon.Name = "LblIcon";
+			this.LblIcon.Size = new System.Drawing.Size(28, 13);
+			this.LblIcon.TabIndex = 14;
+			this.LblIcon.Text = "Icon";
 			// 
-			// label8
+			// LblImagem
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(272, 31);
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size(39, 13);
-			this.label8.TabIndex = 15;
-			this.label8.Text = "Image:";
+			this.LblImagem.AutoSize = true;
+			this.LblImagem.Location = new System.Drawing.Point(272, 31);
+			this.LblImagem.Name = "LblImagem";
+			this.LblImagem.Size = new System.Drawing.Size(39, 13);
+			this.LblImagem.TabIndex = 15;
+			this.LblImagem.Text = "Image:";
 			// 
-			// label9
+			// LblEuro
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(215, 86);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(13, 13);
-			this.label9.TabIndex = 16;
-			this.label9.Text = "€";
+			this.LblEuro.AutoSize = true;
+			this.LblEuro.Location = new System.Drawing.Point(215, 86);
+			this.LblEuro.Name = "LblEuro";
+			this.LblEuro.Size = new System.Drawing.Size(13, 13);
+			this.LblEuro.TabIndex = 16;
+			this.LblEuro.Text = "€";
 			// 
-			// pictureBox2
+			// PctAdd
 			// 
-			this.pictureBox2.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.pictureBox2.Location = new System.Drawing.Point(218, 275);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(19, 20);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox2.TabIndex = 17;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.PctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.PctAdd.Location = new System.Drawing.Point(218, 275);
+			this.PctAdd.Name = "PctAdd";
+			this.PctAdd.Size = new System.Drawing.Size(19, 20);
+			this.PctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PctAdd.TabIndex = 17;
+			this.PctAdd.TabStop = false;
+			this.PctAdd.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
-			// button1
+			// BtnRegistar
 			// 
-			this.button1.Location = new System.Drawing.Point(44, 322);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(151, 48);
-			this.button1.TabIndex = 18;
-			this.button1.Text = "Registar Produtos";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.BtnRegistar.Location = new System.Drawing.Point(44, 322);
+			this.BtnRegistar.Name = "BtnRegistar";
+			this.BtnRegistar.Size = new System.Drawing.Size(151, 48);
+			this.BtnRegistar.TabIndex = 18;
+			this.BtnRegistar.Text = "Registar Produtos";
+			this.BtnRegistar.UseVisualStyleBackColor = true;
+			this.BtnRegistar.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// comboBox1
+			// CboSexo
 			// 
-			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.CboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CboSexo.FormattingEnabled = true;
+			this.CboSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino",
             "Indefenido"});
-			this.comboBox1.Location = new System.Drawing.Point(109, 242);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(100, 21);
-			this.comboBox1.TabIndex = 19;
+			this.CboSexo.Location = new System.Drawing.Point(109, 242);
+			this.CboSexo.Name = "CboSexo";
+			this.CboSexo.Size = new System.Drawing.Size(100, 21);
+			this.CboSexo.TabIndex = 19;
 			// 
 			// FrmAddChangeProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(594, 404);
-			this.Controls.Add(this.comboBox1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.pictureBox2);
-			this.Controls.Add(this.label9);
-			this.Controls.Add(this.label8);
-			this.Controls.Add(this.label7);
-			this.Controls.Add(this.label6);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.CboSexo);
+			this.Controls.Add(this.BtnRegistar);
+			this.Controls.Add(this.PctAdd);
+			this.Controls.Add(this.LblEuro);
+			this.Controls.Add(this.LblImagem);
+			this.Controls.Add(this.LblIcon);
+			this.Controls.Add(this.LblSexo);
+			this.Controls.Add(this.LblSubCateg);
+			this.Controls.Add(this.LblCategoria);
+			this.Controls.Add(this.LblEmpresa);
+			this.Controls.Add(this.LblValor);
+			this.Controls.Add(this.LblNome);
+			this.Controls.Add(this.PctImage);
 			this.Controls.Add(this.TxtIcon);
 			this.Controls.Add(this.TxtSubCat);
 			this.Controls.Add(this.TxtCat);
 			this.Controls.Add(this.TxtEmpresa);
 			this.Controls.Add(this.TxtValor);
 			this.Controls.Add(this.TxtNome);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
 			this.Name = "FrmAddChangeProdutos";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmAddProdutos";
+			this.Text = "Adicionar Produtos";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProdutos_FormClosed);
 			this.Load += new System.EventHandler(this.FrmAddProdutos_Load);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctImage)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -274,18 +276,18 @@
 		private System.Windows.Forms.TextBox TxtCat;
 		private System.Windows.Forms.TextBox TxtSubCat;
 		private System.Windows.Forms.TextBox TxtIcon;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.PictureBox PctImage;
+		private System.Windows.Forms.Label LblNome;
+		private System.Windows.Forms.Label LblValor;
+		private System.Windows.Forms.Label LblEmpresa;
+		private System.Windows.Forms.Label LblCategoria;
+		private System.Windows.Forms.Label LblSubCateg;
+		private System.Windows.Forms.Label LblSexo;
+		private System.Windows.Forms.Label LblIcon;
+		private System.Windows.Forms.Label LblImagem;
+		private System.Windows.Forms.Label LblEuro;
+		private System.Windows.Forms.PictureBox PctAdd;
+		private System.Windows.Forms.Button BtnRegistar;
+		private System.Windows.Forms.ComboBox CboSexo;
 	}
 }

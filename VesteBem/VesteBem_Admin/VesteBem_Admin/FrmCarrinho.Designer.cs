@@ -29,293 +29,285 @@
 		private void InitializeComponent()
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCarrinho));
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.TxtValor = new System.Windows.Forms.TextBox();
+			this.CboCliente = new System.Windows.Forms.ComboBox();
+			this.LblValor = new System.Windows.Forms.Label();
+			this.LblEstado = new System.Windows.Forms.Label();
+			this.LblData = new System.Windows.Forms.Label();
+			this.LblCliente = new System.Windows.Forms.Label();
+			this.CboEstado = new System.Windows.Forms.ComboBox();
+			this.DtpEntrega = new System.Windows.Forms.DateTimePicker();
+			this.BtnGuardar = new System.Windows.Forms.Button();
+			this.CmbProduto = new System.Windows.Forms.ComboBox();
+			this.FlpProdutos = new System.Windows.Forms.FlowLayoutPanel();
+			this.NudQuantidade = new System.Windows.Forms.NumericUpDown();
+			this.LblTotal = new System.Windows.Forms.Label();
+			this.PctRegistar = new System.Windows.Forms.PictureBox();
+			this.PctEncomenda = new System.Windows.Forms.PictureBox();
+			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
+			this.PnlEncomendar = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.button1 = new System.Windows.Forms.Button();
-			this.comboBox3 = new System.Windows.Forms.ComboBox();
-			this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.label6 = new System.Windows.Forms.Label();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.pictureBox3 = new System.Windows.Forms.PictureBox();
-			this.panel2 = new System.Windows.Forms.Panel();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-			this.panel2.SuspendLayout();
+			this.PctAdd = new System.Windows.Forms.PictureBox();
+			this.PnlRegistar = new System.Windows.Forms.Panel();
+			((System.ComponentModel.ISupportInitialize)(this.NudQuantidade)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctRegistar)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctEncomenda)).BeginInit();
+			this.PnlEncomendar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).BeginInit();
+			this.PnlRegistar.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// TxtValor
 			// 
-			this.textBox1.Location = new System.Drawing.Point(150, 65);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(139, 20);
-			this.textBox1.TabIndex = 0;
+			this.TxtValor.Location = new System.Drawing.Point(122, 65);
+			this.TxtValor.Name = "TxtValor";
+			this.TxtValor.Size = new System.Drawing.Size(139, 20);
+			this.TxtValor.TabIndex = 0;
 			// 
-			// comboBox1
+			// CboCliente
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(150, 170);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(139, 21);
-			this.comboBox1.TabIndex = 4;
+			this.CboCliente.FormattingEnabled = true;
+			this.CboCliente.Location = new System.Drawing.Point(122, 146);
+			this.CboCliente.Name = "CboCliente";
+			this.CboCliente.Size = new System.Drawing.Size(139, 21);
+			this.CboCliente.TabIndex = 4;
 			// 
-			// label1
+			// LblValor
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(43, 68);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(93, 13);
-			this.label1.TabIndex = 5;
-			this.label1.Text = "ValorEncomendas";
+			this.LblValor.AutoSize = true;
+			this.LblValor.Location = new System.Drawing.Point(15, 68);
+			this.LblValor.Name = "LblValor";
+			this.LblValor.Size = new System.Drawing.Size(96, 13);
+			this.LblValor.TabIndex = 5;
+			this.LblValor.Text = "Valor Encomendas";
 			// 
-			// label2
+			// LblEstado
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(43, 94);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(102, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "EstadoEncomendas";
+			this.LblEstado.AutoSize = true;
+			this.LblEstado.Location = new System.Drawing.Point(15, 94);
+			this.LblEstado.Name = "LblEstado";
+			this.LblEstado.Size = new System.Drawing.Size(105, 13);
+			this.LblEstado.TabIndex = 6;
+			this.LblEstado.Text = "Estado Encomendas";
 			// 
-			// label3
+			// LblData
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(43, 120);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(87, 13);
-			this.label3.TabIndex = 7;
-			this.label3.Text = "DataEncomenda";
+			this.LblData.AutoSize = true;
+			this.LblData.Location = new System.Drawing.Point(15, 122);
+			this.LblData.Name = "LblData";
+			this.LblData.Size = new System.Drawing.Size(70, 13);
+			this.LblData.TabIndex = 8;
+			this.LblData.Text = "Data Entrega";
 			// 
-			// label4
+			// LblCliente
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(43, 146);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(67, 13);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "DataEntrega";
+			this.LblCliente.AutoSize = true;
+			this.LblCliente.Location = new System.Drawing.Point(15, 149);
+			this.LblCliente.Name = "LblCliente";
+			this.LblCliente.Size = new System.Drawing.Size(39, 13);
+			this.LblCliente.TabIndex = 9;
+			this.LblCliente.Text = "Cliente";
 			// 
-			// label5
+			// CboEstado
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(43, 173);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(54, 13);
-			this.label5.TabIndex = 9;
-			this.label5.Text = "Id_Cliente";
+			this.CboEstado.FormattingEnabled = true;
+			this.CboEstado.Location = new System.Drawing.Point(122, 91);
+			this.CboEstado.Name = "CboEstado";
+			this.CboEstado.Size = new System.Drawing.Size(139, 21);
+			this.CboEstado.TabIndex = 10;
 			// 
-			// comboBox2
+			// DtpEntrega
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(150, 91);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(139, 21);
-			this.comboBox2.TabIndex = 10;
+			this.DtpEntrega.Location = new System.Drawing.Point(122, 120);
+			this.DtpEntrega.Name = "DtpEntrega";
+			this.DtpEntrega.Size = new System.Drawing.Size(200, 20);
+			this.DtpEntrega.TabIndex = 12;
 			// 
-			// dateTimePicker1
+			// BtnGuardar
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(150, 116);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker1.TabIndex = 11;
+			this.BtnGuardar.Location = new System.Drawing.Point(32, 191);
+			this.BtnGuardar.Name = "BtnGuardar";
+			this.BtnGuardar.Size = new System.Drawing.Size(164, 46);
+			this.BtnGuardar.TabIndex = 13;
+			this.BtnGuardar.Text = "Efectuar Compra";
+			this.BtnGuardar.UseVisualStyleBackColor = true;
+			this.BtnGuardar.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// dateTimePicker2
+			// CmbProduto
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(150, 144);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 12;
+			this.CmbProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CmbProduto.FormattingEnabled = true;
+			this.CmbProduto.Location = new System.Drawing.Point(209, 12);
+			this.CmbProduto.Name = "CmbProduto";
+			this.CmbProduto.Size = new System.Drawing.Size(239, 21);
+			this.CmbProduto.TabIndex = 15;
+			this.CmbProduto.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
 			// 
-			// button1
+			// FlpProdutos
 			// 
-			this.button1.Location = new System.Drawing.Point(60, 215);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 13;
-			this.button1.Text = "Efectuar Compra";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.FlpProdutos.AutoScroll = true;
+			this.FlpProdutos.Location = new System.Drawing.Point(177, 250);
+			this.FlpProdutos.Name = "FlpProdutos";
+			this.FlpProdutos.Size = new System.Drawing.Size(271, 163);
+			this.FlpProdutos.TabIndex = 19;
 			// 
-			// comboBox3
+			// NudQuantidade
 			// 
-			this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBox3.FormattingEnabled = true;
-			this.comboBox3.Location = new System.Drawing.Point(139, 12);
-			this.comboBox3.Name = "comboBox3";
-			this.comboBox3.Size = new System.Drawing.Size(239, 21);
-			this.comboBox3.TabIndex = 15;
-			this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-			// 
-			// flowLayoutPanel1
-			// 
-			this.flowLayoutPanel1.AutoScroll = true;
-			this.flowLayoutPanel1.Location = new System.Drawing.Point(139, 250);
-			this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-			this.flowLayoutPanel1.Size = new System.Drawing.Size(271, 163);
-			this.flowLayoutPanel1.TabIndex = 19;
-			// 
-			// numericUpDown1
-			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(18, 217);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
+			this.NudQuantidade.Location = new System.Drawing.Point(18, 224);
+			this.NudQuantidade.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
-			this.numericUpDown1.Minimum = new decimal(new int[] {
+			this.NudQuantidade.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(75, 20);
-			this.numericUpDown1.TabIndex = 20;
-			this.numericUpDown1.Value = new decimal(new int[] {
+			this.NudQuantidade.Name = "NudQuantidade";
+			this.NudQuantidade.Size = new System.Drawing.Size(75, 20);
+			this.NudQuantidade.TabIndex = 20;
+			this.NudQuantidade.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
 			// 
-			// label6
+			// LblTotal
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(287, 427);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(40, 13);
-			this.label6.TabIndex = 21;
-			this.label6.Text = "Total : ";
+			this.LblTotal.AutoSize = true;
+			this.LblTotal.Location = new System.Drawing.Point(325, 427);
+			this.LblTotal.Name = "LblTotal";
+			this.LblTotal.Size = new System.Drawing.Size(40, 13);
+			this.LblTotal.TabIndex = 21;
+			this.LblTotal.Text = "Total : ";
 			// 
-			// pictureBox2
+			// PctRegistar
 			// 
-			this.pictureBox2.Image = global::VesteBem_Admin.Properties.Resources.shopping_cart;
-			this.pictureBox2.Location = new System.Drawing.Point(375, 419);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(35, 27);
-			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox2.TabIndex = 22;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.PctRegistar.Image = global::VesteBem_Admin.Properties.Resources.shopping_cart;
+			this.PctRegistar.Location = new System.Drawing.Point(413, 419);
+			this.PctRegistar.Name = "PctRegistar";
+			this.PctRegistar.Size = new System.Drawing.Size(35, 27);
+			this.PctRegistar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PctRegistar.TabIndex = 22;
+			this.PctRegistar.TabStop = false;
+			this.PctRegistar.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
-			// pictureBox1
+			// PctEncomenda
 			// 
-			this.pictureBox1.Location = new System.Drawing.Point(139, 39);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(239, 205);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox1.TabIndex = 14;
-			this.pictureBox1.TabStop = false;
+			this.PctEncomenda.Location = new System.Drawing.Point(209, 39);
+			this.PctEncomenda.Name = "PctEncomenda";
+			this.PctEncomenda.Size = new System.Drawing.Size(239, 205);
+			this.PctEncomenda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PctEncomenda.TabIndex = 14;
+			this.PctEncomenda.TabStop = false;
 			// 
-			// backgroundWorker1
+			// BgwInicio
 			// 
-			this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
-			// panel1
+			// PnlEncomendar
 			// 
-			this.panel1.Controls.Add(this.pictureBox3);
-			this.panel1.Controls.Add(this.comboBox3);
-			this.panel1.Controls.Add(this.pictureBox2);
-			this.panel1.Controls.Add(this.pictureBox1);
-			this.panel1.Controls.Add(this.label6);
-			this.panel1.Controls.Add(this.numericUpDown1);
-			this.panel1.Controls.Add(this.flowLayoutPanel1);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-			this.panel1.Location = new System.Drawing.Point(378, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(422, 450);
-			this.panel1.TabIndex = 23;
+			this.PnlEncomendar.Controls.Add(this.label1);
+			this.PnlEncomendar.Controls.Add(this.PctAdd);
+			this.PnlEncomendar.Controls.Add(this.CmbProduto);
+			this.PnlEncomendar.Controls.Add(this.PctRegistar);
+			this.PnlEncomendar.Controls.Add(this.PctEncomenda);
+			this.PnlEncomendar.Controls.Add(this.LblTotal);
+			this.PnlEncomendar.Controls.Add(this.NudQuantidade);
+			this.PnlEncomendar.Controls.Add(this.FlpProdutos);
+			this.PnlEncomendar.Dock = System.Windows.Forms.DockStyle.Right;
+			this.PnlEncomendar.Location = new System.Drawing.Point(340, 0);
+			this.PnlEncomendar.Name = "PnlEncomendar";
+			this.PnlEncomendar.Size = new System.Drawing.Size(460, 450);
+			this.PnlEncomendar.TabIndex = 23;
 			// 
-			// pictureBox3
+			// label1
 			// 
-			this.pictureBox3.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.pictureBox3.Location = new System.Drawing.Point(101, 207);
-			this.pictureBox3.Name = "pictureBox3";
-			this.pictureBox3.Size = new System.Drawing.Size(32, 33);
-			this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.pictureBox3.TabIndex = 23;
-			this.pictureBox3.TabStop = false;
-			this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(15, 201);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(71, 13);
+			this.label1.TabIndex = 24;
+			this.label1.Text = "Quantidade : ";
 			// 
-			// panel2
+			// PctAdd
 			// 
-			this.panel2.Controls.Add(this.comboBox1);
-			this.panel2.Controls.Add(this.textBox1);
-			this.panel2.Controls.Add(this.button1);
-			this.panel2.Controls.Add(this.label1);
-			this.panel2.Controls.Add(this.dateTimePicker2);
-			this.panel2.Controls.Add(this.label2);
-			this.panel2.Controls.Add(this.dateTimePicker1);
-			this.panel2.Controls.Add(this.label3);
-			this.panel2.Controls.Add(this.comboBox2);
-			this.panel2.Controls.Add(this.label4);
-			this.panel2.Controls.Add(this.label5);
-			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.panel2.Enabled = false;
-			this.panel2.Location = new System.Drawing.Point(0, 0);
-			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(378, 450);
-			this.panel2.TabIndex = 24;
+			this.PctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.PctAdd.Location = new System.Drawing.Point(119, 217);
+			this.PctAdd.Name = "PctAdd";
+			this.PctAdd.Size = new System.Drawing.Size(32, 33);
+			this.PctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.PctAdd.TabIndex = 23;
+			this.PctAdd.TabStop = false;
+			this.PctAdd.Click += new System.EventHandler(this.pictureBox3_Click);
+			// 
+			// PnlRegistar
+			// 
+			this.PnlRegistar.Controls.Add(this.CboCliente);
+			this.PnlRegistar.Controls.Add(this.TxtValor);
+			this.PnlRegistar.Controls.Add(this.BtnGuardar);
+			this.PnlRegistar.Controls.Add(this.LblValor);
+			this.PnlRegistar.Controls.Add(this.DtpEntrega);
+			this.PnlRegistar.Controls.Add(this.LblEstado);
+			this.PnlRegistar.Controls.Add(this.CboEstado);
+			this.PnlRegistar.Controls.Add(this.LblData);
+			this.PnlRegistar.Controls.Add(this.LblCliente);
+			this.PnlRegistar.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.PnlRegistar.Enabled = false;
+			this.PnlRegistar.Location = new System.Drawing.Point(0, 0);
+			this.PnlRegistar.Name = "PnlRegistar";
+			this.PnlRegistar.Size = new System.Drawing.Size(340, 450);
+			this.PnlRegistar.TabIndex = 24;
 			// 
 			// FrmCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.panel2);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.PnlRegistar);
+			this.Controls.Add(this.PnlEncomendar);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
 			this.Name = "FrmCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FrmCarrinho";
+			this.Text = "Adicionar Carrinho";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCarrinho_FormClosed);
 			this.Load += new System.EventHandler(this.FrmCarrinho_Load);
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-			this.panel2.ResumeLayout(false);
-			this.panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.NudQuantidade)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctRegistar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.PctEncomenda)).EndInit();
+			this.PnlEncomendar.ResumeLayout(false);
+			this.PnlEncomendar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).EndInit();
+			this.PnlRegistar.ResumeLayout(false);
+			this.PnlRegistar.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.TextBox TxtValor;
+		private System.Windows.Forms.ComboBox CboCliente;
+		private System.Windows.Forms.Label LblValor;
+		private System.Windows.Forms.Label LblEstado;
+		private System.Windows.Forms.Label LblData;
+		private System.Windows.Forms.Label LblCliente;
+		private System.Windows.Forms.ComboBox CboEstado;
+		private System.Windows.Forms.DateTimePicker DtpEntrega;
+		private System.Windows.Forms.Button BtnGuardar;
+		private System.Windows.Forms.PictureBox PctEncomenda;
+		private System.Windows.Forms.ComboBox CmbProduto;
+		private System.Windows.Forms.FlowLayoutPanel FlpProdutos;
+		private System.Windows.Forms.NumericUpDown NudQuantidade;
+		private System.Windows.Forms.Label LblTotal;
+		private System.Windows.Forms.PictureBox PctRegistar;
+		private System.ComponentModel.BackgroundWorker BgwInicio;
+		private System.Windows.Forms.Panel PnlEncomendar;
+		private System.Windows.Forms.PictureBox PctAdd;
+		private System.Windows.Forms.Panel PnlRegistar;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox comboBox2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.ComboBox comboBox3;
-		private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.ComponentModel.BackgroundWorker backgroundWorker1;
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.PictureBox pictureBox3;
-		private System.Windows.Forms.Panel panel2;
 	}
 }

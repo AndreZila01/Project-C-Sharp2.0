@@ -29,9 +29,11 @@ namespace VesteBem_Admin
 		List<Produtos> lstProduto = new List<Produtos>();
 		private void FrmCarrinho_Load(object sender, EventArgs e)
 		{
+			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!backgroundWorker1.IsBusy)
-				backgroundWorker1.RunWorkerAsync();
+			if (!BgwInicio.IsBusy)
+				BgwInicio.RunWorkerAsync();
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
@@ -68,9 +70,9 @@ namespace VesteBem_Admin
 		{
 			PictureBox Pct = sender as PictureBox;
 			int value = 0;
-			flowLayoutPanel1.Controls.Clear();
+			FlpProdutos.Controls.Clear();
 			if (Pct.Name == "Remove")
-				lstDetalhesEncomendas.Remove(lstDetalhesEncomendas[int.Parse(Pct.Tag.ToString())]); label6.Tag = "00";
+				lstDetalhesEncomendas.Remove(lstDetalhesEncomendas[int.Parse(Pct.Tag.ToString())]); LblTotal.Tag = "00";
 			lstDetalhesEncomendas.ToList().ForEach(item =>
 			{
 				int index = lstProduto.FindIndex(r => r.IdProduto == item.Id_Produtos);
@@ -81,7 +83,7 @@ namespace VesteBem_Admin
 				Pnl.BackColor = Color.Red;
 				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
 				Pnl.TabIndex = 0;
-				flowLayoutPanel1.Controls.Add(Pnl);
+				FlpProdutos.Controls.Add(Pnl);
 
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
@@ -90,7 +92,7 @@ namespace VesteBem_Admin
 				LblNome.Size = new System.Drawing.Size(35, 13);
 				LblNome.TabIndex = 0;
 				LblNome.BackColor = Color.LightGray;
-				LblNome.Tag = pictureBox1.Tag.ToString();
+				LblNome.Tag = PctEncomenda.Tag.ToString();
 				var ds = lstProduto[index].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[index].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[index].Nome;
 				LblNome.Click += new System.EventHandler(label_Click);
 				Pnl.Controls.Add(LblNome);
@@ -128,14 +130,14 @@ namespace VesteBem_Admin
 				PctRemove.Tag = "" + value;
 				Pnl.Controls.Add(PctRemove);
 
-				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
-				label6.Text = "Total: " + label6.Tag + "€";
+				LblTotal.Tag = "" + (double.Parse(LblTotal.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
+				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
 				value++;
 			});
 			if (lstDetalhesEncomendas.Count == 0)
 			{
-				label6.Tag = "0";
-				label6.Text = "Total: " + label6.Tag + "€";
+				LblTotal.Tag = "0";
+				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
 			}
 		}
 
@@ -184,13 +186,11 @@ namespace VesteBem_Admin
 			//	}
 			//}
 			#endregion
-			DateTime date = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, dateTimePicker1.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
 			Encomenda enc = new Encomenda();
-			enc.EstadoEncomendas = comboBox2.Text;
-			enc.DataEncomenda = date;
-			enc.Id_Cliente = Clientes.SelectIdCliente(comboBox1.Text);
-			enc.ValorEncomendas = double.Parse(textBox1.Text);
-			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == comboBox2.SelectedItem)].IdEstado);
+			enc.EstadoEncomendas = CboEstado.Text;
+			enc.Id_Cliente = Clientes.SelectIdCliente(CboCliente.Text);
+			enc.ValorEncomendas = double.Parse(TxtValor.Text);
+			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == CboEstado.SelectedItem)].IdEstado);
 			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
 			//int idEncomenda = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.Id_Cliente);
 			int temp = 0;
@@ -200,16 +200,16 @@ namespace VesteBem_Admin
 			});
 			EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
 			lstDetalhesEncomendas.Clear();
-			panel2.Enabled = false;
-			textBox1.Text = "";
-			comboBox1.Text = "";
-			flowLayoutPanel1.Controls.Clear();
+			PnlRegistar.Enabled = false;
+			TxtValor.Text = "";
+			CboCliente.Text = "";
+			FlpProdutos.Controls.Clear();
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			pictureBox1.Image = lstProduto[comboBox3.SelectedIndex].Icon;
-			pictureBox1.Tag = comboBox3.SelectedIndex;
+			PctEncomenda.Image = lstProduto[CmbProduto.SelectedIndex].Icon;
+			PctEncomenda.Tag = CmbProduto.SelectedIndex;
 		}
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
@@ -218,7 +218,7 @@ namespace VesteBem_Admin
 			List<int> lstId = new List<int>();
 			List<DetalhesEncomendas> lst = new List<DetalhesEncomendas>();
 			Encomenda enc = new Encomenda();
-			enc.ValorEncomendas = double.Parse(label6.Tag.ToString());
+			enc.ValorEncomendas = double.Parse(LblTotal.Tag.ToString());
 			int ds = 0;
 			List<DetalhesEncomendas> indexT = new List<DetalhesEncomendas>();//new int[lstDetalhesEncomendas.Count()];
 
@@ -301,51 +301,49 @@ namespace VesteBem_Admin
 			//Certificar se o utilizador meteu varias vezes os produtos
 			if (lstDetalhesEncomendas.Count() > 0)
 			{
-				textBox1.Text = label6.Tag.ToString();
-				comboBox2.SelectedItem = "Na Fabrica";
-				textBox1.Enabled = false;
-				panel2.Enabled = true;
+				TxtValor.Text = LblTotal.Tag.ToString();
+				CboEstado.SelectedItem = "Na Fabrica";
+				TxtValor.Enabled = false;
+				PnlRegistar.Enabled = true;
 			}
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			label6.Tag = "00";
+			LblTotal.Tag = "00";
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
 				if (item.Estado == "Na Fabrica")
-					comboBox2.Items.Add(item.Estado);
+					CboEstado.Items.Add(item.Estado);
 			});
 			lstcli = Clientes.SelectId();
 			lstcli.ToList().ForEach(item =>
 			{
-				comboBox1.Items.Add(item.Nome);
+				CboCliente.Items.Add(item.Nome);
 			});
 			lstProduto = EncomendasEDetalhesEProduto.SelectProdutos();
 			lstProduto.ToList().ForEach(item =>
 			{
-				comboBox3.Items.Add(item.IdProduto + " - " + item.Nome);
+				CmbProduto.Items.Add(item.IdProduto + " - " + item.Nome);
 			});
 
-			pictureBox2.Click += PctRemove_Click;
-			dateTimePicker1.Value = DateTime.Today;
-			dateTimePicker1.MinDate = DateTime.Today;
+			PctRegistar.Click += PctRemove_Click;
 			try
 			{
-				var ds = DateTime.Today.Month!=12? dateTimePicker2.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4): dateTimePicker2.Value = new DateTime((DateTime.Today.Year+1), 1, 4);
+				var ds = DateTime.Today.Month!=12? DtpEntrega.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4): DtpEntrega.Value = new DateTime((DateTime.Today.Year+1), 1, 4);
 			}
 			catch
 			{
-				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1) : dateTimePicker2.Value = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? DtpEntrega.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1) : DtpEntrega.Value = new DateTime((DateTime.Today.Year+1), 1, 1);
 			}
 			try
 			{
-				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1) : dateTimePicker2.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? DtpEntrega.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1) : DtpEntrega.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
 			}
 			catch
 			{
-				var ds = DateTime.Today.Month != 12 ? dateTimePicker2.MinDate = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1),1): dateTimePicker2.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? DtpEntrega.MinDate = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1),1): DtpEntrega.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
 			}
 			int data; int mes = DateTime.Today.Month + 4;
 			if (mes > 12)
@@ -362,7 +360,7 @@ namespace VesteBem_Admin
 				data = 28;
 
 			
-			dateTimePicker2.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
+			DtpEntrega.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
 		}
 
 		private void FrmCarrinho_FormClosed(object sender, FormClosedEventArgs e)
@@ -374,7 +372,7 @@ namespace VesteBem_Admin
 
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
-			if(comboBox3.Text!="")
+			if(CmbProduto.Text!="")
 			try
 			{
 				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
@@ -384,7 +382,7 @@ namespace VesteBem_Admin
 				Pnl.BackColor = Color.Red;
 				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
 				Pnl.TabIndex = 0;
-				flowLayoutPanel1.Controls.Add(Pnl);
+				FlpProdutos.Controls.Add(Pnl);
 
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
@@ -393,8 +391,8 @@ namespace VesteBem_Admin
 				LblNome.Size = new System.Drawing.Size(35, 13);
 				LblNome.TabIndex = 0;
 				LblNome.BackColor = Color.LightGray;
-				LblNome.Tag = pictureBox1.Tag.ToString();
-				var ds = lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Nome;
+				LblNome.Tag = PctEncomenda.Tag.ToString();
+				var ds = lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome;
 				LblNome.Click += new System.EventHandler(label_Click);
 				Pnl.Controls.Add(LblNome);
 
@@ -405,8 +403,8 @@ namespace VesteBem_Admin
 				LblPreco.Size = new System.Drawing.Size(25, 13);
 				LblPreco.TabIndex = 1;
 				LblPreco.BackColor = Color.Green;
-				LblPreco.Text = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor + "€";
-				LblPreco.Tag = "" + lstProduto[int.Parse(pictureBox1.Tag.ToString())].Valor;
+				LblPreco.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Valor + "€";
+				LblPreco.Tag = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Valor;
 				Pnl.Controls.Add(LblPreco);
 
 				Label LblQuantidade = new Label();
@@ -416,8 +414,8 @@ namespace VesteBem_Admin
 				LblQuantidade.TabIndex = 1;
 				LblQuantidade.BackColor = Color.Gray;
 				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
-				LblQuantidade.Text = numericUpDown1.Value + " x";
-				LblQuantidade.Tag = "" + numericUpDown1.Value;
+				LblQuantidade.Text = NudQuantidade.Value + " x";
+				LblQuantidade.Tag = "" + NudQuantidade.Value;
 				Pnl.Controls.Add(LblQuantidade);
 
 				PictureBox PctRemove = new PictureBox();
@@ -432,12 +430,12 @@ namespace VesteBem_Admin
 				PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
 				Pnl.Controls.Add(PctRemove);
 
-				label6.Tag = "" + (double.Parse(label6.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
-				label6.Text = "Total: " + label6.Tag + "€";
+				LblTotal.Tag = "" + (double.Parse(LblTotal.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
+				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
 
 				Detalhes.Id_Encomendas = lstDetalhesEncomendas.Count();
-				Detalhes.Id_Produtos = lstProduto[int.Parse(pictureBox1.Tag.ToString())].IdProduto;
-				Detalhes.QuantEnc = int.Parse(numericUpDown1.Value.ToString());
+				Detalhes.Id_Produtos = lstProduto[int.Parse(PctEncomenda.Tag.ToString())].IdProduto;
+				Detalhes.QuantEnc = int.Parse(NudQuantidade.Value.ToString());
 				lstDetalhesEncomendas.Add(Detalhes);
 			}
 			catch { }
