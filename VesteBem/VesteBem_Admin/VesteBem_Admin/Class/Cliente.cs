@@ -507,11 +507,60 @@ namespace VesteBem_Admin.Class
 	}
 	public class EncomendasEDetalhesEProduto
 	{
+		public static List<ConsultarDetalhesEncomenda> ConsultarDetalhesDaEncomenda(int idEncomenda)
+		{
+			List<ConsultarDetalhesEncomenda> lst = new List<ConsultarDetalhesEncomenda>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select IdProduto, tbl_Produtos.Nome as NomeProduto, tbl_Cliente.Nome as NomeCliente, Icon, QuantEnc From tbl_Produtos, tbl_Cliente, tbl_Encomendas, tblDetalheEncomendas where tblDetalheEncomendas.Id_Encomendas = tbl_Encomendas.IdEncomendas and tblDetalheEncomendas.Id_Produtos = tbl_Produtos.IdProduto and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente and tblDetalheEncomendas.Id_Encomendas = " + idEncomenda + " order by IdProduto", liga);
+			try
+			{
+				SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+				DataSet dataSet = new DataSet();
+				dataAdapter.Fill(dataSet);
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					int ds = 0;
+					while (oReader.Read())
+					{
+						ConsultarDetalhesEncomenda cons = new ConsultarDetalhesEncomenda();
+
+						try
+						{
+							Byte[] data = new Byte[0];
+							data = (Byte[])(dataSet.Tables[0].Rows[ds]["Icon"]);
+							MemoryStream mem = new MemoryStream(data);
+							cons.Icon = Image.FromStream(mem);
+						}
+						catch
+						{
+
+						}
+						ds++;
+						cons.IdProduto = int.Parse(oReader["IdProduto"].ToString());
+						cons.NomeCliente = oReader["NomeCliente"].ToString();
+						cons.NomeProduto = oReader["NomeProduto"].ToString();
+						cons.QuantEnc = int.Parse(oReader["QuantEnc"].ToString());
+						lst.Add(cons);
+					}
+				}
+			}
+			catch
+			{
+
+			}
+			finally
+			{
+				liga.Close();
+			}
+			return lst;
+		}
 		public static int SelectIdEncomenda(double ValorEncomendas, int Id_Cliente, DateTime DataEncomenda, int EstadoEncomendas)
 		{
-			int id=0;
+			int id = 0;
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select * From tbl_Encomendas where ValorEncomendas="+ ValorEncomendas + " and Id_Cliente="+Id_Cliente+" and DataEncomenda='"+DataEncomenda.Date.ToString("yyyyMMdd") + "' and EstadoEncomendas="+EstadoEncomendas+"", liga);
+			SqlCommand comando = new SqlCommand("Select * From tbl_Encomendas where ValorEncomendas=" + ValorEncomendas.ToString().Replace(',', '.') + " and Id_Cliente=" + Id_Cliente + " and DataEncomenda='" + DataEncomenda.Date.ToString("yyyyMMdd") + "' and EstadoEncomendas=" + EstadoEncomendas + "", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -520,11 +569,11 @@ namespace VesteBem_Admin.Class
 				{
 					while (oReader.Read())
 					{
-						id= int.Parse(oReader["IdEncomendas"].ToString());
+						id = int.Parse(oReader["IdEncomendas"].ToString());
 					}
 				}
 			}
-			catch(Exception EX)
+			catch
 			{
 				return id;
 			}
@@ -555,7 +604,7 @@ namespace VesteBem_Admin.Class
 
 					command.ExecuteNonQuery();
 				}
-				catch (Exception ex)
+				catch
 				{
 
 				}
@@ -620,61 +669,15 @@ namespace VesteBem_Admin.Class
 			}
 
 			return lstProdutos;
-			#region teste
-			//List<Produtos> lstProduto = new List<Produtos>();
-			//SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			//SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
-			//try
-			//{
-			//	DataSet dataSet = new DataSet();
-			//	SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
-			//	dataAdapter.Fill(dataSet);
-			//	comando.Connection = liga;
-			//	liga.Open();
-			//	using (SqlDataReader oReader = comando.ExecuteReader())
-			//	{
-			//		ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-
-			//		int dss = 0;
-			//		while (oReader.Read())
-			//		{
-			//			Byte[] data = new Byte[0];
-			//			data = (Byte[])(dataSet.Tables[0].Rows[dss]["Icon"]);
-			//			MemoryStream mem = new MemoryStream(data);
-
-			//			Produtos pro = new Produtos();
-			//			pro.Icon = Image.FromStream(mem);
-			//			pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
-			//			pro.Nome = (oReader["Nome"].ToString());
-			//			pro.Valor = double.Parse(oReader["Valor"].ToString());
-			//			pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
-			//			pro.CategoriaClass = (oReader["CategoriaClasse"].ToString());
-			//			pro.CategoriaSubClass = (oReader["CategoriaSubClasse"].ToString());
-			//			pro.Sexo = (oReader["Sexo"].ToString());
-			//			dss++;
-			//			lstProduto.Add(pro);
-			//		}
-			//	}
-			//}
-			//catch(Exception ex)
-			//{
-			//	return null;
-			//}
-			//finally
-			//{
-			//	liga.Close();
-			//}
-
-			//return lstProduto;
-			#endregion
+			
 		}
 		public static List<Produtos> SelectCategoriaProdutos(string CategoriaClasse)
 		{
 			SqlCommand comando;
 			List<Produtos> lstProdutos = new List<Produtos>();
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			if(CategoriaClasse!="")
-				comando = new SqlCommand("Select * From tbl_Produtos where CategoriaClasse='"+CategoriaClasse+"'", liga);
+			if (CategoriaClasse != "")
+				comando = new SqlCommand("Select * From tbl_Produtos where CategoriaClasse='" + CategoriaClasse + "'", liga);
 			else
 				comando = new SqlCommand("Select * From tbl_Produtos", liga);
 
@@ -768,7 +771,7 @@ namespace VesteBem_Admin.Class
 						command.CommandText = "SpInsertDetalhes";
 						command.CommandType = System.Data.CommandType.StoredProcedure;
 
-						if (command.Parameters.Count <3)
+						if (command.Parameters.Count < 3)
 						{
 							command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
 							command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
@@ -787,7 +790,7 @@ namespace VesteBem_Admin.Class
 
 						command.ExecuteNonQuery();
 					}
-					catch (Exception ex)
+					catch
 					{
 						//return ex.Message;
 					}
@@ -832,7 +835,7 @@ namespace VesteBem_Admin.Class
 			SqlCommand command = new SqlCommand();
 			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 			{
-				command.CommandText = "Delete tbl_Produtos where IdProduto=" + idProduto+"";
+				command.CommandText = "Delete tbl_Produtos where IdProduto=" + idProduto + "";
 				try
 				{
 					command.Connection = liga;
@@ -862,7 +865,7 @@ namespace VesteBem_Admin.Class
 			command.CommandType = System.Data.CommandType.StoredProcedure;
 			try
 			{
-				
+
 				try
 				{
 					if (pro.CaminhoImg != "")
@@ -891,7 +894,7 @@ namespace VesteBem_Admin.Class
 				command.Parameters.Add(new SqlParameter("NomedaEmpresa", pro.NomedaEmpresa));
 				command.Parameters.Add(new SqlParameter("CategoriaClasse", pro.CategoriaClass));
 				command.Parameters.Add(new SqlParameter("CategoriaSubClasse", pro.CategoriaSubClass));
-				
+
 				command.Parameters.Add(new SqlParameter("Sexo", pro.Sexo));
 
 
@@ -912,23 +915,21 @@ namespace VesteBem_Admin.Class
 			}
 		}
 
-		public static List<VerEncomenda> SelectCarrinho(int IdConsulta, string Nome,int Estado, DateTime Inicio, DateTime Fim)
+		public static List<VerEncomenda> SelectCarrinho(int IdConsulta, string Nome, int Estado, DateTime Inicio, DateTime Fim)
 		{
 			List<VerEncomenda> lst = new List<VerEncomenda>();
 			string AuxComando = "";
 			if (IdConsulta != 0)
 				AuxComando = "and IdEncomendas=" + IdConsulta;
 			if (Nome != "" && !(int.TryParse(Nome, out Estado)))
-				AuxComando += " and Nome='"+Nome+"'";
+				AuxComando += " and Nome='" + Nome + "'";
 			if (Estado != 0)
 				AuxComando += " and EstadoEncomendas= " + Estado;
-			//if()
-
+			
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-				SqlCommand comando = new SqlCommand("Select DISTINCT IdCliente,Nome,IdEncomendas,ValorEncomendas,EstadoEncomendas,DataEncomenda From tbl_Cliente,tbl_Encomendas,tblEstado,tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas=tblEstado.IdEstado and tbl_Encomendas.Id_Cliente=tbl_Cliente.IdCliente "+ AuxComando + " and DataEncomenda Between '"+Inicio.ToString("yyyy-MM-dd hh:mm:ss") + "' and '"+Fim.ToString("yyyy-MM-dd hh:mm:ss") + "' order by IdCliente", liga);
-													//Select DISTINCT  IdCliente, Nome, IdEncomendas, ValorEncomendas, EstadoEncomendas, DataEncomenda, DataEntrega From tbl_Cliente, tbl_Encomendas, tblEstado, tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas = tblEstado.IdEstado and tbl_Encomendas.Id_Cliente = tbl_Cliente.IdCliente  and EstadoEncomendas= 2 and DataEntrega BETWEEN '2021-05-31 02:22:37' and '2021-06-06 12:00:00' order by IdCliente
+				SqlCommand comando = new SqlCommand("Select DISTINCT IdCliente,Nome,IdEncomendas,ValorEncomendas,EstadoEncomendas,DataEncomenda From tbl_Cliente,tbl_Encomendas,tblEstado,tblDetalheEncomendas where tbl_Encomendas.EstadoEncomendas=tblEstado.IdEstado and tbl_Encomendas.Id_Cliente=tbl_Cliente.IdCliente " + AuxComando + " and DataEncomenda Between '" + Inicio.ToString("yyyy-MM-dd hh:mm:ss") + "' and '" + Fim.ToString("yyyy-MM-dd hh:mm:ss") + "' order by IdCliente", liga);
 				try
 				{
 					comando.Connection = liga;
@@ -948,7 +949,7 @@ namespace VesteBem_Admin.Class
 						}
 					}
 				}
-				catch(Exception ex)
+				catch 
 				{
 					return lst;
 				}

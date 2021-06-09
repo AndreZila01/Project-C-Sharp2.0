@@ -31,6 +31,8 @@ namespace VesteBem_Admin
 			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
+			cboEstado.Text = "Pendente";
+			cboEstado.Items.Add("Pendente");
 			if (!bgwInicio.IsBusy)
 				bgwInicio.RunWorkerAsync();
 		}
@@ -152,7 +154,8 @@ namespace VesteBem_Admin
 			enc.EstadoEncomendas = cboEstado.Text;
 			enc.Id_Cliente = Clientes.SelectIdCliente(cboCliente.Text);
 			enc.ValorEncomendas = double.Parse(txtValor.Text);
-			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == cboEstado.SelectedItem)].IdEstado);
+			enc.DataEncomenda = dtpEntrega.Value;
+			EncomendasEDetalhesEProduto.InsertEncomendas(enc, 1);
 			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
 			int temp = 0;
 			lstDetalhesEncomendas.ToList().ForEach(item =>

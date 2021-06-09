@@ -74,7 +74,15 @@ namespace VesteBem_Admin
 						produtos.Nome = txtNome.Text;
 						produtos.NomedaEmpresa = txtEmpresa.Text;
 						produtos.Sexo = cboSexo.Text.Substring(0, 1);
-						produtos.Valor = double.Parse(txtValor.Text.Replace(',','.'));
+						try
+						{
+							produtos.Valor = double.Parse(txtValor.Text/*.Replace(',', '.')*/);//ver em casa
+
+						}
+						catch
+						{
+							produtos.Valor = double.Parse(txtValor.Text.Replace(',', '.'));
+						}
 						produtos.CategoriaClass = txtCat.Text;
 						produtos.CategoriaSubClass = txtSubCat.Text;
 						produtos.CaminhoImg = txtIcon.Text;
@@ -90,7 +98,7 @@ namespace VesteBem_Admin
 							txtEmpresa.Text = null;
 							cboSexo.Text = "";
 							pctImage.Image = null;
-							icnNotificação.ShowBalloonTip(100,"Produto Registado", "O produto "+produtos.Nome+", foi registado com sucesso!", ToolTipIcon.None);
+							icnNotificação.ShowBalloonTip(100, "Produto Registado", "O produto " + produtos.Nome + ", foi registado com sucesso!", ToolTipIcon.None);
 						}
 
 					}
@@ -99,7 +107,7 @@ namespace VesteBem_Admin
 				}
 				catch (Exception ex)
 				{
-					icnNotificação.ShowBalloonTip(100, "Error", ""+ex.Message+"", ToolTipIcon.Error);
+					icnNotificação.ShowBalloonTip(100, "Error", "" + ex.Message + "", ToolTipIcon.Error);
 				}
 			}
 			else
@@ -112,13 +120,20 @@ namespace VesteBem_Admin
 						produtos.Nome = txtNome.Text;
 						produtos.NomedaEmpresa = txtEmpresa.Text;
 						produtos.Sexo = cboSexo.Text.Substring(0, 1);
-						produtos.Valor = double.Parse(txtValor.Text.Replace(',', '.'));
+						try
+						{
+							produtos.Valor = double.Parse(txtValor.Text/*.Replace(',', '.')*/);//ver em casa
+						}
+						catch
+						{
+							produtos.Valor = double.Parse(txtValor.Text.Replace(',', '.'));
+						}
 						produtos.CategoriaClass = txtCat.Text;
 						produtos.CategoriaSubClass = txtSubCat.Text;
 						produtos.CaminhoImg = txtIcon.Text;
 						produtos.IdProduto = idProdutos;
-							if (txtIcon.Text == "")
-								produtos.Icon = pctImage.Image;
+						if (txtIcon.Text == "")
+							produtos.Icon = pctImage.Image;
 						string dss = EncomendasEDetalhesEProduto.AtualizarProdutos(produtos);
 
 						if (dss == "sucesso")
@@ -131,7 +146,7 @@ namespace VesteBem_Admin
 				}
 				catch (Exception ex)
 				{
-					icnNotificação.ShowBalloonTip(25, "Error", ""+ex.Message+"", ToolTipIcon.Error);
+					icnNotificação.ShowBalloonTip(25, "Error", "" + ex.Message + "", ToolTipIcon.Error);
 				}
 			}
 		}

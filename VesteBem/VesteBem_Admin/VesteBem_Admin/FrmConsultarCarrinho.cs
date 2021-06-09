@@ -73,81 +73,93 @@ namespace VesteBem_Admin
 			flpCentro.Controls.Clear();
 			LstEncomendas.ToList().ForEach(item =>
 			{
-				Panel Pnl = new Panel();
-				Pnl.Dock = System.Windows.Forms.DockStyle.Top;
-				Pnl.Location = new System.Drawing.Point(0, 0);
-				Pnl.Margin = new System.Windows.Forms.Padding(0);
-				Pnl.Name = "panel2";
-				Pnl.Size = new System.Drawing.Size(800, 49);
-				Pnl.TabIndex = 0;
-				Pnl.BackColor = Color.Red;
-				flpCentro.Controls.Add(Pnl);
+					Panel Pnl = new Panel();
+					Pnl.Dock = System.Windows.Forms.DockStyle.Top;
+					Pnl.Location = new System.Drawing.Point(0, 0);
+					Pnl.Margin = new System.Windows.Forms.Padding(0);
+					Pnl.Name = "panel2";
+					Pnl.Size = new System.Drawing.Size(800, 49);
+					Pnl.TabIndex = 0;
+					Pnl.BackColor = Color.Red;
+					flpCentro.Controls.Add(Pnl);
 
 
-				Label LblEstado = new Label();
-				LblEstado.AutoSize = true;
-				LblEstado.Location = new System.Drawing.Point(13, 17);
-				LblEstado.Name = "LblEstado";
-				LblEstado.BackColor = Color.Green;
-				LblEstado.Size = new System.Drawing.Size(35, 13);
-				LblEstado.TabIndex = 0;
-				LblEstado.Text = "" + cmbEstado.Text;
+					Label LblEstado = new Label();
+					LblEstado.AutoSize = true;
+					LblEstado.Location = new System.Drawing.Point(13, 17);
+					LblEstado.Name = "LblEstado";
+					LblEstado.BackColor = Color.Green;
+					LblEstado.Size = new System.Drawing.Size(35, 13);
+					LblEstado.TabIndex = 0;
+					LblEstado.Text = "" + cmbEstado.Text;
 
-				Label LblCliente = new Label();
-				LblCliente.AutoSize = true;
-				LblCliente.Location = new System.Drawing.Point(107, 17);
-				LblCliente.Name = "LblCliente";
-				LblCliente.BackColor = Color.Gray;
-				LblCliente.Size = new System.Drawing.Size(35, 13);
-				LblCliente.TabIndex = 1;
-				LblCliente.Tag = "" + item.IdCliente;
-				LblCliente.Text = "Cliente:   " + item.Nome;
+					Label LblCliente = new Label();
+					LblCliente.AutoSize = true;
+					LblCliente.Location = new System.Drawing.Point(107, 17);
+					LblCliente.Name = "LblCliente";
+					LblCliente.BackColor = Color.Gray;
+					LblCliente.Size = new System.Drawing.Size(35, 13);
+					LblCliente.TabIndex = 1;
+					LblCliente.Tag = "" + item.IdCliente;
+					LblCliente.Text = "Cliente:   " + item.Nome;
 
-				Label LblData = new Label();
-				LblData.AutoSize = true;
-				LblData.BackColor = Color.Blue;
-				LblData.Location = new System.Drawing.Point(500, 17);
-				LblData.Name = "LblData";
-				LblData.Size = new System.Drawing.Size(35, 13);
-				LblData.TabIndex = 2;
-				LblData.Text = "Data Encomendada:       " + item.DataEncomenda.ToString("yyyy-MM-dd"); //\t não funciona
+					Label LblData = new Label();
+					LblData.AutoSize = true;
+					LblData.BackColor = Color.Blue;
+					LblData.Location = new System.Drawing.Point(500, 17);
+					LblData.Name = "LblData";
+					LblData.Size = new System.Drawing.Size(35, 13);
+					LblData.TabIndex = 2;
+					LblData.Text = "Data Encomendada:       " + item.DataEncomenda.ToString("yyyy-MM-dd"); //\t não funciona
 
-				PictureBox PctMoreInfo = new PictureBox();
-				PctMoreInfo.Image = global::VesteBem_Admin.Properties.Resources.magnifying_glass;
-				PctMoreInfo.Location = new System.Drawing.Point(700, 6);
-				PctMoreInfo.Name = "PctMoreInfo";
-				PctMoreInfo.Size = new System.Drawing.Size(44, 40);
-				PctMoreInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-				PctMoreInfo.TabIndex = 3;
-				PctMoreInfo.Anchor = System.Windows.Forms.AnchorStyles.Right;
-				PctMoreInfo.TabStop = false;
+					PictureBox PctMoreInfo = new PictureBox();
+					PctMoreInfo.Image = global::VesteBem_Admin.Properties.Resources.magnifying_glass;
+					PctMoreInfo.Location = new System.Drawing.Point(700, 6);
+					PctMoreInfo.Name = "PctMoreInfo";
+					PctMoreInfo.Size = new System.Drawing.Size(44, 40);
+					PctMoreInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+					PctMoreInfo.TabIndex = 3;
+					PctMoreInfo.Tag = "" + item.IdEncomendas;
+					PctMoreInfo.Click += new System.EventHandler(pctPesquisar_Click);
+					PctMoreInfo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+					PctMoreInfo.TabStop = false;
 
-				Label LblIdEncomenda = new Label();
-				LblIdEncomenda.AutoSize = true;
-				LblIdEncomenda.Location = new System.Drawing.Point(320, 17);
-				LblIdEncomenda.Name = "LblIdEncomenda";
-				LblIdEncomenda.Size = new System.Drawing.Size(35, 13);
-				LblIdEncomenda.TabIndex = 4;
-				LblIdEncomenda.BackColor = Color.Orange;
-				LblIdEncomenda.Text = "Nº de Encomenda:    " + item.IdEncomendas;
+					Label LblIdEncomenda = new Label();
+					LblIdEncomenda.AutoSize = true;
+					LblIdEncomenda.Location = new System.Drawing.Point(320, 17);
+					LblIdEncomenda.Name = "LblIdEncomenda";
+					LblIdEncomenda.Size = new System.Drawing.Size(35, 13);
+					LblIdEncomenda.TabIndex = 4;
+					LblIdEncomenda.BackColor = Color.Orange;
+					LblIdEncomenda.Text = "Nº de Encomenda:    " + item.IdEncomendas;
 
-				Pnl.Controls.Add(LblIdEncomenda);
-				Pnl.Controls.Add(PctMoreInfo);
-				Pnl.Controls.Add(LblData);
-				Pnl.Controls.Add(LblCliente);
-				Pnl.Controls.Add(LblEstado);
+					Pnl.Controls.Add(LblIdEncomenda);
+					Pnl.Controls.Add(PctMoreInfo);
+					Pnl.Controls.Add(LblData);
+					Pnl.Controls.Add(LblCliente);
+					Pnl.Controls.Add(LblEstado);
+				
 			});
 		}
 
-		private void Select()
+		private void pctPesquisar_Click(object sender, EventArgs e)
+		{
+			PictureBox pct = sender as PictureBox;
+
+			frmConsultarDetalhe frm = new frmConsultarDetalhe(int.Parse(pct.Tag.ToString()));
+			frm.ShowDialog();
+
+		}
+
+		private new void Select()
 		{
 			int ds = 0;
 			if (int.TryParse(txtClienteId.Text, out int dss))
 			{
 				ds = int.Parse(txtClienteId.Text);
 				txtClienteId.Text = "";
-			}                                 
-			
+			}
+
 			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, txtClienteId.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == cmbEstado.Text)].IdEstado, dtpInicio.Value, dtpChegada.Value);
 
 			//if(comboBox1.Tag!=null)	

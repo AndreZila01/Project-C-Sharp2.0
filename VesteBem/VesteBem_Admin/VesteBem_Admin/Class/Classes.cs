@@ -230,4 +230,28 @@ namespace VesteBem_Admin.Class
 		/// </summary>
 		public DateTime DataEncomenda { get; set; }
 	}
+
+	public class ConsultarDetalhesEncomenda
+	{
+		/// <summary>
+		/// Id do Produto
+		/// </summary>
+		public int IdProduto { get; set; }
+		/// <summary>
+		/// Nome do Produto
+		/// </summary>
+		public string NomeProduto { get; set; }
+		/// <summary>
+		/// Nome do Cliente
+		/// </summary>
+		public string NomeCliente { get; set; }
+		/// <summary>
+		/// Imagem do Produto
+		/// </summary>
+		public Image Icon { get; set; }
+		/// <summary>
+		/// Quantidade do Produto
+		/// </summary>
+		public int QuantEnc { get; set; }
+	}
 }

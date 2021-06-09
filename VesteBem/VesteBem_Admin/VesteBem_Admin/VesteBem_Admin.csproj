@@ -101,17 +101,17 @@
     <Compile Include="FrmConsultarCarrinho.Designer.cs">
       <DependentUpon>FrmConsultarCarrinho.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConsultarDetalhe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConsultarDetalhe.Designer.cs">
+      <DependentUpon>frmConsultarDetalhe.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEditarApagarProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmEditarApagarProdutos.Designer.cs">
       <DependentUpon>FrmEditarApagarProdutos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmEditarCarrinho.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmEditarCarrinho.Designer.cs">
-      <DependentUpon>FrmEditarCarrinho.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -142,11 +142,11 @@
     <EmbeddedResource Include="FrmConsultarCarrinho.resx">
       <DependentUpon>FrmConsultarCarrinho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConsultarDetalhe.resx">
+      <DependentUpon>frmConsultarDetalhe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEditarApagarProdutos.resx">
       <DependentUpon>FrmEditarApagarProdutos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmEditarCarrinho.resx">
-      <DependentUpon>FrmEditarCarrinho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
