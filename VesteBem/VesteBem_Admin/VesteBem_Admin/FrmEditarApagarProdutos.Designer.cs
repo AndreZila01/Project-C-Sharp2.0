@@ -1,7 +1,7 @@
 ﻿
 namespace VesteBem_Admin
 {
-	partial class FrmEditarApagarProdutos
+	partial class frmEditarApagarProdutos
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,37 +29,37 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarApagarProdutos));
-			this.PnlCima = new System.Windows.Forms.Panel();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarApagarProdutos));
+			this.pnlCima = new System.Windows.Forms.Panel();
 			this.lblNome = new System.Windows.Forms.Label();
-			this.LblCat = new System.Windows.Forms.Label();
-			this.CmbCategoria = new System.Windows.Forms.ComboBox();
-			this.TxtNome = new System.Windows.Forms.TextBox();
-			this.FlwCentro = new System.Windows.Forms.FlowLayoutPanel();
-			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
-			this.BgwModificar = new System.ComponentModel.BackgroundWorker();
+			this.lblCat = new System.Windows.Forms.Label();
+			this.cmbCategoria = new System.Windows.Forms.ComboBox();
+			this.txtNome = new System.Windows.Forms.TextBox();
+			this.flwCentro = new System.Windows.Forms.FlowLayoutPanel();
+			this.bgwInicio = new System.ComponentModel.BackgroundWorker();
+			this.bgwModificar = new System.ComponentModel.BackgroundWorker();
 			this.LblNomeProduto = new System.Windows.Forms.Label();
 			this.LblCategoria = new System.Windows.Forms.Label();
 			this.LblSubCategoria = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.PnlCima.SuspendLayout();
+			this.pnlCima.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// PnlCima
+			// pnlCima
 			// 
-			this.PnlCima.Controls.Add(this.lblNome);
-			this.PnlCima.Controls.Add(this.LblCat);
-			this.PnlCima.Controls.Add(this.CmbCategoria);
-			this.PnlCima.Controls.Add(this.TxtNome);
-			this.PnlCima.Dock = System.Windows.Forms.DockStyle.Top;
-			this.PnlCima.Location = new System.Drawing.Point(0, 0);
-			this.PnlCima.Margin = new System.Windows.Forms.Padding(0);
-			this.PnlCima.Name = "PnlCima";
-			this.PnlCima.Size = new System.Drawing.Size(800, 42);
-			this.PnlCima.TabIndex = 0;
+			this.pnlCima.Controls.Add(this.lblNome);
+			this.pnlCima.Controls.Add(this.lblCat);
+			this.pnlCima.Controls.Add(this.cmbCategoria);
+			this.pnlCima.Controls.Add(this.txtNome);
+			this.pnlCima.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlCima.Location = new System.Drawing.Point(0, 0);
+			this.pnlCima.Margin = new System.Windows.Forms.Padding(0);
+			this.pnlCima.Name = "pnlCima";
+			this.pnlCima.Size = new System.Drawing.Size(800, 42);
+			this.pnlCima.TabIndex = 0;
 			// 
 			// lblNome
 			// 
@@ -70,49 +70,49 @@ namespace VesteBem_Admin
 			this.lblNome.TabIndex = 3;
 			this.lblNome.Text = "Nome do Produto:";
 			// 
-			// LblCat
+			// lblCat
 			// 
-			this.LblCat.AutoSize = true;
-			this.LblCat.Location = new System.Drawing.Point(559, 13);
-			this.LblCat.Name = "LblCat";
-			this.LblCat.Size = new System.Drawing.Size(55, 13);
-			this.LblCat.TabIndex = 2;
-			this.LblCat.Text = "Categoria:";
+			this.lblCat.AutoSize = true;
+			this.lblCat.Location = new System.Drawing.Point(559, 13);
+			this.lblCat.Name = "lblCat";
+			this.lblCat.Size = new System.Drawing.Size(55, 13);
+			this.lblCat.TabIndex = 2;
+			this.lblCat.Text = "Categoria:";
 			// 
-			// CmbCategoria
+			// cmbCategoria
 			// 
-			this.CmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CmbCategoria.FormattingEnabled = true;
-			this.CmbCategoria.Location = new System.Drawing.Point(620, 10);
-			this.CmbCategoria.Name = "CmbCategoria";
-			this.CmbCategoria.Size = new System.Drawing.Size(168, 21);
-			this.CmbCategoria.TabIndex = 1;
-			this.CmbCategoria.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+			this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbCategoria.FormattingEnabled = true;
+			this.cmbCategoria.Location = new System.Drawing.Point(620, 10);
+			this.cmbCategoria.Name = "cmbCategoria";
+			this.cmbCategoria.Size = new System.Drawing.Size(168, 21);
+			this.cmbCategoria.TabIndex = 1;
+			this.cmbCategoria.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
 			// 
-			// TxtNome
+			// txtNome
 			// 
-			this.TxtNome.Location = new System.Drawing.Point(104, 10);
-			this.TxtNome.Name = "TxtNome";
-			this.TxtNome.Size = new System.Drawing.Size(200, 20);
-			this.TxtNome.TabIndex = 0;
-			this.TxtNome.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+			this.txtNome.Location = new System.Drawing.Point(104, 10);
+			this.txtNome.Name = "txtNome";
+			this.txtNome.Size = new System.Drawing.Size(200, 20);
+			this.txtNome.TabIndex = 0;
+			this.txtNome.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
 			// 
-			// FlwCentro
+			// flwCentro
 			// 
-			this.FlwCentro.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.FlwCentro.Location = new System.Drawing.Point(0, 42);
-			this.FlwCentro.Name = "FlwCentro";
-			this.FlwCentro.Size = new System.Drawing.Size(800, 408);
-			this.FlwCentro.TabIndex = 1;
+			this.flwCentro.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flwCentro.Location = new System.Drawing.Point(0, 42);
+			this.flwCentro.Name = "flwCentro";
+			this.flwCentro.Size = new System.Drawing.Size(800, 408);
+			this.flwCentro.TabIndex = 1;
 			// 
-			// BgwInicio
+			// bgwInicio
 			// 
-			this.BgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			this.bgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.bgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
-			// BgwModificar
+			// bgwModificar
 			// 
-			this.BgwModificar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+			this.bgwModificar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
 			// 
 			// LblNomeProduto
 			// 
@@ -151,22 +151,22 @@ namespace VesteBem_Admin
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
-			// FrmEditarApagarProdutos
+			// frmEditarApagarProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.FlwCentro);
-			this.Controls.Add(this.PnlCima);
+			this.Controls.Add(this.flwCentro);
+			this.Controls.Add(this.pnlCima);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "FrmEditarApagarProdutos";
+			this.Name = "frmEditarApagarProdutos";
 			this.Text = "Editar ou Apagar Produto";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmEditarApagarProdutos_FormClosed);
-			this.Load += new System.EventHandler(this.FrmEditarApagarProdutos_Load);
-			this.PnlCima.ResumeLayout(false);
-			this.PnlCima.PerformLayout();
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmEditarApagarProdutos_FormClosed);
+			this.Load += new System.EventHandler(this.frmEditarApagarProdutos_Load);
+			this.pnlCima.ResumeLayout(false);
+			this.pnlCima.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
@@ -174,14 +174,14 @@ namespace VesteBem_Admin
 		}
 
 		#endregion
-		private System.Windows.Forms.Panel PnlCima;
-		private System.Windows.Forms.FlowLayoutPanel FlwCentro;
-		private System.Windows.Forms.TextBox TxtNome;
-		private System.Windows.Forms.ComboBox CmbCategoria;
-		private System.Windows.Forms.Label LblCat;
+		private System.Windows.Forms.Panel pnlCima;
+		private System.Windows.Forms.FlowLayoutPanel flwCentro;
+		private System.Windows.Forms.TextBox txtNome;
+		private System.Windows.Forms.ComboBox cmbCategoria;
+		private System.Windows.Forms.Label lblCat;
 		private System.Windows.Forms.Label lblNome;
-		private System.ComponentModel.BackgroundWorker BgwInicio;
-		private System.ComponentModel.BackgroundWorker BgwModificar;
+		private System.ComponentModel.BackgroundWorker bgwInicio;
+		private System.ComponentModel.BackgroundWorker bgwModificar;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		private System.Windows.Forms.Label LblNomeProduto;

@@ -1,7 +1,7 @@
 ﻿
 namespace VesteBem_Admin
 {
-	partial class FrmConsultarCarrinho
+	partial class frmConsultarCarrinho
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,154 +29,154 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultarCarrinho));
-			this.panel1 = new System.Windows.Forms.Panel();
-			this.LblFim = new System.Windows.Forms.Label();
-			this.LblInicio = new System.Windows.Forms.Label();
-			this.LblCliOuId = new System.Windows.Forms.Label();
-			this.LblEstado = new System.Windows.Forms.Label();
-			this.DtpChegada = new System.Windows.Forms.DateTimePicker();
-			this.DtpInicio = new System.Windows.Forms.DateTimePicker();
-			this.TxtClienteId = new System.Windows.Forms.TextBox();
-			this.CmbEstado = new System.Windows.Forms.ComboBox();
-			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
-			this.FlpCentro = new System.Windows.Forms.FlowLayoutPanel();
-			this.BgwModificar = new System.ComponentModel.BackgroundWorker();
-			this.panel1.SuspendLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarCarrinho));
+			this.pnlTop = new System.Windows.Forms.Panel();
+			this.lblFim = new System.Windows.Forms.Label();
+			this.lblInicio = new System.Windows.Forms.Label();
+			this.lblCliOuId = new System.Windows.Forms.Label();
+			this.lblEstado = new System.Windows.Forms.Label();
+			this.dtpChegada = new System.Windows.Forms.DateTimePicker();
+			this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+			this.txtClienteId = new System.Windows.Forms.TextBox();
+			this.cmbEstado = new System.Windows.Forms.ComboBox();
+			this.bgwInicio = new System.ComponentModel.BackgroundWorker();
+			this.flpCentro = new System.Windows.Forms.FlowLayoutPanel();
+			this.bgwModificar = new System.ComponentModel.BackgroundWorker();
+			this.pnlTop.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// panel1
+			// pnlTop
 			// 
-			this.panel1.Controls.Add(this.LblFim);
-			this.panel1.Controls.Add(this.LblInicio);
-			this.panel1.Controls.Add(this.LblCliOuId);
-			this.panel1.Controls.Add(this.LblEstado);
-			this.panel1.Controls.Add(this.DtpChegada);
-			this.panel1.Controls.Add(this.DtpInicio);
-			this.panel1.Controls.Add(this.TxtClienteId);
-			this.panel1.Controls.Add(this.CmbEstado);
-			this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(800, 63);
-			this.panel1.TabIndex = 0;
+			this.pnlTop.Controls.Add(this.lblFim);
+			this.pnlTop.Controls.Add(this.lblInicio);
+			this.pnlTop.Controls.Add(this.lblCliOuId);
+			this.pnlTop.Controls.Add(this.lblEstado);
+			this.pnlTop.Controls.Add(this.dtpChegada);
+			this.pnlTop.Controls.Add(this.dtpInicio);
+			this.pnlTop.Controls.Add(this.txtClienteId);
+			this.pnlTop.Controls.Add(this.cmbEstado);
+			this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pnlTop.Location = new System.Drawing.Point(0, 0);
+			this.pnlTop.Name = "pnlTop";
+			this.pnlTop.Size = new System.Drawing.Size(800, 63);
+			this.pnlTop.TabIndex = 0;
 			// 
-			// LblFim
+			// lblFim
 			// 
-			this.LblFim.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.lblFim.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.LblFim.AutoSize = true;
-			this.LblFim.Location = new System.Drawing.Point(642, 17);
-			this.LblFim.Name = "LblFim";
-			this.LblFim.Size = new System.Drawing.Size(87, 13);
-			this.LblFim.TabIndex = 7;
-			this.LblFim.Text = "Encomendas até";
+			this.lblFim.AutoSize = true;
+			this.lblFim.Location = new System.Drawing.Point(642, 17);
+			this.lblFim.Name = "lblFim";
+			this.lblFim.Size = new System.Drawing.Size(87, 13);
+			this.lblFim.TabIndex = 7;
+			this.lblFim.Text = "Encomendas até";
 			// 
-			// LblInicio
+			// lblInicio
 			// 
-			this.LblInicio.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.LblInicio.AutoSize = true;
-			this.LblInicio.Location = new System.Drawing.Point(442, 17);
-			this.LblInicio.Name = "LblInicio";
-			this.LblInicio.Size = new System.Drawing.Size(87, 13);
-			this.LblInicio.TabIndex = 6;
-			this.LblInicio.Text = "Encomendas de ";
+			this.lblInicio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.lblInicio.AutoSize = true;
+			this.lblInicio.Location = new System.Drawing.Point(442, 17);
+			this.lblInicio.Name = "lblInicio";
+			this.lblInicio.Size = new System.Drawing.Size(87, 13);
+			this.lblInicio.TabIndex = 6;
+			this.lblInicio.Text = "Encomendas de ";
 			// 
-			// LblCliOuId
+			// lblCliOuId
 			// 
-			this.LblCliOuId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.LblCliOuId.AutoSize = true;
-			this.LblCliOuId.Location = new System.Drawing.Point(187, 17);
-			this.LblCliOuId.Name = "LblCliOuId";
-			this.LblCliOuId.Size = new System.Drawing.Size(123, 13);
-			this.LblCliOuId.TabIndex = 5;
-			this.LblCliOuId.Text = "Cliente ou IdEncomenda";
+			this.lblCliOuId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblCliOuId.AutoSize = true;
+			this.lblCliOuId.Location = new System.Drawing.Point(187, 17);
+			this.lblCliOuId.Name = "lblCliOuId";
+			this.lblCliOuId.Size = new System.Drawing.Size(123, 13);
+			this.lblCliOuId.TabIndex = 5;
+			this.lblCliOuId.Text = "Cliente ou IdEncomenda";
 			// 
-			// LblEstado
+			// lblEstado
 			// 
-			this.LblEstado.AutoSize = true;
-			this.LblEstado.Location = new System.Drawing.Point(22, 17);
-			this.LblEstado.Name = "LblEstado";
-			this.LblEstado.Size = new System.Drawing.Size(45, 13);
-			this.LblEstado.TabIndex = 4;
-			this.LblEstado.Text = "Estados";
+			this.lblEstado.AutoSize = true;
+			this.lblEstado.Location = new System.Drawing.Point(22, 17);
+			this.lblEstado.Name = "lblEstado";
+			this.lblEstado.Size = new System.Drawing.Size(45, 13);
+			this.lblEstado.TabIndex = 4;
+			this.lblEstado.Text = "Estados";
 			// 
-			// DtpChegada
+			// dtpChegada
 			// 
-			this.DtpChegada.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.dtpChegada.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.DtpChegada.Location = new System.Drawing.Point(645, 36);
-			this.DtpChegada.Name = "DtpChegada";
-			this.DtpChegada.Size = new System.Drawing.Size(143, 20);
-			this.DtpChegada.TabIndex = 3;
+			this.dtpChegada.Location = new System.Drawing.Point(645, 36);
+			this.dtpChegada.Name = "dtpChegada";
+			this.dtpChegada.Size = new System.Drawing.Size(143, 20);
+			this.dtpChegada.TabIndex = 3;
 			// 
-			// DtpInicio
+			// dtpInicio
 			// 
-			this.DtpInicio.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.DtpInicio.Location = new System.Drawing.Point(445, 35);
-			this.DtpInicio.Name = "DtpInicio";
-			this.DtpInicio.Size = new System.Drawing.Size(143, 20);
-			this.DtpInicio.TabIndex = 2;
+			this.dtpInicio.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.dtpInicio.Location = new System.Drawing.Point(445, 35);
+			this.dtpInicio.Name = "dtpInicio";
+			this.dtpInicio.Size = new System.Drawing.Size(143, 20);
+			this.dtpInicio.TabIndex = 2;
 			// 
-			// TxtClienteId
+			// txtClienteId
 			// 
-			this.TxtClienteId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.TxtClienteId.Location = new System.Drawing.Point(190, 36);
-			this.TxtClienteId.Name = "TxtClienteId";
-			this.TxtClienteId.Size = new System.Drawing.Size(185, 20);
-			this.TxtClienteId.TabIndex = 1;
-			this.TxtClienteId.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
+			this.txtClienteId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtClienteId.Location = new System.Drawing.Point(190, 36);
+			this.txtClienteId.Name = "txtClienteId";
+			this.txtClienteId.Size = new System.Drawing.Size(185, 20);
+			this.txtClienteId.TabIndex = 1;
+			this.txtClienteId.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
 			// 
-			// CmbEstado
+			// cmbEstado
 			// 
-			this.CmbEstado.FormattingEnabled = true;
-			this.CmbEstado.Location = new System.Drawing.Point(22, 36);
-			this.CmbEstado.Name = "CmbEstado";
-			this.CmbEstado.Size = new System.Drawing.Size(121, 21);
-			this.CmbEstado.TabIndex = 0;
-			this.CmbEstado.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
-			this.CmbEstado.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
+			this.cmbEstado.FormattingEnabled = true;
+			this.cmbEstado.Location = new System.Drawing.Point(22, 36);
+			this.cmbEstado.Name = "cmbEstado";
+			this.cmbEstado.Size = new System.Drawing.Size(121, 21);
+			this.cmbEstado.TabIndex = 0;
+			this.cmbEstado.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+			this.cmbEstado.MouseLeave += new System.EventHandler(this.Object_MouseLeavee);
 			// 
-			// BgwInicio
+			// bgwInicio
 			// 
-			this.BgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			this.bgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+			this.bgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
-			// FlpCentro
+			// flpCentro
 			// 
-			this.FlpCentro.AutoSize = true;
-			this.FlpCentro.BackColor = System.Drawing.SystemColors.ActiveBorder;
-			this.FlpCentro.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.FlpCentro.Location = new System.Drawing.Point(0, 63);
-			this.FlpCentro.Name = "FlpCentro";
-			this.FlpCentro.Size = new System.Drawing.Size(800, 387);
-			this.FlpCentro.TabIndex = 1;
-			this.FlpCentro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
+			this.flpCentro.AutoSize = true;
+			this.flpCentro.BackColor = System.Drawing.SystemColors.ActiveBorder;
+			this.flpCentro.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.flpCentro.Location = new System.Drawing.Point(0, 63);
+			this.flpCentro.Name = "flpCentro";
+			this.flpCentro.Size = new System.Drawing.Size(800, 387);
+			this.flpCentro.TabIndex = 1;
+			this.flpCentro.MouseMove += new System.Windows.Forms.MouseEventHandler(this.flowLayoutPanel1_MouseMove);
 			// 
-			// BgwModificar
+			// bgwModificar
 			// 
-			this.BgwModificar.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
-			this.BgwModificar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
+			this.bgwModificar.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker2_DoWork);
+			this.bgwModificar.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker2_RunWorkerCompleted);
 			// 
-			// FrmConsultarCarrinho
+			// frmConsultarCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.FlpCentro);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.flpCentro);
+			this.Controls.Add(this.pnlTop);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "FrmConsultarCarrinho";
+			this.Name = "frmConsultarCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Consultar Carrinho";
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmConsultarCarrinho_FormClosed);
-			this.Load += new System.EventHandler(this.FrmConsultarCarrinho_Load);
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmConsultarCarrinho_FormClosed);
+			this.Load += new System.EventHandler(this.frmConsultarCarrinho_Load);
 			this.SizeChanged += new System.EventHandler(this.FrmConsultarCarrinho_SizeChanged);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
+			this.pnlTop.ResumeLayout(false);
+			this.pnlTop.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -184,17 +184,17 @@ namespace VesteBem_Admin
 
 		#endregion
 
-		private System.Windows.Forms.Panel panel1;
-		private System.Windows.Forms.ComboBox CmbEstado;
-		private System.Windows.Forms.TextBox TxtClienteId;
-		private System.Windows.Forms.DateTimePicker DtpChegada;
-		private System.Windows.Forms.DateTimePicker DtpInicio;
-		private System.Windows.Forms.Label LblFim;
-		private System.Windows.Forms.Label LblInicio;
-		private System.Windows.Forms.Label LblCliOuId;
-		private System.Windows.Forms.Label LblEstado;
-		private System.ComponentModel.BackgroundWorker BgwInicio;
-		private System.Windows.Forms.FlowLayoutPanel FlpCentro;
-		private System.ComponentModel.BackgroundWorker BgwModificar;
+		private System.Windows.Forms.Panel pnlTop;
+		private System.Windows.Forms.ComboBox cmbEstado;
+		private System.Windows.Forms.TextBox txtClienteId;
+		private System.Windows.Forms.DateTimePicker dtpChegada;
+		private System.Windows.Forms.DateTimePicker dtpInicio;
+		private System.Windows.Forms.Label lblFim;
+		private System.Windows.Forms.Label lblInicio;
+		private System.Windows.Forms.Label lblCliOuId;
+		private System.Windows.Forms.Label lblEstado;
+		private System.ComponentModel.BackgroundWorker bgwInicio;
+		private System.Windows.Forms.FlowLayoutPanel flpCentro;
+		private System.ComponentModel.BackgroundWorker bgwModificar;
 	}
 }

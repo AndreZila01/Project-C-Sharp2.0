@@ -1,6 +1,6 @@
 ﻿namespace VesteBem_Admin
 {
-	partial class FrmLogin
+	partial class frmLogin
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,17 +29,18 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
 			this.btnLogin = new System.Windows.Forms.Button();
-			this.TxtUser = new System.Windows.Forms.TextBox();
-			this.TxtPass = new System.Windows.Forms.TextBox();
-			this.LblUser = new System.Windows.Forms.Label();
-			this.LblPass = new System.Windows.Forms.Label();
+			this.txtUser = new System.Windows.Forms.TextBox();
+			this.txtPass = new System.Windows.Forms.TextBox();
+			this.lblUser = new System.Windows.Forms.Label();
+			this.lblPass = new System.Windows.Forms.Label();
 			this.lblTimer = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.tmrTimer = new System.Windows.Forms.Timer(this.components);
+			this.pctLogo = new System.Windows.Forms.PictureBox();
 			this.lblAjuda = new System.Windows.Forms.Label();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.icnNotificação = new System.Windows.Forms.NotifyIcon(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.pctLogo)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btnLogin
@@ -50,41 +51,41 @@
 			this.btnLogin.TabIndex = 0;
 			this.btnLogin.Text = "Login";
 			this.btnLogin.UseVisualStyleBackColor = true;
-			this.btnLogin.Click += new System.EventHandler(this.button1_Click);
+			this.btnLogin.Click += new System.EventHandler(this.btbLogin_Click);
 			// 
-			// TxtUser
+			// txtUser
 			// 
-			this.TxtUser.Location = new System.Drawing.Point(99, 71);
-			this.TxtUser.Name = "TxtUser";
-			this.TxtUser.Size = new System.Drawing.Size(214, 20);
-			this.TxtUser.TabIndex = 1;
+			this.txtUser.Location = new System.Drawing.Point(99, 71);
+			this.txtUser.Name = "txtUser";
+			this.txtUser.Size = new System.Drawing.Size(214, 20);
+			this.txtUser.TabIndex = 1;
 			// 
-			// TxtPass
+			// txtPass
 			// 
-			this.TxtPass.Location = new System.Drawing.Point(99, 122);
-			this.TxtPass.Name = "TxtPass";
-			this.TxtPass.Size = new System.Drawing.Size(214, 20);
-			this.TxtPass.TabIndex = 2;
+			this.txtPass.Location = new System.Drawing.Point(99, 122);
+			this.txtPass.Name = "txtPass";
+			this.txtPass.Size = new System.Drawing.Size(214, 20);
+			this.txtPass.TabIndex = 2;
 			// 
-			// LblUser
+			// lblUser
 			// 
-			this.LblUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.LblUser.AutoSize = true;
-			this.LblUser.Location = new System.Drawing.Point(20, 74);
-			this.LblUser.Name = "LblUser";
-			this.LblUser.Size = new System.Drawing.Size(58, 13);
-			this.LblUser.TabIndex = 3;
-			this.LblUser.Text = "Username:";
+			this.lblUser.AutoSize = true;
+			this.lblUser.Location = new System.Drawing.Point(20, 74);
+			this.lblUser.Name = "lblUser";
+			this.lblUser.Size = new System.Drawing.Size(58, 13);
+			this.lblUser.TabIndex = 3;
+			this.lblUser.Text = "Username:";
 			// 
-			// LblPass
+			// lblPass
 			// 
-			this.LblPass.AutoSize = true;
-			this.LblPass.Location = new System.Drawing.Point(20, 125);
-			this.LblPass.Name = "LblPass";
-			this.LblPass.Size = new System.Drawing.Size(56, 13);
-			this.LblPass.TabIndex = 4;
-			this.LblPass.Text = "Password:";
+			this.lblPass.AutoSize = true;
+			this.lblPass.Location = new System.Drawing.Point(20, 125);
+			this.lblPass.Name = "lblPass";
+			this.lblPass.Size = new System.Drawing.Size(56, 13);
+			this.lblPass.TabIndex = 4;
+			this.lblPass.Text = "Password:";
 			// 
 			// lblTimer
 			// 
@@ -96,19 +97,19 @@
 			this.lblTimer.TabIndex = 5;
 			this.lblTimer.Text = "label3";
 			// 
-			// timer1
+			// tmrTimer
 			// 
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			this.tmrTimer.Tick += new System.EventHandler(this.tmrTime_Tick);
 			// 
-			// pictureBox1
+			// pctLogo
 			// 
-			this.pictureBox1.Image = global::VesteBem_Admin.Properties.Resources.Logo;
-			this.pictureBox1.Location = new System.Drawing.Point(351, 71);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(77, 71);
-			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-			this.pictureBox1.TabIndex = 6;
-			this.pictureBox1.TabStop = false;
+			this.pctLogo.Image = global::VesteBem_Admin.Properties.Resources.Logo;
+			this.pctLogo.Location = new System.Drawing.Point(351, 71);
+			this.pctLogo.Name = "pctLogo";
+			this.pctLogo.Size = new System.Drawing.Size(77, 71);
+			this.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pctLogo.TabIndex = 6;
+			this.pctLogo.TabStop = false;
 			// 
 			// lblAjuda
 			// 
@@ -120,27 +121,34 @@
 			this.lblAjuda.Text = "Precisa de ajuda?!?";
 			this.lblAjuda.Click += new System.EventHandler(this.lblAjuda_Click);
 			// 
-			// FrmLogin
+			// icnNotificação
+			// 
+			this.icnNotificação.Icon = ((System.Drawing.Icon)(resources.GetObject("icnNotificação.Icon")));
+			this.icnNotificação.Text = "VesteBem";
+			this.icnNotificação.Visible = true;
+			// 
+			// frmLogin
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(453, 223);
 			this.Controls.Add(this.lblAjuda);
-			this.Controls.Add(this.pictureBox1);
+			this.Controls.Add(this.pctLogo);
 			this.Controls.Add(this.lblTimer);
-			this.Controls.Add(this.LblPass);
-			this.Controls.Add(this.LblUser);
-			this.Controls.Add(this.TxtPass);
-			this.Controls.Add(this.TxtUser);
+			this.Controls.Add(this.lblPass);
+			this.Controls.Add(this.lblUser);
+			this.Controls.Add(this.txtPass);
+			this.Controls.Add(this.txtUser);
 			this.Controls.Add(this.btnLogin);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "FrmLogin";
+			this.Name = "frmLogin";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Login";
-			this.Load += new System.EventHandler(this.Form1_Load);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmLogin_FormClosed);
+			this.Load += new System.EventHandler(this.frmLogin_Load);
+			((System.ComponentModel.ISupportInitialize)(this.pctLogo)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -149,14 +157,15 @@
 		#endregion
 
 		private System.Windows.Forms.Button btnLogin;
-		private System.Windows.Forms.TextBox TxtUser;
-		private System.Windows.Forms.TextBox TxtPass;
-		private System.Windows.Forms.Label LblUser;
-		private System.Windows.Forms.Label LblPass;
+		private System.Windows.Forms.TextBox txtUser;
+		private System.Windows.Forms.TextBox txtPass;
+		private System.Windows.Forms.Label lblUser;
+		private System.Windows.Forms.Label lblPass;
 		private System.Windows.Forms.Label lblTimer;
-		private System.Windows.Forms.Timer timer1;
-		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.Timer tmrTimer;
+		private System.Windows.Forms.PictureBox pctLogo;
 		private System.Windows.Forms.Label lblAjuda;
+		private System.Windows.Forms.NotifyIcon icnNotificação;
 	}
 }
 

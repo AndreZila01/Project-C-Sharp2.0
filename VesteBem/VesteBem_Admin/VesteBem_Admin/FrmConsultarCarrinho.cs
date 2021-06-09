@@ -12,16 +12,16 @@ using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmConsultarCarrinho : Form
+	public partial class frmConsultarCarrinho : Form
 	{
 		List<Estados> lstEstado = new List<Estados>();
 		List<VerEncomenda> LstEncomendas = new List<VerEncomenda>();
-		public FrmConsultarCarrinho()
+		public frmConsultarCarrinho()
 		{
 			InitializeComponent();
 		}
 
-		private void FrmConsultarCarrinho_FormClosed(object sender, FormClosedEventArgs e)
+		private void frmConsultarCarrinho_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
@@ -33,29 +33,29 @@ namespace VesteBem_Admin
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
-				CmbEstado.Items.Add(item.Estado);
+				cmbEstado.Items.Add(item.Estado);
 			});
-			CmbEstado.SelectedItem = lstEstado[0].Estado;
+			cmbEstado.SelectedItem = lstEstado[0].Estado;
 			try
 			{
-				DtpChegada.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
+				dtpChegada.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, (DateTime.Today.Day + 1));
 			}
 			catch
 			{
-				DtpChegada.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1);
+				dtpChegada.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1);
 			}
-			DtpChegada.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
-			DtpInicio.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+			dtpChegada.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
+			dtpInicio.ValueChanged += new System.EventHandler(this.dateTimePicker_ValueChanged);
 		}
 
-		private void FrmConsultarCarrinho_Load(object sender, EventArgs e)
+		private void frmConsultarCarrinho_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			//flowLayoutPanel1.MouseMove += Object_MouseLeavee;
 			this.ShowIcon = false;
-			if (!BgwInicio.IsBusy)
-				BgwInicio.RunWorkerAsync();
+			if (!bgwInicio.IsBusy)
+				bgwInicio.RunWorkerAsync();
 		}
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -70,7 +70,7 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			FlpCentro.Controls.Clear();
+			flpCentro.Controls.Clear();
 			LstEncomendas.ToList().ForEach(item =>
 			{
 				Panel Pnl = new Panel();
@@ -81,7 +81,7 @@ namespace VesteBem_Admin
 				Pnl.Size = new System.Drawing.Size(800, 49);
 				Pnl.TabIndex = 0;
 				Pnl.BackColor = Color.Red;
-				FlpCentro.Controls.Add(Pnl);
+				flpCentro.Controls.Add(Pnl);
 
 
 				Label LblEstado = new Label();
@@ -91,7 +91,7 @@ namespace VesteBem_Admin
 				LblEstado.BackColor = Color.Green;
 				LblEstado.Size = new System.Drawing.Size(35, 13);
 				LblEstado.TabIndex = 0;
-				LblEstado.Text = "" + CmbEstado.Text;
+				LblEstado.Text = "" + cmbEstado.Text;
 
 				Label LblCliente = new Label();
 				LblCliente.AutoSize = true;
@@ -142,19 +142,19 @@ namespace VesteBem_Admin
 		private void Select()
 		{
 			int ds = 0;
-			if (int.TryParse(TxtClienteId.Text, out int dss))
+			if (int.TryParse(txtClienteId.Text, out int dss))
 			{
-				ds = int.Parse(TxtClienteId.Text);
-				TxtClienteId.Text = "";
+				ds = int.Parse(txtClienteId.Text);
+				txtClienteId.Text = "";
 			}                                 
 			
-			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, TxtClienteId.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == CmbEstado.Text)].IdEstado, DtpInicio.Value, DtpChegada.Value);
+			LstEncomendas = EncomendasEDetalhesEProduto.SelectCarrinho(ds, txtClienteId.Text, lstEstado[lstEstado.FindIndex(rs => rs.Estado == cmbEstado.Text)].IdEstado, dtpInicio.Value, dtpChegada.Value);
 
 			//if(comboBox1.Tag!=null)	
 			try
 			{
-				if (!BgwInicio.IsBusy)
-					BgwModificar.RunWorkerAsync();
+				if (!bgwInicio.IsBusy)
+					bgwModificar.RunWorkerAsync();
 			}
 			catch
 			{
@@ -174,11 +174,11 @@ namespace VesteBem_Admin
 
 		private void dateTimePicker_ValueChanged(object sender, EventArgs e)
 		{
-			if (DtpInicio.Value > DtpChegada.Value)
+			if (dtpInicio.Value > dtpChegada.Value)
 			{
-				DtpInicio.Tag = DtpInicio.Value;
-				DtpInicio.Value = DtpChegada.Value;
-				DtpChegada.Value = DateTime.Parse(DtpInicio.Tag.ToString());
+				dtpInicio.Tag = dtpInicio.Value;
+				dtpInicio.Value = dtpChegada.Value;
+				dtpChegada.Value = DateTime.Parse(dtpInicio.Tag.ToString());
 			}
 
 			Select();

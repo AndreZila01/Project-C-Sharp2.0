@@ -1,7 +1,7 @@
 ﻿
 namespace VesteBem_Admin
 {
-	partial class FrmEditarCarrinho
+	partial class frmEditarCarrinho
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,20 +29,20 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditarCarrinho));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarCarrinho));
 			this.SuspendLayout();
 			// 
-			// FrmEditarCarrinho
+			// frmEditarCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "FrmEditarCarrinho";
+			this.Name = "frmEditarCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Editar Carrinho";
-			this.Load += new System.EventHandler(this.FrmEditarCarrinho_Load);
+			this.Load += new System.EventHandler(this.frmEditarCarrinho_Load);
 			this.ResumeLayout(false);
 
 		}

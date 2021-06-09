@@ -1,6 +1,6 @@
 ﻿namespace VesteBem_Admin
 {
-	partial class FrmCarrinho
+	partial class frmCarrinho
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,286 +28,286 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCarrinho));
-			this.TxtValor = new System.Windows.Forms.TextBox();
-			this.CboCliente = new System.Windows.Forms.ComboBox();
-			this.LblValor = new System.Windows.Forms.Label();
-			this.LblEstado = new System.Windows.Forms.Label();
-			this.LblData = new System.Windows.Forms.Label();
-			this.LblCliente = new System.Windows.Forms.Label();
-			this.CboEstado = new System.Windows.Forms.ComboBox();
-			this.DtpEntrega = new System.Windows.Forms.DateTimePicker();
-			this.BtnGuardar = new System.Windows.Forms.Button();
-			this.CmbProduto = new System.Windows.Forms.ComboBox();
-			this.FlpProdutos = new System.Windows.Forms.FlowLayoutPanel();
-			this.NudQuantidade = new System.Windows.Forms.NumericUpDown();
-			this.LblTotal = new System.Windows.Forms.Label();
-			this.PctRegistar = new System.Windows.Forms.PictureBox();
-			this.PctEncomenda = new System.Windows.Forms.PictureBox();
-			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
-			this.PnlEncomendar = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.PctAdd = new System.Windows.Forms.PictureBox();
-			this.PnlRegistar = new System.Windows.Forms.Panel();
-			((System.ComponentModel.ISupportInitialize)(this.NudQuantidade)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctRegistar)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctEncomenda)).BeginInit();
-			this.PnlEncomendar.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).BeginInit();
-			this.PnlRegistar.SuspendLayout();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarrinho));
+			this.txtValor = new System.Windows.Forms.TextBox();
+			this.cboCliente = new System.Windows.Forms.ComboBox();
+			this.lblValor = new System.Windows.Forms.Label();
+			this.lblEstado = new System.Windows.Forms.Label();
+			this.lblData = new System.Windows.Forms.Label();
+			this.lblCliente = new System.Windows.Forms.Label();
+			this.cboEstado = new System.Windows.Forms.ComboBox();
+			this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
+			this.btnGuardar = new System.Windows.Forms.Button();
+			this.cmbProduto = new System.Windows.Forms.ComboBox();
+			this.flpProdutos = new System.Windows.Forms.FlowLayoutPanel();
+			this.nudQuantidade = new System.Windows.Forms.NumericUpDown();
+			this.lblTotal = new System.Windows.Forms.Label();
+			this.pctRegistar = new System.Windows.Forms.PictureBox();
+			this.pctEncomenda = new System.Windows.Forms.PictureBox();
+			this.bgwInicio = new System.ComponentModel.BackgroundWorker();
+			this.pnlEncomendar = new System.Windows.Forms.Panel();
+			this.lblQuantidade = new System.Windows.Forms.Label();
+			this.pctAdd = new System.Windows.Forms.PictureBox();
+			this.pnlRegistar = new System.Windows.Forms.Panel();
+			((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctRegistar)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctEncomenda)).BeginInit();
+			this.pnlEncomendar.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pctAdd)).BeginInit();
+			this.pnlRegistar.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// TxtValor
+			// txtValor
 			// 
-			this.TxtValor.Location = new System.Drawing.Point(122, 65);
-			this.TxtValor.Name = "TxtValor";
-			this.TxtValor.Size = new System.Drawing.Size(139, 20);
-			this.TxtValor.TabIndex = 0;
+			this.txtValor.Location = new System.Drawing.Point(122, 65);
+			this.txtValor.Name = "txtValor";
+			this.txtValor.Size = new System.Drawing.Size(139, 20);
+			this.txtValor.TabIndex = 0;
 			// 
-			// CboCliente
+			// cboCliente
 			// 
-			this.CboCliente.FormattingEnabled = true;
-			this.CboCliente.Location = new System.Drawing.Point(122, 146);
-			this.CboCliente.Name = "CboCliente";
-			this.CboCliente.Size = new System.Drawing.Size(139, 21);
-			this.CboCliente.TabIndex = 4;
+			this.cboCliente.FormattingEnabled = true;
+			this.cboCliente.Location = new System.Drawing.Point(122, 146);
+			this.cboCliente.Name = "cboCliente";
+			this.cboCliente.Size = new System.Drawing.Size(139, 21);
+			this.cboCliente.TabIndex = 4;
 			// 
-			// LblValor
+			// lblValor
 			// 
-			this.LblValor.AutoSize = true;
-			this.LblValor.Location = new System.Drawing.Point(15, 68);
-			this.LblValor.Name = "LblValor";
-			this.LblValor.Size = new System.Drawing.Size(96, 13);
-			this.LblValor.TabIndex = 5;
-			this.LblValor.Text = "Valor Encomendas";
+			this.lblValor.AutoSize = true;
+			this.lblValor.Location = new System.Drawing.Point(15, 68);
+			this.lblValor.Name = "lblValor";
+			this.lblValor.Size = new System.Drawing.Size(96, 13);
+			this.lblValor.TabIndex = 5;
+			this.lblValor.Text = "Valor Encomendas";
 			// 
-			// LblEstado
+			// lblEstado
 			// 
-			this.LblEstado.AutoSize = true;
-			this.LblEstado.Location = new System.Drawing.Point(15, 94);
-			this.LblEstado.Name = "LblEstado";
-			this.LblEstado.Size = new System.Drawing.Size(105, 13);
-			this.LblEstado.TabIndex = 6;
-			this.LblEstado.Text = "Estado Encomendas";
+			this.lblEstado.AutoSize = true;
+			this.lblEstado.Location = new System.Drawing.Point(15, 94);
+			this.lblEstado.Name = "lblEstado";
+			this.lblEstado.Size = new System.Drawing.Size(105, 13);
+			this.lblEstado.TabIndex = 6;
+			this.lblEstado.Text = "Estado Encomendas";
 			// 
-			// LblData
+			// lblData
 			// 
-			this.LblData.AutoSize = true;
-			this.LblData.Location = new System.Drawing.Point(15, 122);
-			this.LblData.Name = "LblData";
-			this.LblData.Size = new System.Drawing.Size(70, 13);
-			this.LblData.TabIndex = 8;
-			this.LblData.Text = "Data Entrega";
+			this.lblData.AutoSize = true;
+			this.lblData.Location = new System.Drawing.Point(15, 122);
+			this.lblData.Name = "lblData";
+			this.lblData.Size = new System.Drawing.Size(70, 13);
+			this.lblData.TabIndex = 8;
+			this.lblData.Text = "Data Entrega";
 			// 
-			// LblCliente
+			// lblCliente
 			// 
-			this.LblCliente.AutoSize = true;
-			this.LblCliente.Location = new System.Drawing.Point(15, 149);
-			this.LblCliente.Name = "LblCliente";
-			this.LblCliente.Size = new System.Drawing.Size(39, 13);
-			this.LblCliente.TabIndex = 9;
-			this.LblCliente.Text = "Cliente";
+			this.lblCliente.AutoSize = true;
+			this.lblCliente.Location = new System.Drawing.Point(15, 149);
+			this.lblCliente.Name = "lblCliente";
+			this.lblCliente.Size = new System.Drawing.Size(39, 13);
+			this.lblCliente.TabIndex = 9;
+			this.lblCliente.Text = "Cliente";
 			// 
-			// CboEstado
+			// cboEstado
 			// 
-			this.CboEstado.FormattingEnabled = true;
-			this.CboEstado.Location = new System.Drawing.Point(122, 91);
-			this.CboEstado.Name = "CboEstado";
-			this.CboEstado.Size = new System.Drawing.Size(139, 21);
-			this.CboEstado.TabIndex = 10;
+			this.cboEstado.FormattingEnabled = true;
+			this.cboEstado.Location = new System.Drawing.Point(122, 91);
+			this.cboEstado.Name = "cboEstado";
+			this.cboEstado.Size = new System.Drawing.Size(139, 21);
+			this.cboEstado.TabIndex = 10;
 			// 
-			// DtpEntrega
+			// dtpEntrega
 			// 
-			this.DtpEntrega.Location = new System.Drawing.Point(122, 120);
-			this.DtpEntrega.Name = "DtpEntrega";
-			this.DtpEntrega.Size = new System.Drawing.Size(200, 20);
-			this.DtpEntrega.TabIndex = 12;
+			this.dtpEntrega.Location = new System.Drawing.Point(122, 120);
+			this.dtpEntrega.Name = "dtpEntrega";
+			this.dtpEntrega.Size = new System.Drawing.Size(200, 20);
+			this.dtpEntrega.TabIndex = 12;
 			// 
-			// BtnGuardar
+			// btnGuardar
 			// 
-			this.BtnGuardar.Location = new System.Drawing.Point(32, 191);
-			this.BtnGuardar.Name = "BtnGuardar";
-			this.BtnGuardar.Size = new System.Drawing.Size(164, 46);
-			this.BtnGuardar.TabIndex = 13;
-			this.BtnGuardar.Text = "Efectuar Compra";
-			this.BtnGuardar.UseVisualStyleBackColor = true;
-			this.BtnGuardar.Click += new System.EventHandler(this.button1_Click);
+			this.btnGuardar.Location = new System.Drawing.Point(32, 191);
+			this.btnGuardar.Name = "btnGuardar";
+			this.btnGuardar.Size = new System.Drawing.Size(164, 46);
+			this.btnGuardar.TabIndex = 13;
+			this.btnGuardar.Text = "Efectuar Compra";
+			this.btnGuardar.UseVisualStyleBackColor = true;
+			this.btnGuardar.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// CmbProduto
+			// cmbProduto
 			// 
-			this.CmbProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CmbProduto.FormattingEnabled = true;
-			this.CmbProduto.Location = new System.Drawing.Point(209, 12);
-			this.CmbProduto.Name = "CmbProduto";
-			this.CmbProduto.Size = new System.Drawing.Size(239, 21);
-			this.CmbProduto.TabIndex = 15;
-			this.CmbProduto.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+			this.cmbProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbProduto.FormattingEnabled = true;
+			this.cmbProduto.Location = new System.Drawing.Point(209, 12);
+			this.cmbProduto.Name = "cmbProduto";
+			this.cmbProduto.Size = new System.Drawing.Size(239, 21);
+			this.cmbProduto.TabIndex = 15;
+			this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
 			// 
-			// FlpProdutos
+			// flpProdutos
 			// 
-			this.FlpProdutos.AutoScroll = true;
-			this.FlpProdutos.Location = new System.Drawing.Point(177, 250);
-			this.FlpProdutos.Name = "FlpProdutos";
-			this.FlpProdutos.Size = new System.Drawing.Size(271, 163);
-			this.FlpProdutos.TabIndex = 19;
+			this.flpProdutos.AutoScroll = true;
+			this.flpProdutos.Location = new System.Drawing.Point(177, 250);
+			this.flpProdutos.Name = "flpProdutos";
+			this.flpProdutos.Size = new System.Drawing.Size(271, 163);
+			this.flpProdutos.TabIndex = 19;
 			// 
-			// NudQuantidade
+			// nudQuantidade
 			// 
-			this.NudQuantidade.Location = new System.Drawing.Point(18, 224);
-			this.NudQuantidade.Maximum = new decimal(new int[] {
+			this.nudQuantidade.Location = new System.Drawing.Point(18, 224);
+			this.nudQuantidade.Maximum = new decimal(new int[] {
             200,
             0,
             0,
             0});
-			this.NudQuantidade.Minimum = new decimal(new int[] {
+			this.nudQuantidade.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-			this.NudQuantidade.Name = "NudQuantidade";
-			this.NudQuantidade.Size = new System.Drawing.Size(75, 20);
-			this.NudQuantidade.TabIndex = 20;
-			this.NudQuantidade.Value = new decimal(new int[] {
+			this.nudQuantidade.Name = "nudQuantidade";
+			this.nudQuantidade.Size = new System.Drawing.Size(75, 20);
+			this.nudQuantidade.TabIndex = 20;
+			this.nudQuantidade.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
 			// 
-			// LblTotal
+			// lblTotal
 			// 
-			this.LblTotal.AutoSize = true;
-			this.LblTotal.Location = new System.Drawing.Point(325, 427);
-			this.LblTotal.Name = "LblTotal";
-			this.LblTotal.Size = new System.Drawing.Size(40, 13);
-			this.LblTotal.TabIndex = 21;
-			this.LblTotal.Text = "Total : ";
+			this.lblTotal.AutoSize = true;
+			this.lblTotal.Location = new System.Drawing.Point(325, 427);
+			this.lblTotal.Name = "lblTotal";
+			this.lblTotal.Size = new System.Drawing.Size(40, 13);
+			this.lblTotal.TabIndex = 21;
+			this.lblTotal.Text = "Total : ";
 			// 
-			// PctRegistar
+			// pctRegistar
 			// 
-			this.PctRegistar.Image = global::VesteBem_Admin.Properties.Resources.shopping_cart;
-			this.PctRegistar.Location = new System.Drawing.Point(413, 419);
-			this.PctRegistar.Name = "PctRegistar";
-			this.PctRegistar.Size = new System.Drawing.Size(35, 27);
-			this.PctRegistar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PctRegistar.TabIndex = 22;
-			this.PctRegistar.TabStop = false;
-			this.PctRegistar.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.pctRegistar.Image = global::VesteBem_Admin.Properties.Resources.shopping_cart;
+			this.pctRegistar.Location = new System.Drawing.Point(413, 419);
+			this.pctRegistar.Name = "pctRegistar";
+			this.pctRegistar.Size = new System.Drawing.Size(35, 27);
+			this.pctRegistar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pctRegistar.TabIndex = 22;
+			this.pctRegistar.TabStop = false;
+			this.pctRegistar.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
-			// PctEncomenda
+			// pctEncomenda
 			// 
-			this.PctEncomenda.Location = new System.Drawing.Point(209, 39);
-			this.PctEncomenda.Name = "PctEncomenda";
-			this.PctEncomenda.Size = new System.Drawing.Size(239, 205);
-			this.PctEncomenda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PctEncomenda.TabIndex = 14;
-			this.PctEncomenda.TabStop = false;
+			this.pctEncomenda.Location = new System.Drawing.Point(209, 39);
+			this.pctEncomenda.Name = "pctEncomenda";
+			this.pctEncomenda.Size = new System.Drawing.Size(239, 205);
+			this.pctEncomenda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pctEncomenda.TabIndex = 14;
+			this.pctEncomenda.TabStop = false;
 			// 
-			// BgwInicio
+			// bgwInicio
 			// 
-			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			this.bgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
-			// PnlEncomendar
+			// pnlEncomendar
 			// 
-			this.PnlEncomendar.Controls.Add(this.label1);
-			this.PnlEncomendar.Controls.Add(this.PctAdd);
-			this.PnlEncomendar.Controls.Add(this.CmbProduto);
-			this.PnlEncomendar.Controls.Add(this.PctRegistar);
-			this.PnlEncomendar.Controls.Add(this.PctEncomenda);
-			this.PnlEncomendar.Controls.Add(this.LblTotal);
-			this.PnlEncomendar.Controls.Add(this.NudQuantidade);
-			this.PnlEncomendar.Controls.Add(this.FlpProdutos);
-			this.PnlEncomendar.Dock = System.Windows.Forms.DockStyle.Right;
-			this.PnlEncomendar.Location = new System.Drawing.Point(340, 0);
-			this.PnlEncomendar.Name = "PnlEncomendar";
-			this.PnlEncomendar.Size = new System.Drawing.Size(460, 450);
-			this.PnlEncomendar.TabIndex = 23;
+			this.pnlEncomendar.Controls.Add(this.lblQuantidade);
+			this.pnlEncomendar.Controls.Add(this.pctAdd);
+			this.pnlEncomendar.Controls.Add(this.cmbProduto);
+			this.pnlEncomendar.Controls.Add(this.pctRegistar);
+			this.pnlEncomendar.Controls.Add(this.pctEncomenda);
+			this.pnlEncomendar.Controls.Add(this.lblTotal);
+			this.pnlEncomendar.Controls.Add(this.nudQuantidade);
+			this.pnlEncomendar.Controls.Add(this.flpProdutos);
+			this.pnlEncomendar.Dock = System.Windows.Forms.DockStyle.Right;
+			this.pnlEncomendar.Location = new System.Drawing.Point(340, 0);
+			this.pnlEncomendar.Name = "pnlEncomendar";
+			this.pnlEncomendar.Size = new System.Drawing.Size(460, 450);
+			this.pnlEncomendar.TabIndex = 23;
 			// 
-			// label1
+			// lblQuantidade
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(15, 201);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(71, 13);
-			this.label1.TabIndex = 24;
-			this.label1.Text = "Quantidade : ";
+			this.lblQuantidade.AutoSize = true;
+			this.lblQuantidade.Location = new System.Drawing.Point(15, 201);
+			this.lblQuantidade.Name = "lblQuantidade";
+			this.lblQuantidade.Size = new System.Drawing.Size(71, 13);
+			this.lblQuantidade.TabIndex = 24;
+			this.lblQuantidade.Text = "Quantidade : ";
 			// 
-			// PctAdd
+			// pctAdd
 			// 
-			this.PctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.PctAdd.Location = new System.Drawing.Point(119, 217);
-			this.PctAdd.Name = "PctAdd";
-			this.PctAdd.Size = new System.Drawing.Size(32, 33);
-			this.PctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PctAdd.TabIndex = 23;
-			this.PctAdd.TabStop = false;
-			this.PctAdd.Click += new System.EventHandler(this.pictureBox3_Click);
+			this.pctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.pctAdd.Location = new System.Drawing.Point(119, 217);
+			this.pctAdd.Name = "pctAdd";
+			this.pctAdd.Size = new System.Drawing.Size(32, 33);
+			this.pctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pctAdd.TabIndex = 23;
+			this.pctAdd.TabStop = false;
+			this.pctAdd.Click += new System.EventHandler(this.pictureBox3_Click);
 			// 
-			// PnlRegistar
+			// pnlRegistar
 			// 
-			this.PnlRegistar.Controls.Add(this.CboCliente);
-			this.PnlRegistar.Controls.Add(this.TxtValor);
-			this.PnlRegistar.Controls.Add(this.BtnGuardar);
-			this.PnlRegistar.Controls.Add(this.LblValor);
-			this.PnlRegistar.Controls.Add(this.DtpEntrega);
-			this.PnlRegistar.Controls.Add(this.LblEstado);
-			this.PnlRegistar.Controls.Add(this.CboEstado);
-			this.PnlRegistar.Controls.Add(this.LblData);
-			this.PnlRegistar.Controls.Add(this.LblCliente);
-			this.PnlRegistar.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.PnlRegistar.Enabled = false;
-			this.PnlRegistar.Location = new System.Drawing.Point(0, 0);
-			this.PnlRegistar.Name = "PnlRegistar";
-			this.PnlRegistar.Size = new System.Drawing.Size(340, 450);
-			this.PnlRegistar.TabIndex = 24;
+			this.pnlRegistar.Controls.Add(this.cboCliente);
+			this.pnlRegistar.Controls.Add(this.txtValor);
+			this.pnlRegistar.Controls.Add(this.btnGuardar);
+			this.pnlRegistar.Controls.Add(this.lblValor);
+			this.pnlRegistar.Controls.Add(this.dtpEntrega);
+			this.pnlRegistar.Controls.Add(this.lblEstado);
+			this.pnlRegistar.Controls.Add(this.cboEstado);
+			this.pnlRegistar.Controls.Add(this.lblData);
+			this.pnlRegistar.Controls.Add(this.lblCliente);
+			this.pnlRegistar.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlRegistar.Enabled = false;
+			this.pnlRegistar.Location = new System.Drawing.Point(0, 0);
+			this.pnlRegistar.Name = "pnlRegistar";
+			this.pnlRegistar.Size = new System.Drawing.Size(340, 450);
+			this.pnlRegistar.TabIndex = 24;
 			// 
-			// FrmCarrinho
+			// frmCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.PnlRegistar);
-			this.Controls.Add(this.PnlEncomendar);
+			this.Controls.Add(this.pnlRegistar);
+			this.Controls.Add(this.pnlEncomendar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "FrmCarrinho";
+			this.Name = "frmCarrinho";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Adicionar Carrinho";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCarrinho_FormClosed);
 			this.Load += new System.EventHandler(this.FrmCarrinho_Load);
-			((System.ComponentModel.ISupportInitialize)(this.NudQuantidade)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctRegistar)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctEncomenda)).EndInit();
-			this.PnlEncomendar.ResumeLayout(false);
-			this.PnlEncomendar.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).EndInit();
-			this.PnlRegistar.ResumeLayout(false);
-			this.PnlRegistar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctRegistar)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctEncomenda)).EndInit();
+			this.pnlEncomendar.ResumeLayout(false);
+			this.pnlEncomendar.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pctAdd)).EndInit();
+			this.pnlRegistar.ResumeLayout(false);
+			this.pnlRegistar.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TextBox TxtValor;
-		private System.Windows.Forms.ComboBox CboCliente;
-		private System.Windows.Forms.Label LblValor;
-		private System.Windows.Forms.Label LblEstado;
-		private System.Windows.Forms.Label LblData;
-		private System.Windows.Forms.Label LblCliente;
-		private System.Windows.Forms.ComboBox CboEstado;
-		private System.Windows.Forms.DateTimePicker DtpEntrega;
-		private System.Windows.Forms.Button BtnGuardar;
-		private System.Windows.Forms.PictureBox PctEncomenda;
-		private System.Windows.Forms.ComboBox CmbProduto;
-		private System.Windows.Forms.FlowLayoutPanel FlpProdutos;
-		private System.Windows.Forms.NumericUpDown NudQuantidade;
-		private System.Windows.Forms.Label LblTotal;
-		private System.Windows.Forms.PictureBox PctRegistar;
-		private System.ComponentModel.BackgroundWorker BgwInicio;
-		private System.Windows.Forms.Panel PnlEncomendar;
-		private System.Windows.Forms.PictureBox PctAdd;
-		private System.Windows.Forms.Panel PnlRegistar;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txtValor;
+		private System.Windows.Forms.ComboBox cboCliente;
+		private System.Windows.Forms.Label lblValor;
+		private System.Windows.Forms.Label lblEstado;
+		private System.Windows.Forms.Label lblData;
+		private System.Windows.Forms.Label lblCliente;
+		private System.Windows.Forms.ComboBox cboEstado;
+		private System.Windows.Forms.DateTimePicker dtpEntrega;
+		private System.Windows.Forms.Button btnGuardar;
+		private System.Windows.Forms.PictureBox pctEncomenda;
+		private System.Windows.Forms.ComboBox cmbProduto;
+		private System.Windows.Forms.FlowLayoutPanel flpProdutos;
+		private System.Windows.Forms.NumericUpDown nudQuantidade;
+		private System.Windows.Forms.Label lblTotal;
+		private System.Windows.Forms.PictureBox pctRegistar;
+		private System.ComponentModel.BackgroundWorker bgwInicio;
+		private System.Windows.Forms.Panel pnlEncomendar;
+		private System.Windows.Forms.PictureBox pctAdd;
+		private System.Windows.Forms.Panel pnlRegistar;
+		private System.Windows.Forms.Label lblQuantidade;
 	}
 }

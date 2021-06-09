@@ -13,13 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VesteBem_Admin.Class;
-using static VesteBem_Admin.Estado;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmCarrinho : Form
+	public partial class frmCarrinho : Form
 	{
-		public FrmCarrinho()
+		public frmCarrinho()
 		{
 			InitializeComponent();
 		}
@@ -29,11 +28,11 @@ namespace VesteBem_Admin
 		List<Produtos> lstProduto = new List<Produtos>();
 		private void FrmCarrinho_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!BgwInicio.IsBusy)
-				BgwInicio.RunWorkerAsync();
+			if (!bgwInicio.IsBusy)
+				bgwInicio.RunWorkerAsync();
 		}
 		private void button2_Click(object sender, EventArgs e)
 		{
@@ -70,20 +69,20 @@ namespace VesteBem_Admin
 		{
 			PictureBox Pct = sender as PictureBox;
 			int value = 0;
-			FlpProdutos.Controls.Clear();
+			flpProdutos.Controls.Clear();
 			if (Pct.Name == "Remove")
-				lstDetalhesEncomendas.Remove(lstDetalhesEncomendas[int.Parse(Pct.Tag.ToString())]); LblTotal.Tag = "00";
+				lstDetalhesEncomendas.Remove(lstDetalhesEncomendas[int.Parse(Pct.Tag.ToString())]); lblTotal.Tag = "00";
 			lstDetalhesEncomendas.ToList().ForEach(item =>
 			{
 				int index = lstProduto.FindIndex(r => r.IdProduto == item.Id_Produtos);
 				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
-				Panel Pnl = new Panel();
-				Pnl.Location = new System.Drawing.Point(0, 0);
-				Pnl.Name = "panel1";
-				Pnl.BackColor = Color.Red;
-				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
-				Pnl.TabIndex = 0;
-				FlpProdutos.Controls.Add(Pnl);
+				Panel pnl = new Panel();
+				pnl.Location = new System.Drawing.Point(0, 0);
+				pnl.Name = "panel1";
+				pnl.BackColor = Color.Red;
+				pnl.Size = new System.Drawing.Size(245, 30);//271; 150
+				pnl.TabIndex = 0;
+				flpProdutos.Controls.Add(pnl);
 
 				Label LblNome = new Label();
 				LblNome.AutoSize = true;
@@ -92,10 +91,10 @@ namespace VesteBem_Admin
 				LblNome.Size = new System.Drawing.Size(35, 13);
 				LblNome.TabIndex = 0;
 				LblNome.BackColor = Color.LightGray;
-				LblNome.Tag = PctEncomenda.Tag.ToString();
+				LblNome.Tag = pctEncomenda.Tag.ToString();
 				var ds = lstProduto[index].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[index].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[index].Nome;
 				LblNome.Click += new System.EventHandler(label_Click);
-				Pnl.Controls.Add(LblNome);
+				pnl.Controls.Add(LblNome);
 
 				Label LblPreco = new Label();
 				LblPreco.AutoSize = true;
@@ -106,7 +105,7 @@ namespace VesteBem_Admin
 				LblPreco.BackColor = Color.Green;
 				LblPreco.Text = "" + lstProduto[index].Valor + "€";
 				LblPreco.Tag = "" + lstProduto[index].Valor;
-				Pnl.Controls.Add(LblPreco);
+				pnl.Controls.Add(LblPreco);
 
 				Label LblQuantidade = new Label();
 				LblQuantidade.Location = new System.Drawing.Point(135, 10);
@@ -116,7 +115,7 @@ namespace VesteBem_Admin
 				LblQuantidade.BackColor = Color.Gray;
 				LblQuantidade.Text = " " + item.QuantEnc + " x";
 				LblQuantidade.Tag = "" + item.QuantEnc;
-				Pnl.Controls.Add(LblQuantidade);
+				pnl.Controls.Add(LblQuantidade);
 
 				PictureBox PctRemove = new PictureBox();
 				PctRemove.Image = Properties.Resources.Red_Remove;
@@ -128,16 +127,16 @@ namespace VesteBem_Admin
 				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
 				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
 				PctRemove.Tag = "" + value;
-				Pnl.Controls.Add(PctRemove);
+				pnl.Controls.Add(PctRemove);
 
-				LblTotal.Tag = "" + (double.Parse(LblTotal.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
-				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
+				lblTotal.Tag = "" + (double.Parse(lblTotal.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
+				lblTotal.Text = "Total: " + lblTotal.Tag + "€";
 				value++;
 			});
 			if (lstDetalhesEncomendas.Count == 0)
 			{
-				LblTotal.Tag = "0";
-				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
+				lblTotal.Tag = "0";
+				lblTotal.Text = "Total: " + lblTotal.Tag + "€";
 			}
 		}
 
@@ -149,67 +148,30 @@ namespace VesteBem_Admin
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			#region Rascunho
-			//SqlCommand command = new SqlCommand();
-			//using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-			//{
-			//	command.CommandText = "SPUpdateCliente";
-			//	command.CommandType = System.Data.CommandType.StoredProcedure;
-			//	try
-			//	{
-			//		command.Parameters.Add(new SqlParameter("Nome", cli.Nome));
-			//		command.Parameters.Add(new SqlParameter("Sexo", cli.Sexo));
-			//		command.Parameters.Add(new SqlParameter("Nif", cli.Nif));
-			//		command.Parameters.Add(new SqlParameter("Morada", cli.Morada));
-			//		command.Parameters.Add(new SqlParameter("CodPostal", cli.CodPostal));
-			//		command.Parameters.Add(new SqlParameter("Localidade", cli.Localidade));
-			//		command.Parameters.Add(new SqlParameter("DataNasc", cli.DataNasc));
-			//		command.Parameters.Add(new SqlParameter("Email", cli.Email));
-			//		command.Parameters.Add(new SqlParameter("Telefone", cli.Telefone));
-			//		command.Parameters.Add(new SqlParameter("Id_Cliente", cli.Id_Cliente));
-			//		command.Parameters.Add(new SqlParameter("Id_Login", cli.Id_Login));
-
-			//		command.Connection = liga;
-
-			//		liga.Open();
-
-			//		command.ExecuteNonQuery();
-			//		return "sucesso";
-			//	}
-			//	catch (Exception ex)
-			//	{
-			//		return ex.Message;
-			//	}
-			//	finally
-			//	{
-			//		liga.Close();
-			//	}
-			//}
-			#endregion
 			Encomenda enc = new Encomenda();
-			enc.EstadoEncomendas = CboEstado.Text;
-			enc.Id_Cliente = Clientes.SelectIdCliente(CboCliente.Text);
-			enc.ValorEncomendas = double.Parse(TxtValor.Text);
-			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == CboEstado.SelectedItem)].IdEstado);
+			enc.EstadoEncomendas = cboEstado.Text;
+			enc.Id_Cliente = Clientes.SelectIdCliente(cboCliente.Text);
+			enc.ValorEncomendas = double.Parse(txtValor.Text);
+			EncomendasEDetalhesEProduto.InsertEncomendas(enc, lstEstado[lstEstado.FindIndex(ash => ash.Estado == cboEstado.SelectedItem)].IdEstado);
 			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
-			//int idEncomenda = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.Id_Cliente);
 			int temp = 0;
-			lstDetalhesEncomendas.ToList().ForEach(item=>{
+			lstDetalhesEncomendas.ToList().ForEach(item =>
+			{
 				lstDetalhesEncomendas[temp].Id_Encomendas = enc.IdEncomendas;
 				temp++;
 			});
 			EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
 			lstDetalhesEncomendas.Clear();
-			PnlRegistar.Enabled = false;
-			TxtValor.Text = "";
-			CboCliente.Text = "";
-			FlpProdutos.Controls.Clear();
+			pnlRegistar.Enabled = false;
+			txtValor.Text = "";
+			cboCliente.Text = "";
+			flpProdutos.Controls.Clear();
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			PctEncomenda.Image = lstProduto[CmbProduto.SelectedIndex].Icon;
-			PctEncomenda.Tag = CmbProduto.SelectedIndex;
+			pctEncomenda.Image = lstProduto[cmbProduto.SelectedIndex].Icon;
+			pctEncomenda.Tag = cmbProduto.SelectedIndex;
 		}
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
@@ -218,7 +180,7 @@ namespace VesteBem_Admin
 			List<int> lstId = new List<int>();
 			List<DetalhesEncomendas> lst = new List<DetalhesEncomendas>();
 			Encomenda enc = new Encomenda();
-			enc.ValorEncomendas = double.Parse(LblTotal.Tag.ToString());
+			enc.ValorEncomendas = double.Parse(lblTotal.Tag.ToString());
 			int ds = 0;
 			List<DetalhesEncomendas> indexT = new List<DetalhesEncomendas>();//new int[lstDetalhesEncomendas.Count()];
 
@@ -301,49 +263,49 @@ namespace VesteBem_Admin
 			//Certificar se o utilizador meteu varias vezes os produtos
 			if (lstDetalhesEncomendas.Count() > 0)
 			{
-				TxtValor.Text = LblTotal.Tag.ToString();
-				CboEstado.SelectedItem = "Na Fabrica";
-				TxtValor.Enabled = false;
-				PnlRegistar.Enabled = true;
+				txtValor.Text = lblTotal.Tag.ToString();
+				cboEstado.SelectedItem = "Na Fabrica";
+				txtValor.Enabled = false;
+				pnlRegistar.Enabled = true;
 			}
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			LblTotal.Tag = "00";
+			lblTotal.Tag = "00";
 			lstEstado = Funcionarios.SelectEstado();
 			lstEstado.ToList().ForEach(item =>
 			{
 				if (item.Estado == "Na Fabrica")
-					CboEstado.Items.Add(item.Estado);
+					cboEstado.Items.Add(item.Estado);
 			});
 			lstcli = Clientes.SelectId();
 			lstcli.ToList().ForEach(item =>
 			{
-				CboCliente.Items.Add(item.Nome);
+				cboCliente.Items.Add(item.Nome);
 			});
 			lstProduto = EncomendasEDetalhesEProduto.SelectProdutos();
 			lstProduto.ToList().ForEach(item =>
 			{
-				CmbProduto.Items.Add(item.IdProduto + " - " + item.Nome);
+				cmbProduto.Items.Add(item.IdProduto + " - " + item.Nome);
 			});
 
-			PctRegistar.Click += PctRemove_Click;
+			pctRegistar.Click += PctRemove_Click;
 			try
 			{
-				var ds = DateTime.Today.Month!=12? DtpEntrega.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4): DtpEntrega.Value = new DateTime((DateTime.Today.Year+1), 1, 4);
+				var ds = DateTime.Today.Month != 12 ? dtpEntrega.Value = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 4) : dtpEntrega.Value = new DateTime((DateTime.Today.Year + 1), 1, 4);
 			}
 			catch
 			{
-				var ds = DateTime.Today.Month != 12 ? DtpEntrega.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1), 1) : DtpEntrega.Value = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? dtpEntrega.Value = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1) : dtpEntrega.Value = new DateTime((DateTime.Today.Year + 1), 1, 1);
 			}
 			try
 			{
-				var ds = DateTime.Today.Month != 12 ? DtpEntrega.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1) : DtpEntrega.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? dtpEntrega.MinDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day + 1) : dtpEntrega.MinDate = new DateTime((DateTime.Today.Year + 1), 1, 1);
 			}
 			catch
 			{
-				var ds = DateTime.Today.Month != 12 ? DtpEntrega.MinDate = new DateTime(DateTime.Today.Year, (DateTime.Today.Month+1),1): DtpEntrega.MinDate = new DateTime((DateTime.Today.Year+1), 1, 1);
+				var ds = DateTime.Today.Month != 12 ? dtpEntrega.MinDate = new DateTime(DateTime.Today.Year, (DateTime.Today.Month + 1), 1) : dtpEntrega.MinDate = new DateTime((DateTime.Today.Year + 1), 1, 1);
 			}
 			int data; int mes = DateTime.Today.Month + 4;
 			if (mes > 12)
@@ -351,7 +313,6 @@ namespace VesteBem_Admin
 			if (mes != 2)
 			{
 				var temp = mes == 1 && mes == 3 && mes == 5 && mes == 7 && mes == 8 && mes == 9 && mes == 12 ? data = 31 : data = 30;
-				//var temp = mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes == 8 || mes == 9 || mes == 12 ? data = 31 : data = 28;
 			}
 			else
 				if (DateTime.Today.Year % 400 == 0 || (DateTime.Today.Year % 4 == 0 && DateTime.Today.Year % 100 != 0))
@@ -359,8 +320,8 @@ namespace VesteBem_Admin
 			else
 				data = 28;
 
-			
-			DtpEntrega.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
+
+			dtpEntrega.MaxDate = new DateTime(DateTime.Today.Year, mes, data);
 		}
 
 		private void FrmCarrinho_FormClosed(object sender, FormClosedEventArgs e)
@@ -372,348 +333,73 @@ namespace VesteBem_Admin
 
 		private void pictureBox3_Click(object sender, EventArgs e)
 		{
-			if(CmbProduto.Text!="")
-			try
-			{
-				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
-				Panel Pnl = new Panel();
-				Pnl.Location = new System.Drawing.Point(0, 0);
-				Pnl.Name = "panel1";
-				Pnl.BackColor = Color.Red;
-				Pnl.Size = new System.Drawing.Size(245, 30);//271; 150
-				Pnl.TabIndex = 0;
-				FlpProdutos.Controls.Add(Pnl);
+			if (cmbProduto.Text != "")
+				try
+				{
+					DetalhesEncomendas Detalhes = new DetalhesEncomendas();
+					Panel pnl = new Panel();
+					pnl.Location = new System.Drawing.Point(0, 0);
+					pnl.Name = "panel1";
+					pnl.BackColor = Color.Red;
+					pnl.Size = new System.Drawing.Size(245, 30);//271; 150
+					pnl.TabIndex = 0;
+					flpProdutos.Controls.Add(pnl);
 
-				Label LblNome = new Label();
-				LblNome.AutoSize = true;
-				LblNome.Location = new System.Drawing.Point(5, 10);
-				LblNome.Name = "label6";
-				LblNome.Size = new System.Drawing.Size(35, 13);
-				LblNome.TabIndex = 0;
-				LblNome.BackColor = Color.LightGray;
-				LblNome.Tag = PctEncomenda.Tag.ToString();
-				var ds = lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Nome;
-				LblNome.Click += new System.EventHandler(label_Click);
-				Pnl.Controls.Add(LblNome);
+					Label LblNome = new Label();
+					LblNome.AutoSize = true;
+					LblNome.Location = new System.Drawing.Point(5, 10);
+					LblNome.Name = "label6";
+					LblNome.Size = new System.Drawing.Size(35, 13);
+					LblNome.TabIndex = 0;
+					LblNome.BackColor = Color.LightGray;
+					LblNome.Tag = pctEncomenda.Tag.ToString();
+					var ds = lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome;
+					LblNome.Click += new System.EventHandler(label_Click);
+					pnl.Controls.Add(LblNome);
 
-				Label LblPreco = new Label();
-				LblPreco.AutoSize = true;
-				LblPreco.Location = new System.Drawing.Point(175, 10);
-				LblPreco.Name = "label7";
-				LblPreco.Size = new System.Drawing.Size(25, 13);
-				LblPreco.TabIndex = 1;
-				LblPreco.BackColor = Color.Green;
-				LblPreco.Text = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Valor + "€";
-				LblPreco.Tag = "" + lstProduto[int.Parse(PctEncomenda.Tag.ToString())].Valor;
-				Pnl.Controls.Add(LblPreco);
+					Label LblPreco = new Label();
+					LblPreco.AutoSize = true;
+					LblPreco.Location = new System.Drawing.Point(175, 10);
+					LblPreco.Name = "label7";
+					LblPreco.Size = new System.Drawing.Size(25, 13);
+					LblPreco.TabIndex = 1;
+					LblPreco.BackColor = Color.Green;
+					LblPreco.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Valor + "€";
+					LblPreco.Tag = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Valor;
+					pnl.Controls.Add(LblPreco);
 
-				Label LblQuantidade = new Label();
-				LblQuantidade.Location = new System.Drawing.Point(135, 10);
-				LblQuantidade.Name = "label7";
-				LblQuantidade.Size = new System.Drawing.Size(35, 13);
-				LblQuantidade.TabIndex = 1;
-				LblQuantidade.BackColor = Color.Gray;
-				LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
-				LblQuantidade.Text = NudQuantidade.Value + " x";
-				LblQuantidade.Tag = "" + NudQuantidade.Value;
-				Pnl.Controls.Add(LblQuantidade);
+					Label LblQuantidade = new Label();
+					LblQuantidade.Location = new System.Drawing.Point(135, 10);
+					LblQuantidade.Name = "label7";
+					LblQuantidade.Size = new System.Drawing.Size(35, 13);
+					LblQuantidade.TabIndex = 1;
+					LblQuantidade.BackColor = Color.Gray;
+					LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
+					LblQuantidade.Text = nudQuantidade.Value + " x";
+					LblQuantidade.Tag = "" + nudQuantidade.Value;
+					pnl.Controls.Add(LblQuantidade);
 
-				PictureBox PctRemove = new PictureBox();
-				PctRemove.Image = Properties.Resources.Red_Remove;
-				PctRemove.Name = "Remove";
-				PctRemove.Location = new System.Drawing.Point(225, 10);
-				PctRemove.Size = new System.Drawing.Size(15, 13);
-				PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
-				PctRemove.Click += new System.EventHandler(PctRemove_Click);
-				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
-				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
-				PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
-				Pnl.Controls.Add(PctRemove);
+					PictureBox PctRemove = new PictureBox();
+					PctRemove.Image = Properties.Resources.Red_Remove;
+					PctRemove.Name = "Remove";
+					PctRemove.Location = new System.Drawing.Point(225, 10);
+					PctRemove.Size = new System.Drawing.Size(15, 13);
+					PctRemove.SizeMode = PictureBoxSizeMode.Zoom;
+					PctRemove.Click += new System.EventHandler(PctRemove_Click);
+					PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
+					PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
+					PctRemove.Tag = "" + lstDetalhesEncomendas.Count();
+					pnl.Controls.Add(PctRemove);
 
-				LblTotal.Tag = "" + (double.Parse(LblTotal.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
-				LblTotal.Text = "Total: " + LblTotal.Tag + "€";
+					lblTotal.Tag = "" + (double.Parse(lblTotal.Tag.ToString()) + ((int.Parse(LblQuantidade.Tag.ToString()) * double.Parse(LblPreco.Tag.ToString()))));
+					lblTotal.Text = "Total: " + lblTotal.Tag + "€";
 
-				Detalhes.Id_Encomendas = lstDetalhesEncomendas.Count();
-				Detalhes.Id_Produtos = lstProduto[int.Parse(PctEncomenda.Tag.ToString())].IdProduto;
-				Detalhes.QuantEnc = int.Parse(NudQuantidade.Value.ToString());
-				lstDetalhesEncomendas.Add(Detalhes);
-			}
-			catch { }
+					Detalhes.Id_Encomendas = lstDetalhesEncomendas.Count();
+					Detalhes.Id_Produtos = lstProduto[int.Parse(pctEncomenda.Tag.ToString())].IdProduto;
+					Detalhes.QuantEnc = int.Parse(nudQuantidade.Value.ToString());
+					lstDetalhesEncomendas.Add(Detalhes);
+				}
+				catch { }
 		}
-	}
-	public class Estado
-	{
-
-
-
-		//public static List<Produtos> SelectProdutos()
-		//{
-		//	List<Produtos> lstProdutos = new List<Produtos>();
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
-		//	SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
-		//	try
-		//	{
-		//		ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-		//		string str = string.Empty;
-		//		DataSet dataSet = new DataSet();
-		//		dataAdapter.Fill(dataSet);
-		//		comando.Connection = liga;
-		//		liga.Open();
-		//		using (SqlDataReader oReader = comando.ExecuteReader())
-		//		{
-		//			int ds = 0;
-		//			while (oReader.Read())
-		//			{
-		//				Produtos pro = new Produtos();
-		//				try
-		//				{
-		//					Byte[] data = new Byte[0];
-		//					data = (Byte[])(dataSet.Tables[0].Rows[ds]["Icon"]);
-		//					MemoryStream mem = new MemoryStream(data);
-
-		//					pro.Icon = Image.FromStream(mem);
-		//				}
-		//				catch
-		//				{
-		//					pro.Icon = Properties.Resources.user;
-		//				}
-		//				pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
-		//				pro.Nome = oReader["Nome"].ToString();
-		//				pro.Valor = double.Parse(oReader["Valor"].ToString());
-		//				pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
-		//				pro.CategoriaClass = oReader["CategoriaClasse"].ToString();
-		//				pro.CategoriaSubClass = oReader["CategoriaSubClasse"].ToString();
-		//				pro.Sexo = oReader["Sexo"].ToString();
-		//				ds++;
-		//				lstProdutos.Add(pro);
-		//			}
-		//		}
-		//	}
-		//	catch
-		//	{
-
-		//	}
-		//	finally
-		//	{
-		//		liga.Close();
-		//	}
-
-		//	return lstProdutos;
-		//	//List<Produtos> lstProduto = new List<Produtos>();
-		//	//SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	//SqlCommand comando = new SqlCommand("Select * From tbl_Produtos", liga);
-		//	//try
-		//	//{
-		//	//	DataSet dataSet = new DataSet();
-		//	//	SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
-		//	//	dataAdapter.Fill(dataSet);
-		//	//	comando.Connection = liga;
-		//	//	liga.Open();
-		//	//	using (SqlDataReader oReader = comando.ExecuteReader())
-		//	//	{
-		//	//		ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-
-		//	//		int dss = 0;
-		//	//		while (oReader.Read())
-		//	//		{
-		//	//			Byte[] data = new Byte[0];
-		//	//			data = (Byte[])(dataSet.Tables[0].Rows[dss]["Icon"]);
-		//	//			MemoryStream mem = new MemoryStream(data);
-
-		//	//			Produtos pro = new Produtos();
-		//	//			pro.Icon = Image.FromStream(mem);
-		//	//			pro.IdProduto = int.Parse(oReader["IdProduto"].ToString());
-		//	//			pro.Nome = (oReader["Nome"].ToString());
-		//	//			pro.Valor = double.Parse(oReader["Valor"].ToString());
-		//	//			pro.NomedaEmpresa = (oReader["NomedaEmpresa"].ToString());
-		//	//			pro.CategoriaClass = (oReader["CategoriaClasse"].ToString());
-		//	//			pro.CategoriaSubClass = (oReader["CategoriaSubClasse"].ToString());
-		//	//			pro.Sexo = (oReader["Sexo"].ToString());
-		//	//			dss++;
-		//	//			lstProduto.Add(pro);
-		//	//		}
-		//	//	}
-		//	//}
-		//	//catch(Exception ex)
-		//	//{
-		//	//	return null;
-		//	//}
-		//	//finally
-		//	//{
-		//	//	liga.Close();
-		//	//}
-
-		//	//return lstProduto;
-		//}
-		//public static List<Estados> SelectFuncao()
-		//{
-		//	List<Estados> lst = new List<Estados>();
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	SqlCommand comando = new SqlCommand("Select IdEstado, Estado From tblEstado", liga);
-		//	try
-		//	{
-		//		comando.Connection = liga;
-		//		liga.Open();
-		//		using (SqlDataReader oReader = comando.ExecuteReader())
-		//		{
-		//			while (oReader.Read())
-		//			{
-		//				Estados est = new Estados();
-		//				est.IdEstado = int.Parse(oReader["IdEstado"].ToString());
-		//				est.Estado = (oReader["Estado"].ToString());
-		//				lst.Add(est);
-		//			}
-		//		}
-		//	}
-		//	catch
-		//	{
-		//		return null;
-		//	}
-		//	finally
-		//	{
-		//		liga.Close();
-		//	}
-
-		//	return lst;
-		//}
-		//public static string InsertEncomendas(Encomenda enc, int IdEstado)
-		//{
-		//	SqlCommand command = new SqlCommand();
-		//	using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-		//	{
-		//		command.CommandText = "SpInsertEncomenda";
-		//		command.CommandType = System.Data.CommandType.StoredProcedure;
-
-		//		try
-		//		{
-		//			command.Parameters.Add(new SqlParameter("ValorEncomendas", enc.ValorEncomendas));
-		//			command.Parameters.Add(new SqlParameter("EstadoEncomendas", IdEstado));
-		//			command.Parameters.Add(new SqlParameter("DataEncomenda", enc.DataEncomenda));
-		//			command.Parameters.Add(new SqlParameter("DataEntrega", enc.DataEntrega));
-		//			command.Parameters.Add(new SqlParameter("Id_Cliente", enc.Id_Cliente));
-
-		//			command.Connection = liga;
-
-		//			liga.Open();
-
-		//			command.ExecuteNonQuery();
-		//		}
-		//		catch(Exception ex)
-		//		{
-
-		//		}
-		//		liga.Close();
-		//		return "sucesso";
-		//	}
-		//}
-		//public static string InsertDetalhes(List<DetalhesEncomendas> lst)
-		//{
-		//	SqlCommand command = new SqlCommand();
-		//	using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
-		//	{
-		//		command.CommandText = "SpInsertDetalhes";
-		//		command.CommandType = System.Data.CommandType.StoredProcedure;
-		//		lst.ToList().ForEach(item =>
-		//		{
-		//			try
-		//			{
-		//				command.Parameters.Add(new SqlParameter("Id_Encomendas", item.Id_Encomendas));
-		//				command.Parameters.Add(new SqlParameter("Id_Produtos", item.Id_Produtos));
-		//				command.Parameters.Add(new SqlParameter("QuantEnc", item.QuantEnc));
-
-		//				command.Connection = liga;
-
-		//				liga.Open();
-
-		//				command.ExecuteNonQuery();
-		//			}
-		//			catch (Exception ex)
-		//			{
-
-		//			}
-		//		});
-		//		liga.Close();
-		//		return "sucesso";
-		//	}
-		//}
-		//public static int SelectIdEncomenda(int cli)
-		//{
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	SqlCommand comando = new SqlCommand("Select idEncomendas From tbl_Encomendas", liga);
-		//	int idEncomenda = 0;
-		//	try
-		//	{
-		//		comando.Connection = liga;
-		//		liga.Open();
-		//		using (SqlDataReader oReader = comando.ExecuteReader())
-		//		{
-		//			if (oReader.Read())
-		//				if (int.Parse(oReader["IdEncomendas"].ToString()) == cli)
-		//					idEncomenda = int.Parse(oReader["IdEncomendas"].ToString());
-		//			liga.Close();
-
-		//			return idEncomenda;
-		//		}
-		//	}
-		//	catch
-		//	{
-		//		return idEncomenda;
-		//	}
-
-		//}
-		//public static int SelectIdCliente(string cli)
-		//{
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	SqlCommand comando = new SqlCommand("Select IdCliente From tbl_Cliente WHERE Nome like '"+cli+"'", liga);
-		//	int idcli = 0;
-		//	try
-		//	{
-		//		comando.Connection = liga;
-		//		liga.Open();
-		//		using (SqlDataReader oReader = comando.ExecuteReader())
-		//		{
-		//			if (oReader.Read())
-		//				idcli = int.Parse(oReader["IdCliente"].ToString());
-
-
-		//		}
-		//		return idcli; 
-		//	}
-		//	catch
-		//	{
-		//		return idcli;
-		//	}
-
-		//}
-		//public static List<Cliente> SelectId()
-		//{
-		//	List<Cliente> lstcli = new List<Cliente>();
-		//	SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-		//	SqlCommand comando = new SqlCommand("Select IdCliente, Nome From tbl_Cliente", liga);
-		//	try
-		//	{
-		//		comando.Connection = liga;
-		//		liga.Open();
-		//		using (SqlDataReader oReader = comando.ExecuteReader())
-		//		{
-		//			while (oReader.Read())
-		//			{
-		//				Cliente cli = new Cliente();
-		//				cli.Id_Cliente = (int.Parse(oReader["IdCliente"].ToString()));
-		//				cli.Nome = oReader["Nome"].ToString();
-
-		//				lstcli.Add(cli);
-		//			}
-		//			liga.Close();
-		//		}
-		//	}
-		//	catch
-		//	{
-		//		return null;
-		//	}
-
-		//	return lstcli;
-		//}
 	}
 }

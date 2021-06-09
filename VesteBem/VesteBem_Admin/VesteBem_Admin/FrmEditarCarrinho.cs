@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmEditarCarrinho : Form
+	public partial class frmEditarCarrinho : Form
 	{
-		public FrmEditarCarrinho()
+		public frmEditarCarrinho()
 		{
 			InitializeComponent();
 		}
 
-		private void FrmEditarCarrinho_Load(object sender, EventArgs e)
+		private void frmEditarCarrinho_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
 		}

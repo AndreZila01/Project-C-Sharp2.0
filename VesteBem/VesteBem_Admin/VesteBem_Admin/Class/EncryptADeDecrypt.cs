@@ -55,6 +55,10 @@ namespace VesteBem_Admin.Class
                     var decryptedData = Encoding.UTF8.GetString(decryptedBytes);
                     return decryptedData.ToString();
                 }
+				catch
+				{
+                    return "Error ao converter a password";
+				}
                 finally
                 {
                     rsa.PersistKeyInCsp = false;

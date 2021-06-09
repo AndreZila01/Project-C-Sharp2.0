@@ -11,21 +11,21 @@ using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmEditarApagarProdutos : Form
+	public partial class frmEditarApagarProdutos : Form
 	{
 		List<Produtos> LstProdutos = new List<Produtos>();
-		public FrmEditarApagarProdutos()
+		public frmEditarApagarProdutos()
 		{
 			InitializeComponent();
 		}
 
-		private void FrmEditarApagarProdutos_Load(object sender, EventArgs e)
+		private void frmEditarApagarProdutos_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!BgwInicio.IsBusy)
-				BgwInicio.RunWorkerAsync();
+			if (!bgwInicio.IsBusy)
+				bgwInicio.RunWorkerAsync();
 		}
 
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -33,7 +33,7 @@ namespace VesteBem_Admin
 			LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");
 
 		}
-		private void PctRemove_MouseEnter(object sender, EventArgs e)
+		private void pctRemove_MouseEnter(object sender, EventArgs e)
 		{
 			PictureBox Pct = sender as PictureBox;
 			try
@@ -46,7 +46,7 @@ namespace VesteBem_Admin
 			}
 		}
 
-		private void PctRemove_MouseLeave(object sender, EventArgs e)
+		private void pctRemove_MouseLeave(object sender, EventArgs e)
 		{
 			PictureBox Pct = sender as PictureBox;
 			try
@@ -60,7 +60,7 @@ namespace VesteBem_Admin
 		}
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			FlwCentro.Controls.Clear();
+			flwCentro.Controls.Clear();
 			LstProdutos.ToList().ForEach(item =>
 			{
 
@@ -71,12 +71,12 @@ namespace VesteBem_Admin
 				Pnl.Name = "panel2";
 				Pnl.Size = new System.Drawing.Size(800, 42);
 				Pnl.TabIndex = 0;
-				FlwCentro.Controls.Add(Pnl);
+				flwCentro.Controls.Add(Pnl);
 
 				PictureBox PctRemove = new PictureBox();
-				PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
-				PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
-				PctRemove.Click += new System.EventHandler(Pct_Click);
+				PctRemove.MouseLeave += new System.EventHandler(pctRemove_MouseLeave);
+				PctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
+				PctRemove.Click += new System.EventHandler(pct_Click);
 				PctRemove.Image = global::VesteBem_Admin.Properties.Resources.Red_Remove;
 				PctRemove.Location = new System.Drawing.Point(753, 6);
 				PctRemove.Tag = item.IdProduto;
@@ -88,7 +88,7 @@ namespace VesteBem_Admin
 
 				PictureBox PctEdit = new PictureBox();
 				PctEdit.Image = global::VesteBem_Admin.Properties.Resources.Pencil;
-				PctEdit.Click += new System.EventHandler(Pct_Click);
+				PctEdit.Click += new System.EventHandler(pct_Click);
 				PctEdit.Location = new System.Drawing.Point(705, 6);
 				PctEdit.Name = "PctEdit";
 				PctEdit.Size = new System.Drawing.Size(35, 30);
@@ -128,21 +128,21 @@ namespace VesteBem_Admin
 				Pnl.Controls.Add(PctEdit);
 			});
 
-			CmbCategoria.Items.Add("");
+			cmbCategoria.Items.Add("");
 			LstProdutos.ToList().ForEach(item =>
 			{
-				CmbCategoria.Items.Add(item.CategoriaClass);
+				cmbCategoria.Items.Add(item.CategoriaClass);
 			});
 		}
 
-		private void Pct_Click(object sender, EventArgs e)
+		private void pct_Click(object sender, EventArgs e)
 		{
 			PictureBox Pct = sender as PictureBox;
 
 			switch (Pct.Name)
 			{
 				case "PctEdit":
-					FrmAddChangeProdutos frm = new FrmAddChangeProdutos(int.Parse(Pct.Tag.ToString()));
+					frmAddChangeProdutos frm = new frmAddChangeProdutos(int.Parse(Pct.Tag.ToString()));
 					frm.ShowDialog();
 					break;
 				case "PctRemove":
@@ -150,10 +150,10 @@ namespace VesteBem_Admin
 					break;
 			}
 
-			BgwInicio.RunWorkerAsync();
+			bgwInicio.RunWorkerAsync();
 		}
 
-		private void FrmEditarApagarProdutos_FormClosed(object sender, FormClosedEventArgs e)
+		private void frmEditarApagarProdutos_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
@@ -162,12 +162,12 @@ namespace VesteBem_Admin
 
 		private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 		{
-			FlwCentro.Controls.Clear();
+			flwCentro.Controls.Clear();
 			LstProdutos.ToList().ForEach(item =>
 			{
 				try
 				{
-					if (((item.CategoriaClass == CmbCategoria.Text) || (CmbCategoria.Text == "")) && ((item.Nome.Substring(0, TxtNome.Text.Length) == TxtNome.Text)))
+					if (((item.CategoriaClass == cmbCategoria.Text) || (cmbCategoria.Text == "")) && ((item.Nome.Substring(0, txtNome.Text.Length) == txtNome.Text)))
 					{
 						Panel Pnl = new Panel();
 						Pnl.Dock = System.Windows.Forms.DockStyle.Top;
@@ -176,12 +176,12 @@ namespace VesteBem_Admin
 						Pnl.Name = "panel2";
 						Pnl.Size = new System.Drawing.Size(800, 42);
 						Pnl.TabIndex = 0;
-						FlwCentro.Controls.Add(Pnl);
+						flwCentro.Controls.Add(Pnl);
 
 						PictureBox PctRemove = new PictureBox();
-						PctRemove.MouseLeave += new System.EventHandler(PctRemove_MouseLeave);
-						PctRemove.MouseEnter += new System.EventHandler(PctRemove_MouseEnter);
-						PctRemove.Click += new System.EventHandler(Pct_Click);
+						PctRemove.MouseLeave += new System.EventHandler(pctRemove_MouseLeave);
+						PctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
+						PctRemove.Click += new System.EventHandler(pct_Click);
 						PctRemove.Image = global::VesteBem_Admin.Properties.Resources.Red_Remove;
 						PctRemove.Location = new System.Drawing.Point(753, 6);
 						PctRemove.Tag = item.IdProduto;
@@ -193,7 +193,7 @@ namespace VesteBem_Admin
 
 						PictureBox PctEdit = new PictureBox();
 						PctEdit.Image = global::VesteBem_Admin.Properties.Resources.Pencil;
-						PctEdit.Click += new System.EventHandler(Pct_Click);
+						PctEdit.Click += new System.EventHandler(pct_Click);
 						PctEdit.Location = new System.Drawing.Point(705, 6);
 						PctEdit.Name = "PctEdit";
 						PctEdit.Size = new System.Drawing.Size(35, 30);
@@ -242,14 +242,14 @@ namespace VesteBem_Admin
 
 		private void comboBox1_TextChanged(object sender, EventArgs e)
 		{
-			if (!BgwModificar.IsBusy)
-				BgwModificar.RunWorkerAsync();
+			if (!bgwModificar.IsBusy)
+				bgwModificar.RunWorkerAsync();
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
-			if (!BgwModificar.IsBusy)
-				BgwModificar.RunWorkerAsync();
+			if (!bgwModificar.IsBusy)
+				bgwModificar.RunWorkerAsync();
 		}
 	}
 }

@@ -1,6 +1,6 @@
 ﻿namespace VesteBem_Admin
 {
-	partial class FrmAddChangeProdutos
+	partial class frmAddChangeProdutos
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,241 +28,249 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAddChangeProdutos));
-			this.TxtNome = new System.Windows.Forms.TextBox();
-			this.TxtValor = new System.Windows.Forms.TextBox();
-			this.TxtEmpresa = new System.Windows.Forms.TextBox();
-			this.TxtCat = new System.Windows.Forms.TextBox();
-			this.TxtSubCat = new System.Windows.Forms.TextBox();
-			this.TxtIcon = new System.Windows.Forms.TextBox();
-			this.PctImage = new System.Windows.Forms.PictureBox();
-			this.LblNome = new System.Windows.Forms.Label();
-			this.LblValor = new System.Windows.Forms.Label();
-			this.LblEmpresa = new System.Windows.Forms.Label();
-			this.LblCategoria = new System.Windows.Forms.Label();
-			this.LblSubCateg = new System.Windows.Forms.Label();
-			this.LblSexo = new System.Windows.Forms.Label();
-			this.LblIcon = new System.Windows.Forms.Label();
-			this.LblImagem = new System.Windows.Forms.Label();
-			this.LblEuro = new System.Windows.Forms.Label();
-			this.PctAdd = new System.Windows.Forms.PictureBox();
-			this.BtnRegistar = new System.Windows.Forms.Button();
-			this.CboSexo = new System.Windows.Forms.ComboBox();
-			((System.ComponentModel.ISupportInitialize)(this.PctImage)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).BeginInit();
+			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddChangeProdutos));
+			this.txtNome = new System.Windows.Forms.TextBox();
+			this.txtValor = new System.Windows.Forms.TextBox();
+			this.txtEmpresa = new System.Windows.Forms.TextBox();
+			this.txtCat = new System.Windows.Forms.TextBox();
+			this.txtSubCat = new System.Windows.Forms.TextBox();
+			this.txtIcon = new System.Windows.Forms.TextBox();
+			this.pctImage = new System.Windows.Forms.PictureBox();
+			this.lblNome = new System.Windows.Forms.Label();
+			this.lblValor = new System.Windows.Forms.Label();
+			this.lblEmpresa = new System.Windows.Forms.Label();
+			this.lblCategoria = new System.Windows.Forms.Label();
+			this.lblSubCateg = new System.Windows.Forms.Label();
+			this.lblSexo = new System.Windows.Forms.Label();
+			this.lblIcon = new System.Windows.Forms.Label();
+			this.lblImagem = new System.Windows.Forms.Label();
+			this.lblEuro = new System.Windows.Forms.Label();
+			this.pctAdd = new System.Windows.Forms.PictureBox();
+			this.btnRegistar = new System.Windows.Forms.Button();
+			this.cboSexo = new System.Windows.Forms.ComboBox();
+			this.icnNotificação = new System.Windows.Forms.NotifyIcon(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.pctImage)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctAdd)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// TxtNome
+			// txtNome
 			// 
-			this.TxtNome.Location = new System.Drawing.Point(109, 47);
-			this.TxtNome.MaxLength = 100;
-			this.TxtNome.Name = "TxtNome";
-			this.TxtNome.Size = new System.Drawing.Size(100, 20);
-			this.TxtNome.TabIndex = 0;
+			this.txtNome.Location = new System.Drawing.Point(109, 47);
+			this.txtNome.MaxLength = 100;
+			this.txtNome.Name = "txtNome";
+			this.txtNome.Size = new System.Drawing.Size(100, 20);
+			this.txtNome.TabIndex = 0;
 			// 
-			// TxtValor
+			// txtValor
 			// 
-			this.TxtValor.Location = new System.Drawing.Point(109, 83);
-			this.TxtValor.MaxLength = 9;
-			this.TxtValor.Name = "TxtValor";
-			this.TxtValor.Size = new System.Drawing.Size(100, 20);
-			this.TxtValor.TabIndex = 1;
-			this.TxtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtValor_KeyPress);
-			this.TxtValor.Leave += new System.EventHandler(this.TxtValor_Leave);
+			this.txtValor.Location = new System.Drawing.Point(109, 83);
+			this.txtValor.MaxLength = 9;
+			this.txtValor.Name = "txtValor";
+			this.txtValor.Size = new System.Drawing.Size(100, 20);
+			this.txtValor.TabIndex = 1;
+			this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
+			this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
 			// 
-			// TxtEmpresa
+			// txtEmpresa
 			// 
-			this.TxtEmpresa.Location = new System.Drawing.Point(109, 122);
-			this.TxtEmpresa.MaxLength = 100;
-			this.TxtEmpresa.Name = "TxtEmpresa";
-			this.TxtEmpresa.Size = new System.Drawing.Size(100, 20);
-			this.TxtEmpresa.TabIndex = 2;
+			this.txtEmpresa.Location = new System.Drawing.Point(109, 122);
+			this.txtEmpresa.MaxLength = 100;
+			this.txtEmpresa.Name = "txtEmpresa";
+			this.txtEmpresa.Size = new System.Drawing.Size(100, 20);
+			this.txtEmpresa.TabIndex = 2;
 			// 
-			// TxtCat
+			// txtCat
 			// 
-			this.TxtCat.Location = new System.Drawing.Point(109, 163);
-			this.TxtCat.MaxLength = 100;
-			this.TxtCat.Name = "TxtCat";
-			this.TxtCat.Size = new System.Drawing.Size(100, 20);
-			this.TxtCat.TabIndex = 3;
-			this.TxtCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCat_KeyPress);
+			this.txtCat.Location = new System.Drawing.Point(109, 163);
+			this.txtCat.MaxLength = 100;
+			this.txtCat.Name = "txtCat";
+			this.txtCat.Size = new System.Drawing.Size(100, 20);
+			this.txtCat.TabIndex = 3;
+			this.txtCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCats_KeyPress);
 			// 
-			// TxtSubCat
+			// txtSubCat
 			// 
-			this.TxtSubCat.Location = new System.Drawing.Point(109, 201);
-			this.TxtSubCat.MaxLength = 100;
-			this.TxtSubCat.Name = "TxtSubCat";
-			this.TxtSubCat.Size = new System.Drawing.Size(100, 20);
-			this.TxtSubCat.TabIndex = 4;
-			this.TxtSubCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtSubCat_KeyPress);
+			this.txtSubCat.Location = new System.Drawing.Point(109, 201);
+			this.txtSubCat.MaxLength = 100;
+			this.txtSubCat.Name = "txtSubCat";
+			this.txtSubCat.Size = new System.Drawing.Size(100, 20);
+			this.txtSubCat.TabIndex = 4;
+			this.txtSubCat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCats_KeyPress);
 			// 
-			// TxtIcon
+			// txtIcon
 			// 
-			this.TxtIcon.Location = new System.Drawing.Point(109, 275);
-			this.TxtIcon.Name = "TxtIcon";
-			this.TxtIcon.ReadOnly = true;
-			this.TxtIcon.Size = new System.Drawing.Size(100, 20);
-			this.TxtIcon.TabIndex = 6;
+			this.txtIcon.Location = new System.Drawing.Point(109, 275);
+			this.txtIcon.Name = "txtIcon";
+			this.txtIcon.ReadOnly = true;
+			this.txtIcon.Size = new System.Drawing.Size(100, 20);
+			this.txtIcon.TabIndex = 6;
 			// 
-			// PctImage
+			// pctImage
 			// 
-			this.PctImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-			this.PctImage.Location = new System.Drawing.Point(265, 47);
-			this.PctImage.Name = "PctImage";
-			this.PctImage.Size = new System.Drawing.Size(288, 323);
-			this.PctImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PctImage.TabIndex = 7;
-			this.PctImage.TabStop = false;
+			this.pctImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+			this.pctImage.Location = new System.Drawing.Point(265, 47);
+			this.pctImage.Name = "pctImage";
+			this.pctImage.Size = new System.Drawing.Size(288, 323);
+			this.pctImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pctImage.TabIndex = 7;
+			this.pctImage.TabStop = false;
 			// 
-			// LblNome
+			// lblNome
 			// 
-			this.LblNome.AutoSize = true;
-			this.LblNome.Location = new System.Drawing.Point(10, 47);
-			this.LblNome.Name = "LblNome";
-			this.LblNome.Size = new System.Drawing.Size(35, 13);
-			this.LblNome.TabIndex = 8;
-			this.LblNome.Text = "Nome";
+			this.lblNome.AutoSize = true;
+			this.lblNome.Location = new System.Drawing.Point(10, 47);
+			this.lblNome.Name = "lblNome";
+			this.lblNome.Size = new System.Drawing.Size(35, 13);
+			this.lblNome.TabIndex = 8;
+			this.lblNome.Text = "Nome";
 			// 
-			// LblValor
+			// lblValor
 			// 
-			this.LblValor.AutoSize = true;
-			this.LblValor.Location = new System.Drawing.Point(10, 86);
-			this.LblValor.Name = "LblValor";
-			this.LblValor.Size = new System.Drawing.Size(31, 13);
-			this.LblValor.TabIndex = 9;
-			this.LblValor.Text = "Valor";
+			this.lblValor.AutoSize = true;
+			this.lblValor.Location = new System.Drawing.Point(10, 86);
+			this.lblValor.Name = "lblValor";
+			this.lblValor.Size = new System.Drawing.Size(31, 13);
+			this.lblValor.TabIndex = 9;
+			this.lblValor.Text = "Valor";
 			// 
-			// LblEmpresa
+			// lblEmpresa
 			// 
-			this.LblEmpresa.AutoSize = true;
-			this.LblEmpresa.Location = new System.Drawing.Point(10, 125);
-			this.LblEmpresa.Name = "LblEmpresa";
-			this.LblEmpresa.Size = new System.Drawing.Size(48, 13);
-			this.LblEmpresa.TabIndex = 10;
-			this.LblEmpresa.Text = "Empresa";
+			this.lblEmpresa.AutoSize = true;
+			this.lblEmpresa.Location = new System.Drawing.Point(10, 125);
+			this.lblEmpresa.Name = "lblEmpresa";
+			this.lblEmpresa.Size = new System.Drawing.Size(48, 13);
+			this.lblEmpresa.TabIndex = 10;
+			this.lblEmpresa.Text = "Empresa";
 			// 
-			// LblCategoria
+			// lblCategoria
 			// 
-			this.LblCategoria.AutoSize = true;
-			this.LblCategoria.Location = new System.Drawing.Point(12, 166);
-			this.LblCategoria.Name = "LblCategoria";
-			this.LblCategoria.Size = new System.Drawing.Size(52, 13);
-			this.LblCategoria.TabIndex = 11;
-			this.LblCategoria.Text = "Categoria";
+			this.lblCategoria.AutoSize = true;
+			this.lblCategoria.Location = new System.Drawing.Point(12, 166);
+			this.lblCategoria.Name = "lblCategoria";
+			this.lblCategoria.Size = new System.Drawing.Size(52, 13);
+			this.lblCategoria.TabIndex = 11;
+			this.lblCategoria.Text = "Categoria";
 			// 
-			// LblSubCateg
+			// lblSubCateg
 			// 
-			this.LblSubCateg.AutoSize = true;
-			this.LblSubCateg.Location = new System.Drawing.Point(12, 204);
-			this.LblSubCateg.Name = "LblSubCateg";
-			this.LblSubCateg.Size = new System.Drawing.Size(74, 13);
-			this.LblSubCateg.TabIndex = 12;
-			this.LblSubCateg.Text = "Sub Categoria";
+			this.lblSubCateg.AutoSize = true;
+			this.lblSubCateg.Location = new System.Drawing.Point(12, 204);
+			this.lblSubCateg.Name = "lblSubCateg";
+			this.lblSubCateg.Size = new System.Drawing.Size(74, 13);
+			this.lblSubCateg.TabIndex = 12;
+			this.lblSubCateg.Text = "Sub Categoria";
 			// 
-			// LblSexo
+			// lblSexo
 			// 
-			this.LblSexo.AutoSize = true;
-			this.LblSexo.Location = new System.Drawing.Point(12, 242);
-			this.LblSexo.Name = "LblSexo";
-			this.LblSexo.Size = new System.Drawing.Size(31, 13);
-			this.LblSexo.TabIndex = 13;
-			this.LblSexo.Text = "Sexo";
+			this.lblSexo.AutoSize = true;
+			this.lblSexo.Location = new System.Drawing.Point(12, 242);
+			this.lblSexo.Name = "lblSexo";
+			this.lblSexo.Size = new System.Drawing.Size(31, 13);
+			this.lblSexo.TabIndex = 13;
+			this.lblSexo.Text = "Sexo";
 			// 
-			// LblIcon
+			// lblIcon
 			// 
-			this.LblIcon.AutoSize = true;
-			this.LblIcon.Location = new System.Drawing.Point(10, 278);
-			this.LblIcon.Name = "LblIcon";
-			this.LblIcon.Size = new System.Drawing.Size(28, 13);
-			this.LblIcon.TabIndex = 14;
-			this.LblIcon.Text = "Icon";
+			this.lblIcon.AutoSize = true;
+			this.lblIcon.Location = new System.Drawing.Point(10, 278);
+			this.lblIcon.Name = "lblIcon";
+			this.lblIcon.Size = new System.Drawing.Size(28, 13);
+			this.lblIcon.TabIndex = 14;
+			this.lblIcon.Text = "Icon";
 			// 
-			// LblImagem
+			// lblImagem
 			// 
-			this.LblImagem.AutoSize = true;
-			this.LblImagem.Location = new System.Drawing.Point(272, 31);
-			this.LblImagem.Name = "LblImagem";
-			this.LblImagem.Size = new System.Drawing.Size(39, 13);
-			this.LblImagem.TabIndex = 15;
-			this.LblImagem.Text = "Image:";
+			this.lblImagem.AutoSize = true;
+			this.lblImagem.Location = new System.Drawing.Point(272, 31);
+			this.lblImagem.Name = "lblImagem";
+			this.lblImagem.Size = new System.Drawing.Size(39, 13);
+			this.lblImagem.TabIndex = 15;
+			this.lblImagem.Text = "Image:";
 			// 
-			// LblEuro
+			// lblEuro
 			// 
-			this.LblEuro.AutoSize = true;
-			this.LblEuro.Location = new System.Drawing.Point(215, 86);
-			this.LblEuro.Name = "LblEuro";
-			this.LblEuro.Size = new System.Drawing.Size(13, 13);
-			this.LblEuro.TabIndex = 16;
-			this.LblEuro.Text = "€";
+			this.lblEuro.AutoSize = true;
+			this.lblEuro.Location = new System.Drawing.Point(215, 86);
+			this.lblEuro.Name = "lblEuro";
+			this.lblEuro.Size = new System.Drawing.Size(13, 13);
+			this.lblEuro.TabIndex = 16;
+			this.lblEuro.Text = "€";
 			// 
-			// PctAdd
+			// pctAdd
 			// 
-			this.PctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
-			this.PctAdd.Location = new System.Drawing.Point(218, 275);
-			this.PctAdd.Name = "PctAdd";
-			this.PctAdd.Size = new System.Drawing.Size(19, 20);
-			this.PctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-			this.PctAdd.TabIndex = 17;
-			this.PctAdd.TabStop = false;
-			this.PctAdd.Click += new System.EventHandler(this.pictureBox2_Click);
+			this.pctAdd.Image = global::VesteBem_Admin.Properties.Resources.add;
+			this.pctAdd.Location = new System.Drawing.Point(218, 275);
+			this.pctAdd.Name = "pctAdd";
+			this.pctAdd.Size = new System.Drawing.Size(19, 20);
+			this.pctAdd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+			this.pctAdd.TabIndex = 17;
+			this.pctAdd.TabStop = false;
+			this.pctAdd.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
-			// BtnRegistar
+			// btnRegistar
 			// 
-			this.BtnRegistar.Location = new System.Drawing.Point(44, 322);
-			this.BtnRegistar.Name = "BtnRegistar";
-			this.BtnRegistar.Size = new System.Drawing.Size(151, 48);
-			this.BtnRegistar.TabIndex = 18;
-			this.BtnRegistar.Text = "Registar Produtos";
-			this.BtnRegistar.UseVisualStyleBackColor = true;
-			this.BtnRegistar.Click += new System.EventHandler(this.button1_Click);
+			this.btnRegistar.Location = new System.Drawing.Point(44, 322);
+			this.btnRegistar.Name = "btnRegistar";
+			this.btnRegistar.Size = new System.Drawing.Size(151, 48);
+			this.btnRegistar.TabIndex = 18;
+			this.btnRegistar.Text = "Registar Produtos";
+			this.btnRegistar.UseVisualStyleBackColor = true;
+			this.btnRegistar.Click += new System.EventHandler(this.btn_Click);
 			// 
-			// CboSexo
+			// cboSexo
 			// 
-			this.CboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.CboSexo.FormattingEnabled = true;
-			this.CboSexo.Items.AddRange(new object[] {
+			this.cboSexo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cboSexo.FormattingEnabled = true;
+			this.cboSexo.Items.AddRange(new object[] {
             "Masculino",
             "Feminino",
             "Indefenido"});
-			this.CboSexo.Location = new System.Drawing.Point(109, 242);
-			this.CboSexo.Name = "CboSexo";
-			this.CboSexo.Size = new System.Drawing.Size(100, 21);
-			this.CboSexo.TabIndex = 19;
+			this.cboSexo.Location = new System.Drawing.Point(109, 242);
+			this.cboSexo.Name = "cboSexo";
+			this.cboSexo.Size = new System.Drawing.Size(100, 21);
+			this.cboSexo.TabIndex = 19;
 			// 
-			// FrmAddChangeProdutos
+			// icnNotificação
+			// 
+			this.icnNotificação.Icon = ((System.Drawing.Icon)(resources.GetObject("icnNotificação.Icon")));
+			this.icnNotificação.Text = "VesteBem";
+			this.icnNotificação.Visible = true;
+			// 
+			// frmAddChangeProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(594, 404);
-			this.Controls.Add(this.CboSexo);
-			this.Controls.Add(this.BtnRegistar);
-			this.Controls.Add(this.PctAdd);
-			this.Controls.Add(this.LblEuro);
-			this.Controls.Add(this.LblImagem);
-			this.Controls.Add(this.LblIcon);
-			this.Controls.Add(this.LblSexo);
-			this.Controls.Add(this.LblSubCateg);
-			this.Controls.Add(this.LblCategoria);
-			this.Controls.Add(this.LblEmpresa);
-			this.Controls.Add(this.LblValor);
-			this.Controls.Add(this.LblNome);
-			this.Controls.Add(this.PctImage);
-			this.Controls.Add(this.TxtIcon);
-			this.Controls.Add(this.TxtSubCat);
-			this.Controls.Add(this.TxtCat);
-			this.Controls.Add(this.TxtEmpresa);
-			this.Controls.Add(this.TxtValor);
-			this.Controls.Add(this.TxtNome);
+			this.Controls.Add(this.cboSexo);
+			this.Controls.Add(this.btnRegistar);
+			this.Controls.Add(this.pctAdd);
+			this.Controls.Add(this.lblEuro);
+			this.Controls.Add(this.lblImagem);
+			this.Controls.Add(this.lblIcon);
+			this.Controls.Add(this.lblSexo);
+			this.Controls.Add(this.lblSubCateg);
+			this.Controls.Add(this.lblCategoria);
+			this.Controls.Add(this.lblEmpresa);
+			this.Controls.Add(this.lblValor);
+			this.Controls.Add(this.lblNome);
+			this.Controls.Add(this.pctImage);
+			this.Controls.Add(this.txtIcon);
+			this.Controls.Add(this.txtSubCat);
+			this.Controls.Add(this.txtCat);
+			this.Controls.Add(this.txtEmpresa);
+			this.Controls.Add(this.txtValor);
+			this.Controls.Add(this.txtNome);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "FrmAddChangeProdutos";
+			this.Name = "frmAddChangeProdutos";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Adicionar Produtos";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProdutos_FormClosed);
 			this.Load += new System.EventHandler(this.FrmAddProdutos_Load);
-			((System.ComponentModel.ISupportInitialize)(this.PctImage)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.PctAdd)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctImage)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pctAdd)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -270,24 +278,25 @@
 
 		#endregion
 
-		private System.Windows.Forms.TextBox TxtNome;
-		private System.Windows.Forms.TextBox TxtValor;
-		private System.Windows.Forms.TextBox TxtEmpresa;
-		private System.Windows.Forms.TextBox TxtCat;
-		private System.Windows.Forms.TextBox TxtSubCat;
-		private System.Windows.Forms.TextBox TxtIcon;
-		private System.Windows.Forms.PictureBox PctImage;
-		private System.Windows.Forms.Label LblNome;
-		private System.Windows.Forms.Label LblValor;
-		private System.Windows.Forms.Label LblEmpresa;
-		private System.Windows.Forms.Label LblCategoria;
-		private System.Windows.Forms.Label LblSubCateg;
-		private System.Windows.Forms.Label LblSexo;
-		private System.Windows.Forms.Label LblIcon;
-		private System.Windows.Forms.Label LblImagem;
-		private System.Windows.Forms.Label LblEuro;
-		private System.Windows.Forms.PictureBox PctAdd;
-		private System.Windows.Forms.Button BtnRegistar;
-		private System.Windows.Forms.ComboBox CboSexo;
+		private System.Windows.Forms.TextBox txtNome;
+		private System.Windows.Forms.TextBox txtValor;
+		private System.Windows.Forms.TextBox txtEmpresa;
+		private System.Windows.Forms.TextBox txtCat;
+		private System.Windows.Forms.TextBox txtSubCat;
+		private System.Windows.Forms.TextBox txtIcon;
+		private System.Windows.Forms.PictureBox pctImage;
+		private System.Windows.Forms.Label lblNome;
+		private System.Windows.Forms.Label lblValor;
+		private System.Windows.Forms.Label lblEmpresa;
+		private System.Windows.Forms.Label lblCategoria;
+		private System.Windows.Forms.Label lblSubCateg;
+		private System.Windows.Forms.Label lblSexo;
+		private System.Windows.Forms.Label lblIcon;
+		private System.Windows.Forms.Label lblImagem;
+		private System.Windows.Forms.Label lblEuro;
+		private System.Windows.Forms.PictureBox pctAdd;
+		private System.Windows.Forms.Button btnRegistar;
+		private System.Windows.Forms.ComboBox cboSexo;
+		private System.Windows.Forms.NotifyIcon icnNotificação;
 	}
 }

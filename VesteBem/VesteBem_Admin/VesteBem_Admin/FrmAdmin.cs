@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmAdmin : Form
+	public partial class frmAdmin : Form
 	{
 		public static int ecra = 0;
 		private string Username, Password;
-		public FrmAdmin(string user, string pass)
+		public frmAdmin(string user, string pass)
 		{
 			InitializeComponent();
 			Username = user;
@@ -32,19 +32,19 @@ namespace VesteBem_Admin
 			switch (btn.Text)
 			{
 				case "Adicionar Produtos":
-					frm = new FrmAddChangeProdutos(0);
+					frm = new frmAddChangeProdutos(0);
 					//frm.Show();
 					break;
 				case "Clientes E Funcionarios":
-					frm = new FrmCliEFun();
+					frm = new frmCliEFun();
 					//frm.Show();
 					break;
 				case "Adicionar Carrinho":
-					frm = new FrmCarrinho();
+					frm = new frmCarrinho();
 					//frm.Show();
 					break;
 				case "Consultar Carrinho":
-					frm = new FrmConsultarCarrinho();
+					frm = new frmConsultarCarrinho();
 					//frm.Show();
 					break;
 			}
@@ -67,33 +67,33 @@ namespace VesteBem_Admin
 
 		private void label3_Click(object sender, EventArgs e)
 		{
-			Label Lbl = sender as Label;
+			Label lbl = sender as Label;
 			try
 			{
 
-				switch (int.Parse(Lbl.Tag.ToString()))
+				switch (int.Parse(lbl.Tag.ToString()))
 				{
 					case 0:
-						frm = new FrmAddChangeProdutos(0);
+						frm = new frmAddChangeProdutos(0);
 						//frm.Show();
 						break;
 					case 1:
-						frm = new FrmEditarApagarProdutos();
+						frm = new frmEditarApagarProdutos();
 						break;
 					case 2:
-						frm = new FrmCliEFun();
+						frm = new frmCliEFun();
 						//frm.Show();
 						break;
 					case 3:
-						frm = new FrmCarrinho();
+						frm = new frmCarrinho();
 						//frm.Show();
 						break;
 					case 4:
-						frm = new FrmConsultarCarrinho();
+						frm = new frmConsultarCarrinho();
 						//frm.Show();
 						break;
 					case 5:
-						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						var ds = pnlSettings.Visible == true ? pnlSettings.Visible = false : pnlSettings.Visible = true;
 						break;
 					case 6:
 						FormCollection fc = Application.OpenForms;
@@ -105,7 +105,7 @@ namespace VesteBem_Admin
 							}
 						break;
 				}
-				if (int.Parse(Lbl.Tag.ToString()) != 5 && int.Parse(Lbl.Tag.ToString()) != 6)
+				if (int.Parse(lbl.Tag.ToString()) != 5 && int.Parse(lbl.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -137,31 +137,31 @@ namespace VesteBem_Admin
 			try
 			{
 
-				PictureBox Pct = sender as PictureBox;
+				PictureBox pct = sender as PictureBox;
 
-				switch (int.Parse(Pct.Tag.ToString()))
+				switch (int.Parse(pct.Tag.ToString()))
 				{
 					case 0:
-						frm = new FrmAddChangeProdutos(0);
+						frm = new frmAddChangeProdutos(0);
 						//frm.Show();
 						break;
 					case 1:
-						frm = new FrmEditarApagarProdutos();
+						frm = new frmEditarApagarProdutos();
 						break;
 					case 2:
-						frm = new FrmCliEFun();
+						frm = new frmCliEFun();
 						//frm.Show();
 						break;
 					case 3:
-						frm = new FrmCarrinho();
+						frm = new frmCarrinho();
 						//frm.Show();
 						break;
 					case 4:
-						frm = new FrmConsultarCarrinho();
+						frm = new frmConsultarCarrinho();
 						//frm.Show();
 						break;
 					case 5:
-						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						var ds = pnlSettings.Visible == true ? pnlSettings.Visible = false : pnlSettings.Visible = true;
 						break;
 					case 6:
 						FormCollection fc = Application.OpenForms;
@@ -174,7 +174,7 @@ namespace VesteBem_Admin
 								}
 						break;
 				}
-				if(int.Parse(Pct.Tag.ToString())!=5 && int.Parse(Pct.Tag.ToString()) != 6)
+				if(int.Parse(pct.Tag.ToString())!=5 && int.Parse(pct.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -188,31 +188,31 @@ namespace VesteBem_Admin
 			try
 			{
 
-				Panel Pnl = sender as Panel;
+				Panel pnl = sender as Panel;
 
-				switch (int.Parse(Pnl.Tag.ToString()))
+				switch (int.Parse(pnl.Tag.ToString()))
 				{
 					case 0:
-						frm = new FrmAddChangeProdutos(0);
+						frm = new frmAddChangeProdutos(0);
 						//frm.Show();
 						break;
 					case 1:
-						frm = new FrmEditarApagarProdutos();
+						frm = new frmEditarApagarProdutos();
 						break;
 					case 2:
-						frm = new FrmCliEFun();
+						frm = new frmCliEFun();
 						//frm.Show();
 						break;
 					case 3:
-						frm = new FrmCarrinho();
+						frm = new frmCarrinho();
 						//frm.Show();
 						break;
 					case 4:
-						frm = new FrmConsultarCarrinho();
+						frm = new frmConsultarCarrinho();
 						//frm.Show();
 						break;
 					case 5:
-						var ds = PnlSettings.Visible == true ? PnlSettings.Visible = false : PnlSettings.Visible = true;
+						var ds = pnlSettings.Visible == true ? pnlSettings.Visible = false : pnlSettings.Visible = true;
 						break;
 					case 6:
 						FormCollection fc = Application.OpenForms;
@@ -224,7 +224,7 @@ namespace VesteBem_Admin
 							}
 						break;
 				}
-				if (int.Parse(Pnl.Tag.ToString()) != 5 && int.Parse(Pnl.Tag.ToString()) != 6)
+				if (int.Parse(pnl.Tag.ToString()) != 5 && int.Parse(pnl.Tag.ToString()) != 6)
 					Forms();
 			}
 			catch
@@ -234,12 +234,12 @@ namespace VesteBem_Admin
 		}
 
 
-		private void Pct_Click(object sender, EventArgs e)
+		private void pct_Click(object sender, EventArgs e)
 		{
-			PictureBox Pct = sender as PictureBox;
-			if (Pct.Name == "PctFlow")
+			PictureBox pct = sender as PictureBox;
+			if (pct.Name == "pctFlow")
 			{
-				var ds = FlpForms.Visible == true ? FlpForms.Visible = false : FlpForms.Visible = true;
+				var ds = flpForms.Visible == true ? flpForms.Visible = false : flpForms.Visible = true;
 			}
 			else
 			{
@@ -252,7 +252,7 @@ namespace VesteBem_Admin
 			if (checkBox.Text == "Auto Run (Abrir com o SO, Sistema Operativo)")
 			{
 				RegistryKey rkApp = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-				if (ChkAuto.Checked)
+				if (chkAuto.Checked)
 				{
 					Application.EnableVisualStyles();
 					rkApp.SetValue("VesteBem Admin", Application.ExecutablePath.ToString());
@@ -280,7 +280,7 @@ namespace VesteBem_Admin
 		private void FrmAdmin_Load(object sender, EventArgs e)
 		{
 			Screen scrn = Screen.FromControl(this); ecra = int.Parse((scrn.DeviceName.Replace("\\", "").Replace(".DISPLAY", "")));
-			LblNome.Text = Username;
+			lblNome.Text = Username;
 			this.ShowIcon = false;
 			this.Tag = false;
 		}

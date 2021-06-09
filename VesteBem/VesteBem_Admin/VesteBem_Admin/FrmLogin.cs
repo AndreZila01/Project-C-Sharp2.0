@@ -15,41 +15,39 @@ using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmLogin : Form
+	public partial class frmLogin : Form
 	{
 		SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 		SqlCommand command = new SqlCommand();
 		SqlDataReader dr;
 		//string mes, hora, minuto, segundo;
 		List<Logins> lst = new List<Logins>();
-		public FrmLogin()
+		public frmLogin()
 		{
 			InitializeComponent();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void frmLogin_Load(object sender, EventArgs e)
 		{
 			this.ShowIcon = false;
 			Process[] procs = Process.GetProcessesByName("VesteBem_Admin");
 			if (procs.Length > 1) foreach (Process proc in procs) { if (proc != procs[0]) proc.Kill(); }
-			//string Paths = Path.Combine(Path.GetTempPath());
 			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
-			TxtUser.Text = /*EncryptADeDecrypt.DecryptOther*/(lst[0].UserName);
-			TxtPass.Text = /*EncryptADeDecrypt.DecryptRSA*/(lst[0].Password);
-			timer1.Start();
-			//var ds = DateTime.Now.Month.ToString().Length == 1 ? mes = "0" + (DateTime.Now.Month.ToString()) : mes = DateTime.Now.Month.ToString();
-			TxtPass.Enabled = false; TxtUser.Enabled = false;
+			txtUser.Text = (lst[0].UserName);
+			txtPass.Text = (lst[0].Password);
+			tmrTimer.Start();
+			txtPass.Enabled = false; txtUser.Enabled = false;
 			//File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
 		}
 
-		private void button1_Click(object sender, EventArgs e)
+		private void btbLogin_Click(object sender, EventArgs e)
 		{
-			timer1.Stop();
-			if (TxtUser.Text != "" && TxtPass.Text != "")
+			tmrTimer.Stop();
+			if (txtUser.Text != "" && txtPass.Text != "")
 			{
-				string pass = EncryptADeDecrypt.DecryptRSA(TxtPass.Text), user = "";
-				user = /*EncryptADeDecrypt.EncryptOther*/(TxtUser.Text);
+				string pass = EncryptADeDecrypt.DecryptRSA(txtPass.Text), user = "";
+				user = /*EncryptADeDecrypt.EncryptOther*/(txtUser.Text);
 				command.Connection = liga;
 				liga.Open();
 				try
@@ -59,30 +57,37 @@ namespace VesteBem_Admin
 					if (dr.Read())
 					{
 						if (pass == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()))
-						{
+						{ 
+							string dsss = DateTime.Now.Hour > 0 && DateTime.Now.Hour < 13 ? dsss = "Bom dia" : (DateTime.Now.Hour > 13 && DateTime.Now.Hour < 20 ? dsss = "Boa tarde" : dsss = "Boa noite");
+							icnNotificação.ShowBalloonTip(25,"Bem vindo!!", "" + dsss + ", " + txtUser.Text + "!!", ToolTipIcon.None);
 							liga.Close();
-							FrmAdmin frm = new FrmAdmin(user, pass);
+							frmAdmin frm = new frmAdmin(user, pass);
 							frm.Show();
 							this.Hide();
+						}
+						else
+						{
+							icnNotificação.ShowBalloonTip(100, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+							tmrTimer.Start();
 						}
 					}
 					else
 					{
-						MessageBox.Show("Login sem sucesso!\nCertifique se a password e username está correto!", "Error Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
-						timer1.Start();
+						icnNotificação.ShowBalloonTip(100, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+						tmrTimer.Start();
 					}
 				}
 				catch (Exception ex)
 				{
-					MessageBox.Show(ex.Message, "Error Login", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					icnNotificação.ShowBalloonTip(25, "Error Login", ""+ ex.Message + "", ToolTipIcon.Error);
 
-					timer1.Start();
+					tmrTimer.Start();
 				}
 				liga.Close();
 			}
 		}
 
-		private void timer1_Tick(object sender, EventArgs e)
+		private void tmrTime_Tick(object sender, EventArgs e)
 		{
 			DateTime dt = new DateTime(int.Parse(DateTime.Now.Year.ToString()), int.Parse(DateTime.Now.Month.ToString()), int.Parse(DateTime.Now.Day.ToString()), int.Parse(DateTime.Now.Hour.ToString()), int.Parse(DateTime.Now.Minute.ToString()), int.Parse(DateTime.Now.Second.ToString()));
 			lblTimer.Text = (dt.ToString("dd.MM.yyyy \t\t HH:mm:ss").Replace('.', '/'));
@@ -92,6 +97,11 @@ namespace VesteBem_Admin
 		private void lblAjuda_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("Para conseguir registar no aplicativo, terá de fazer primeiro sessão no site da empresa!\nSó após isso poderá entrar", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			icnNotificação.Visible = false;
 		}
 	}
 }

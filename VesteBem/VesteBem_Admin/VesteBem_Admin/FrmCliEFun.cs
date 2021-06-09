@@ -14,38 +14,38 @@ using VesteBem_Admin.Class;
 
 namespace VesteBem_Admin
 {
-	public partial class FrmCliEFun : Form
+	public partial class frmCliEFun : Form
 	{
 		List<Cliente> lstCli = new List<Cliente>();
 		List<Funcionario> lstFun = new List<Funcionario>();
-		public FrmCliEFun()
+		public frmCliEFun()
 		{
 			InitializeComponent();
 		}
 
 		private void FrmCliEFun_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
-			if (!BgwCliente.IsBusy)
-				BgwCliente.RunWorkerAsync();
+			if (!bgwCliente.IsBusy)
+				bgwCliente.RunWorkerAsync();
 		}
 
 		private void ToolstripMenuItem_Click(object sender, EventArgs e)
 		{
 			ToolStripMenuItem dss = sender as ToolStripMenuItem;
-			TsmiNovoFuncionario.Visible = false;
+			tsmiNovoFuncionario.Visible = false;
 			if (dss.Text == "Cliente")
 			{
-				TstbFuncionario.Visible = false; TstbCliente.Visible = true;
+				tstbFuncionario.Visible = false; tstbCliente.Visible = true;
 				CreateObjectsCli();
 				this.Tag = "Cliente";
 			}
 			else
 			if (dss.Text == "Funcionario")
 			{
-				TstbFuncionario.Visible = true;TstbCliente.Visible = false;
+				tstbFuncionario.Visible = true;tstbCliente.Visible = false;
 				CreateObjectsFun(); this.Tag = "Funcionario";
 			}
 			else
@@ -62,10 +62,10 @@ namespace VesteBem_Admin
 		}
 		private void CreateObjectsFun()
 		{
-			TsmiNovoFuncionario.Visible = true;
+			tsmiNovoFuncionario.Visible = true;
 
-			PnlCentro.Visible = true;
-			PnlCentro.Controls.Clear();
+			pnlCentro.Visible = true;
+			pnlCentro.Controls.Clear();
 			MemoryStream stream = new MemoryStream();
 			int ds = 0;
 
@@ -77,7 +77,7 @@ namespace VesteBem_Admin
 				pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 		| System.Windows.Forms.AnchorStyles.Right)));
 				pnl.AutoScroll = true;
-				PnlCentro.Controls.Add(pnl);
+				pnlCentro.Controls.Add(pnl);
 
 				Label lblUser = new Label();
 				lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -157,17 +157,6 @@ namespace VesteBem_Admin
 			fun.Funcao = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Funcao;
 			fun.Pass = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Pass;
 			fun.Username = lstFun[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Username;
-			//cli.Nome = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nome;
-			//cli.Sexo = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Sexo;
-			//cli.Telefone = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Telefone;
-			//cli.Nif = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Nif;
-			//cli.Morada = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
-			//cli.CodPostal = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].CodPostal;
-			//cli.DataNasc = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].DataNasc;
-			//cli.Email = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Morada;
-			//cli.Localidade = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Localidade;
-			//cli.Id_Login = int.Parse(pct.Tag.ToString());
-			//cli.Id_Cliente = lstCli[int.Parse(pct.Name.Substring(8, (pct.Name.Length - 8)))].Id_Cliente;
 
 
 
@@ -183,8 +172,8 @@ namespace VesteBem_Admin
 
 		private void CreateObjectsCli()
 		{
-			PnlCentro.Visible = true;
-			PnlCentro.Controls.Clear();
+			pnlCentro.Visible = true;
+			pnlCentro.Controls.Clear();
 			MemoryStream stream = new MemoryStream();
 			int ds = 0;
 
@@ -196,7 +185,7 @@ namespace VesteBem_Admin
 				pnl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 		| System.Windows.Forms.AnchorStyles.Right)));
 				pnl.AutoScroll = true;
-				PnlCentro.Controls.Add(pnl);
+				pnlCentro.Controls.Add(pnl);
 
 				Label lblUser = new Label();
 				lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -296,7 +285,7 @@ namespace VesteBem_Admin
 			pct.Image = Properties.Resources.Open_trash;
 		}
 
-		private void FrmCliEFun_SizeChanged(object sender, EventArgs e)
+		private void frmCliEFun_SizeChanged(object sender, EventArgs e)
 		{
 
 		}
@@ -305,7 +294,7 @@ namespace VesteBem_Admin
 		{
 			lstCli = Clientes.ConsultaCliente();
 			lstFun = Funcionarios.ConsultarFuncionario();
-			BgwCliente.DoWork += ToolstripMenuItem_Click;
+			bgwCliente.DoWork += ToolstripMenuItem_Click;
 		}
 
 		private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -313,7 +302,7 @@ namespace VesteBem_Admin
 
 		}
 
-		private void FrmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
+		private void frmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
 		{
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
@@ -321,13 +310,13 @@ namespace VesteBem_Admin
 
 		}
 
-		private void TstbClienteEFun_TextChanged(object sender, EventArgs e)
+		private void tstbClienteEFun_TextChanged(object sender, EventArgs e)
 		{
 			ToolStripTextBox Tslb = sender as ToolStripTextBox;
 
 			switch (Tslb.Name)
 			{
-				case "TstbCliente":
+				case "tstbCliente":
 					if (Tslb.Text != "")
 					{
 						lstCli.ToList().ForEach(item =>
@@ -344,7 +333,7 @@ namespace VesteBem_Admin
 						lstCli = Clientes.ConsultaCliente();
 					CreateObjectsCli();
 					break;
-				case "TstbFuncionario":
+				case "tstbFuncionario":
 					if (Tslb.Text != "")
 					{
 

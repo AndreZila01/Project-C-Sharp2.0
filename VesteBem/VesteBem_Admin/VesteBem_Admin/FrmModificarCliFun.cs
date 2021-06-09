@@ -105,7 +105,7 @@ namespace VesteBem_Admin
 
 		private void FrmModificar_Load(object sender, EventArgs e)
 		{
-			this.Location = Screen.AllScreens[(FrmAdmin.ecra - 1)].WorkingArea.Location;
+			this.Location = Screen.AllScreens[(frmAdmin.ecra - 1)].WorkingArea.Location;
 			this.CenterToScreen();
 			this.ShowIcon = false;
 			if (!BgwInicio.IsBusy)
