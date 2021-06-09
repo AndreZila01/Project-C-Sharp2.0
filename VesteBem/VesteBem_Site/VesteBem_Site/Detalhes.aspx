@@ -15,17 +15,23 @@ margin-right: 20px;
     
    
         <div>
-             <asp:Label ID="lblTitle" runat="server" Text="Label" Font-Size="X-Large"></asp:Label>
+             
             <br />
             <asp:Image ID="imgProduct" runat="server" CssClass="detailsImage" />
             <br />
-            <asp:Label ID="lblItem" runat="server" Text="Label"></asp:Label>
+            <asp:Label ID="lblTitle" runat="server" Text="Label" Font-Size="X-Large"></asp:Label>
+            <br />
+            <asp:Label ID="lblItem" runat="server" Text="Label" Visible="False"></asp:Label>
             <br />
             <asp:Label ID="lblPreco" runat="server" Text="Label"></asp:Label>
             <br />
             <asp:Button ID="btncomprar" runat="server" Text="Comprar" OnClick="btncomprar_Click" />
             <asp:TextBox ID="txtquant" runat="server" CssClass="auto-style1" TextMode="Number"></asp:TextBox>
             <br />
+            <br />
+            <br />
+            <br />
+            <p></p>
         </div>
 
        <!-- src="roupa%20HM/cl2.jfif">-->

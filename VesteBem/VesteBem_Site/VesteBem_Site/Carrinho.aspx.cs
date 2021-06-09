@@ -82,6 +82,7 @@ namespace VesteBem_Site
                 {
                     numero = dr.GetValue(0).ToString();
                     comando.CommandText = "Insert into tblDetalheEncomendas (Id_Encomendas, Id_Produtos, QuantEnc) Select " + "'" + numero + "', Id_Produtos, QuantCar from tblCarrinho where tblCarrinho.Id_Cliente = '" + Session["IdCliente"] + "'";
+                   
                     liga.Close();
                     liga.Open();
                     comando.ExecuteNonQuery();
@@ -89,6 +90,7 @@ namespace VesteBem_Site
                     liga.Open();
                     comando.CommandText = "Delete from tblCarrinho where Id_Cliente = '" + Session["IdCliente"] + "'";
                     comando.ExecuteNonQuery();
+                    Response.Write($"<script>alert('Encomenda finalizada com sucesso')</script>");
                     liga.Close();
                    
                 }
