@@ -81,7 +81,6 @@ namespace VesteBem_Admin
 				Panel pnl = new Panel();
 				pnl.Location = new System.Drawing.Point(0, 0);
 				pnl.Name = "panel1";
-				pnl.BackColor = Color.Red;
 				pnl.Size = new System.Drawing.Size(245, 30);//271; 150
 				pnl.TabIndex = 0;
 				flpProdutos.Controls.Add(pnl);
@@ -92,7 +91,6 @@ namespace VesteBem_Admin
 				LblNome.Name = "label6";
 				LblNome.Size = new System.Drawing.Size(35, 13);
 				LblNome.TabIndex = 0;
-				LblNome.BackColor = Color.LightGray;
 				LblNome.Tag = pctEncomenda.Tag.ToString();
 				var ds = lstProduto[index].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[index].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[index].Nome;
 				LblNome.Click += new System.EventHandler(label_Click);
@@ -104,7 +102,6 @@ namespace VesteBem_Admin
 				LblPreco.Name = "label7";
 				LblPreco.Size = new System.Drawing.Size(25, 13);
 				LblPreco.TabIndex = 1;
-				LblPreco.BackColor = Color.Green;
 				LblPreco.Text = "" + lstProduto[index].Valor + "€";
 				LblPreco.Tag = "" + lstProduto[index].Valor;
 				pnl.Controls.Add(LblPreco);
@@ -114,7 +111,6 @@ namespace VesteBem_Admin
 				LblQuantidade.Name = "label7";
 				LblQuantidade.Size = new System.Drawing.Size(35, 13);
 				LblQuantidade.TabIndex = 1;
-				LblQuantidade.BackColor = Color.Gray;
 				LblQuantidade.Text = " " + item.QuantEnc + " x";
 				LblQuantidade.Tag = "" + item.QuantEnc;
 				pnl.Controls.Add(LblQuantidade);
@@ -343,7 +339,6 @@ namespace VesteBem_Admin
 					Panel pnl = new Panel();
 					pnl.Location = new System.Drawing.Point(0, 0);
 					pnl.Name = "panel1";
-					pnl.BackColor = Color.Red;
 					pnl.Size = new System.Drawing.Size(245, 30);//271; 150
 					pnl.TabIndex = 0;
 					flpProdutos.Controls.Add(pnl);
@@ -354,7 +349,6 @@ namespace VesteBem_Admin
 					LblNome.Name = "label6";
 					LblNome.Size = new System.Drawing.Size(35, 13);
 					LblNome.TabIndex = 0;
-					LblNome.BackColor = Color.LightGray;
 					LblNome.Tag = pctEncomenda.Tag.ToString();
 					var ds = lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome.Length > 20 ? LblNome.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome.Substring(0, 20) : LblNome.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Nome;
 					LblNome.Click += new System.EventHandler(label_Click);
@@ -366,7 +360,6 @@ namespace VesteBem_Admin
 					LblPreco.Name = "label7";
 					LblPreco.Size = new System.Drawing.Size(25, 13);
 					LblPreco.TabIndex = 1;
-					LblPreco.BackColor = Color.Green;
 					LblPreco.Text = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Valor + "€";
 					LblPreco.Tag = "" + lstProduto[int.Parse(pctEncomenda.Tag.ToString())].Valor;
 					pnl.Controls.Add(LblPreco);
@@ -376,7 +369,6 @@ namespace VesteBem_Admin
 					LblQuantidade.Name = "label7";
 					LblQuantidade.Size = new System.Drawing.Size(35, 13);
 					LblQuantidade.TabIndex = 1;
-					LblQuantidade.BackColor = Color.Gray;
 					LblQuantidade.TextAlign = ContentAlignment.MiddleLeft;
 					LblQuantidade.Text = nudQuantidade.Value + " x";
 					LblQuantidade.Tag = "" + nudQuantidade.Value;

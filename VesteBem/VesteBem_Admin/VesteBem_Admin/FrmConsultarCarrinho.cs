@@ -80,7 +80,6 @@ namespace VesteBem_Admin
 					Pnl.Name = "panel2";
 					Pnl.Size = new System.Drawing.Size(800, 49);
 					Pnl.TabIndex = 0;
-					Pnl.BackColor = Color.Red;
 					flpCentro.Controls.Add(Pnl);
 
 
@@ -88,7 +87,6 @@ namespace VesteBem_Admin
 					LblEstado.AutoSize = true;
 					LblEstado.Location = new System.Drawing.Point(13, 17);
 					LblEstado.Name = "LblEstado";
-					LblEstado.BackColor = Color.Green;
 					LblEstado.Size = new System.Drawing.Size(35, 13);
 					LblEstado.TabIndex = 0;
 					LblEstado.Text = "" + cmbEstado.Text;
@@ -97,7 +95,6 @@ namespace VesteBem_Admin
 					LblCliente.AutoSize = true;
 					LblCliente.Location = new System.Drawing.Point(107, 17);
 					LblCliente.Name = "LblCliente";
-					LblCliente.BackColor = Color.Gray;
 					LblCliente.Size = new System.Drawing.Size(35, 13);
 					LblCliente.TabIndex = 1;
 					LblCliente.Tag = "" + item.IdCliente;
@@ -105,7 +102,6 @@ namespace VesteBem_Admin
 
 					Label LblData = new Label();
 					LblData.AutoSize = true;
-					LblData.BackColor = Color.Blue;
 					LblData.Location = new System.Drawing.Point(500, 17);
 					LblData.Name = "LblData";
 					LblData.Size = new System.Drawing.Size(35, 13);
@@ -130,7 +126,6 @@ namespace VesteBem_Admin
 					LblIdEncomenda.Name = "LblIdEncomenda";
 					LblIdEncomenda.Size = new System.Drawing.Size(35, 13);
 					LblIdEncomenda.TabIndex = 4;
-					LblIdEncomenda.BackColor = Color.Orange;
 					LblIdEncomenda.Text = "Nº de Encomenda:    " + item.IdEncomendas;
 
 					Pnl.Controls.Add(LblIdEncomenda);
