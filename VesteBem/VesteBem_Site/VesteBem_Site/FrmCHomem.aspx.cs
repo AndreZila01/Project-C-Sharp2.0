@@ -46,8 +46,8 @@ namespace VesteBem
                 byte[] image = (byte[])dr["Icon"];
                 string PROFILE_PIC = Convert.ToBase64String(image);
                 images.ImageUrl = String.Format("data:image/jpg;base64,{0}", PROFILE_PIC);
-                images.Width = 150;
-                images.Height = 150;
+                images.Width = 376;
+                images.Height = 500;
                 //images.ImageUrl = "~/Image/" + ;
                 images.CssClass = "productImage";
                 images.PostBackUrl = "~/Detalhes.aspx?IdProduto=" + dr["IdProduto"];
@@ -56,7 +56,10 @@ namespace VesteBem
                 productPanel.Controls.Add(images);
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
                 productPanel.Controls.Add(LBL);
+                productPanel.Controls.Add(new Literal { Text = "<p>" });
                 productPanel.Controls.Add(new Literal { Text = "<br/>" });
+                productPanel.Controls.Add(new Literal { Text = "<br/>" });
+               
                 Imagems.Controls.Add(productPanel);
 
             }

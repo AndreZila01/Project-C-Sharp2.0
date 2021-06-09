@@ -34,6 +34,8 @@ namespace VesteBem_Site
                     byte[] image = (byte[])dr["Icon"];
                     string PROFILE_PIC = Convert.ToBase64String(image);
                     imgProduct.ImageUrl = String.Format("data:image/jpg;base64,{0}", PROFILE_PIC);
+                    imgProduct.Width = 376;
+                    imgProduct.Height = 500;
                     // <!-- src="roupa%20HM/cl2.jfif">
                     lblTitle.Text = dr["Nome"].ToString();
                     lblPreco.Text = dr["Valor"].ToString() + "€";
@@ -46,6 +48,9 @@ namespace VesteBem_Site
         {
             comando.Connection = liga;
             liga.Open();
+
+
+
             comando.CommandText = "Insert into tblCarrinho (Id_Cliente, Id_Produtos, QuantCar) " + "VALUES(" + Session["IdCliente"].ToString() + "," + lblItem.Text + "," + txtquant.Text + ")";
 
             try
