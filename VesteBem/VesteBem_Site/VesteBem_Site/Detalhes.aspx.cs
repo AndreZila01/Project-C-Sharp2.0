@@ -49,6 +49,8 @@ namespace VesteBem_Site
             comando.Connection = liga;
             liga.Open();
 
+
+
             comando.CommandText = "Insert into tblCarrinho (Id_Cliente, Id_Produtos, QuantCar) " + "VALUES(" + Session["IdCliente"].ToString() + "," + lblItem.Text + "," + txtquant.Text + ")";
 
             try

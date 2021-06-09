@@ -23,7 +23,10 @@ margin-right: 20px;
             <br />
             <asp:Label ID="lblItem" runat="server" Text="Label" Visible="False"></asp:Label>
             <br />
+            <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Preço:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Label ID="lblPreco" runat="server" Text="Label"></asp:Label>
+            <br />
             <br />
             <asp:Button ID="btncomprar" runat="server" Text="Comprar" OnClick="btncomprar_Click" />
             <asp:TextBox ID="txtquant" runat="server" CssClass="auto-style1" TextMode="Number"></asp:TextBox>
