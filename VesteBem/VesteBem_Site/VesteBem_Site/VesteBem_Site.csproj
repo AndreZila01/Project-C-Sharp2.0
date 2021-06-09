@@ -126,6 +126,7 @@
     <Compile Include="Carrinho.aspx.designer.cs">
       <DependentUpon>Carrinho.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\CheckAdmin.cs" />
     <Compile Include="Classes\EncryptADeDecrypt.cs" />
     <Compile Include="Classes\LoginAndRegist.cs" />
     <Compile Include="Detalhes.aspx.cs">

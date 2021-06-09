@@ -17,7 +17,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	
 	<style>
 		
 
@@ -41,7 +41,7 @@
 					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="background-color: #fff3dc; float: right; padding: 10px 10px 10px 10px">
 						
 						
-						<a href="Facebook.html" target="_blank" class="fa fa-facebook"></a>
+						<a id="link" href="Facebook.html" target="_blank" class="fa fa-facebook"></a>
 						<a href="https://www.instagram.com/vestebem1212/" target="_blank" class="fa fa-instagram"></a>
 						<a onclick="document.getElementById('id01').style.display='block'"  class="fa fa-user"></a>
 						<a ></a>
@@ -122,6 +122,14 @@
                 }
             }
         </script>
+		<script>
+			function modifyState() {
+				let stateObj = { id: "100" };
+				window.history.replaceState(stateObj,
+					"Page 3", "https://www.facebook.com/VesteBem");
+			}
+			/*document.location.href = 'https://www.facebook.com/VesteBem';*/
+		</script>
 
 
 	</form>

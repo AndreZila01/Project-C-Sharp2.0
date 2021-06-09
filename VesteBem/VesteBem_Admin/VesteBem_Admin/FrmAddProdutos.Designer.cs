@@ -224,8 +224,7 @@
 			this.cboSexo.FormattingEnabled = true;
 			this.cboSexo.Items.AddRange(new object[] {
             "Masculino",
-            "Feminino",
-            "Indefenido"});
+            "Feminino"});
 			this.cboSexo.Location = new System.Drawing.Point(109, 242);
 			this.cboSexo.Name = "cboSexo";
 			this.cboSexo.Size = new System.Drawing.Size(100, 21);

@@ -65,7 +65,6 @@ namespace VesteBem_Admin
 			// 
 			// tstbCliente
 			// 
-			this.tstbCliente.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this.tstbCliente.Name = "tstbCliente";
 			this.tstbCliente.Size = new System.Drawing.Size(100, 23);
 			this.tstbCliente.Visible = false;
@@ -81,7 +80,6 @@ namespace VesteBem_Admin
 			// 
 			// tstbFuncionario
 			// 
-			this.tstbFuncionario.Font = new System.Drawing.Font("Segoe UI", 9F);
 			this.tstbFuncionario.Name = "tstbFuncionario";
 			this.tstbFuncionario.Size = new System.Drawing.Size(100, 23);
 			this.tstbFuncionario.Visible = false;

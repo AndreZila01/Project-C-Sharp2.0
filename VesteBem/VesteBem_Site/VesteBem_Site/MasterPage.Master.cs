@@ -9,6 +9,7 @@ using VesteBem.Classes;
 using VesteBem_Site;
 using System.IO;
 using Newtonsoft.Json;
+using VesteBem_Site.Classes;
 
 namespace VesteBem
 {
@@ -41,28 +42,7 @@ namespace VesteBem
 						if (dr.Read())
 						{
 							Session["IdCliente"] = dr[0].ToString();
-							string Paths = Path.Combine(Path.GetTempPath());
-							Logins logins = new Logins();
-							List<Logins> ListLogin = new List<Logins>();
-							try
-							{
-								if (File.Exists($"{Paths + @"\Login.json"}"))
-								{
-									File.Delete($"{Paths + @"\Login.json"}");
-								}
-								logins.UserName = uname.Value;
-								logins.Password = EncryptADeDecrypt.EncryptRSA(psw.Value);
-
-								ListLogin.Clear();
-								ListLogin.Add(logins);
-
-								string json = JsonConvert.SerializeObject(ListLogin);
-								File.WriteAllText(Paths + "\\Login.json", json);
-							}
-							catch (Exception Ex)
-							{
-								Console.WriteLine(Ex.ToString());
-							}
+							CheckAdmin.SelectFuncionario(login, uname.Value, EncryptADeDecrypt.EncryptRSA(psw.Value));
 							Response.Write("<script>alert('Sessão efetuada com sucesso')</script>");
 						}
 						entrou = true;
