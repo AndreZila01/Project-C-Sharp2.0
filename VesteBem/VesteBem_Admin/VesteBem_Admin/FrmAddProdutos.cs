@@ -99,7 +99,7 @@ namespace VesteBem_Admin
 				}
 				catch (Exception ex)
 				{
-					icnNotificação.ShowBalloonTip(100, "Error", ""+ex.Message+"", ToolTipIcon.Error);
+					icnNotificação.ShowBalloonTip(25, "Error", ""+ex.Message+"", ToolTipIcon.Error);
 				}
 			}
 			else

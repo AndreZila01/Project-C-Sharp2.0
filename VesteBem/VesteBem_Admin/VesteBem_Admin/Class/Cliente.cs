@@ -348,10 +348,8 @@ namespace VesteBem_Admin.Class
 				try
 				{
 					liga.Open();
-					string user = "" + /*EncryptADeDecrypt.EncryptOther*/(fun.Username);
-					string pass = "" + EncryptADeDecrypt.EncryptRSA(fun.Pass);
-					command.Parameters.Add(new SqlParameter("UserN", user));
-					command.Parameters.Add(new SqlParameter("Passw", pass));
+					command.Parameters.Add(new SqlParameter("UserN", fun.Username));
+					command.Parameters.Add(new SqlParameter("Passw", EncryptADeDecrypt.EncryptRSA(fun.Pass)));
 					command.Parameters.Add(new SqlParameter("Funcionario", "1"));
 
 
@@ -371,8 +369,6 @@ namespace VesteBem_Admin.Class
 			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 			{
 				SqlCommand command = new SqlCommand();
-				command.CommandText = "SpInsertLogin";
-				command.CommandType = System.Data.CommandType.StoredProcedure;
 				try
 				{
 					liga.Open();
@@ -391,6 +387,33 @@ namespace VesteBem_Admin.Class
 					command.Connection = liga;
 					command.ExecuteNonQuery();
 
+					return "sucesso";
+				}
+				catch (Exception ex)
+				{
+					return ex.Message;
+				}
+				finally
+				{
+					liga.Close();
+				}
+
+			}
+		}
+
+		public static string DeleteFuncionario(int Idfun)
+		{
+			SqlCommand command = new SqlCommand();
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			{
+				command.CommandText = "Delete tbl_Funcionario where IdFuncionario=" + Idfun+"";
+				try
+				{
+					command.Connection = liga;
+
+					liga.Open();
+
+					command.ExecuteNonQuery();
 					return "sucesso";
 				}
 				catch (Exception ex)
@@ -474,7 +497,7 @@ namespace VesteBem_Admin.Class
 		{
 			int id = 0;
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdCliente, Nome From tbl_Cliente", liga);
+			SqlCommand comando = new SqlCommand("Select IdLogin, Passw From tbl_login where Usern='" + user+ "' and Funcionario=1", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -486,14 +509,14 @@ namespace VesteBem_Admin.Class
 						if (EncryptADeDecrypt.DecryptRSA(pass) == EncryptADeDecrypt.DecryptRSA(oReader["passW"].ToString()))
 						{
 							Funcionario fun = new Funcionario();
-							id = int.Parse(oReader["IdCliente"].ToString());
+							id = int.Parse(oReader["IdLogin"].ToString());
 							//pass = EncryptADeDecrypt.EncryptRSA(pass);
 							//break;
 						}
 					}
 				}
 			}
-			catch
+			catch(Exception ex)
 			{
 				return 0;
 			}

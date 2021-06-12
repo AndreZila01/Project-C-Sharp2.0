@@ -28,14 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModificarCliFun));
 			this.BgwInicio = new System.ComponentModel.BackgroundWorker();
+			this.icnNotificar = new System.Windows.Forms.NotifyIcon(this.components);
 			this.SuspendLayout();
 			// 
 			// BgwInicio
 			// 
 			this.BgwInicio.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
 			this.BgwInicio.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+			// 
+			// icnNotificar
+			// 
+			this.icnNotificar.Icon = ((System.Drawing.Icon)(resources.GetObject("icnNotificar.Icon")));
+			this.icnNotificar.Text = "Modificação Com Sucesso";
+			this.icnNotificar.Visible = true;
 			// 
 			// FrmModificarCliFun
 			// 
@@ -57,5 +65,6 @@
 		#endregion
 
 		private System.ComponentModel.BackgroundWorker BgwInicio;
+		private System.Windows.Forms.NotifyIcon icnNotificar;
 	}
 }

@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarApagarProdutos));
 			this.pnlCima = new System.Windows.Forms.Panel();
 			this.lblNome = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace VesteBem_Admin
 			this.LblSubCategoria = new System.Windows.Forms.Label();
 			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.icnApagar = new System.Windows.Forms.NotifyIcon(this.components);
 			this.pnlCima.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -58,7 +60,7 @@ namespace VesteBem_Admin
 			this.pnlCima.Location = new System.Drawing.Point(0, 0);
 			this.pnlCima.Margin = new System.Windows.Forms.Padding(0);
 			this.pnlCima.Name = "pnlCima";
-			this.pnlCima.Size = new System.Drawing.Size(800, 42);
+			this.pnlCima.Size = new System.Drawing.Size(824, 42);
 			this.pnlCima.TabIndex = 0;
 			// 
 			// lblNome
@@ -99,10 +101,12 @@ namespace VesteBem_Admin
 			// 
 			// flwCentro
 			// 
+			this.flwCentro.AutoScroll = true;
+			this.flwCentro.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.flwCentro.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flwCentro.Location = new System.Drawing.Point(0, 42);
 			this.flwCentro.Name = "flwCentro";
-			this.flwCentro.Size = new System.Drawing.Size(800, 408);
+			this.flwCentro.Size = new System.Drawing.Size(824, 408);
 			this.flwCentro.TabIndex = 1;
 			// 
 			// bgwInicio
@@ -151,11 +155,17 @@ namespace VesteBem_Admin
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
 			// 
+			// icnApagar
+			// 
+			this.icnApagar.Icon = ((System.Drawing.Icon)(resources.GetObject("icnApagar.Icon")));
+			this.icnApagar.Text = "Apagar Produto";
+			this.icnApagar.Visible = true;
+			// 
 			// frmEditarApagarProdutos
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.ClientSize = new System.Drawing.Size(824, 450);
 			this.Controls.Add(this.flwCentro);
 			this.Controls.Add(this.pnlCima);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -187,5 +197,6 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.Label LblNomeProduto;
 		private System.Windows.Forms.Label LblCategoria;
 		private System.Windows.Forms.Label LblSubCategoria;
+		private System.Windows.Forms.NotifyIcon icnApagar;
 	}
 }

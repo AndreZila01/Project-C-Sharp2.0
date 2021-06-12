@@ -36,7 +36,6 @@ C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\Ve
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.CopyComplete
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.exe
 C:\Users\L1949\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.pdb
-C:\Users\utilizador\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\obj\Debug\VesteBem_Admin.csproj.AssemblyReference.cache
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.exe.config
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.exe
 C:\Users\marco\Documents\GitHub\Project-Mod16-C-Sharp\VesteBem\VesteBem_Admin\VesteBem_Admin\bin\Debug\VesteBem_Admin.pdb

@@ -67,13 +67,13 @@ namespace VesteBem_Admin
 						}
 						else
 						{
-							icnNotificação.ShowBalloonTip(100, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+							icnNotificação.ShowBalloonTip(25, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
 							tmrTimer.Start();
 						}
 					}
 					else
 					{
-						icnNotificação.ShowBalloonTip(100, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+						icnNotificação.ShowBalloonTip(25, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
 						tmrTimer.Start();
 					}
 				}

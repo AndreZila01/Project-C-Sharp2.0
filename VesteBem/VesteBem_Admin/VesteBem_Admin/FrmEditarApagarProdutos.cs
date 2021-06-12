@@ -78,7 +78,7 @@ namespace VesteBem_Admin
 				PctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
 				PctRemove.Click += new System.EventHandler(pct_Click);
 				PctRemove.Image = global::VesteBem_Admin.Properties.Resources.Red_Remove;
-				PctRemove.Location = new System.Drawing.Point(753, 6);
+				PctRemove.Location = new System.Drawing.Point(760, 6);
 				PctRemove.Tag = item.IdProduto;
 				PctRemove.Name = "PctRemove";
 				PctRemove.Size = new System.Drawing.Size(35, 30);
@@ -89,7 +89,7 @@ namespace VesteBem_Admin
 				PictureBox PctEdit = new PictureBox();
 				PctEdit.Image = global::VesteBem_Admin.Properties.Resources.Pencil;
 				PctEdit.Click += new System.EventHandler(pct_Click);
-				PctEdit.Location = new System.Drawing.Point(705, 6);
+				PctEdit.Location = new System.Drawing.Point(715, 6);
 				PctEdit.Name = "PctEdit";
 				PctEdit.Size = new System.Drawing.Size(35, 30);
 				PctEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -133,6 +133,9 @@ namespace VesteBem_Admin
 			{
 				cmbCategoria.Items.Add(item.CategoriaClass);
 			});
+
+			flwCentro.HorizontalScroll.Enabled = false;
+			flwCentro.HorizontalScroll.Visible = false;
 		}
 
 		private void pct_Click(object sender, EventArgs e)
@@ -146,7 +149,17 @@ namespace VesteBem_Admin
 					frm.ShowDialog();
 					break;
 				case "PctRemove":
-					EncomendasEDetalhesEProduto.DeleteProduto(int.Parse(Pct.Tag.ToString()));
+					string ds = EncomendasEDetalhesEProduto.DeleteProduto(int.Parse(Pct.Tag.ToString()));
+					if (ds == "sucesso")
+					{
+						icnApagar.Visible = true;
+						icnApagar.ShowBalloonTip(25, "Produto Apagado com Sucesso!!", "Conseguiu apagar o Produto com sucesso!!", ToolTipIcon.Info);
+					}
+					else
+					{
+						icnApagar.Visible = true;
+						icnApagar.ShowBalloonTip(25, "Error ao apagar Produto!!", ""+ds, ToolTipIcon.Error);
+					}
 					break;
 			}
 
@@ -155,6 +168,7 @@ namespace VesteBem_Admin
 
 		private void frmEditarApagarProdutos_FormClosed(object sender, FormClosedEventArgs e)
 		{
+			icnApagar.Visible = false;
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
 				frm.WindowState = FormWindowState.Normal;
@@ -183,7 +197,7 @@ namespace VesteBem_Admin
 						PctRemove.MouseEnter += new System.EventHandler(pctRemove_MouseEnter);
 						PctRemove.Click += new System.EventHandler(pct_Click);
 						PctRemove.Image = global::VesteBem_Admin.Properties.Resources.Red_Remove;
-						PctRemove.Location = new System.Drawing.Point(753, 6);
+						PctRemove.Location = new System.Drawing.Point(760, 6);
 						PctRemove.Tag = item.IdProduto;
 						PctRemove.Name = "PctRemove";
 						PctRemove.Size = new System.Drawing.Size(35, 30);
@@ -194,7 +208,7 @@ namespace VesteBem_Admin
 						PictureBox PctEdit = new PictureBox();
 						PctEdit.Image = global::VesteBem_Admin.Properties.Resources.Pencil;
 						PctEdit.Click += new System.EventHandler(pct_Click);
-						PctEdit.Location = new System.Drawing.Point(705, 6);
+						PctEdit.Location = new System.Drawing.Point(715, 6);//705
 						PctEdit.Name = "PctEdit";
 						PctEdit.Size = new System.Drawing.Size(35, 30);
 						PctEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

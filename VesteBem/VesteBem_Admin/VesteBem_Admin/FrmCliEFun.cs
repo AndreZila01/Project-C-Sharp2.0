@@ -108,7 +108,7 @@ namespace VesteBem_Admin
 				pctRemove.Anchor = System.Windows.Forms.AnchorStyles.Right;
 				pctRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
 				pctRemove.Location = new System.Drawing.Point(755, 21);
-				pctRemove.Name = "pctRemoveU";
+				pctRemove.Name = "pctRemoveF";
 				pctRemove.Image = Properties.Resources.Close_trash;
 				pctRemove.SizeMode = PictureBoxSizeMode.Zoom;
 				pctRemove.Size = new System.Drawing.Size(33, 35);
@@ -140,10 +140,41 @@ namespace VesteBem_Admin
 		{
 			string name = "";
 			PictureBox Pct = sender as PictureBox;
-			if (Pct.Name == "pctRemoveU")
-				name = lstCli[0].Nome;
+			if (Pct.Name != "pctRemoveF")
+			{
+				if (Pct.Name == "pctRemoveU")
+					name = lstCli[0].Nome;
 
-			string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name);
+				string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name);
+				if (ds == "sucesso")
+				{
+					icnApagar.Visible = true;
+					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
+				}
+				else
+				{
+					icnApagar.Visible = true;
+					icnApagar.ShowBalloonTip(25, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
+				}
+			}
+			else
+			{
+				if (Pct.Name == "pctRemoveU")
+					name = lstCli[0].Nome;
+
+				string ds = Funcionarios.DeleteFuncionario(int.Parse(Pct.Tag.ToString()));
+				if (ds == "sucesso")
+				{
+					icnApagar.Visible = true;
+					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
+					CreateObjectsFun();
+				}
+				else
+				{
+					icnApagar.Visible = true;
+					icnApagar.ShowBalloonTip(25, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
+				}
+			}
 		}
 
 		private void pctEditFun_Click(object sender, EventArgs e)
@@ -304,6 +335,7 @@ namespace VesteBem_Admin
 
 		private void frmCliEFun_FormClosed(object sender, FormClosedEventArgs e)
 		{
+			icnApagar.Visible = false;
 			FormCollection fc = Application.OpenForms;
 			foreach (Form frm in fc)
 				frm.WindowState = FormWindowState.Normal;

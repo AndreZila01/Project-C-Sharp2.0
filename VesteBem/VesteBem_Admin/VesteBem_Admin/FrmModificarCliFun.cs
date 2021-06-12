@@ -16,7 +16,7 @@ namespace VesteBem_Admin
 	public partial class FrmModificarCliFun : Form
 	{
 		List<Cliente> Lstcli = new List<Cliente>(); List<Funcionario> Lstfunc = new List<Funcionario>(); List<Funcao> LstFun = new List<Funcao>();
-		Cliente Cli = new Cliente(); Funcionario Fun = new Funcionario();
+		Cliente Cli = new Cliente(); Funcionario Fun = new Funcionario(); List<Funcionario> LstAllfunc = new List<Funcionario>();
 		private const int CP_NOCLOSE_BUTTON = 0x200;
 		public FrmModificarCliFun(Cliente cli, Funcionario fun)
 		{
@@ -42,7 +42,7 @@ namespace VesteBem_Admin
 					Cli.Nome = Txt.Text;
 					break;
 				case "TxtNifCli":
-					if(Txt.Text.Length>8)
+					if (Txt.Text.Length > 8)
 						Cli.Nif = Txt.Text;
 					break;
 				case "TxtMoradaCli":
@@ -62,14 +62,14 @@ namespace VesteBem_Admin
 					Cli.CodPostal = Txt.Text;
 					break;
 				case "TxtTeleCli":
-					if(Txt.Text.Length>8)
-					Cli.Telefone = Txt.Text;
+					if (Txt.Text.Length > 8)
+						Cli.Telefone = Txt.Text;
 					break;
 				case "TxtEmail":
 					try
 					{
 						var addr = new System.Net.Mail.MailAddress(Txt.Text);
-						if (addr.Address != "") 
+						if (addr.Address != "")
 							Cli.Email = Txt.Text;
 					}
 					catch
@@ -110,6 +110,9 @@ namespace VesteBem_Admin
 			this.ShowIcon = false;
 			if (!BgwInicio.IsBusy)
 				BgwInicio.RunWorkerAsync();
+
+			if (LstFun.Count > 0)
+				LstAllfunc = Funcionarios.ConsultarFuncionario();
 		}
 
 		private void comboBox1_Leave(object sender, EventArgs e)
@@ -155,49 +158,97 @@ namespace VesteBem_Admin
 		}
 		private void SaveNewFun()
 		{
-			Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
-			Fun.Id_Login = Lstfunc[0].Id_Login;
-			string result = Funcionarios.InsertFuncionario(Fun);
+			bool check = false;
+			List<Cliente> lstcliente = new List<Cliente>();
+			LstAllfunc = Funcionarios.ConsultarFuncionario();
 
-			if (result == "sucesso")
-				Close();
-			else
-				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+			LstAllfunc.ToList().ForEach(item =>
 			{
-				Close();
+				if (item.Nome == Fun.Nome)
+					check = true;
+			});
+			if (check != true)
+			{
+				Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
+				Fun.Id_Login = Lstfunc[0].Id_Login;
+				string result = Funcionarios.InsertFuncionario(Fun);
 
+				if (result == "sucesso")
+				{
+					icnNotificar.ShowBalloonTip(25, "Criação feita com sucesso", "Criou o novo Funcionario com sucesso!", ToolTipIcon.Info);
+					Close();
+				}
+				else
+					if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+				{
+					Close();
+
+				}
 			}
+			icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
 		}
 
 		private void SaveFun()
 		{
-			Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
-			Fun.Id_Login = Lstfunc[0].Id_Login;
-			Fun.id_Funcao = (LstFun[LstFun.FindIndex(r => r.Funcoes == Lstfunc[0].Funcao)].IdFuncao);
-			string result = Funcionarios.AtualizarFuncionario(Fun);
+			bool check = false;
+			List<Cliente> lstcliente = new List<Cliente>();
+			LstAllfunc = Funcionarios.ConsultarFuncionario();
 
-			if (result == "sucesso")
-				Close();
-			else
-				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+			LstAllfunc.ToList().ForEach(item =>
 			{
-				Close();
+				if (item.Nome == Fun.Nome)
+					check = true;
+			});
+			if (check != true)
+			{
+				Fun.IdFuncionario = Lstfunc[0].IdFuncionario;
+				Fun.Id_Login = Lstfunc[0].Id_Login;
+				Fun.id_Funcao = (LstFun[LstFun.FindIndex(r => r.Funcoes == Lstfunc[0].Funcao)].IdFuncao);
+				string result = Funcionarios.AtualizarFuncionario(Fun);
 
+				if (result == "sucesso")
+				{
+					icnNotificar.ShowBalloonTip(25, "Modificou Com Sucesso", "Modificou o novo Funcionario com sucesso!", ToolTipIcon.Info);
+					Close();
+				}
+				else
+					if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+				{
+					Close();
+
+				}
 			}
+			icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
 		}
 
 		private void SaveCli()
 		{
-			Cli.Id_Login = Lstcli[0].Id_Login;
-			Cli.Id_Cliente = Lstcli[0].Id_Cliente;
-			string result = Clientes.InsertCliente(Cli);
+			bool check = false;
+			List<Cliente> lstcliente = new List<Cliente>();
+			lstcliente = Clientes.ConsultaCliente();
 
-			if (result == "sucesso")
-				Close();
-			else
-				if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+			lstcliente.ToList().ForEach(item =>
+			{
+				if (item.Nome == Lstcli[0].Nome)
+					check = true;
+			});
+			if (check != true)
+			{
+				Cli.Id_Login = Lstcli[0].Id_Login;
+				Cli.Id_Cliente = Lstcli[0].Id_Cliente;
+				string result = Clientes.InsertCliente(Cli);
+
+				if (result == "sucesso")
+				{
+					icnNotificar.ShowBalloonTip(25, "Modificou com sucesso", "Modificou o Cliente com sucesso!", ToolTipIcon.Info);
 					Close();
-
+				}
+				else
+					if (MessageBox.Show("" + result + "\nPretender Continuar as alterações?!?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.No)
+					Close();
+			}
+			else
+				icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Cliente com esse nome!!!", ToolTipIcon.Info);
 
 		}
 
@@ -614,6 +665,7 @@ namespace VesteBem_Admin
 				TxtTelemovel.Location = new System.Drawing.Point(156, 123);
 				TxtTelemovel.Name = "TxtTelemovelFun";
 				TxtTelemovel.Size = new System.Drawing.Size(135, 20);
+				TxtTelemovel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(txt_KeyPress);
 				TxtTelemovel.TabIndex = 4;
 				TxtTelemovel.MaxLength = 9;
 				TxtTelemovel.Leave += new System.EventHandler(txt_Leave);
@@ -677,20 +729,20 @@ namespace VesteBem_Admin
 		{
 			TextBox Txt = sender as TextBox;
 
-			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli"|| Txt.Name== "TxtTele" || Txt.Name== "TxtTelemovelFun")
+			if (Txt.Name == "TxtNifCli" || Txt.Name == "TxtTeleCli" || Txt.Name == "TxtTele" || Txt.Name == "TxtTelemovelFun")
 			{
-				if(e.KeyChar!='\b')
-				e.Handled = !char.IsDigit(e.KeyChar);
+				if (e.KeyChar != '\b')
+					e.Handled = !char.IsDigit(e.KeyChar);
 			}
-			else if(Txt.Name== "TxtCodCli")
+			else if (Txt.Name == "TxtCodCli")
 			{
-				if (e.KeyChar != '\b' && e.KeyChar!='-')
+				if (e.KeyChar != '\b' && e.KeyChar != '-')
 					e.Handled = !char.IsDigit(e.KeyChar);
 			}
 			else
 			{
-				if((Txt.Name== "TxtNomeCli" && e.KeyChar!=' '))
-				e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+				if ((Txt.Name == "TxtNomeCli" && e.KeyChar != ' '))
+					e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
 			}
 		}
 	}

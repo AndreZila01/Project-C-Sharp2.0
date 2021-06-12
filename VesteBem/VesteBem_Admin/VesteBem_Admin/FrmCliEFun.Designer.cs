@@ -29,6 +29,7 @@ namespace VesteBem_Admin
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCliEFun));
 			this.msMenu = new System.Windows.Forms.MenuStrip();
 			this.tsmiCliente = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +39,7 @@ namespace VesteBem_Admin
 			this.tsmiNovoFuncionario = new System.Windows.Forms.ToolStripMenuItem();
 			this.pnlCentro = new System.Windows.Forms.Panel();
 			this.bgwCliente = new System.ComponentModel.BackgroundWorker();
+			this.icnApagar = new System.Windows.Forms.NotifyIcon(this.components);
 			this.msMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -111,6 +113,12 @@ namespace VesteBem_Admin
 			this.bgwCliente.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
 			this.bgwCliente.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
 			// 
+			// icnApagar
+			// 
+			this.icnApagar.Icon = ((System.Drawing.Icon)(resources.GetObject("icnApagar.Icon")));
+			this.icnApagar.Text = "Cliente Apagado com Sucesso";
+			this.icnApagar.Visible = true;
+			// 
 			// frmCliEFun
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,5 +152,6 @@ namespace VesteBem_Admin
 		private System.Windows.Forms.ToolStripMenuItem tsmiNovoFuncionario;
 		private System.Windows.Forms.ToolStripTextBox tstbCliente;
 		private System.Windows.Forms.ToolStripTextBox tstbFuncionario;
+		private System.Windows.Forms.NotifyIcon icnApagar;
 	}
 }
