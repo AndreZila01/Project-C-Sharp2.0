@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AlterarInfo.aspx" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="bin\VesteBem_Site.dll" />
@@ -88,6 +89,7 @@
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="Carrinho.aspx" />
     <Content Include="Detalhes.aspx" />
+    <Content Include="EncomendaFeita.aspx" />
     <Content Include="IntermedioHomem.aspx" />
     <Content Include="Facebook.html" />
     <Content Include="FrmCHomem.aspx" />
@@ -98,6 +100,8 @@
     <Content Include="Logos\LogoComprido.png" />
     <Content Include="Logos\LogoV.png" />
     <Content Include="Resources\avatar.png" />
+    <Content Include="Resources\box.png" />
+    <Content Include="Resources\edit.png" />
     <Content Include="Resources\Eliminar.jpg" />
     <Content Include="Resources\Logo.png" />
     <Content Include="Resources\LogoComprido.png" />
@@ -119,6 +123,13 @@
     <Content Include="Teste.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlterarInfo.aspx.cs">
+      <DependentUpon>AlterarInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlterarInfo.aspx.designer.cs">
+      <DependentUpon>AlterarInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Carrinho.aspx.cs">
       <DependentUpon>Carrinho.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,6 +146,13 @@
     </Compile>
     <Compile Include="Detalhes.aspx.designer.cs">
       <DependentUpon>Detalhes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncomendaFeita.aspx.cs">
+      <DependentUpon>EncomendaFeita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncomendaFeita.aspx.designer.cs">
+      <DependentUpon>EncomendaFeita.aspx</DependentUpon>
     </Compile>
     <Compile Include="IntermedioHomem.aspx.cs">
       <DependentUpon>IntermedioHomem.aspx</DependentUpon>
