@@ -14,6 +14,7 @@ namespace VesteBem_Admin
 	public partial class frmEditarApagarProdutos : Form
 	{
 		List<Produtos> LstProdutos = new List<Produtos>();
+		List<string> LstCat = new List<string>();
 		public frmEditarApagarProdutos()
 		{
 			InitializeComponent();
@@ -31,6 +32,7 @@ namespace VesteBem_Admin
 		private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
 		{
 			LstProdutos = EncomendasEDetalhesEProduto.SelectCategoriaProdutos("");
+			LstCat = EncomendasEDetalhesEProduto.SelectCategoria();
 
 		}
 		private void pctRemove_MouseEnter(object sender, EventArgs e)
@@ -129,9 +131,9 @@ namespace VesteBem_Admin
 			});
 
 			cmbCategoria.Items.Add("");
-			LstProdutos.ToList().ForEach(item =>
+			LstCat.ToList().ForEach(item =>
 			{
-				cmbCategoria.Items.Add(item.CategoriaClass);
+				cmbCategoria.Items.Add(item);
 			});
 
 			flwCentro.HorizontalScroll.Enabled = false;

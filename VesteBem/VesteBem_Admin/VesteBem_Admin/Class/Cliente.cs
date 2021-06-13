@@ -461,7 +461,7 @@ namespace VesteBem_Admin.Class
 
 			return nome;
 		}
-		public static string SelectPass(int id_logi)
+		public static string SelectPass()
 		{
 			string pass = "";
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -530,6 +530,39 @@ namespace VesteBem_Admin.Class
 	}
 	public class EncomendasEDetalhesEProduto
 	{
+		public static List<string> SelectCategoria()
+		{
+			List<string> lstCat = new List<string>();
+			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+			SqlCommand comando = new SqlCommand("Select Distinct CategoriaClasse From tbl_Produtos", liga);
+			SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+			try
+			{
+				ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+				DataSet dataSet = new DataSet();
+				dataAdapter.Fill(dataSet);
+				comando.Connection = liga;
+				liga.Open();
+				using (SqlDataReader oReader = comando.ExecuteReader())
+				{
+					while (oReader.Read())
+					{
+						lstCat.Add(oReader["CategoriaClasse"].ToString());
+					}
+				}
+			}
+			catch
+			{
+
+			}
+			finally
+			{
+				liga.Close();
+			}
+
+			return lstCat;
+
+		}
 		public static List<ConsultarDetalhesEncomenda> ConsultarDetalhesDaEncomenda(int idEncomenda)
 		{
 			List<ConsultarDetalhesEncomenda> lst = new List<ConsultarDetalhesEncomenda>();

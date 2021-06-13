@@ -138,16 +138,14 @@ namespace VesteBem_Admin
 
 		private void txtValor_Leave(object sender, EventArgs e)
 		{
-			if (txtValor.Text.Contains("."))
-				txtValor.Text = txtValor.Text.Replace('.', ',');
-			if (!txtValor.Text.Contains(',') && txtValor.Text != "")
-				txtValor.Text += ",00";
+			if (!txtValor.Text.Contains('.') && txtValor.Text != "")
+				txtValor.Text += ".00";
 			if (txtValor.Text.Contains('-'))
 				txtValor.Text = "";
-			if (Regex.IsMatch(txtValor.Text, @"\,\d\d"))
+			if (Regex.IsMatch(txtValor.Text, @"\.\d\d"))
 			{
-				string[] ds = txtValor.Text.Split(',');
-				txtValor.Text = "" + ds[0] + "," + ds[1].Substring(0, 2);
+				string[] ds = txtValor.Text.Split('.');
+				txtValor.Text = "" + ds[0] + "." + ds[1].Substring(0, 2);
 			}
 
 		}

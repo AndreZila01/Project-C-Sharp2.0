@@ -38,7 +38,7 @@ namespace VesteBem_Admin
 			txtPass.Text = (lst[0].Password);
 			tmrTimer.Start();
 			txtPass.Enabled = false; txtUser.Enabled = false;
-			//File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
+			File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
 		}
 
 		private void btbLogin_Click(object sender, EventArgs e)

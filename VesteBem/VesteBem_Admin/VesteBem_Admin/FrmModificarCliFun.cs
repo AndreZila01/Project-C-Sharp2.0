@@ -227,6 +227,8 @@ namespace VesteBem_Admin
 			List<Cliente> lstcliente = new List<Cliente>();
 			lstcliente = Clientes.ConsultaCliente();
 
+			lstcliente.Count();
+
 			lstcliente.ToList().ForEach(item =>
 			{
 				if (item.Nome == Lstcli[0].Nome)

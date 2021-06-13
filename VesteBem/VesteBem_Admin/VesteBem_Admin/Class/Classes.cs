@@ -122,7 +122,7 @@ namespace VesteBem_Admin.Class
 		/// <summary>
 		/// valor do Produto
 		/// </summary>
-		public double Valor { get; set; }
+		public Double Valor { get; set; }
 		/// <summary>
 		/// Nome da Empresa
 		/// </summary>

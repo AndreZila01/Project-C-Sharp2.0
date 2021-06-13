@@ -264,16 +264,16 @@ namespace VesteBem_Admin
 
 		private void Modes_Clicks(object sender, EventArgs e)
 		{
-			Button BtnMode = sender as Button;
+			//Button BtnMode = sender as Button;
 
-			if (BtnMode.Text == "White Mode")
-			{
+			//if (BtnMode.Text == "White Mode")
+			//{
 
-			}
-			else
-			{
+			//}
+			//else
+			//{
 
-			}
+			//}
 
 		}
 

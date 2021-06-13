@@ -76,6 +76,7 @@ namespace VesteBem_Admin
 				lstDetalhesEncomendas.Remove(lstDetalhesEncomendas[int.Parse(Pct.Tag.ToString())]); lblTotal.Tag = "00";
 			lstDetalhesEncomendas.ToList().ForEach(item =>
 			{
+				#region ds
 				int index = lstProduto.FindIndex(r => r.IdProduto == item.Id_Produtos);
 				DetalhesEncomendas Detalhes = new DetalhesEncomendas();
 				Panel pnl = new Panel();
@@ -130,6 +131,7 @@ namespace VesteBem_Admin
 				lblTotal.Tag = "" + (double.Parse(lblTotal.Tag.ToString()) + ((item.QuantEnc * lstProduto[index].Valor)));
 				lblTotal.Text = "Total: " + lblTotal.Tag + "€";
 				value++;
+				#endregion
 			});
 			if (lstDetalhesEncomendas.Count == 0)
 			{
