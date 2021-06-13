@@ -86,7 +86,9 @@
 					</div>
 					<div style="float:right;margin-right:10px; height:35px ">
                             <a class="nav-link"></a>
-                            <img class="auto-style18" src="Resources/Carrinho.png" onclick=" window.open('Carrinho.aspx', '_blank'); return false;">
+                            <img class="auto-style18" src="Resources/Carrinho.png" onclick=" location.href='Carrinho.aspx' ">&nbsp;&nbsp;&nbsp;&nbsp;
+							<img class="auto-style18" src="Resources/box.png" onclick=" location.href='EncomendaFeita.aspx' ">&nbsp;&nbsp;&nbsp;
+							<img class="auto-style18" src="Resources/edit.png" onclick=" location.href='AlterarInfo.aspx' ">
 				 </div>
 					
 						

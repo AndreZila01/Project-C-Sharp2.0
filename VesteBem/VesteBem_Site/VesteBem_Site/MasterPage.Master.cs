@@ -32,8 +32,9 @@ namespace VesteBem
 				{
 					int login = Convert.ToInt32(dr["IdLogin"]);
 					string pass = dr[0].ToString();
-					if (psw.Value == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()))
+					if (psw.Value == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()) )
 					{
+						
 						Session["Username"] = uname.Value;
 						liga.Close();
 						liga.Open();

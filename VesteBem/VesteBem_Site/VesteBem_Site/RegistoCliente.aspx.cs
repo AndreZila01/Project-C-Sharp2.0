@@ -122,5 +122,10 @@ namespace VesteBem
             }
 
         }
+
+        protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
