@@ -472,7 +472,7 @@ namespace VesteBem_Admin
 				Data.Name = "DTPdate";
 				Data.Size = new System.Drawing.Size(172, 20);
 				Data.TabIndex = 22;
-				Data.MinDate = new DateTime((DateTime.Today.Year - 100), DateTime.Today.Month, DateTime.Today.Day);
+				Data.MinDate = new DateTime((DateTime.Today.Year - 125), DateTime.Today.Month, DateTime.Today.Day);
 				Data.MaxDate = DateTime.Now;
 				DateTime time = Lstcli[0].DataNasc;
 				Data.Value = time;

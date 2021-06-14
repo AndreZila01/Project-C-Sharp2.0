@@ -29,16 +29,25 @@ namespace VesteBem_Admin
 
 		private void frmLogin_Load(object sender, EventArgs e)
 		{
-			this.ShowIcon = false;
-			Process[] procs = Process.GetProcessesByName("VesteBem_Admin");
-			if (procs.Length > 1) foreach (Process proc in procs) { if (proc != procs[0]) proc.Kill(); }
-			var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
+			try
+			{
+				this.ShowIcon = false;
+				Process[] procs = Process.GetProcessesByName("VesteBem_Admin");
+				if (procs.Length > 1) foreach (Process proc in procs) { if (proc != procs[0]) proc.Kill(); }
+				var myString = File.ReadAllText(Path.Combine(Path.GetTempPath()) + "\\Login.json"); lst = JsonConvert.DeserializeObject<List<Logins>>(myString);
 
-			txtUser.Text = (lst[0].UserName);
-			txtPass.Text = (lst[0].Password);
-			tmrTimer.Start();
-			txtPass.Enabled = false; txtUser.Enabled = false;
-			File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
+				txtUser.Text = (lst[0].UserName);
+				txtPass.Text = (lst[0].Password);
+				tmrTimer.Start();
+				txtPass.Enabled = false; txtUser.Enabled = false;
+				File.Delete(Path.Combine(Path.GetTempPath()) + "\\Login.json");
+			}
+			catch
+			{
+				tmrTimer.Start();
+				txtPass.Enabled = false; txtUser.Enabled = false;
+			}
+
 		}
 
 		private void btbLogin_Click(object sender, EventArgs e)

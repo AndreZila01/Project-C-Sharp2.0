@@ -145,11 +145,13 @@ namespace VesteBem_Admin
 				if (Pct.Name == "pctRemoveU")
 					name = lstCli[0].Nome;
 
-				string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name);
+				string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name, lstCli[lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString()))].Id_Login);
 				if (ds == "sucesso")
 				{
+					lstCli.RemoveAt(lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString())));
 					icnApagar.Visible = true;
 					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
+					CreateObjectsCli();
 				}
 				else
 				{
@@ -159,12 +161,10 @@ namespace VesteBem_Admin
 			}
 			else
 			{
-				if (Pct.Name == "pctRemoveU")
-					name = lstCli[0].Nome;
-
-				string ds = Funcionarios.DeleteFuncionario(int.Parse(Pct.Tag.ToString()));
+				string ds = Funcionarios.DeleteFuncionario(int.Parse(Pct.Tag.ToString()), lstFun[lstFun.FindIndex(lst => lst.IdFuncionario == int.Parse(Pct.Tag.ToString()))].Id_Login);
 				if (ds == "sucesso")
 				{
+					lstFun.RemoveAt(lstFun.FindIndex(lst => lst.IdFuncionario == int.Parse(Pct.Tag.ToString())));
 					icnApagar.Visible = true;
 					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
 					CreateObjectsFun();

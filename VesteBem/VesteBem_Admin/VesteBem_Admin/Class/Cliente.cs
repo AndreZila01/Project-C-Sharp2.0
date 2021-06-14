@@ -174,18 +174,41 @@ namespace VesteBem_Admin.Class
 				}
 			}
 		}
-		public static string ApagarCliente(int id_Cli, string Nome)
+		public static string ApagarCliente(int id_Cli, string Nome, int IdLogin)
 		{
 			SqlCommand command = new SqlCommand();
-			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;MultipleActiveResultSets=true;Connection Timeout=30;"))
 			{
-				command.CommandText = "Delete tbl_Cliente where IdCliente=" + id_Cli + " and Nome='" + Nome + "'";
 				try
 				{
 					command.Connection = liga;
 
 					liga.Open();
+					command.CommandText = "Select IdEncomendas From tbl_Encomendas where Id_Cliente = " + id_Cli + "";
+					using (SqlDataReader oReader = command.ExecuteReader())
+					{
+						SqlCommand commands = new SqlCommand();
+						commands.Connection = liga;
+						while (oReader.Read())
+						{
+							try
+							{
+								commands.CommandText = "Delete tblDetalheEncomendas where Id_Encomendas = " + oReader["IdEncomendas"];
+								commands.ExecuteNonQuery();
+							}
+							catch(Exception ex)
+							{
 
+							}
+						}
+					}
+					command.CommandText = "Delete tbl_Encomendas where Id_Cliente = " + id_Cli;
+					command.ExecuteNonQuery();
+
+
+					command.CommandText = "Delete tbl_Cliente where IdCliente=" + id_Cli + " and Nome='" + Nome + "'";
+					command.ExecuteNonQuery();
+					command.CommandText = "Delete tbl_login where IdLogin=" + IdLogin + "";
 					command.ExecuteNonQuery();
 					return "sucesso";
 				}
@@ -401,18 +424,20 @@ namespace VesteBem_Admin.Class
 			}
 		}
 
-		public static string DeleteFuncionario(int Idfun)
+		public static string DeleteFuncionario(int Idfun, int idLogin)
 		{
 			SqlCommand command = new SqlCommand();
 			using (SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
 			{
-				command.CommandText = "Delete tbl_Funcionario where IdFuncionario=" + Idfun+"";
+				command.CommandText = "Delete tbl_Funcionario where IdFuncionario=" + Idfun + "";
 				try
 				{
 					command.Connection = liga;
 
 					liga.Open();
 
+					command.ExecuteNonQuery();
+					command.CommandText = "Delete tbl_login where IdLogin=" + idLogin + "";
 					command.ExecuteNonQuery();
 					return "sucesso";
 				}
@@ -497,7 +522,7 @@ namespace VesteBem_Admin.Class
 		{
 			int id = 0;
 			SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-			SqlCommand comando = new SqlCommand("Select IdLogin, Passw From tbl_login where Usern='" + user+ "' and Funcionario=1", liga);
+			SqlCommand comando = new SqlCommand("Select IdLogin, Passw From tbl_login where Usern='" + user + "' and Funcionario=1", liga);
 			try
 			{
 				comando.Connection = liga;
@@ -516,7 +541,7 @@ namespace VesteBem_Admin.Class
 					}
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				return 0;
 			}
@@ -725,7 +750,7 @@ namespace VesteBem_Admin.Class
 			}
 
 			return lstProdutos;
-			
+
 		}
 		public static List<Produtos> SelectCategoriaProdutos(string CategoriaClasse)
 		{
@@ -981,7 +1006,7 @@ namespace VesteBem_Admin.Class
 				AuxComando += " and Nome='" + Nome + "'";
 			if (Estado != 0)
 				AuxComando += " and EstadoEncomendas= " + Estado;
-			
+
 			try
 			{
 				SqlConnection liga = new SqlConnection(@"Server=tcp:srv-epbjc.database.windows.net,1433;Initial Catalog=bd;Persist Security Info=False;User ID=epbjc;Password=Teste123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
@@ -1005,7 +1030,7 @@ namespace VesteBem_Admin.Class
 						}
 					}
 				}
-				catch 
+				catch
 				{
 					return lst;
 				}
