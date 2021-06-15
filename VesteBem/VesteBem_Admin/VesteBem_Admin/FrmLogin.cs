@@ -69,7 +69,7 @@ namespace VesteBem_Admin
 						if (pass == EncryptADeDecrypt.DecryptRSA(dr["Passw"].ToString()))
 						{ 
 							string dsss = DateTime.Now.Hour > 0 && DateTime.Now.Hour < 13 ? dsss = "Bom dia" : (DateTime.Now.Hour > 13 && DateTime.Now.Hour < 20 ? dsss = "Boa tarde" : dsss = "Boa noite");
-							icnNotificação.ShowBalloonTip(25,"Bem vindo!!", "" + dsss + ", " + txtUser.Text + "!!", ToolTipIcon.None);
+							icnNotificação.ShowBalloonTip(15,"Bem vindo!!", "" + dsss + ", " + txtUser.Text + "!!", ToolTipIcon.None);
 							liga.Close();
 							frmAdmin frm = new frmAdmin(user, pass);
 							frm.Show();
@@ -77,24 +77,26 @@ namespace VesteBem_Admin
 						}
 						else
 						{
-							icnNotificação.ShowBalloonTip(25, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+							icnNotificação.ShowBalloonTip(15, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
 							tmrTimer.Start();
 						}
 					}
 					else
 					{
-						icnNotificação.ShowBalloonTip(25, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
+						icnNotificação.ShowBalloonTip(15, "Error Login", "Login sem sucesso!\nCertifique se a password e username está correto!", ToolTipIcon.Error);
 						tmrTimer.Start();
 					}
 				}
 				catch (Exception ex)
 				{
-					icnNotificação.ShowBalloonTip(25, "Error Login", ""+ ex.Message + "", ToolTipIcon.Error);
+					icnNotificação.ShowBalloonTip(15, "Error Login", ""+ ex.Message + "", ToolTipIcon.Error);
 
 					tmrTimer.Start();
 				}
 				liga.Close();
 			}
+			else
+				icnNotificação.ShowBalloonTip(15, "Error Login", "Faça Login, no site!!!", ToolTipIcon.Warning);
 		}
 
 		private void tmrTime_Tick(object sender, EventArgs e)

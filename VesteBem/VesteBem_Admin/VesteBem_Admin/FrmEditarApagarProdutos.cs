@@ -130,6 +130,7 @@ namespace VesteBem_Admin
 				Pnl.Controls.Add(PctEdit);
 			});
 
+			cmbCategoria.Items.Clear();
 			cmbCategoria.Items.Add("");
 			LstCat.ToList().ForEach(item =>
 			{
@@ -155,12 +156,12 @@ namespace VesteBem_Admin
 					if (ds == "sucesso")
 					{
 						icnApagar.Visible = true;
-						icnApagar.ShowBalloonTip(25, "Produto Apagado com Sucesso!!", "Conseguiu apagar o Produto com sucesso!!", ToolTipIcon.Info);
+						icnApagar.ShowBalloonTip(15, "Produto Apagado com Sucesso!!", "Conseguiu apagar o Produto com sucesso!!", ToolTipIcon.Info);
 					}
 					else
 					{
 						icnApagar.Visible = true;
-						icnApagar.ShowBalloonTip(25, "Error ao apagar Produto!!", ""+ds, ToolTipIcon.Error);
+						icnApagar.ShowBalloonTip(15, "Error ao apagar Produto!!", ""+ds, ToolTipIcon.Error);
 					}
 					break;
 			}

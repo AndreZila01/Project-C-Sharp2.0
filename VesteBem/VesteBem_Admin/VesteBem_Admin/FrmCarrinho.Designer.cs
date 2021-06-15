@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarrinho));
 			this.txtValor = new System.Windows.Forms.TextBox();
 			this.cboCliente = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,7 @@
 			this.lblQuantidade = new System.Windows.Forms.Label();
 			this.pctAdd = new System.Windows.Forms.PictureBox();
 			this.pnlRegistar = new System.Windows.Forms.Panel();
+			this.icnNotificacao = new System.Windows.Forms.NotifyIcon(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.nudQuantidade)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pctRegistar)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pctEncomenda)).BeginInit();
@@ -260,6 +262,12 @@
 			this.pnlRegistar.Size = new System.Drawing.Size(340, 450);
 			this.pnlRegistar.TabIndex = 24;
 			// 
+			// icnNotificacao
+			// 
+			this.icnNotificacao.Icon = ((System.Drawing.Icon)(resources.GetObject("icnNotificacao.Icon")));
+			this.icnNotificacao.Text = "VesteBem";
+			this.icnNotificacao.Visible = true;
+			// 
 			// frmCarrinho
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,5 +317,6 @@
 		private System.Windows.Forms.PictureBox pctAdd;
 		private System.Windows.Forms.Panel pnlRegistar;
 		private System.Windows.Forms.Label lblQuantidade;
+		private System.Windows.Forms.NotifyIcon icnNotificacao;
 	}
 }

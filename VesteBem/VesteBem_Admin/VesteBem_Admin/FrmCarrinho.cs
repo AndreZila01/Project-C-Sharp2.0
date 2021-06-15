@@ -148,25 +148,33 @@ namespace VesteBem_Admin
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			Encomenda enc = new Encomenda();
-			enc.EstadoEncomendas = cboEstado.Text;
-			enc.Id_Cliente = Clientes.SelectIdCliente(cboCliente.Text);
-			enc.ValorEncomendas = double.Parse(txtValor.Text);
-			enc.DataEncomenda = dtpEntrega.Value;
-			EncomendasEDetalhesEProduto.InsertEncomendas(enc, 1);
-			enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
-			int temp = 0;
-			lstDetalhesEncomendas.ToList().ForEach(item =>
+			try
 			{
-				lstDetalhesEncomendas[temp].Id_Encomendas = enc.IdEncomendas;
-				temp++;
-			});
-			EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
-			lstDetalhesEncomendas.Clear();
-			pnlRegistar.Enabled = false;
-			txtValor.Text = "";
-			cboCliente.Text = "";
-			flpProdutos.Controls.Clear();
+				Encomenda enc = new Encomenda();
+				enc.EstadoEncomendas = cboEstado.Text;
+				enc.Id_Cliente = Clientes.SelectIdCliente(cboCliente.Text);
+				enc.ValorEncomendas = double.Parse(txtValor.Text);
+				enc.DataEncomenda = dtpEntrega.Value;
+				EncomendasEDetalhesEProduto.InsertEncomendas(enc, 1);
+				enc.IdEncomendas = EncomendasEDetalhesEProduto.SelectIdEncomenda(enc.ValorEncomendas, enc.Id_Cliente, enc.DataEncomenda, lstEstado[lstEstado.FindIndex(p => p.Estado == enc.EstadoEncomendas)].IdEstado);
+				int temp = 0;
+				lstDetalhesEncomendas.ToList().ForEach(item =>
+				{
+					lstDetalhesEncomendas[temp].Id_Encomendas = enc.IdEncomendas;
+					temp++;
+				});
+				EncomendasEDetalhesEProduto.InsertDetalhes(lstDetalhesEncomendas);
+				lstDetalhesEncomendas.Clear();
+				pnlRegistar.Enabled = false;
+				txtValor.Text = "";
+				cboCliente.Text = "";
+				flpProdutos.Controls.Clear();
+				icnNotificacao.ShowBalloonTip(15, "Error Login", "Faça Login, no site!!!", ToolTipIcon.Info);
+			}
+			catch(Exception ex)
+			{
+				icnNotificacao.ShowBalloonTip(15, "Error Login", "Error: "+ex, ToolTipIcon.Error);
+			}
 		}
 
 		private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)

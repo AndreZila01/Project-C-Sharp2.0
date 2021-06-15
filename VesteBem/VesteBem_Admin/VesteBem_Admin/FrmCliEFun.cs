@@ -142,21 +142,20 @@ namespace VesteBem_Admin
 			PictureBox Pct = sender as PictureBox;
 			if (Pct.Name != "pctRemoveF")
 			{
-				if (Pct.Name == "pctRemoveU")
-					name = lstCli[0].Nome;
 
-				string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), name, lstCli[lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString()))].Id_Login);
+
+				string ds = Clientes.ApagarCliente(int.Parse(Pct.Tag.ToString()), lstCli[lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString()))].Nome, lstCli[lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString()))].Id_Login);
 				if (ds == "sucesso")
 				{
 					lstCli.RemoveAt(lstCli.FindIndex(lst => lst.Id_Cliente == int.Parse(Pct.Tag.ToString())));
 					icnApagar.Visible = true;
-					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
+					icnApagar.ShowBalloonTip(15, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
 					CreateObjectsCli();
 				}
 				else
 				{
 					icnApagar.Visible = true;
-					icnApagar.ShowBalloonTip(25, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
+					icnApagar.ShowBalloonTip(15, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
 				}
 			}
 			else
@@ -166,13 +165,13 @@ namespace VesteBem_Admin
 				{
 					lstFun.RemoveAt(lstFun.FindIndex(lst => lst.IdFuncionario == int.Parse(Pct.Tag.ToString())));
 					icnApagar.Visible = true;
-					icnApagar.ShowBalloonTip(25, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
+					icnApagar.ShowBalloonTip(15, "Cliente Apagado com Sucesso!!", "Conseguiu apagar o Cliente com sucesso!!", ToolTipIcon.Info);
 					CreateObjectsFun();
 				}
 				else
 				{
 					icnApagar.Visible = true;
-					icnApagar.ShowBalloonTip(25, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
+					icnApagar.ShowBalloonTip(15, "Error ao apagar cliente!!", "" + ds, ToolTipIcon.Error);
 				}
 			}
 		}

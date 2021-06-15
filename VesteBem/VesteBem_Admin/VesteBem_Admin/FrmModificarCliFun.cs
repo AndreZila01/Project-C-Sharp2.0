@@ -175,7 +175,7 @@ namespace VesteBem_Admin
 
 				if (result == "sucesso")
 				{
-					icnNotificar.ShowBalloonTip(25, "Criação feita com sucesso", "Criou o novo Funcionario com sucesso!", ToolTipIcon.Info);
+					icnNotificar.ShowBalloonTip(15, "Criação feita com sucesso", "Criou o novo Funcionario com sucesso!", ToolTipIcon.Info);
 					Close();
 				}
 				else
@@ -185,7 +185,7 @@ namespace VesteBem_Admin
 
 				}
 			}
-			icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
+			icnNotificar.ShowBalloonTip(15, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
 		}
 
 		private void SaveFun()
@@ -208,7 +208,7 @@ namespace VesteBem_Admin
 
 				if (result == "sucesso")
 				{
-					icnNotificar.ShowBalloonTip(25, "Modificou Com Sucesso", "Modificou o novo Funcionario com sucesso!", ToolTipIcon.Info);
+					icnNotificar.ShowBalloonTip(15, "Modificou Com Sucesso", "Modificou o novo Funcionario com sucesso!", ToolTipIcon.Info);
 					Close();
 				}
 				else
@@ -218,7 +218,7 @@ namespace VesteBem_Admin
 
 				}
 			}
-			icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
+			icnNotificar.ShowBalloonTip(15, "Já existe!!", "Já existe um Funcionario com esse nome!!!", ToolTipIcon.Info);
 		}
 
 		private void SaveCli()
@@ -231,18 +231,41 @@ namespace VesteBem_Admin
 
 			lstcliente.ToList().ForEach(item =>
 			{
-				if (item.Nome == Lstcli[0].Nome)
+				if (item.Nome == Cli.Nome)
 					check = true;
 			});
 			if (check != true)
 			{
+				if(Cli.Nome==null)
+					Cli.Nome= Lstcli[0].Nome;
+				if (Cli.Sexo == null)
+					Cli.Sexo = Lstcli[0].Sexo;
+				if (Cli.Telefone == null)
+					Cli.Telefone = Lstcli[0].Telefone;
+				if (Cli.Nif == null)
+					Cli.Nif = Lstcli[0].Nif;
+				if (Cli.Morada == null)
+					Cli.Morada = Lstcli[0].Morada;
+				if (Cli.Localidade == null)
+					Cli.Localidade = Lstcli[0].Localidade;
+				if (Cli.DataNasc == null)
+					Cli.DataNasc = Lstcli[0].DataNasc;
+				if (Cli.CodPostal == null)
+					Cli.CodPostal = Lstcli[0].CodPostal;
+				if (Cli.Email == null)
+					Cli.Email = Lstcli[0].Email;
+				if (Cli.Icon == null)
+					Cli.Icon = Lstcli[0].Icon;
+				if(Cli.DataNasc == DateTime.Parse("01/01/0001 00:00:00"))
+					Cli.DataNasc = Lstcli[0].DataNasc;
+
 				Cli.Id_Login = Lstcli[0].Id_Login;
 				Cli.Id_Cliente = Lstcli[0].Id_Cliente;
 				string result = Clientes.InsertCliente(Cli);
 
 				if (result == "sucesso")
 				{
-					icnNotificar.ShowBalloonTip(25, "Modificou com sucesso", "Modificou o Cliente com sucesso!", ToolTipIcon.Info);
+					icnNotificar.ShowBalloonTip(15, "Modificou com sucesso", "Modificou o Cliente com sucesso!", ToolTipIcon.Info);
 					Close();
 				}
 				else
@@ -250,7 +273,7 @@ namespace VesteBem_Admin
 					Close();
 			}
 			else
-				icnNotificar.ShowBalloonTip(25, "Já existe!!", "Já existe um Cliente com esse nome!!!", ToolTipIcon.Info);
+				icnNotificar.ShowBalloonTip(15, "Já existe!!", "Já existe um Cliente com esse nome!!!", ToolTipIcon.Info);
 
 		}
 

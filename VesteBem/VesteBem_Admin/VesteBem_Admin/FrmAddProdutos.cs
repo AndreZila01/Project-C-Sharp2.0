@@ -96,8 +96,9 @@ namespace VesteBem_Admin
 							txtValor.Text = null;
 							txtEmpresa.Text = null;
 							cboSexo.Text = "";
-							pctImage.Image = null;
+							pctImage.Image = null; 
 							icnNotificação.ShowBalloonTip(100,"Produto Registado", "O produto "+produtos.Nome+", foi registado com sucesso!", ToolTipIcon.None);
+							this.Close();
 						}
 
 					}
@@ -137,8 +138,8 @@ namespace VesteBem_Admin
 
 						if (dss == "sucesso")
 						{
-							icnNotificação.ShowBalloonTip(25, "Registado  com sucesso", "", ToolTipIcon.None);
 							this.Close();
+							icnNotificação.ShowBalloonTip(25, "Registado com sucesso", "Produto modificado com sucesso", ToolTipIcon.None);							
 						}
 
 					}
