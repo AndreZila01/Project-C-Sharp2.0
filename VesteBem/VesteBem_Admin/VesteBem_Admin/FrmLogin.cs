@@ -44,6 +44,7 @@ namespace VesteBem_Admin
 			}
 			catch
 			{
+				icnNotificação.ShowBalloonTip(25, "Error no Login", "Faça Login, no site!!!", ToolTipIcon.Warning);
 				tmrTimer.Start();
 				txtPass.Enabled = false; txtUser.Enabled = false;
 			}

@@ -74,7 +74,14 @@ namespace VesteBem_Admin
 						produtos.Nome = txtNome.Text;
 						produtos.NomedaEmpresa = txtEmpresa.Text;
 						produtos.Sexo = cboSexo.Text.Substring(0, 1);
-						produtos.Valor = double.Parse(txtValor.Text/*.Replace(',','.')*/);
+						try
+						{
+							produtos.Valor = double.Parse(txtValor.Text);
+						}
+						catch
+						{
+							produtos.Valor = double.Parse(txtValor.Text.Replace(',', '.'));//Fiz isto por causa dos computadores da escola, ... problemas de formato do windows
+						}
 						produtos.CategoriaClass = txtCat.Text;
 						produtos.CategoriaSubClass = txtSubCat.Text;
 						produtos.CaminhoImg = txtIcon.Text;
@@ -112,7 +119,14 @@ namespace VesteBem_Admin
 						produtos.Nome = txtNome.Text;
 						produtos.NomedaEmpresa = txtEmpresa.Text;
 						produtos.Sexo = cboSexo.Text.Substring(0, 1);
-						produtos.Valor = double.Parse(txtValor.Text/*.Replace(',', '.')*/);
+						try
+						{
+							produtos.Valor = double.Parse(txtValor.Text);
+						}
+						catch
+						{
+							produtos.Valor = double.Parse(txtValor.Text.Replace(',', '.'));
+						}
 						produtos.CategoriaClass = txtCat.Text;
 						produtos.CategoriaSubClass = txtSubCat.Text;
 						produtos.CaminhoImg = txtIcon.Text;
